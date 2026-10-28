@@ -14,6 +14,16 @@ Entry format:
 
 ---
 
+## 2026-10-29 · system · Screen recording guidelines
+- **Asked:** a guidelines file for the person doing the screen recordings, so recordings convert cleanly into storyboard HTML.
+- **Changed:** added `storyboards/RECORDING-GUIDE.md` (setup, pace, privacy, file naming and delivery, notes template, checklist, plus a short "for Claude" section mapping it to the pipeline). `storyboards/README.md` now starts from the recording + notes file. The shareable version is a Claude doc: https://claude.ai/artifact/NCf2fGEejGoazPQte1bLvP
+- **Why / decisions:**
+  - A 2 s pause per screen matches the frame extractor's "settled screen" rule and gives a clean pre-tap frame.
+  - "Show taps" (Android) marks the tap targets.
+  - Delivery via Drive, not WhatsApp, which compresses the video.
+  - The notes file seeds sections, lines, skips and redactions.
+- **Output:** the guide (doc + repo copy).
+
 ## 2026-10-29 · HV-StartSteps + system · Storyboard-driven videos with real screenshots
 - **Asked:** the flow is screen recording → HTML storyboard with screenshots (reference: "How to Start Steps") → design.md layouts → Remotion video; voiceover comes from the team.
 - **Changed:**

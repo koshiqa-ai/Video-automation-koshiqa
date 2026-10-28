@@ -2,6 +2,9 @@
 
 A help video starts from a **screen recording** of the flow in the real app, plus a draft script. Claude turns the recording into a **storyboard HTML**: one beat per screen with its screenshot, its on-screen card text and its voiceover line. The team reviews and edits that page; once it's approved, the video is built from it with `design.md` and Remotion.
 
+## 0. The recording
+Recordings follow `storyboards/RECORDING-GUIDE.md` (shared with the person recording) and arrive with a notes file (`<name>.txt`): steps with rough times, the important points, mistakes to skip and private info to blur. Read the notes before picking frames.
+
 ## 1. Recording → candidate screens
 ```bash
 python3 scripts/recording-frames.py recordings/<name>.mp4 work/<id>
