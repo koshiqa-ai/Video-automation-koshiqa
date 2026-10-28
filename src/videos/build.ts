@@ -24,7 +24,12 @@ const wordTime = (vo: string | undefined, voSec: number, word: string) => {
 /** screenshot slides give taps / annotation targets in image pixels → convert to phone-screen coords; resolve atWord */
 const toScreenSpace = (v: VideoSlide, voSec: number): VideoSlide => {
   const anno = v.anno && v.anno.atWord ? { ...v.anno, at: wordTime(v.vo, voSec, v.anno.atWord) } : v.anno;
-  if (!isShot(v.screen)) return { ...v, anno };
+  if (!isShot(v.screen)) {
+    // coded mockup: taps are already in screen space; only resolve `atWord`
+    const sc = v.screen;
+    const taps = sc?.taps?.map((t) => (t.atWord ? { ...t, at: wordTime(v.vo, voSec, t.atWord) } : t));
+    return { ...v, anno, screen: sc ? { ...sc, taps } : sc };
+  }
   const { k, offY } = shotFit(v.screen.w, v.screen.h);
   const p = (x: number, y: number) => ({ x: x * k, y: y * k + offY });
   const taps = v.screen.taps?.map((t) => ({ ...t, ...p(t.x, t.y), at: t.at ?? (t.atWord ? wordTime(v.vo, voSec, t.atWord) : VO_LEAD + 0.6) }));

@@ -13,7 +13,9 @@ type Tap = NonNullable<MockScreen["taps"]>[number];
 /** a real screenshot (from a screen recording) shown inside the phone.
  *  `taps` and annotation targets are given in IMAGE pixels; the builder converts them. */
 export type ShotScreen = { image: string; w: number; h: number; taps?: (Omit<Tap, "at"> & { at?: number; /** tap when this word is spoken */ atWord?: string })[] };
-export type Screen = MockScreen | ShotScreen;
+/** a coded mockup; a tap may give `atWord` (resolved by the builder, overrides `at`) */
+type MockScreenSpec = Omit<MockScreen, "taps"> & { taps?: (Tap & { atWord?: string })[] };
+export type Screen = MockScreenSpec | ShotScreen;
 export const isShot = (s?: Screen): s is ShotScreen => !!s && "image" in s;
 /** screenshot → phone screen (390 × 844): fit to width, cut off the recording's own status bar (top 5.5%: clock +
  *  the screen recorder's red timer) and start the app content under a clean 44 px status bar; extra height is lost

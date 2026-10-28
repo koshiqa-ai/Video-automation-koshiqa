@@ -58,5 +58,28 @@
    8.46,
    3.85
   ]
+ },
+ "HV-RedeemKoins": {
+  "_note": "ESTIMATED at 2.7 words/s, no audio yet. Replaced by `npm run vo -- HV-RedeemKoins` once the team's files are in public/vo/HV-RedeemKoins/.",
+  "files": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "durations": [
+   4.64,
+   2.22,
+   4.44,
+   3.7,
+   3.33,
+   3.9,
+   7.44,
+   1.85
+  ]
  }
 }

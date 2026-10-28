@@ -14,6 +14,20 @@ Entry format:
 
 ---
 
+## 2026-10-29 · HV-RedeemKoins · Demo video from design.md + coded mockups
+- **Asked:** "using /koshiqa-help-video and design.md make a demo video" (no recording attached).
+- **Changed:**
+  - New `src/videos/redeem-koins.ts` ("How do I redeem my koins?"), registered in `src/videos/index.ts`.
+  - `src/videos/build.ts` + `src/data/layout-system.ts`: coded-mockup taps can now use `atWord` too (was screenshots only), so taps follow the real VO once it arrives.
+  - `src/videos/vo-durations.json`: `HV-RedeemKoins` has **estimated** line lengths (2.7 words/s, no files). `npm run vo -- HV-RedeemKoins` replaces them once the team's clips are in `public/vo/HV-RedeemKoins/`.
+- **Why / decisions:**
+  - No recording, so this is a demo on the coded koins mockups (design.md §3 allows mockups for demos). Flow: F1 → T1 → T2 ×3 → S2 success (K7) → P2 tips → F2; 3 steps, so T1/T2 per design.md §2.
+  - Slide 5 has no peek: Redeem is a full-width bottom button (spans both corners). Other peeks sit opposite the tapped element.
+  - P2 item pop times (0.5 / 2.9 / 5.4 s) are set from the estimated line; re-check them against the real VO.
+  - No voice: Piper and its model aren't reachable from the cloud sandbox, so the render has SFX only, paced to the script.
+  - Mockup copy (₹100 Amazon Pay, "valid 12 months", "saved in My Rewards") is demo data; confirm before a real version.
+- **Output:** `out/HV-RedeemKoins.mp4` (37.9 s, SFX only), `out/HV-RedeemKoins-qa.png`. QA: all 8 slides are design.md layouts, headlines fit one line, taps land on the chip / first reward / Redeem, Torty never covers a tap.
+
 ## 2026-10-29 · HV-StartSteps + system · Storyboard-driven videos with real screenshots
 - **Asked:** the flow is screen recording → HTML storyboard with screenshots (reference: "How to Start Steps") → design.md layouts → Remotion video; voiceover comes from the team.
 - **Changed:**
