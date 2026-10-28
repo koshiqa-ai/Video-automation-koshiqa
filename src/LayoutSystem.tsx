@@ -5,11 +5,12 @@ import { AbsoluteFill, Easing, Img, interpolate, Sequence, spring, staticFile, u
 import { Phone } from "./components/Phone";
 import { Headline } from "./components/Text";
 import type { TimedLayoutScene } from "./data/faq-layouts";
-import { headlineTop, LS, lsCues, lsTimeline, phoneGeo, type FlatPose, type LSSlide, type PeekExpr, type PeekSide } from "./data/layout-system";
+import { headlineTop, isShot, LS, SHOT_TOP, lsCues, lsTimeline, phoneGeo, shotFit, type FlatPose, type ShotScreen, type LSSlide, type PeekExpr, type PeekSide } from "./data/layout-system";
 import { Confetti, FocusRing } from "./ExplainerDemo";
 import { AppScreen, Backdrop, GREEN, theme, toVideo } from "./LayoutDemo";
 import { TortyHand } from "./LayoutsV3";
-import { Icon } from "./screens/ui";
+import { Icon, StatusBar } from "./screens/ui";
+import { TapCursor } from "./components/TapCursor";
 import { ensureFonts } from "./theme/fonts";
 import FLAT from "./torty/flat.json";
 import PEEK from "./torty/peek-flat.json";
@@ -88,6 +89,25 @@ const DarkTooltip: React.FC<{ x: number; y: number; label: string; at: number }>
   );
 };
 
+// ───────── a real screenshot inside the phone (taps already in screen coords) ─────────
+const ShotView: React.FC<{ sc: ShotScreen; cursorSize: number; rippleScale: number }> = ({ sc, cursorSize, rippleScale }) => {
+  const f = useCurrentFrame();
+  const { offY, cut, height } = shotFit(sc.w, sc.h);
+  const gestures = (sc.taps ?? []).map((t) => ({ ...t, frame: fr(t.at) }));
+  const src = staticFile(sc.image);
+  return (
+    <div style={{ position: "absolute", left: 0, top: 0, width: 390, height: 844, overflow: "hidden", background: "#000" }}>
+      <Img src={src} style={{ position: "absolute", left: 0, top: offY, width: 390, height }} />
+      {/* clean status bar: the app's first row of pixels stretched up, with a 9:41 bar that inverts to stay readable */}
+      <div style={{ position: "absolute", left: 0, top: 0, width: 390, height: SHOT_TOP, overflow: "hidden" }}>
+        <div style={{ width: 390, height: 2, backgroundImage: `url(${src})`, backgroundSize: `390px ${height}px`, backgroundPosition: `0px ${-(cut + 1)}px`, transform: `scaleY(${SHOT_TOP / 2})`, transformOrigin: "top" }} />
+      </div>
+      <div style={{ position: "absolute", left: 0, top: -3, width: 390, height: SHOT_TOP, mixBlendMode: "difference" }}><StatusBar light /></div>
+      <TapCursor f={f} gestures={gestures} fill={theme.cursor.fill} stroke={theme.cursor.stroke} ripple={theme.cursor.ripple} size={cursorSize} rippleScale={rippleScale} />
+    </div>
+  );
+};
+
 // ───────── phone slides (S1–S4, T2, K*) ─────────
 const PhoneSlide: React.FC<{ s: LSSlide & { duration: number } }> = ({ s }) => {
   const f = useCurrentFrame();
@@ -103,7 +123,9 @@ const PhoneSlide: React.FC<{ s: LSSlide & { duration: number } }> = ({ s }) => {
     <AbsoluteFill>
       <Backdrop />
       <Phone scale={g.s} frame={theme.phoneFrame} x={g.x} y={g.y + (1 - rise) * 60} shadow="0 40px 90px rgba(0,50,35,0.38)">
-        <AppScreen scene={{ screen: s.screen, duration: s.duration } as unknown as TimedLayoutScene} cursorSize={a?.kind === "hand" ? 0 : 36} rippleScale={g.s > 2 ? 0.8 : 0.9} />
+        {isShot(s.screen)
+          ? <ShotView sc={s.screen} cursorSize={a?.kind === "hand" ? 0 : 36} rippleScale={g.s > 2 ? 0.8 : 0.9} />
+          : <AppScreen scene={{ screen: s.screen, duration: s.duration } as unknown as TimedLayoutScene} cursorSize={a?.kind === "hand" ? 0 : 36} rippleScale={g.s > 2 ? 0.8 : 0.9} />}
         {a?.kind === "spotlight" && t && <Spotlight t={t} at={a.at ?? 0.6} />}
       </Phone>
       {a?.kind === "ring" && t && <FocusRing fc={{ ...t, at: a.at ?? 0.6 }} centre={toVideo(g, t.x, t.y)} scale={g.s} />}

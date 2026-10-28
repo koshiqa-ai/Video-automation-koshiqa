@@ -1,5 +1,9 @@
 # App screens available to help videos
 
+**Real screenshots (default for production videos):** `screen: { image: "screens/<id>/NN.png", w, h, taps }`, made by `scripts/storyboard-import.py` from an approved storyboard. Taps and annotation targets are in **image pixels** (look at the screenshot to find the button centre). Give `atWord` instead of `at` and the tap lands when that word is spoken. The renderer fits the shot to the phone width, removes the recording's status bar (red timer included) and draws a clean one.
+
+**Coded mockups (demos only):**
+
 The phone shows coded mockups of the Koshiqa app (`src/screens/`). Each screen is **scripted**: its first tap triggers a fixed response (e.g. `home-tabbar` always opens the contest list). The `x, y` you give only places the cursor, so use the tap targets below. Coordinates are in phone-screen space, **390 × 844**.
 
 | `comp` | Shows | Tap targets (x, y) | What the tap does |

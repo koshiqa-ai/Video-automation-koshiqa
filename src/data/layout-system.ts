@@ -8,7 +8,23 @@
 //   K1–K8  annotations
 import type { TimedLayoutScene } from "./faq-layouts";
 
-type Screen = NonNullable<TimedLayoutScene["screen"]>;
+type MockScreen = NonNullable<TimedLayoutScene["screen"]>;
+type Tap = NonNullable<MockScreen["taps"]>[number];
+/** a real screenshot (from a screen recording) shown inside the phone.
+ *  `taps` and annotation targets are given in IMAGE pixels; the builder converts them. */
+export type ShotScreen = { image: string; w: number; h: number; taps?: (Omit<Tap, "at"> & { at?: number; /** tap when this word is spoken */ atWord?: string })[] };
+export type Screen = MockScreen | ShotScreen;
+export const isShot = (s?: Screen): s is ShotScreen => !!s && "image" in s;
+/** screenshot → phone screen (390 × 844): fit to width, cut off the recording's own status bar (top 5.5%: clock +
+ *  the screen recorder's red timer) and start the app content under a clean 44 px status bar; extra height is lost
+ *  at the bottom (home-indicator area). */
+export const SHOT_STATUS_BAR = 0.055;
+export const SHOT_TOP = 44;
+export const shotFit = (w: number, h: number) => {
+  const k = 390 / w;
+  const cut = h * SHOT_STATUS_BAR * k;
+  return { k, offY: SHOT_TOP - cut, cut, height: h * k };
+};
 /** flat-style Torty poses (public/torty/flat, cut from the expression sheet) */
 export type FlatPose = "idle" | "smile" | "happy" | "excited" | "thinking" | "surprised" | "worried" | "sad" | "confused" | "shy" | "wink" | "determined" | "sleeping";
 export type PeekExpr = Exclude<FlatPose, "sleeping">;

@@ -8,6 +8,8 @@
 - **After every edit, add an entry at the top of `revisions.md`** (format at the top of that file). This applies to videos and to the system alike.
 
 ## Making a help video
+Flow: screen recording → storyboard HTML (reviewed) → video spec → render (see `storyboards/README.md`). Voiceover comes from the team as files in `public/vo/<id>/` (one per slide, or one full file split with `scripts/vo-split.py`); Piper is only a placeholder for drafts.
+
 Videos are specs in `src/videos/<name>.ts` (a list of layout codes, see `src/videos/types.ts`), registered in `src/videos/index.ts`; `src/HelpVideo.tsx` renders them. Screens and tap targets are in `src/videos/SCREENS.md`. Example: `src/videos/join-contest.ts`. The `koshiqa-help-video` skill walks through the full process.
 
 ## Rendering in the cloud sandbox (no npm access)

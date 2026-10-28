@@ -18,5 +18,45 @@
    4.08,
    1.41
   ]
+ },
+ "HV-StartSteps": {
+  "files": [
+   "vo/HV-StartSteps/01.wav",
+   "vo/HV-StartSteps/02.wav",
+   "vo/HV-StartSteps/03.wav",
+   "vo/HV-StartSteps/04.wav",
+   "vo/HV-StartSteps/05.wav",
+   "vo/HV-StartSteps/06.wav",
+   "vo/HV-StartSteps/07.wav",
+   "vo/HV-StartSteps/08.wav",
+   "vo/HV-StartSteps/09.wav",
+   "vo/HV-StartSteps/10.wav",
+   "vo/HV-StartSteps/11.wav",
+   "vo/HV-StartSteps/12.wav",
+   "vo/HV-StartSteps/13.wav",
+   "vo/HV-StartSteps/14.wav",
+   "vo/HV-StartSteps/15.wav",
+   "vo/HV-StartSteps/16.wav",
+   "vo/HV-StartSteps/17.wav"
+  ],
+  "durations": [
+   5.47,
+   3.18,
+   4.36,
+   4.88,
+   5.88,
+   5.42,
+   7.37,
+   2.42,
+   6.6,
+   12.21,
+   2.53,
+   3.32,
+   3.42,
+   11.47,
+   0.79,
+   8.46,
+   3.85
+  ]
  }
 }

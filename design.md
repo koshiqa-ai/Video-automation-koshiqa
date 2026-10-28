@@ -6,7 +6,7 @@
 # change them here first, then in code.
 # Rule: one value per token, no ranges.
 # ─────────────────────────────────────────────────────────────
-version: 1.0
+version: 1.1
 status: approved            # layout system approved from the v4 review grid (2026-10-28)
 reference: LayoutSystem     # Remotion composition that renders every layout below
 visuals: design/            # layout stills (design/layouts), Torty art (design/torty), review grid
@@ -102,7 +102,7 @@ audio:
 ## 1. Purpose & audience
 - **Who:** Koshiqa users stuck on a task, like steps not syncing, joining a contest or redeeming koins. They watch on their phone, often with the sound off.
 - **Tone:** friendly, calm and quick. Torty is a helpful buddy reacting from the corner; the app screen does the explaining.
-- **Length:** 30–40 s. If the voiceover runs past 45 s, split it into two videos.
+- **Length:** 30–40 s for a single question. If the voiceover runs past 45 s, split the video, unless the approved storyboard is deliberately a longer walkthrough (e.g. first-time setup). In that case keep it and note it in `revisions.md`.
 
 ## 2. Video structure
 A video is a sequence of the layouts below, with no other slide types.
@@ -110,8 +110,8 @@ A video is a sequence of the layouts below, with no other slide types.
 | Beat | Layout | Notes |
 |---|---|---|
 | Opening | **F1** | The question or promise in 2–5 words, with Torty reacting: worried or confused for a problem, excited for a feature. |
-| What you'll do *(only if 2+ steps)* | **T1** | The steps, 2–3 words each. They become the T2 timeline labels. |
-| Each step | **T2** for the main screen of the step, then **S1–S4** as needed | Show T2's timeline whenever the full phone is on screen. Close-ups (S3/S4) carry a headline instead. |
+| What you'll do *(only if 2–4 steps and the script has a line for it)* | **T1** | The steps, 2–3 words each. They become the T2 timeline labels. |
+| Each step | **T2** for the main screen of the step, then **S1–S4** as needed | Use T2 when the video has 2–3 steps. With more steps (e.g. a storyboard with 8 sections), use **S2** with the storyboard's card text as the headline. Close-ups (S3/S4) always carry a headline. |
 | Tips, requirements, "you'll need" | **P1** (order matters) or **P2** (no order) | Full screen, never over the phone. |
 | Closing | **F2** | The payoff in 2–4 words, with Torty winking or happy. |
 
@@ -131,6 +131,7 @@ These are the only layouts. The review grid is the `LayoutSystem` composition; t
 
 - **The phone is always horizontally centred** and the same size whether or not Torty is there. Torty overlaps it; it never shrinks or moves for him.
 - The UI inside the phone always uses `colors.app`, never the video colours.
+- **Screens are real screenshots** from the approved storyboard (see `storyboards/README.md`). They are fitted to the phone width, the recording's status bar (clock and the recorder's red timer) is replaced with a clean one, and anything personal is redacted before it reaches the storyboard. Coded mockups are for demos only.
 
 **What they look like**
 
@@ -208,7 +209,7 @@ The whole set on one page: `design/torty/torty-poses-sheet.png`.
 **Where he goes**
 
 - **With a phone, or on P and T slides, he only peeks** from the **bottom-left or bottom-right corner**. The peek shows his head, arms and shell down to the hips, with a flat cut at the frame edge. It's 490 px tall, centred 150 px from the side, sinks 30 px below the frame and tilts 10° toward the centre.
-- On phone slides he is **in front of the phone's bottom corner**. **Put him on the side away from the action:** nothing being tapped or explained may sit in his zone (about 330 × 470 px in that corner). For example, a tap on Home (bottom-left) means he peeks from the right.
+- On phone slides he is **in front of the phone's bottom corner**. **Put him on the side away from the action:** nothing being tapped or explained may sit in his zone (about 330 × 470 px in that corner). For example, a tap on Home (bottom-left) means he peeks from the right. If the element spans both bottom corners (a full-width row or banner near the bottom), leave the peek out of that slide.
 - **Full-body Torty only on F1/F2.** He is never full-body next to a phone, and never behind it.
 
 **Which pose**
@@ -294,5 +295,6 @@ Each line here is a mistake from an earlier draft.
 ## Changelog
 | Version | Date | Change | Why |
 |---|---|---|---|
+| 1.1 | 2026-10-29 | Real screenshots from storyboards (status bar replaced); when to use T1/T2 vs S2; longer walkthroughs allowed | First storyboard-driven video (How to Start Steps: 8 sections, 2 min) |
 | 1.0 | 2026-10-28 | Rewritten around the approved layout system: S1–S4, F1–F2, P1–P2, T1–T2 and K1–K8; flat-style Torty with corner peeks overlapping the phone | Review of the v3 layouts: cut down to a small reusable set, maximise the phone, one peek style |
 | 0.x | 2026-10-21 → 27 | Exploration: 5 style directions, Hindi test, 3D Torty cutouts, layout catalogue v1–v3 | Kept in `assets-src/design.v0-notes.md` |

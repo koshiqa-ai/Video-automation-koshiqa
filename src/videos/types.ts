@@ -1,9 +1,9 @@
 // A help video = an ordered list of slides, each one a layout code from design.md.
 // Pure data (no React) so Node scripts can read it too.
-import type { AnnoKind, FlatPose, PeekExpr, PeekSide } from "../data/layout-system";
-import type { TimedLayoutScene } from "../data/faq-layouts";
+import type { AnnoKind, FlatPose, PeekExpr, PeekSide, Screen } from "../data/layout-system";
 
-export type Screen = NonNullable<TimedLayoutScene["screen"]>;
+/** a coded mockup (`{ comp }`, see SCREENS.md) or a real screenshot (`{ image, w, h }`, taps in image px) */
+export type { Screen };
 export type LayoutCode = "S1" | "S2" | "S3" | "S4" | "F1" | "F2" | "P1" | "P2" | "T1" | "T2";
 
 export type VideoSlide = {
@@ -20,10 +20,10 @@ export type VideoSlide = {
   peek?: { expr: PeekExpr; side: PeekSide };
   /** F1/F2 only */
   pose?: FlatPose;
-  /** S1–S4, T2 */
+  /** S1–S4, T2: a mockup `{ comp, taps }` or a screenshot `{ image: "screens/<id>/NN.png", w, h, taps }` (image px) */
   screen?: Screen;
-  /** one annotation per slide (K1–K3 come from `screen.taps`; these are K4–K8) */
-  anno?: { kind: Exclude<AnnoKind, "tap" | "hold" | "swipe">; target?: { x: number; y: number; w: number; h: number; r?: number }; label?: string; at?: number };
+  /** one annotation per slide (K1–K3 come from `screen.taps`; these are K4–K8). On screenshots, target is in image px. */
+  anno?: { kind: Exclude<AnnoKind, "tap" | "hold" | "swipe">; target?: { x: number; y: number; w: number; h: number; r?: number }; label?: string; at?: number; /** show it when this word is spoken */ atWord?: string };
   /** P1/P2/T1: the points; `times` default to 0.6 s apart from 0.6 s */
   items?: { text: string; icon?: string }[];
   times?: number[];

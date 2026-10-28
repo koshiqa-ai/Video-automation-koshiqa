@@ -7,8 +7,9 @@ This repo turns a help-video script into a finished vertical video (1080×1920) 
 - **`torty-requests.md`**: Torty art still needed from the designers.
 
 ## Make a help video
+0. From a screen recording: build and review the storyboard first (`storyboards/README.md`), then import it.
 1. Write a spec in `src/videos/<name>.ts` (see `join-contest.ts`) and add it to `src/videos/index.ts`.
-2. Voiceover: drop `01.mp3`, `02.mp3`… into `public/vo/<id>/`, or set `PIPER_MODEL` for a placeholder voice, then `npm run vo -- <id>`.
+2. Voiceover (from the team): drop `01.mp3`, `02.mp3`… (one per slide) into `public/vo/<id>/`, or split one full recording with `python3 scripts/vo-split.py full.mp3 qa.json`. Then run `npm run vo -- <id>`. For drafts only, `PIPER_MODEL` makes a placeholder voice.
 3. Preview in `npm run dev` (folder **HelpVideos**), then `npx remotion render <id> out/<id>.mp4`.
 4. QA: `npm run qa -- <id>` lists one frame per slide; render them as stills and build the sheet with `scripts/qa-sheet.py`.
 5. Log the change in `revisions.md`.

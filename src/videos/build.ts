@@ -1,5 +1,5 @@
 // Turns a HelpVideoSpec into timed layout-system slides + audio cues. Pure (no React).
-import { cuesFor, type Cue, type LSSlide } from "../data/layout-system";
+import { cuesFor, isShot, shotFit, type Cue, type LSSlide } from "../data/layout-system";
 import type { HelpVideoSpec, VideoSlide } from "./types";
 import VO from "./vo-durations.json";
 
@@ -13,7 +13,28 @@ const DEFAULT_SEC = 2.6;
 type VoEntry = { files: (string | null)[]; durations: (number | null)[] };
 const voFor = (id: string): VoEntry | undefined => (VO as Record<string, VoEntry>)[id];
 
-const toLS = (spec: HelpVideoSpec, v: VideoSlide, i: number): LSSlide => {
+/** seconds into the slide when `word` is spoken (estimated from its position in the line) */
+const wordTime = (vo: string | undefined, voSec: number, word: string) => {
+  if (!vo || !voSec) return VO_LEAD + 0.6;
+  const i = vo.toLowerCase().indexOf(word.toLowerCase());
+  const frac = i < 0 ? 0.6 : i / vo.length;
+  return +(VO_LEAD + frac * voSec + 0.15).toFixed(2);
+};
+
+/** screenshot slides give taps / annotation targets in image pixels → convert to phone-screen coords; resolve atWord */
+const toScreenSpace = (v: VideoSlide, voSec: number): VideoSlide => {
+  const anno = v.anno && v.anno.atWord ? { ...v.anno, at: wordTime(v.vo, voSec, v.anno.atWord) } : v.anno;
+  if (!isShot(v.screen)) return { ...v, anno };
+  const { k, offY } = shotFit(v.screen.w, v.screen.h);
+  const p = (x: number, y: number) => ({ x: x * k, y: y * k + offY });
+  const taps = v.screen.taps?.map((t) => ({ ...t, ...p(t.x, t.y), at: t.at ?? (t.atWord ? wordTime(v.vo, voSec, t.atWord) : VO_LEAD + 0.6) }));
+  const tg = anno?.target;
+  const target = tg ? { ...p(tg.x, tg.y), w: tg.w * k, h: tg.h * k, r: tg.r !== undefined ? tg.r * k : undefined } : undefined;
+  return { ...v, screen: { ...v.screen, taps }, anno: anno ? { ...anno, target } : undefined };
+};
+
+const toLS = (spec: HelpVideoSpec, v0: VideoSlide, i: number, voSec: number): LSSlide => {
+  const v = toScreenSpace(v0, voSec);
   const base = { code: v.code, row: 0, name: `${i + 1} ${v.code}`, title: v.title, accent: v.accent, peek: v.peek, sec: 0 };
   const times = v.times ?? (v.items ?? []).map((_, k) => 0.6 + 0.6 * k);
   switch (v.code) {
@@ -44,7 +65,7 @@ export const buildHelpVideo = (spec: HelpVideoSpec) => {
     const duration = fr(sec);
     t += duration;
     const file = vo?.files[i];
-    return { ...toLS(spec, v, i), sec, from, duration, vo: file ? { src: file, frame: from + fr(VO_LEAD) } : undefined };
+    return { ...toLS(spec, v, i, voSec), sec, from, duration, vo: file ? { src: file, frame: from + fr(VO_LEAD) } : undefined };
   });
   const cues: Cue[] = cuesFor(slides);
   const voCues: Cue[] = slides.filter((s) => s.vo).map((s) => ({ src: s.vo!.src, frame: s.vo!.frame, volume: 1 }));
