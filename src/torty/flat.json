@@ -1,0 +1,106 @@
+{
+ "idle": {
+  "w": 680,
+  "h": 1192,
+  "bodyTop": 0,
+  "bodyBottom": 1188,
+  "bodyLeft": 4,
+  "bodyRight": 680
+ },
+ "smile": {
+  "w": 688,
+  "h": 1192,
+  "bodyTop": 0,
+  "bodyBottom": 1188,
+  "bodyLeft": 4,
+  "bodyRight": 688
+ },
+ "happy": {
+  "w": 672,
+  "h": 1180,
+  "bodyTop": 0,
+  "bodyBottom": 1176,
+  "bodyLeft": 4,
+  "bodyRight": 668
+ },
+ "excited": {
+  "w": 1040,
+  "h": 1304,
+  "bodyTop": 60,
+  "bodyBottom": 1300,
+  "bodyLeft": 16,
+  "bodyRight": 1020
+ },
+ "thinking": {
+  "w": 656,
+  "h": 1188,
+  "bodyTop": 4,
+  "bodyBottom": 1184,
+  "bodyLeft": 0,
+  "bodyRight": 656
+ },
+ "surprised": {
+  "w": 868,
+  "h": 1240,
+  "bodyTop": 32,
+  "bodyBottom": 1236,
+  "bodyLeft": 88,
+  "bodyRight": 864
+ },
+ "worried": {
+  "w": 676,
+  "h": 1196,
+  "bodyTop": 0,
+  "bodyBottom": 1192,
+  "bodyLeft": 0,
+  "bodyRight": 676
+ },
+ "sad": {
+  "w": 684,
+  "h": 1100,
+  "bodyTop": 0,
+  "bodyBottom": 1096,
+  "bodyLeft": 0,
+  "bodyRight": 684
+ },
+ "confused": {
+  "w": 708,
+  "h": 1288,
+  "bodyTop": 100,
+  "bodyBottom": 1288,
+  "bodyLeft": 0,
+  "bodyRight": 668
+ },
+ "shy": {
+  "w": 864,
+  "h": 1132,
+  "bodyTop": 4,
+  "bodyBottom": 1128,
+  "bodyLeft": 84,
+  "bodyRight": 864
+ },
+ "wink": {
+  "w": 860,
+  "h": 1172,
+  "bodyTop": 0,
+  "bodyBottom": 1168,
+  "bodyLeft": 0,
+  "bodyRight": 740
+ },
+ "determined": {
+  "w": 724,
+  "h": 1204,
+  "bodyTop": 4,
+  "bodyBottom": 1200,
+  "bodyLeft": 0,
+  "bodyRight": 724
+ },
+ "sleeping": {
+  "w": 1056,
+  "h": 1000,
+  "bodyTop": 300,
+  "bodyBottom": 996,
+  "bodyLeft": 4,
+  "bodyRight": 1056
+ }
+}

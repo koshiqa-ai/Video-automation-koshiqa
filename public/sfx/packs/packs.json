@@ -1,0 +1,48 @@
+{
+ "soft": {
+  "label": "Soft UI",
+  "tap": 0.45,
+  "transition": 0.22,
+  "pop": 0.3,
+  "focus": 0.3,
+  "zoom": 0.18,
+  "success": 0.32
+ },
+ "playful": {
+  "label": "Playful / cartoon",
+  "tap": 0.4,
+  "transition": 0.2,
+  "pop": 0.32,
+  "focus": 0.3,
+  "zoom": 0.16,
+  "success": 0.32
+ },
+ "tech": {
+  "label": "Crisp tech",
+  "tap": 0.4,
+  "transition": 0.25,
+  "pop": 0.3,
+  "focus": 0.28,
+  "zoom": 0.2,
+  "success": 0.3
+ },
+ "wood": {
+  "label": "Wood & marimba",
+  "tap": 0.5,
+  "transition": 0.2,
+  "pop": 0.35,
+  "focus": 0.3,
+  "zoom": 0.15,
+  "success": 0.35
+ },
+ "minimal": {
+  "label": "Minimal + music bed",
+  "tap": 0.35,
+  "transition": 0.0,
+  "pop": 0.25,
+  "focus": 0.22,
+  "zoom": 0.0,
+  "success": 0.3,
+  "music": 0.24
+ }
+}

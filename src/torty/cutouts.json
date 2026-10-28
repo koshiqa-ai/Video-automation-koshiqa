@@ -1,0 +1,66 @@
+{
+ "celebrate": {
+  "file": "torty/cutouts/celebrate.png",
+  "w": 615,
+  "h": 906,
+  "top": 4,
+  "bottom": 901,
+  "feetX": 313.2
+ },
+ "curious": {
+  "file": "torty/cutouts/curious.png",
+  "w": 531,
+  "h": 906,
+  "top": 4,
+  "bottom": 901,
+  "feetX": 276.7
+ },
+ "happy": {
+  "file": "torty/cutouts/happy.png",
+  "w": 642,
+  "h": 906,
+  "top": 4,
+  "bottom": 901,
+  "feetX": 360.7
+ },
+ "point-curious": {
+  "file": "torty/cutouts/point-curious.png",
+  "w": 702,
+  "h": 906,
+  "top": 4,
+  "bottom": 901,
+  "feetX": 420.9
+ },
+ "point-happy": {
+  "file": "torty/cutouts/point-happy.png",
+  "w": 699,
+  "h": 900,
+  "top": 4,
+  "bottom": 895,
+  "feetX": 420.5
+ },
+ "thumbs-up": {
+  "file": "torty/cutouts/thumbs-up.png",
+  "w": 696,
+  "h": 909,
+  "top": 4,
+  "bottom": 904,
+  "feetX": 430.0
+ },
+ "wave": {
+  "file": "torty/cutouts/wave.png",
+  "w": 708,
+  "h": 909,
+  "top": 4,
+  "bottom": 904,
+  "feetX": 397.7
+ },
+ "worried": {
+  "file": "torty/cutouts/worried.png",
+  "w": 495,
+  "h": 909,
+  "top": 4,
+  "bottom": 904,
+  "feetX": 248.8
+ }
+}

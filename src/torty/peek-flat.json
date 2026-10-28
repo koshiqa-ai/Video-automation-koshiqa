@@ -1,0 +1,74 @@
+{
+ "idle": {
+  "w": 679,
+  "h": 1023,
+  "headL": 3,
+  "headR": 678
+ },
+ "smile": {
+  "w": 687,
+  "h": 1024,
+  "headL": 3,
+  "headR": 686
+ },
+ "happy": {
+  "w": 672,
+  "h": 1013,
+  "headL": 3,
+  "headR": 669
+ },
+ "excited": {
+  "w": 1013,
+  "h": 1071,
+  "headL": 4,
+  "headR": 1008
+ },
+ "thinking": {
+  "w": 656,
+  "h": 1019,
+  "headL": 0,
+  "headR": 655
+ },
+ "surprised": {
+  "w": 782,
+  "h": 1042,
+  "headL": 61,
+  "headR": 729
+ },
+ "worried": {
+  "w": 676,
+  "h": 1027,
+  "headL": 1,
+  "headR": 675
+ },
+ "sad": {
+  "w": 684,
+  "h": 946,
+  "headL": 4,
+  "headR": 683
+ },
+ "confused": {
+  "w": 673,
+  "h": 1025,
+  "headL": 0,
+  "headR": 655
+ },
+ "shy": {
+  "w": 782,
+  "h": 969,
+  "headL": 2,
+  "headR": 781
+ },
+ "wink": {
+  "w": 742,
+  "h": 1007,
+  "headL": 0,
+  "headR": 705
+ },
+ "determined": {
+  "w": 724,
+  "h": 1033,
+  "headL": 40,
+  "headR": 723
+ }
+}

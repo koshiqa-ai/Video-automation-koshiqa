@@ -1,0 +1,27 @@
+{
+  "name": "video-automation-koshiqa",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Koshiqa help videos: design system (design.md) + Remotion layouts, generated from scripts by Claude",
+  "scripts": {
+    "dev": "remotion studio",
+    "render:all": "for id in FAQ1-StepsNotSyncing FAQ2-JoinContest FAQ3-CorporateLogin FAQ4-RedeemKoins FAQ5-MedalDelivery FAQ6-StepsStuckHindi FAQ7-LayoutsDemo FAQ8-RedeemKoins; do remotion render $id out/$id.mp4; done",
+    "voiceover": "tsx scripts/generate-voiceover.ts",
+    "sfx": "python3 scripts/make-sfx.py",
+    "render:layouts": "remotion render LayoutSystem out/LayoutSystem.mp4",
+    "torty": "python3 scripts/extract-torty-flat.py && python3 scripts/make-torty-peek-flat.py"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.528",
+    "@remotion/fonts": "^4.0.528",
+    "@remotion/media": "^4.0.528",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "remotion": "^4.0.528"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
