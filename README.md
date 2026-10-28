@@ -6,6 +6,13 @@ This repo turns a help-video script into a finished vertical video (1080×1920) 
 - **`design/`**: the pictures that go with `design.md`: layout stills, Torty poses and peeks, and the review grid.
 - **`torty-requests.md`**: Torty art still needed from the designers.
 
+## Make a help video
+1. Write a spec in `src/videos/<name>.ts` (see `join-contest.ts`) and add it to `src/videos/index.ts`.
+2. Voiceover: drop `01.mp3`, `02.mp3`… into `public/vo/<id>/`, or set `PIPER_MODEL` for a placeholder voice, then `npm run vo -- <id>`.
+3. Preview in `npm run dev` (folder **HelpVideos**), then `npx remotion render <id> out/<id>.mp4`.
+4. QA: `npm run qa -- <id>` lists one frame per slide; render them as stills and build the sheet with `scripts/qa-sheet.py`.
+5. Log the change in `revisions.md`.
+
 ## Run it
 ```bash
 npm i
@@ -17,6 +24,8 @@ npm run render:layouts    # writes out/LayoutSystem.mp4
 ```
 design.md, design/        design system + reference images
 src/
+  HelpVideo.tsx           renders a help video spec
+  videos/                 video specs, builder, vo-durations.json, SCREENS.md
   LayoutSystem.tsx        the approved layouts (S1–S4, F1–F2, P1–P2, T1–T2, K1–K8)
   data/layout-system.ts   layout geometry + the review reel's slides (must match design.md)
   components/             Phone, TapCursor, Text (headline)

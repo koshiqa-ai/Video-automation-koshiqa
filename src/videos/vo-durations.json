@@ -1,0 +1,22 @@
+{
+ "HV-JoinContest": {
+  "files": [
+   "vo/HV-JoinContest/01.wav",
+   "vo/HV-JoinContest/02.wav",
+   "vo/HV-JoinContest/03.wav",
+   "vo/HV-JoinContest/04.wav",
+   "vo/HV-JoinContest/05.wav",
+   "vo/HV-JoinContest/06.wav",
+   "vo/HV-JoinContest/07.wav"
+  ],
+  "durations": [
+   3.74,
+   2.05,
+   3.51,
+   2.37,
+   1.89,
+   4.08,
+   1.41
+  ]
+ }
+}

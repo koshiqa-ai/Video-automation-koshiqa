@@ -59,24 +59,27 @@ const CentredHeadline: React.FC<{ title: string; accent?: string; top: number; s
   </div>
 );
 
+/** code tags (S2 · L …) show on the review reel only; real videos turn them off */
+export const ShowCodeTags = React.createContext(true);
 const CodeTag: React.FC<{ s: LSSlide }> = ({ s }) => {
+  if (!React.useContext(ShowCodeTags)) return null;
   const suffix = s.peek ? ` · ${s.peek.side === "left" ? "L" : "R"}` : s.row === 4 ? " · N" : "";
   return <div style={{ position: "absolute", right: 28, top: 24, padding: "4px 14px", borderRadius: 16, background: "rgba(0,0,0,0.22)", color: "rgba(255,255,255,0.85)", fontFamily: "Poppins", fontWeight: 600, fontSize: 24 }}>{s.code}{suffix}</div>;
 };
 
 // ───────── annotations that live inside the phone (screen coords) ─────────
-const Spotlight: React.FC<{ t: NonNullable<NonNullable<LSSlide["anno"]>["target"]> }> = ({ t }) => {
+const Spotlight: React.FC<{ t: NonNullable<NonNullable<LSSlide["anno"]>["target"]>; at: number }> = ({ t, at }) => {
   const f = useCurrentFrame();
-  const o = interpolate(f, [fr(0.5), fr(0.9)], [0, 1], clamp);
+  const o = interpolate(f, [fr(at - 0.1), fr(at + 0.3)], [0, 1], clamp);
   const pad = 8;
   return <div style={{ position: "absolute", left: t.x - t.w / 2 - pad, top: t.y - t.h / 2 - pad, width: t.w + pad * 2, height: t.h + pad * 2, borderRadius: (t.r ?? 16) + pad, boxShadow: `0 0 0 2000px rgba(5,30,22,${0.62 * o})`, outline: `${3 * o}px solid ${GREEN.mint}` }} />;
 };
 
-const DarkTooltip: React.FC<{ x: number; y: number; label: string }> = ({ x, y, label }) => {
+const DarkTooltip: React.FC<{ x: number; y: number; label: string; at: number }> = ({ x, y, label, at }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
-  if (f < fr(0.6)) return null;
-  const p = spring({ frame: f - fr(0.6), fps, config: { damping: 11, stiffness: 170 } });
+  if (f < fr(at)) return null;
+  const p = spring({ frame: f - fr(at), fps, config: { damping: 11, stiffness: 170 } });
   return (
     <div style={{ position: "absolute", left: x, top: y, translate: "-50% -100%", scale: String(p), transformOrigin: "50% 100%" }}>
       <div style={{ padding: "18px 32px", borderRadius: 40, background: GREEN.ink, color: "#fff", fontFamily: "Poppins", fontWeight: 700, fontSize: 40, whiteSpace: "nowrap", boxShadow: "0 16px 34px rgba(0,20,14,0.45)", border: "2px solid rgba(255,255,255,0.14)" }}>{label}</div>
@@ -101,12 +104,12 @@ const PhoneSlide: React.FC<{ s: LSSlide & { duration: number } }> = ({ s }) => {
       <Backdrop />
       <Phone scale={g.s} frame={theme.phoneFrame} x={g.x} y={g.y + (1 - rise) * 60} shadow="0 40px 90px rgba(0,50,35,0.38)">
         <AppScreen scene={{ screen: s.screen, duration: s.duration } as unknown as TimedLayoutScene} cursorSize={a?.kind === "hand" ? 0 : 36} rippleScale={g.s > 2 ? 0.8 : 0.9} />
-        {a?.kind === "spotlight" && t && <Spotlight t={t} />}
+        {a?.kind === "spotlight" && t && <Spotlight t={t} at={a.at ?? 0.6} />}
       </Phone>
-      {a?.kind === "ring" && t && <FocusRing fc={{ ...t, at: 0.6 }} centre={toVideo(g, t.x, t.y)} scale={g.s} />}
-      {a?.kind === "tooltip" && t && <DarkTooltip x={toVideo(g, t.x, t.y).x} y={toVideo(g, t.x, t.y - t.h / 2).y - 14} label={a.label!} />}
+      {a?.kind === "ring" && t && <FocusRing fc={{ ...t, at: a.at ?? 0.6 }} centre={toVideo(g, t.x, t.y)} scale={g.s} />}
+      {a?.kind === "tooltip" && t && <DarkTooltip x={toVideo(g, t.x, t.y).x} y={toVideo(g, t.x, t.y - t.h / 2).y - 14} label={a.label!} at={a.at ?? 0.6} />}
       {a?.kind === "hand" && t && <TortyHand tip={toVideo(g, t.x, t.y)} tapAt={s.screen!.taps![0].at} />}
-      {a?.kind === "success" && <Confetti at={0.9} origin={{ x: 540, y: g.y + 300 }} />}
+      {a?.kind === "success" && <Confetti at={a.at ?? 0.9} origin={{ x: 540, y: g.y + 300 }} />}
       {s.timeline && <StepTimeline labels={s.timeline.labels} current={s.timeline.current} />}
       {hTop !== null && s.title && <CentredHeadline title={s.title} accent={s.accent} top={hTop} />}
       {s.peek && <TortyPeek expr={s.peek.expr} side={s.peek.side} />}
@@ -229,7 +232,7 @@ const FullTortySlide: React.FC<{ s: LSSlide & { duration: number } }> = ({ s }) 
 export const LSSlideView: React.FC<{ s: LSSlide & { duration: number } }> = ({ s }) =>
   s.kind === "full-torty" ? <FullTortySlide s={s} /> : s.kind === "pointer" || s.kind === "toc" ? <ListSlide s={s} /> : <PhoneSlide s={s} />;
 
-const Settle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const Settle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const f = useCurrentFrame();
   const e = interpolate(f, [0, 11], [1, 0], { ...clamp, easing: Easing.out(Easing.cubic) });
   return <AbsoluteFill style={{ translate: `${e * 100}px 0px`, opacity: 1 - e * 0.6 }}>{children}</AbsoluteFill>;

@@ -5,6 +5,10 @@
 - After any layout or Torty change: re-render the `LayoutSystem` stills, rebuild `design/layout-system-grid.png` (`scripts/make-layout-grid.py`) and refresh the matching image in `design/layouts/`.
 - Torty art: never edit the PNGs in `public/torty/` by hand. Re-run `npm run torty` from the source sheet.
 - Add every mistake a reviewer points out as a line in the Don'ts section of `design.md`, and log the change in its Changelog.
+- **After every edit, add an entry at the top of `revisions.md`** (format at the top of that file). This applies to videos and to the system alike.
+
+## Making a help video
+Videos are specs in `src/videos/<name>.ts` (a list of layout codes, see `src/videos/types.ts`), registered in `src/videos/index.ts`; `src/HelpVideo.tsx` renders them. Screens and tap targets are in `src/videos/SCREENS.md`. Example: `src/videos/join-contest.ts`. The `koshiqa-help-video` skill walks through the full process.
 
 ## Rendering in the cloud sandbox (no npm access)
 ```bash

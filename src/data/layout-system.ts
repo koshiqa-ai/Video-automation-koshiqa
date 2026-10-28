@@ -65,7 +65,7 @@ export type LSSlide = {
   fullTorty?: { pose: FlatPose; textOnTop: boolean };
   list?: { style: "num" | "icon" | "toc"; eyebrow?: string; items: { text: string; icon?: string }[]; times: number[] };
   timeline?: { labels: string[]; current: number };
-  anno?: { kind: AnnoKind; target?: { x: number; y: number; w: number; h: number; r?: number }; label?: string };
+  anno?: { kind: AnnoKind; target?: { x: number; y: number; w: number; h: number; r?: number }; label?: string; /** seconds into the slide (default 0.6; success 0.9) */ at?: number };
   sec: number;
 };
 
@@ -137,23 +137,28 @@ export const lsTimeline = () => {
 };
 export const lsDuration = () => LS_SLIDES.reduce((a, s) => a + fr(s.sec), 0);
 
-export const lsCues = () => {
+export type Cue = { src: string; frame: number; volume: number };
+type TimedSlide = LSSlide & { from: number; duration: number };
+/** Soft UI sound cues for any timed list of slides (review reel or a real video) */
+export const cuesFor = (list: TimedSlide[]): Cue[] => {
   const pack = "sfx/packs/soft";
-  return lsTimeline().flatMap((s) => {
-    const c: { src: string; frame: number; volume: number }[] = [];
+  return list.flatMap((s) => {
+    const c: Cue[] = [];
     if (s.from > 0) c.push({ src: `${pack}/transition.wav`, frame: s.from - 3, volume: 0.2 });
     for (const t of s.screen?.taps ?? []) c.push({ src: `${pack}/tap.wav`, frame: s.from + fr(t.at), volume: 0.45 });
     for (const t of s.screen?.detailTaps ?? []) if (t >= 0 && t < 100) c.push({ src: `${pack}/tap.wav`, frame: s.from + fr(t), volume: 0.45 });
     for (const t of s.list?.times ?? []) c.push({ src: `${pack}/pop.wav`, frame: s.from + fr(t), volume: 0.28 });
     if (s.peek) c.push({ src: `${pack}/pop.wav`, frame: s.from + 10, volume: 0.16 });
     const k = s.anno?.kind;
-    if (k === "ring" || k === "spotlight" || k === "tooltip") c.push({ src: `${pack}/focus.wav`, frame: s.from + fr(0.6), volume: 0.3 });
-    if (k === "success") c.push({ src: `${pack}/success.wav`, frame: s.from + fr(0.9), volume: 0.32 });
+    const at = s.anno?.at;
+    if (k === "ring" || k === "spotlight" || k === "tooltip") c.push({ src: `${pack}/focus.wav`, frame: s.from + fr(at ?? 0.6), volume: 0.3 });
+    if (k === "success") c.push({ src: `${pack}/success.wav`, frame: s.from + fr(at ?? 0.9), volume: 0.32 });
     if (k === "hand") c.push({ src: `${pack}/transition.wav`, frame: s.from + fr(0.35), volume: 0.12 });
     if (s.kind === "timeline") c.push({ src: `${pack}/focus.wav`, frame: s.from + fr(0.5), volume: 0.25 });
     return c;
   });
 };
+export const lsCues = () => cuesFor(lsTimeline());
 
 /** the frame used for the review grid (late in each slide, after its animation) */
 export const lsStillFrame = (s: { from: number; duration: number; anno?: LSSlide["anno"] }) =>
