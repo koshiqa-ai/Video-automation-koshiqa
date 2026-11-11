@@ -54,7 +54,7 @@ export const TortyFlat: React.FC<{ pose: FlatPose; height: number; since?: numbe
   );
 };
 
-const CentredHeadline: React.FC<{ title: string; accent?: string; top: number; size?: number }> = ({ title, accent, top, size = LS.headline.size }) => (
+export const CentredHeadline: React.FC<{ title: string; accent?: string; top: number; size?: number }> = ({ title, accent, top, size = LS.headline.size }) => (
   <div style={{ position: "absolute", left: 60, right: 60, top, display: "flex", justifyContent: "center" }}>
     <Headline text={title} accent={accent} theme={theme} size={size} align="center" delay={3} maxWidth={960} />
   </div>

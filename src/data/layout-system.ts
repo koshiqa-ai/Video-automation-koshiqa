@@ -47,6 +47,15 @@ export const LS = {
   fullTorty: { height: 1000, textSize: 104, top: 300, gap: 70 }, // height = body (feet to head), effect marks extra
   list: { headingTop: 430, headingSize: 104, top: 620, badge: 140, text: 70, gap: 64, eyebrowTop: 350, maxItems: 4 },
   timeline: { y: 96, dot: 76, xs: [220, 540, 860], labelSize: 34 },
+  // FAQ
+  question: { dotsTop: 440, badgeTop: 520, badge: 260, textTop: 860, textSize: 104, maxWords: 7, dotsGap: 70 },
+  answer: { verdictTop: 300, verdictSize: 120, subGap: 28, subSize: 56, subMaxWords: 12, tortyTop: 700, tortyHeight: 900 },
+  // explainer concept scenes (heading 104 px at headingTop; content centred in 0–1560, above the peek)
+  concept: { headingTop: 300, headingSize: 104 },
+  cNumber: { eyebrowTop: 500, valueTop: 600, valueSize: 320, unitSize: 120, labelTop: 1000, labelSize: 64 },
+  cTrio: { top: 780, circle: 240, xs: [200, 540, 880], labelSize: 48 },
+  cCompare: { top: 600, w: 450, h: 700, gap: 40 },
+  cFlow: { ys: [460, 820, 1180], node: 200, labelSize: 48 },
 };
 
 export type Geo = { x: number; y: number; s: number };
@@ -72,7 +81,11 @@ export type LSSlide = {
   code: string;
   row: number;
   name: string;
-  kind: "phone" | "full-torty" | "pointer" | "toc" | "timeline" | "anno";
+  kind: "phone" | "full-torty" | "pointer" | "toc" | "timeline" | "anno"
+    // FAQ videos
+    | "question" | "answer"
+    // explainer videos (concept scenes, no phone)
+    | "c-number" | "c-trio" | "c-compare" | "c-flow";
   layout?: PhoneLayout;
   peek?: { expr: PeekExpr; side: PeekSide };
   title?: string;
@@ -81,6 +94,17 @@ export type LSSlide = {
   fullTorty?: { pose: FlatPose; textOnTop: boolean };
   list?: { style: "num" | "icon" | "toc"; eyebrow?: string; items: { text: string; icon?: string }[]; times: number[] };
   timeline?: { labels: string[]; current: number };
+  /** FAQ question card: its number and how many questions the video has */
+  q?: { n: number; total: number };
+  /** FAQ answer card: the supporting line under the verdict (title) + Torty's pose */
+  answer?: { sub: string; pose: FlatPose };
+  /** C1 big number */
+  number?: { value: number; decimals?: number; prefix?: string; unit?: string; label: string };
+  /** C2 trio / C4 flow: items appear at `times`; `image` = a public/ image instead of an icon */
+  nodes?: { text: string; icon?: string; image?: string }[];
+  nodeTimes?: number[];
+  /** C3 compare: left = the wrong way, right = the right way */
+  compare?: { left: { title: string; result: string }; right: { title: string; result: string }; times: [number, number] };
   anno?: { kind: AnnoKind; target?: { x: number; y: number; w: number; h: number; r?: number }; label?: string; /** seconds into the slide (default 0.6; success 0.9) */ at?: number };
   sec: number;
 };
@@ -171,6 +195,14 @@ export const cuesFor = (list: TimedSlide[]): Cue[] => {
     if (k === "success") c.push({ src: `${pack}/success.wav`, frame: s.from + fr(at ?? 0.9), volume: 0.32 });
     if (k === "hand") c.push({ src: `${pack}/transition.wav`, frame: s.from + fr(0.35), volume: 0.12 });
     if (s.kind === "timeline") c.push({ src: `${pack}/focus.wav`, frame: s.from + fr(0.5), volume: 0.25 });
+    if (s.kind === "question") c.push({ src: `${pack}/focus.wav`, frame: s.from + 8, volume: 0.3 });
+    if (s.kind === "answer") c.push({ src: `${pack}/pop.wav`, frame: s.from + 6, volume: 0.28 });
+    for (const t of s.nodeTimes ?? []) c.push({ src: `${pack}/pop.wav`, frame: s.from + fr(t), volume: 0.28 });
+    if (s.compare) {
+      c.push({ src: `${pack}/pop.wav`, frame: s.from + fr(s.compare.times[0]), volume: 0.24 });
+      c.push({ src: `${pack}/success.wav`, frame: s.from + fr(s.compare.times[1]), volume: 0.22 });
+    }
+    if (s.kind === "c-number") c.push({ src: `${pack}/success.wav`, frame: s.from + fr(1.3), volume: 0.24 });
     return c;
   });
 };

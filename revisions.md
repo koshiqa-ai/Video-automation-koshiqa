@@ -14,6 +14,22 @@ Entry format:
 
 ---
 
+## 2026-11-11 · system + HV-StepsFAQ + HV-HowStepsSync · Drafts for video types 2 (FAQ) and 3 (explainer)
+- **Asked:** finalise video types 2 (FAQ: 5–6 small questions) and 3 (explainer: a feature). Decisions:
+  - FAQ: one video only, each answer either a screen or a text answer, per question.
+  - Explainer: built from a recording + feature brief + script, with more motion graphics.
+- **Changed:**
+  - New layouts in `src/TypeLayouts.tsx`: Q (question card), A (answer card), C1 big number, C2 trio, C3 compare, C4 flow. Geometry in `LS` (`src/data/layout-system.ts`), sound cues added.
+  - Spec `type` (walkthrough/faq/explainer) and codes Q, A, C1–C4 in `src/videos/types.ts` and `build.ts`. Q numbering is automatic; concept items sync to `atWord`.
+  - New icons: x, heart, refresh, clock, question.
+  - Demos: `src/videos/steps-faq.ts`, `src/videos/how-steps-sync.ts`.
+  - `design.md` §11 drafted (pending approval); review grid at `design/video-types-grid.png`.
+- **Why / decisions:**
+  - Every fact in both demos comes from the approved HV-StartSteps storyboard; screens reuse its screenshots.
+  - QA caught a wrapped verdict overlapping its sub line (the verdict now auto-fits one line), content sitting too high on the Q and concept slides, and flow labels clashing with the peek. All fixed.
+  - The Google Fit node uses a generic heart icon (no third-party logos).
+- **Output:** `HV-StepsFAQ` (48.5 s), `HV-HowStepsSync` (37.3 s), both with placeholder Piper VO; QA sheets in `out/`.
+
 ## 2026-10-29 · system · Screen recording guidelines
 - **Asked:** a guidelines file for the person doing the screen recordings, so recordings convert cleanly into storyboard HTML.
 - **Changed:** added `storyboards/RECORDING-GUIDE.md` (setup, pace, privacy, file naming and delivery, notes template, checklist, plus a short "for Claude" section mapping it to the pipeline). `storyboards/README.md` now starts from the recording + notes file. The shareable version is a Claude doc: https://claude.ai/artifact/NCf2fGEejGoazPQte1bLvP

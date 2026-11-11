@@ -4,7 +4,10 @@ import type { AnnoKind, FlatPose, PeekExpr, PeekSide, Screen } from "../data/lay
 
 /** a coded mockup (`{ comp }`, see SCREENS.md) or a real screenshot (`{ image, w, h }`, taps in image px) */
 export type { Screen };
-export type LayoutCode = "S1" | "S2" | "S3" | "S4" | "F1" | "F2" | "P1" | "P2" | "T1" | "T2";
+export type LayoutCode =
+  | "S1" | "S2" | "S3" | "S4" | "F1" | "F2" | "P1" | "P2" | "T1" | "T2" // all video types
+  | "Q" | "A" // FAQ: question card, answer card (an answer with a screen uses S2)
+  | "C1" | "C2" | "C3" | "C4"; // explainer: big number, trio, compare, flow
 
 export type VideoSlide = {
   /** layout from design.md §3 */
@@ -25,13 +28,24 @@ export type VideoSlide = {
   /** one annotation per slide (K1–K3 come from `screen.taps`; these are K4–K8). On screenshots, target is in image px. */
   anno?: { kind: Exclude<AnnoKind, "tap" | "hold" | "swipe">; target?: { x: number; y: number; w: number; h: number; r?: number }; label?: string; at?: number; /** show it when this word is spoken */ atWord?: string };
   /** P1/P2/T1: the points; `times` default to 0.6 s apart from 0.6 s */
-  items?: { text: string; icon?: string }[];
+  items?: { text: string; icon?: string; image?: string; atWord?: string }[];
   times?: number[];
   /** T2: which step is current (0-based); labels come from the video's `steps` */
   step?: number;
+  /** A: the supporting line under the verdict (`title`), up to 12 words */
+  sub?: string;
+  /** C1: the number; `title` becomes the small eyebrow above it */
+  number?: { value: number; decimals?: number; prefix?: string; unit?: string; label: string };
+  /** C2 (3 things) / C4 (3 stages): `items` with `icon` or `image`; `atWord` syncs each one to the voiceover */
+  /** C3: wrong way (left) vs right way (right); each card appears at its atWord */
+  compare?: { left: { title: string; result: string; atWord?: string }; right: { title: string; result: string; atWord?: string } };
 };
 
+export type VideoType = "walkthrough" | "faq" | "explainer";
+
 export type HelpVideoSpec = {
+  /** walkthrough (default): how to do a task · faq: 5–6 quick Q&As · explainer: what a feature is and why it matters */
+  type?: VideoType;
   /** composition id, e.g. "HV-JoinContest" */
   id: string;
   /** the question the video answers */

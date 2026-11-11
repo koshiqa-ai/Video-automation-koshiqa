@@ -37,7 +37,22 @@ const toLS = (spec: HelpVideoSpec, v0: VideoSlide, i: number, voSec: number): LS
   const v = toScreenSpace(v0, voSec);
   const base = { code: v.code, row: 0, name: `${i + 1} ${v.code}`, title: v.title, accent: v.accent, peek: v.peek, sec: 0 };
   const times = v.times ?? (v.items ?? []).map((_, k) => 0.6 + 0.6 * k);
+  const at = (w: string | undefined, fallback: number) => (w ? wordTime(v.vo, voSec, w) : fallback);
+  const itemTimes = (v.items ?? []).map((it, k) => at(it.atWord, v.code === "C4" ? 0.6 + 1.0 * k : 0.6 + 0.6 * k));
   switch (v.code) {
+    case "Q": {
+      const qs = spec.slides.filter((x) => x.code === "Q");
+      return { ...base, kind: "question", q: { n: qs.indexOf(v0) + 1, total: qs.length } };
+    }
+    case "A":
+      return { ...base, kind: "answer", peek: undefined, answer: { sub: v.sub ?? "", pose: v.pose ?? "smile" } };
+    case "C1":
+      return { ...base, kind: "c-number", number: v.number };
+    case "C2":
+    case "C4":
+      return { ...base, kind: v.code === "C2" ? "c-trio" : "c-flow", nodes: v.items, nodeTimes: itemTimes };
+    case "C3":
+      return { ...base, kind: "c-compare", compare: v.compare && { left: v.compare.left, right: v.compare.right, times: [at(v.compare.left.atWord, 0.6), at(v.compare.right.atWord, 1.6)] } };
     case "F1":
     case "F2":
       return { ...base, kind: "full-torty", peek: undefined, fullTorty: { pose: v.pose ?? (v.code === "F1" ? "excited" : "wink"), textOnTop: v.code === "F1" } };

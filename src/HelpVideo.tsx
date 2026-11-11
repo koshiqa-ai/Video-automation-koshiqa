@@ -3,7 +3,8 @@ import React from "react";
 import { Audio } from "@remotion/media";
 import { AbsoluteFill, Sequence, staticFile } from "remotion";
 import { GREEN } from "./LayoutDemo";
-import { LSSlideView, Settle, ShowCodeTags } from "./LayoutSystem";
+import { Settle, ShowCodeTags } from "./LayoutSystem";
+import { AnySlideView } from "./TypeLayouts";
 import { buildHelpVideo } from "./videos/build";
 import type { HelpVideoSpec } from "./videos/types";
 
@@ -14,7 +15,7 @@ export const HelpVideo: React.FC<{ spec: HelpVideoSpec; codeTags?: boolean }> = 
       <AbsoluteFill style={{ background: GREEN.bg }}>
         {slides.map((s, i) => (
           <Sequence key={i} from={s.from} durationInFrames={s.duration} name={`${i + 1} ${s.code}`}>
-            <Settle><LSSlideView s={s} /></Settle>
+            <Settle><AnySlideView s={s} /></Settle>
           </Sequence>
         ))}
         {[...voCues, ...cues].map((c, i) => (

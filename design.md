@@ -292,6 +292,28 @@ Each line here is a mistake from an earlier draft.
 - [ ] Voiceover language and voice: Hindi, English or both.
 - [ ] Real app screen recordings to replace the mockups.
 
+## 11. Video types (draft, pending approval)
+There are three video types, all using the same colours, type, Torty rules and annotations. Review grid: `design/video-types-grid.png`. Demos: `HV-StepsFAQ`, `HV-HowStepsSync`.
+
+| Type | What it is | Length | Structure |
+|---|---|---|---|
+| **Walkthrough** | How to do one task, step by step, from a screen recording | 30–40 s (setup flows longer) | F1 → (T1) → S/T2 per step → F2 (section 2) |
+| **FAQ** | 5–6 quick doubts about one topic, in one video | 45–90 s | F1 → [Q → A *or* S2] × 5–6 → F2 |
+| **Explainer** | What a feature is and why it matters, then how | 40–75 s | F1 (hook) → 2–4 concept scenes (C1–C4) → 1–2 S slides (the how) → F2 |
+
+**FAQ layouts**
+- **Q, question card:** progress dots (one per question) at 440, a mint "Q2" badge (260 px) at 520, and the question (104 px, up to 7 words, 2 lines) at 860. Torty peeks with `thinking`, `confused`, `worried` or `surprised`.
+- **A, answer card (no screen needed):** a verdict at 300 (one line, up to 3 words, shrinks to fit, max 120 px), then a supporting line (56 px, up to 12 words) and full Torty (900 px tall) from 700. Use it for yes/no answers, numbers and rules.
+- **Answer with a screen:** **S2**, with the short answer as its headline. Use it when the answer is "where to tap" or "where to look".
+- Each question is a Q followed by exactly one answer slide. The Q's voiceover is the question, read as written.
+
+**Explainer layouts (concept scenes, no phone; heading 104 px at 300, Torty peeks)**
+- **C1, big number:** an eyebrow at 500, the number (320 px, counts up) with a unit (120 px, mint) at 600, and a label (64 px) at 1000. Use it for one striking fact.
+- **C2, trio:** three cream circles (240 px) with line icons at x 200 / 540 / 880, y 780, labelled underneath (48 px, up to 3 words). Use it for three things to know, or three benefits.
+- **C3, compare:** two cards (450 × 700) from 600: the wrong way on the left (dark card with a red ✗), the right way on the right (cream card with a green ✓, appears second).
+- **C4, flow:** three nodes (200 px) stacked down the middle at 460 / 820 / 1180, joined by a track that fills as each step is spoken. Use it for how something moves from A to B to C.
+- Each concept item is timed to the word that names it (`atWord`).
+
 ## Changelog
 | Version | Date | Change | Why |
 |---|---|---|---|
