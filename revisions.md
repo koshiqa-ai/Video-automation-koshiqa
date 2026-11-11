@@ -14,6 +14,12 @@ Entry format:
 
 ---
 
+## 2026-11-11 · system · FAQ and explainer lengths confirmed
+- **Asked:** confirmed FAQ length 45–90 s and explainer length 40–75 s; extra explainer scene types will come in one message.
+- **Changed:** `design.md` §11 notes the confirmed lengths. Layouts stay in draft until the scene list arrives.
+- **Why / decisions:** none.
+- **Output:** none.
+
 ## 2026-11-11 · system + HV-StepsFAQ + HV-HowStepsSync · Drafts for video types 2 (FAQ) and 3 (explainer)
 - **Asked:** finalise video types 2 (FAQ: 5–6 small questions) and 3 (explainer: a feature). Decisions:
   - FAQ: one video only, each answer either a screen or a text answer, per question.

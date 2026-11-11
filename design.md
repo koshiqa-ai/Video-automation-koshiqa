@@ -293,6 +293,8 @@ Each line here is a mistake from an earlier draft.
 - [ ] Real app screen recordings to replace the mockups.
 
 ## 11. Video types (draft, pending approval)
+Lengths confirmed 2026-11-11: FAQ 45–90 s, explainer 40–75 s. The layouts are still pending; more explainer scene types are coming from the team.
+
 There are three video types, all using the same colours, type, Torty rules and annotations. Review grid: `design/video-types-grid.png`. Demos: `HV-StepsFAQ`, `HV-HowStepsSync`.
 
 | Type | What it is | Length | Structure |
