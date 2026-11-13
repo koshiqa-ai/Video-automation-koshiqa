@@ -28,6 +28,23 @@ python3 -I scripts/storyboard-import.py storyboards/<id>.html HV-<Name>
 ```
 This writes `public/screens/HV-<Name>/NN.png` and `storyboards/HV-<Name>.json`. Claude then writes `src/videos/<name>.ts` from it, following `design.md` (see `src/videos/start-steps.ts`).
 
+## FAQ storyboards
+An FAQ video has no single recording to follow. Its input is the list of 5–6 questions with their answers (from the team, support chats or a brief), plus screenshots for the answers that need a screen. Its storyboard uses one `section` per question:
+```json
+{ "title": "Step sync: quick answers", "subtitle": "FAQ draft",
+  "beats": [
+    { "n": "card", "card": "Step sync questions?", "vo": "Got questions about step sync? Here are five quick answers." },
+    { "n": "card", "section": "Q1 · How long does setup take?", "role": "question", "card": "How long does setup take?", "vo": "How long does setup take?" },
+    { "n": "card", "section": "Q1 · How long does setup take?", "role": "answer", "card": "Under 2 minutes", "sub": "And you only do it once.", "vo": "Less than two minutes. And it's a one-time setup." },
+    { "n": "card", "section": "Q2 · Where's my connected account?", "role": "question", "card": "Where's my connected account?", "vo": "…" },
+    { "n": "#01", "section": "Q2 · Where's my connected account?", "card": "Right on Home", "vo": "…", "image": "frames/f_016.png" },
+    { "n": "card", "card": "Happy walking!", "vo": "That's it. Happy walking!" }
+  ] }
+```
+- `role: "question"` → layout **Q**; `role: "answer"` → layout **A** (`card` = the verdict, `sub` = the line under it); a screen beat → **S2**.
+- Cards without a role are the opening (F1) and the closing (F2).
+- Screenshots for FAQ answers can come from any recording that follows the guide, or from earlier storyboards' `public/screens/`.
+
 ## storyboard.json
 ```json
 { "title": "How to Start Steps", "subtitle": "Draft · from recording 2026-10-29",

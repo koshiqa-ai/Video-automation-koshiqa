@@ -29,6 +29,8 @@ for m in tokens:
     hold = next((float(x.split()[1][:-1]) for x in spans if x.startswith("hold ")), None)
     beat = {"n": n, "kind": "card" if n == "card" else "screen", "section": section, "cut": cut, "hold": hold,
             "card": grab("card-preview", block), "vo": grab("vo", block) or None,
+            "role": next((x.split()[0] for x in spans if x in ("question card", "answer card")), None),
+            "sub": grab("card-sub", block) or None,
             "was": re.sub(r"^was\s+", "", grab("was", block)) or None, "why": grab("why", block) or None, "flags": grab("flag", block, True)}
     im = re.search(r'<img alt="([^"]*)" src="data:image/[a-z]+;base64,([A-Za-z0-9+/=]+)"', block)
     if im:

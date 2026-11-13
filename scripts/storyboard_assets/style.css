@@ -106,3 +106,6 @@ body.bare .rt-mark, body.bare .rt-sec { visibility:hidden; }
   .rt-actions { display:none; } }
 @media (max-width:560px) { .beat { grid-template-columns:100px 1fr; }
   .rt-line { grid-template-columns:34px 1fr; gap:10px; } }
+.card-sub { background:var(--frame); color:var(--frame-fg); opacity:.8; font-size:13px;
+  margin:-6px 0 10px; padding:0 14px 10px; border-radius:0 0 8px 8px; }
+.meta .role { color:var(--accent); font-weight:650; }

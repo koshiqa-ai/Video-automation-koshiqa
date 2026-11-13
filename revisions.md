@@ -14,6 +14,18 @@ Entry format:
 
 ---
 
+## 2026-11-13 · system · FAQ video type approved and added to the skill
+- **Asked:** add FAQ videos to the koshiqa-help-video skill. Explainer references are coming separately.
+- **Changed:**
+  - `design.md` 1.2 §11: FAQ approved (layouts Q, A, S2 answers; structure; how to choose a screen vs a text answer; writing and Torty rules; don'ts).
+  - Storyboards support FAQ: `role` (question/answer) and `sub` on cards in `make-storyboard.py`, `storyboard-import.py` and `style.css`. Card beats now get their section headers.
+  - `storyboards/README.md` has an FAQ section; `CLAUDE.md` lists the three video types.
+  - Skill updated (proposed to the user) with an FAQ path.
+- **Why / decisions:**
+  - FAQ input = a question list + answers (+ screenshots for screen answers), not one recording. The storyboard groups each Q with its answer.
+  - Tested: the FAQ storyboard round trip (JSON → HTML → JSON) keeps roles, subs and sections; the walkthrough reference still imports identically.
+- **Output:** none rendered (layouts unchanged since the approved demo).
+
 ## 2026-11-11 · system · FAQ and explainer lengths confirmed
 - **Asked:** confirmed FAQ length 45–90 s and explainer length 40–75 s; extra explainer scene types will come in one message.
 - **Changed:** `design.md` §11 notes the confirmed lengths. Layouts stay in draft until the scene list arrives.

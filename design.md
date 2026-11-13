@@ -6,7 +6,7 @@
 # change them here first, then in code.
 # Rule: one value per token, no ranges.
 # ─────────────────────────────────────────────────────────────
-version: 1.1
+version: 1.2
 status: approved            # layout system approved from the v4 review grid (2026-10-28)
 reference: LayoutSystem     # Remotion composition that renders every layout below
 visuals: design/            # layout stills (design/layouts), Torty art (design/torty), review grid
@@ -292,8 +292,8 @@ Each line here is a mistake from an earlier draft.
 - [ ] Voiceover language and voice: Hindi, English or both.
 - [ ] Real app screen recordings to replace the mockups.
 
-## 11. Video types (draft, pending approval)
-Lengths confirmed 2026-11-11: FAQ 45–90 s, explainer 40–75 s. The layouts are still pending; more explainer scene types are coming from the team.
+## 11. Video types
+**FAQ videos: approved (2026-11-13).** Explainer videos: lengths confirmed; their layouts stay in draft until the extra animations the team is sending are added.
 
 There are three video types, all using the same colours, type, Torty rules and annotations. Review grid: `design/video-types-grid.png`. Demos: `HV-StepsFAQ`, `HV-HowStepsSync`.
 
@@ -303,13 +303,17 @@ There are three video types, all using the same colours, type, Torty rules and a
 | **FAQ** | 5–6 quick doubts about one topic, in one video | 45–90 s | F1 → [Q → A *or* S2] × 5–6 → F2 |
 | **Explainer** | What a feature is and why it matters, then how | 40–75 s | F1 (hook) → 2–4 concept scenes (C1–C4) → 1–2 S slides (the how) → F2 |
 
-**FAQ layouts**
+**FAQ layouts (approved)**
 - **Q, question card:** progress dots (one per question) at 440, a mint "Q2" badge (260 px) at 520, and the question (104 px, up to 7 words, 2 lines) at 860. Torty peeks with `thinking`, `confused`, `worried` or `surprised`.
 - **A, answer card (no screen needed):** a verdict at 300 (one line, up to 3 words, shrinks to fit, max 120 px), then a supporting line (56 px, up to 12 words) and full Torty (900 px tall) from 700. Use it for yes/no answers, numbers and rules.
 - **Answer with a screen:** **S2**, with the short answer as its headline. Use it when the answer is "where to tap" or "where to look".
 - Each question is a Q followed by exactly one answer slide. The Q's voiceover is the question, read as written.
+- **Choosing the answer slide:** "where do I tap / where is it / what does it look like" uses **S2** with a screenshot. Yes/no, a number, a time or a rule uses **A**. When unsure, prefer A; it reads faster.
+- **Writing:** questions are in the user's words ("Why aren't my steps counting?"), not product language. Order them from most to least common. The answer voiceover is 1–2 sentences, about 8–25 words. The A verdict is the answer in 1–3 words ("Nope!", "Under 2 minutes", "The same one").
+- **Torty:** on Q he peeks with `thinking`, `confused`, `worried` or `surprised`, alternating sides. On A he is full-body and matches the answer: `happy` or `excited` for good news, `determined` for a rule, `wink` for a tip, `worried` for a warning.
+- **Don't:** use T1/T2 or a question list at the start (the progress dots already show how many questions there are), put two answer slides after one Q, or show a Q without its answer.
 
-**Explainer layouts (concept scenes, no phone; heading 104 px at 300, Torty peeks)**
+**Explainer layouts (draft; concept scenes, no phone; heading 104 px at 300, Torty peeks)**
 - **C1, big number:** an eyebrow at 500, the number (320 px, counts up) with a unit (120 px, mint) at 600, and a label (64 px) at 1000. Use it for one striking fact.
 - **C2, trio:** three cream circles (240 px) with line icons at x 200 / 540 / 880, y 780, labelled underneath (48 px, up to 3 words). Use it for three things to know, or three benefits.
 - **C3, compare:** two cards (450 × 700) from 600: the wrong way on the left (dark card with a red ✗), the right way on the right (cream card with a green ✓, appears second).
@@ -319,6 +323,7 @@ There are three video types, all using the same colours, type, Torty rules and a
 ## Changelog
 | Version | Date | Change | Why |
 |---|---|---|---|
+| 1.2 | 2026-11-13 | FAQ video type approved: layouts Q and A, structure, writing and Torty rules (§11). Explainer still in draft | FAQ demo HV-StepsFAQ reviewed |
 | 1.1 | 2026-10-29 | Real screenshots from storyboards (status bar replaced); when to use T1/T2 vs S2; longer walkthroughs allowed | First storyboard-driven video (How to Start Steps: 8 sections, 2 min) |
 | 1.0 | 2026-10-28 | Rewritten around the approved layout system: S1–S4, F1–F2, P1–P2, T1–T2 and K1–K8; flat-style Torty with corner peeks overlapping the phone | Review of the v3 layouts: cut down to a small reusable set, maximise the phone, one peek style |
 | 0.x | 2026-10-21 → 27 | Exploration: 5 style directions, Hindi test, 3D Torty cutouts, layout catalogue v1–v3 | Kept in `assets-src/design.v0-notes.md` |

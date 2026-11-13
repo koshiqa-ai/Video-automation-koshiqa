@@ -2,6 +2,7 @@
 and readable by scripts/storyboard-import.py).
 usage: python3 scripts/make-storyboard.py <storyboard.json> <out.html>
 storyboard.json = {"title", "subtitle"?, "beats": [{"n": "card"|"#01", "section"?, "card", "vo", "hold"?, "image"?,
+                   "role"?: "question"|"answer" (FAQ cards), "sub"? (answer card's supporting line),
                    "was"?, "why"?, "flags"?: ["<b>Label</b> — text"], "cut"?: bool}]}
 image paths are relative to the JSON file or to public/."""
 import base64, html, json, os, sys
@@ -26,7 +27,7 @@ beats = sb["beats"]
 t, section, parts, sec_no, lines = 0.0, None, [], 0, []
 for b in beats:
     hold = b.get("hold") or (round(max(2.0, words(b.get("vo")) / 2.5) * 2) / 2 if b.get("vo") else 3.0)
-    if b.get("section") and b["section"] != section and b.get("n") != "card":
+    if b.get("section") and b["section"] != section:
         section = b["section"]; sec_no += 1
         parts.append(f'<div class="pair"><div class="pair-n">{sec_no}</div><div class="pair-name">{e(section)}</div><div class="pair-rule"></div><div class="pair-time">from {fmt(t)}</div></div>')
         lines.append(f'<div class="rt-sec">{e(section)}</div>')
@@ -39,7 +40,9 @@ for b in beats:
         fig = '<div class="noscreen">full-frame<br>card</div>'
     meta = f'<span class="n">{e(n)}</span><span>{fmt(t)}</span>' + ('<span class="cutlabel">cut</span>' if cut else f'<span>hold {hold}s</span>')
     if b.get("image"): meta += f'<span>{e(os.path.basename(b["image"]))}</span>'
+    if b.get("role"): meta += f'<span class="role">{e(b["role"])} card</span>'
     body = f'<div class="meta">{meta}</div><div class="card-preview">{e(b.get("card"))}</div>'
+    if b.get("sub"): body += f'<div class="card-sub">{e(b["sub"])}</div>'
     if b.get("vo") and not cut: body += f'<div class="vo">{e(b["vo"])}</div>'
     if b.get("was"): body += f'<div class="was">was <s>{e(b["was"])}</s></div>'
     if b.get("why"): body += f'<div class="why">{e(b["why"])}</div>'
