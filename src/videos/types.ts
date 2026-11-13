@@ -58,4 +58,6 @@ export type HelpVideoSpec = {
   /** step labels shared by T1 and every T2 (2–3 words each) */
   steps?: string[];
   slides: VideoSlide[];
+  /** background music under the whole video (design.md §8); default the house bed, null = none */
+  music?: string | null;
 };

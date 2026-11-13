@@ -14,6 +14,30 @@ Entry format:
 
 ---
 
+## 2026-11-14 · HV-RestCard + system · Chat earlier and flipped, 💚 reply, background music
+- **Asked:** chat messages a bit earlier; consumer messages on the left, ours on the right; send a heart emoji at the end; subtle non-copyright music always running at low volume.
+- **Changed:**
+  - `src/screens/chat.tsx`: seen from Koshiqa's side. The header is the member (plain person icon), member bubbles are on the left in white, Koshiqa's on the right in mint. Emoji-only messages pop in large without a bubble. The typing dots can come from either side and stop when that side's next message arrives.
+  - `layout-system.ts` ChatScreen type updated (`avatar` may be null, `typing.from`).
+  - `rest-card.ts` (chat timing):
+    - Messages now land a sentence ahead of the voice: at 0.5 s, at "lifelong", and at "She wants to give".
+    - Koshiqa's typing dots start at "simple", then 💚 at "That got".
+    - The slide is held 22.4 s so the heart stays ~2 s.
+  - Music:
+    - `scripts/make-music.py` synthesises `public/music/soft-bed.wav` (180 s; Cmaj7–Am7–Fmaj7–G6 pad, e-piano arpeggio, sub, soft shaker, reverb; no samples, so no copyright).
+    - `build.ts` adds the `MUSIC` levels and a ducking curve shared by Studio (`HelpVideo.tsx` `<Audio>`) and the sandbox mix (`mix-audio.ts`, ffmpeg volume expression).
+    - Specs get `music` (default the house bed, `null` = off).
+  - `design.md` 1.4: `audio.music` tokens and the §8 rule. `SCREENS.md` chat notes updated.
+- **Why / decisions:**
+  - Heart is green 💚, to match the brand and her own message.
+  - Header reads "Koshiqa member · Community", with no name or photo.
+  - Music levels: 0.16 alone (≈ −29 LUFS) and 0.09 under the voice (≈ 20 dB below it). The voice mix is −16 LUFS.
+  - Voice lines < 1.5 s apart count as one, so the music doesn't pump.
+- **Output:**
+  - `out/HV-RestCard.mp4`: 98.9 s, placeholder voice, with music.
+  - QA sheet: every slide passes.
+  - Storyboard regenerated.
+
 ## 2026-11-13 · HV-RestCard · Opens on the video's question
 - **Asked:** "this was the question - VIDEO 1: WHAT IS A REST CARD? WHY DID WE BUILD IT?"
 - **Changed:**

@@ -4,7 +4,7 @@
 
 **Before → after on one screen:** add `then: { image: "screens/<id>/NNb.png", atWord: "…" }` to a screenshot and the second image crossfades in (0.3 s) when that word is spoken, e.g. a calendar day going from 4,200 to 10,000 (`src/videos/rest-card.ts`, slide 6). The two images must be the same size and framing.
 
-**Chat thread (story moments with no app screen):** `screen: { chat: { name, subtitle?, avatar?, messages: [{ from: "member"|"koshiqa", text, atWord }], typing?: { atWord } } }` draws a messaging thread (`src/screens/chat.tsx`); bubbles pop in as their word is spoken and the thread scrolls when full. Use it only for real messages, with the member's consent, and never show their name or photo.
+**Chat thread (story moments with no app screen):** `screen: { chat: { name, subtitle?, avatar?, messages: [{ from: "member"|"koshiqa", text, atWord }], typing?: { atWord, from? } } }` draws a messaging thread (`src/screens/chat.tsx`), seen from Koshiqa's side: the header is the member (plain person icon unless `avatar` is given), **member messages on the left, Koshiqa's on the right**. Bubbles pop in at `at`/`atWord` (let them land a sentence ahead of the voice so there is time to read), the typing dots stop when that side's next message arrives, an emoji-only message (e.g. `"💚"`) pops in large without a bubble, and the thread scrolls when full. Use it only for real messages, with the member's consent, and never show their name or photo.
 
 **HDR recordings:** iPhone recordings are often HDR (PQ/HLG). `scripts/recording-frames.py` detects this and tone-maps to SDR, so frames aren't washed-out grey.
 

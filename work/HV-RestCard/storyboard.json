@@ -1,7 +1,7 @@
 {
   "title": "Video 1 · What is a Rest Card? Why did we build it?",
   "type": "explainer",
-  "subtitle": "Draft · from the Rest Card script + recording IMG_7237 · 14 slides · ~98 s (placeholder voice)",
+  "subtitle": "Draft · from the Rest Card script + recording IMG_7237 · 14 slides · ~99 s · soft music bed (placeholder voice)",
   "beats": [
     {
       "n": "card",
@@ -47,13 +47,13 @@
       "n": "#05",
       "section": "The story",
       "layout": "S1",
-      "card": "A member's message (chat mockup)",
+      "card": "A member's message (chat mockup: member left, Koshiqa right, 💚 reply)",
       "vo": "One day, a woman from our community sent us a message that really stayed with us. She said she sees Koshiqa as her lifelong sustainable partner. But during her period days, she sometimes doesn't want to push herself to 10,000 steps. She wants to give her body some rest. And then she asked us something simple: \"Can we have some rest days in the contest?\" That got us thinking.",
       "image": "chat-mockup.png",
       "flags": [
         "<b>Member's words</b> — the chat text is drafted from the voiceover, not her real message. Please send her actual words and confirm she's happy for them to be shown. Her name and photo are not shown."
       ],
-      "hold": 21.4
+      "hold": 22.4
     },
     {
       "n": "#06",

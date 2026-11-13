@@ -21,9 +21,12 @@ export type ShotScreen = {
 /** a chat-thread mockup (no real screen exists for it): messages pop in as they're spoken */
 export type ChatScreen = {
   chat: {
-    name: string; subtitle?: string; avatar?: string;
+    /** the thread is seen from Koshiqa's side: the header is the member, their messages on the left, ours on the right.
+     *  avatar: an image path, or null/omitted for a plain person icon (never a real member's photo) */
+    name: string; subtitle?: string; avatar?: string | null;
+    /** a message that is only emoji (e.g. "💚") is drawn large, without a bubble */
     messages: { from: "member" | "koshiqa"; text: string; at?: number; atWord?: string }[];
-    typing?: { at?: number; atWord?: string };
+    typing?: { at?: number; atWord?: string; from?: "member" | "koshiqa" };
   };
 };
 export type Screen = MockScreen | ShotScreen | ChatScreen;

@@ -26,15 +26,17 @@ export const REST_CARD: HelpVideoSpec = {
     // 2 · The story behind the Rest Card
     { code: "E7", peek: { expr: "happy", side: "left" }, motion: { line1: "Built with feedback", line2: "from members like you" },
       vo: "At Koshiqa, we build our product with feedback from members like you." },
-    { code: "S1", peek: { expr: "smile", side: "left" },
+    // messages land a sentence ahead of the voice so there's time to read them; the heart reply holds ~2 s
+    { code: "S1", peek: { expr: "smile", side: "left" }, minSec: 22.4,
       screen: { chat: {
-        name: "Torty", subtitle: "Koshiqa team",
+        name: "Koshiqa member", subtitle: "Community",
         messages: [
-          { from: "member", text: "Koshiqa has become my lifelong, sustainable fitness partner 💚", atWord: "lifelong" },
-          { from: "member", text: "But on my period days, I don't always want to push myself to 10,000 steps. I'd like to give my body some rest.", atWord: "period" },
-          { from: "member", text: "Can we have some rest days in the contest?", atWord: "something simple" },
+          { from: "member", text: "Koshiqa has become my lifelong, sustainable fitness partner 💚", at: 0.5 },
+          { from: "member", text: "But on my period days, I don't always want to push myself to 10,000 steps. I'd like to give my body some rest.", atWord: "lifelong" },
+          { from: "member", text: "Can we have some rest days in the contest?", atWord: "She wants to give" },
+          { from: "koshiqa", text: "💚", atWord: "That got" },
         ],
-        typing: { atWord: "thinking" },
+        typing: { atWord: "simple", from: "koshiqa" },
       } },
       vo: "One day, a woman from our community sent us a message that really stayed with us. She said she sees Koshiqa as her lifelong sustainable partner. But during her period days, she sometimes doesn't want to push herself to 10,000 steps. She wants to give her body some rest. And then she asked us something simple: \"Can we have some rest days in the contest?\" That got us thinking." },
 

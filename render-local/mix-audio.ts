@@ -9,7 +9,7 @@ import { buildLayoutTimeline, layoutAudioCues, LAYOUT_DEMO } from "../src/data/f
 import { catalogueAudioCues, catalogueDuration } from "../src/data/layout-catalogue";
 import { findVideo } from "../src/videos";
 import { motionCues, motionDuration } from "../src/explainer/motion-data";
-import { buildHelpVideo } from "../src/videos/build";
+import { buildHelpVideo, musicVolumeExpr } from "../src/videos/build";
 import { lsCues, lsDuration } from "../src/data/layout-system";
 import { pointerCues, pointerDuration } from "../src/data/pointer-layouts";
 import { kitDuration, reelCues, v3Duration } from "../src/data/layouts-v3";
@@ -37,7 +37,11 @@ const chains = cues.map((c, i) => {
   const ms = Math.round((c.frame / FPS) * 1000);
   return `[${i}:a]aresample=48000,aformat=channel_layouts=stereo,volume=${c.volume},adelay=${ms}|${ms}[a${i}]`;
 });
-const filter = `${chains.join(";")};${cues.map((_, i) => `[a${i}]`).join("")}amix=inputs=${cues.length}:normalize=0:dropout_transition=0,alimiter=limit=0.95,apad,atrim=0:${total.toFixed(3)},afade=t=out:st=${(total - 0.8).toFixed(3)}:d=0.8[out]`;
+const music = hvb?.music ?? null;
+if (music) inputs.push("-stream_loop", "-1", "-i", join(__dirname, "../public", music.src));
+const musicChain = music ? `;[${cues.length}:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:${total.toFixed(3)},volume='${musicVolumeExpr(music)}':eval=frame[mu]` : "";
+const n = cues.length + (music ? 1 : 0);
+const filter = `${chains.join(";")}${musicChain};${cues.map((_, i) => `[a${i}]`).join("")}${music ? "[mu]" : ""}amix=inputs=${n}:normalize=0:dropout_transition=0,alimiter=limit=0.95,apad,atrim=0:${total.toFixed(3)},afade=t=out:st=${(total - 0.8).toFixed(3)}:d=0.8[out]`;
 const wav = join(outdir, `${id}.mix.wav`);
 execFileSync("ffmpeg", ["-y", "-loglevel", "error", ...inputs, "-filter_complex", filter, "-map", "[out]", "-ar", "48000", wav]);
 execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-i", process.env.SILENT ?? join(outdir, `${id}.silent.mp4`), "-i", wav, "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", join(outdir, `${id}.mp4`)]);

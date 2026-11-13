@@ -5,11 +5,11 @@ import { AbsoluteFill, Sequence, staticFile } from "remotion";
 import { GREEN } from "./LayoutDemo";
 import { Settle, ShowCodeTags } from "./LayoutSystem";
 import { AnySlideView } from "./TypeLayouts";
-import { buildHelpVideo } from "./videos/build";
+import { buildHelpVideo, FPS, musicVolume } from "./videos/build";
 import type { HelpVideoSpec } from "./videos/types";
 
 export const HelpVideo: React.FC<{ spec: HelpVideoSpec; codeTags?: boolean }> = ({ spec, codeTags = false }) => {
-  const { slides, cues, voCues } = buildHelpVideo(spec);
+  const { slides, cues, voCues, music } = buildHelpVideo(spec);
   return (
     <ShowCodeTags.Provider value={codeTags}>
       <AbsoluteFill style={{ background: GREEN.bg }}>
@@ -23,6 +23,7 @@ export const HelpVideo: React.FC<{ spec: HelpVideoSpec; codeTags?: boolean }> = 
             <Audio src={staticFile(c.src)} volume={c.volume} />
           </Sequence>
         ))}
+        {music && <Audio src={staticFile(music.src)} volume={(f) => musicVolume(music, f / FPS)} />}
       </AbsoluteFill>
     </ShowCodeTags.Provider>
   );

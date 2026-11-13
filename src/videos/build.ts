@@ -28,7 +28,7 @@ const toScreenSpace = (v: VideoSlide, voSec: number): VideoSlide => {
   const wt = (x: { at?: number; atWord?: string }, d: number) => x.at ?? (x.atWord ? wordTime(v.vo, voSec, x.atWord) : d);
   if (isChat(v.screen)) {
     const c = v.screen.chat;
-    return { ...v, anno, screen: { chat: { ...c, messages: c.messages.map((m, k) => ({ ...m, at: wt(m, 0.6 + 1.2 * k) })), typing: c.typing && { at: wt(c.typing, 99) } } } };
+    return { ...v, anno, screen: { chat: { ...c, messages: c.messages.map((m, k) => ({ ...m, at: wt(m, 0.6 + 1.2 * k) })), typing: c.typing && { ...c.typing, at: wt(c.typing, 99) } } } };
   }
   if (!isShot(v.screen)) return { ...v, anno };
   const { k, offY } = shotFit(v.screen.w, v.screen.h);
@@ -78,6 +78,22 @@ const toLS = (spec: HelpVideoSpec, v0: VideoSlide, i: number, voSec: number): LS
   }
 };
 
+/** design.md audio.music — keep in sync */
+export const MUSIC = { track: "music/soft-bed.wav", volume: 0.16, underVoice: 0.09, duckIn: 0.35, duckOut: 0.6, mergeGap: 1.5, fadeIn: 1.0, fadeOut: 1.5 };
+type Music = { src: string; windows: [number, number][]; total: number };
+const clip01 = (x: number) => Math.min(1, Math.max(0, x));
+/** music volume at time t (s); the same curve as musicVolumeExpr, so Studio and the sandbox mix sound the same */
+export const musicVolume = (m: Music, t: number) => {
+  const duck = Math.max(0, ...m.windows.map(([a, b]) => clip01((t - a + MUSIC.duckIn) / MUSIC.duckIn) * clip01((b + MUSIC.duckOut - t) / MUSIC.duckOut)));
+  return (MUSIC.volume - (MUSIC.volume - MUSIC.underVoice) * duck) * clip01(t / MUSIC.fadeIn) * clip01((m.total - t) / MUSIC.fadeOut);
+};
+/** the same curve as an ffmpeg `volume` expression (eval=frame) */
+export const musicVolumeExpr = (m: Music) => {
+  const c = (x: string) => `clip(${x},0,1)`;
+  const duck = m.windows.length ? m.windows.map(([a, b]) => `${c(`(t-${a.toFixed(3)}+${MUSIC.duckIn})/${MUSIC.duckIn}`)}*${c(`(${b.toFixed(3)}+${MUSIC.duckOut}-t)/${MUSIC.duckOut}`)}`).reduce((x, y) => `max(${x},${y})`) : "0";
+  return `(${MUSIC.volume}-${(MUSIC.volume - MUSIC.underVoice).toFixed(3)}*${duck})*${c(`t/${MUSIC.fadeIn}`)}*${c(`(${m.total.toFixed(3)}-t)/${MUSIC.fadeOut}`)}`;
+};
+
 export type TimedVideoSlide = LSSlide & { from: number; duration: number; vo?: { src: string; frame: number } };
 
 export const buildHelpVideo = (spec: HelpVideoSpec) => {
@@ -96,7 +112,16 @@ export const buildHelpVideo = (spec: HelpVideoSpec) => {
   const motionCueList: Cue[] = slides.flatMap((s) => (s.kind === "motion" ? (motionScene(s.code)?.cues ?? []).map(([at, r]) => ({ src: `sfx/packs/soft/${r}.wav`, frame: s.from + at, volume: VOL[r] })) : []));
   const cues: Cue[] = [...cuesFor(slides), ...motionCueList];
   const voCues: Cue[] = slides.filter((s) => s.vo).map((s) => ({ src: s.vo!.src, frame: s.vo!.frame, volume: 1 }));
-  return { slides, cues, voCues, durationInFrames: t };
+  // music bed (design.md §8): quiet, and lower while someone speaks; voice windows closer than MUSIC.mergeGap are joined so it doesn't pump
+  const raw = slides.flatMap((s, i) => (s.vo ? [[s.vo.frame / FPS, s.vo.frame / FPS + (vo?.durations[i] ?? 0)] as [number, number]] : []));
+  const windows = raw.reduce<[number, number][]>((acc, w) => {
+    const last = acc[acc.length - 1];
+    if (last && w[0] - last[1] < MUSIC.mergeGap) last[1] = Math.max(last[1], w[1]);
+    else acc.push([...w]);
+    return acc;
+  }, []);
+  const music = spec.music === null ? null : { src: spec.music ?? MUSIC.track, windows, total: t / FPS };
+  return { slides, cues, voCues, music, durationInFrames: t };
 };
 
 /** one QA frame per slide: after its entrance and annotation, before the next slide */

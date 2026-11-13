@@ -92,7 +92,15 @@ audio:
   pop: 0.28            # list items, Torty peek (0.16)
   focus: 0.3           # ring, spotlight, tooltip, timeline
   success: 0.32
-  music: none
+  music:
+    track: public/music/soft-bed.wav   # made by scripts/make-music.py (synthesised, no samples: no copyright)
+    volume: 0.16       # when nobody is speaking
+    underVoice: 0.09   # while the voiceover plays (≈ 20 dB under the voice)
+    duckIn: 0.35s
+    duckOut: 0.6s
+    mergeGap: 1.5s     # voice lines closer than this count as one, so the music doesn't pump
+    fadeIn: 1.0s
+    fadeOut: 1.5s
 ---
 
 # Koshiqa help videos: design rules
@@ -267,7 +275,7 @@ These are the only annotations, with at most one per moment.
 
 ## 8. Audio
 - **SFX:** the Soft UI pack (`public/sfx/packs/soft`), at the levels in the YAML block. The voiceover is always the loudest track, and no SFX lands on a stressed word.
-- **Music:** none in v1.
+- **Music:** one soft bed under every help video, always running at low volume (levels in the YAML block). It dips further while the voiceover plays and comes back up in pauses, and fades in and out with the video. The track is synthesised by `scripts/make-music.py` (no samples, so no copyright); re-run it with another `--seed`, `--bpm` or chords for a variation. A spec can choose another track with `music: "music/<file>.wav"` (royalty-free with a licence that allows commercial use, kept in `public/music/` with its licence) or turn it off with `music: null`.
 
 ## 9. Don'ts
 Each line here is a mistake from an earlier draft.
@@ -362,6 +370,7 @@ Decide before writing anything. One input can produce more than one video: split
 ## Changelog
 | Version | Date | Change | Why |
 |---|---|---|---|
+| 1.4 | 2026-11-13 | Background music: a soft synthesised bed under every video, ducked under the voice (§8, `audio.music`). Chat mockup seen from Koshiqa's side (member left, Koshiqa right; emoji-only replies drawn large) | Rest Card review |
 | 1.3.1 | 2026-11-13 | Screens may crossfade to an "after" image (`then`) and a chat-thread mockup may stand in for a real message (SCREENS.md) | First explainer from a script (Rest Card) needed a before/after and the member's message |
 | 1.3 | 2026-11-13 | Explainer approved: C1–C4 + motion kit E1–E14 with content fields; rules for choosing the video type from a script (§11) | Motion kit approved by the team; skill now classifies scripts |
 | 1.2 | 2026-11-13 | FAQ video type approved: layouts Q and A, structure, writing and Torty rules (§11). Explainer still in draft | FAQ demo HV-StepsFAQ reviewed |
