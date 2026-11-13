@@ -14,6 +14,15 @@ Entry format:
 
 ---
 
+## 2026-11-13 · system · Explainer motion kit (E1–E14) from the reference video
+- **Asked:** read all the animations in the reference video (9 Micro Habits, 17 min) and build them for explainer videos with Remotion.
+- **Changed:** `src/explainer/motion.tsx` (Words, mint box, GlassGrow, DrawPath, helpers), `src/explainer/MotionKit.tsx` (14 scenes + reel), `src/explainer/motion-data.ts` (timeline + cues); composition `ExplainerMotionKit`; `design.md` §11 draft entry; grid at `design/explainer-motion-kit-grid.png`.
+- **Why / decisions:**
+  - Kept the motion graphics only, re-coloured to Koshiqa green, portrait 1080×1920, Torty peeking.
+  - Sample content uses Koshiqa ideas (steps, koins, streaks) as placeholders.
+  - QA fixed text overflow on E6, E7 and E13.
+- **Output:** `out/ExplainerMotionKit.mp4` (58 s, Soft UI sounds).
+
 ## 2026-11-13 · system · FAQ video type approved and added to the skill
 - **Asked:** add FAQ videos to the koshiqa-help-video skill. Explainer references are coming separately.
 - **Changed:**

@@ -12,6 +12,7 @@ import { ExplainerDemo } from "../src/ExplainerDemo";
 import { AnnotationKit, LayoutCatalogueV3 } from "../src/LayoutsV3";
 import { PointerLayouts } from "../src/PointerLayouts";
 import { LayoutSystem } from "../src/LayoutSystem";
+import { ExplainerMotionKit, motionDuration } from "../src/explainer/MotionKit";
 import { HelpVideo } from "../src/HelpVideo";
 import { findVideo } from "../src/videos";
 import { buildHelpVideo } from "../src/videos/build";
@@ -35,15 +36,16 @@ const isV3 = id === "LayoutCatalogueV3";
 const isKit = id === "AnnotationKit";
 const isPtr = id === "PointerLayouts";
 const isLS = id === "LayoutSystem";
+const isMK = id === "ExplainerMotionKit";
 const hv = findVideo(id);
 const faq = FAQS.find((f) => f.id === id)!;
-const durationInFrames = hv ? buildHelpVideo(hv).durationInFrames : isLS ? lsDuration() : isPtr ? pointerDuration() : isV3 ? v3Duration() : isKit ? kitDuration() : isSaas ? buildSaasTimeline().durationInFrames : isCat ? catalogueDuration() : isLayout ? buildLayoutTimeline().durationInFrames : isSheet ? 180 : isHi ? buildHindiTimeline().durationInFrames : buildTimeline(faq).durationInFrames;
+const durationInFrames = isMK ? motionDuration() : hv ? buildHelpVideo(hv).durationInFrames : isLS ? lsDuration() : isPtr ? pointerDuration() : isV3 ? v3Duration() : isKit ? kitDuration() : isSaas ? buildSaasTimeline().durationInFrames : isCat ? catalogueDuration() : isLayout ? buildLayoutTimeline().durationInFrames : isSheet ? 180 : isHi ? buildHindiTimeline().durationInFrames : buildTimeline(faq).durationInFrames;
 const root = createRoot(document.getElementById("root")!);
 
 const App: React.FC<{ frame: number }> = ({ frame }) => (
   <__ConfigProvider value={{ fps: FPS, width: WIDTH, height: HEIGHT, durationInFrames, id }}>
     <__FrameProvider value={frame}>
-      {hv ? <HelpVideo spec={hv} codeTags={new URLSearchParams(location.search).get("tags") === "1"} /> : isLS ? <LayoutSystem /> : isPtr ? <PointerLayouts /> : isV3 ? <LayoutCatalogueV3 /> : isKit ? <AnnotationKit /> : isSaas ? <ExplainerDemo /> : isCat ? <LayoutCatalogue /> : isLayout ? <LayoutDemo /> : isSheet ? <TortyShowcase /> : isHi ? <FaqVideoHindi /> : <FaqVideo faq={faq} />}
+      {isMK ? <ExplainerMotionKit /> : hv ? <HelpVideo spec={hv} codeTags={new URLSearchParams(location.search).get("tags") === "1"} /> : isLS ? <LayoutSystem /> : isPtr ? <PointerLayouts /> : isV3 ? <LayoutCatalogueV3 /> : isKit ? <AnnotationKit /> : isSaas ? <ExplainerDemo /> : isCat ? <LayoutCatalogue /> : isLayout ? <LayoutDemo /> : isSheet ? <TortyShowcase /> : isHi ? <FaqVideoHindi /> : <FaqVideo faq={faq} />}
     </__FrameProvider>
   </__ConfigProvider>
 );

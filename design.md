@@ -320,6 +320,11 @@ There are three video types, all using the same colours, type, Torty rules and a
 - **C4, flow:** three nodes (200 px) stacked down the middle at 460 / 820 / 1180, joined by a track that fills as each step is spoken. Use it for how something moves from A to B to C.
 - Each concept item is timed to the word that names it (`atWord`).
 
+**Explainer motion kit (draft, pending review):** 14 animations (E1–E14) read from the team's reference video and rebuilt in Koshiqa style. Reel: `ExplainerMotionKit` composition; grid: `design/explainer-motion-kit-grid.png`; code: `src/explainer/`.
+- Shared motion language: words appear one by one (fade up from 25%, rise 18 px, un-blur); the key phrase gets a mint box that wipes in behind it; frosted glass cards grow out of a thin pill (width, then height, then content); lines, axes and arrows draw on with an ease-out.
+- Scenes: E1 progress ring · E2 dots regroup into a cycle · E3 section navigator · E4 staircase · E5 line chart with goal line · E6 bracket list · E7 highlight-box statement · E8 clock + filling bar · E9 glass caption pill over a screen · E10 number cards with a rolling counter · E11 icon tiles · E12 bullet list with connector · E13 floating glass cards around the phone · E14 underline that turns into a day streak.
+- Not taken from the reference: stock footage, talking head, 3D/space shots, purple/pink colours, landscape framing.
+
 ## Changelog
 | Version | Date | Change | Why |
 |---|---|---|---|

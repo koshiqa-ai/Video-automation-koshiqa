@@ -9,6 +9,7 @@ import { ExplainerDemo } from "./ExplainerDemo";
 import { AnnotationKit, LayoutCatalogueV3 } from "./LayoutsV3";
 import { PointerLayouts } from "./PointerLayouts";
 import { LayoutSystem } from "./LayoutSystem";
+import { ExplainerMotionKit, motionDuration } from "./explainer/MotionKit";
 import { HelpVideo } from "./HelpVideo";
 import { VIDEOS } from "./videos";
 import { buildHelpVideo } from "./videos/build";
@@ -55,6 +56,7 @@ export const RemotionRoot: React.FC = () => (
         <Composition key={v.id} id={v.id} component={HelpVideo} defaultProps={{ spec: v, codeTags: false }} durationInFrames={buildHelpVideo(v).durationInFrames} fps={FPS} width={WIDTH} height={HEIGHT} />
       ))}
     </Folder>
+    <Composition id="ExplainerMotionKit" component={ExplainerMotionKit} durationInFrames={motionDuration()} fps={FPS} width={WIDTH} height={HEIGHT} />
     <Composition id="LayoutSystem" component={LayoutSystem} durationInFrames={lsDuration()} fps={FPS} width={WIDTH} height={HEIGHT} />
     <Composition id="PointerLayouts" component={PointerLayouts} durationInFrames={pointerDuration()} fps={FPS} width={WIDTH} height={HEIGHT} />
     <Composition id="AnnotationKit" component={AnnotationKit} durationInFrames={kitDuration()} fps={FPS} width={WIDTH} height={HEIGHT} />
