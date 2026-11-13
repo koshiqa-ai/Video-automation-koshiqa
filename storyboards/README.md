@@ -45,6 +45,19 @@ An FAQ video has no single recording to follow. Its input is the list of 5–6 q
 - Cards without a role are the opening (F1) and the closing (F2).
 - Screenshots for FAQ answers can come from any recording that follows the guide, or from earlier storyboards' `public/screens/`.
 
+## Explainer storyboards
+Input: a feature brief + a draft script, and a screen recording for the "how" part. Each beat carries the planned scene in `layout` (C1–C4, E1–E14, S2, E9, E13, F1/F2), shown in the HTML as "layout E5" so reviewers see the plan:
+```json
+{ "title": "How steps get into Koshiqa", "type": "explainer",
+  "beats": [
+    { "n": "card", "layout": "F1", "card": "Where do steps come from?", "vo": "Ever wondered how your steps get into Koshiqa?" },
+    { "n": "card", "section": "Why", "layout": "C4", "card": "Phone → Google Fit → Koshiqa", "vo": "Your phone counts every step…" },
+    { "n": "card", "section": "Why", "layout": "E12", "card": "Three must-haves", "vo": "…" },
+    { "n": "#01", "section": "How", "layout": "S2", "card": "Pick the same one", "vo": "…", "image": "frames/f_014.png" }
+  ] }
+```
+Every storyboard also records its video `type` (walkthrough, faq or explainer); it shows at the top of the HTML and is read back by the importer.
+
 ## storyboard.json
 ```json
 { "title": "How to Start Steps", "subtitle": "Draft · from recording 2026-10-29",

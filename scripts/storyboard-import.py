@@ -30,6 +30,7 @@ for m in tokens:
     beat = {"n": n, "kind": "card" if n == "card" else "screen", "section": section, "cut": cut, "hold": hold,
             "card": grab("card-preview", block), "vo": grab("vo", block) or None,
             "role": next((x.split()[0] for x in spans if x in ("question card", "answer card")), None),
+            "layout": next((x.split()[1] for x in spans if x.startswith("layout ")), None),
             "sub": grab("card-sub", block) or None,
             "was": re.sub(r"^was\s+", "", grab("was", block)) or None, "why": grab("why", block) or None, "flags": grab("flag", block, True)}
     im = re.search(r'<img alt="([^"]*)" src="data:image/[a-z]+;base64,([A-Za-z0-9+/=]+)"', block)
@@ -41,11 +42,12 @@ for m in tokens:
         beat.update(image=f"screens/{vid}/{name}", w=img.width, h=img.height)
     beats.append(beat)
 
-out = {"id": vid, "title": title, "source": os.path.basename(src), "sections": list(dict.fromkeys(b["section"] for b in beats if b["section"])), "beats": beats}
+vtype = (re.search(r'<meta name="video-type" content="([a-z]+)"', t) or [None, "walkthrough"])[1]
+out = {"id": vid, "type": vtype, "title": title, "source": os.path.basename(src), "sections": list(dict.fromkeys(b["section"] for b in beats if b["section"])), "beats": beats}
 p = os.path.join(root, "storyboards", f"{vid}.json")
 json.dump(out, open(p, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
 live = [b for b in beats if not b["cut"]]
-print(f"{title}: {len(beats)} beats ({len(beats) - len(live)} cut), {sum(1 for b in live if b.get('image'))} screenshots, {len(out['sections'])} sections")
+print(f"[{vtype}] {title}: {len(beats)} beats ({len(beats) - len(live)} cut), {sum(1 for b in live if b.get('image'))} screenshots, {len(out['sections'])} sections")
 for b in beats:
     print(f"  {b['n']:>5} {'CUT ' if b['cut'] else ''}{b['card']!r:28} {('[' + str(len(b['flags'])) + ' flag]') if b['flags'] else ''}")
 print("wrote", p)

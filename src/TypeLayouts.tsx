@@ -9,6 +9,7 @@ import { Backdrop, GREEN, theme } from "./LayoutDemo";
 import { Headline } from "./components/Text";
 import { CentredHeadline, LSSlideView, TortyFlat, TortyPeek } from "./LayoutSystem";
 import { Icon } from "./screens/ui";
+import { MotionScene } from "./explainer/MotionKit";
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const fr = (s: number) => Math.round(s * 30);
@@ -222,6 +223,7 @@ export const AnySlideView: React.FC<{ s: S }> = ({ s }) => {
     case "c-trio": return <TrioSlide s={s} />;
     case "c-compare": return <CompareSlide s={s} />;
     case "c-flow": return <FlowSlide s={s} />;
+    case "motion": return <MotionScene code={s.motion!.code} m={s.motion!.m} peek={s.peek} screen={s.screen} />;
     default: return <LSSlideView s={s} />;
   }
 };

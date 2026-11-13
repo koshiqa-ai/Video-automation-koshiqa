@@ -85,7 +85,9 @@ export type LSSlide = {
     // FAQ videos
     | "question" | "answer"
     // explainer videos (concept scenes, no phone)
-    | "c-number" | "c-trio" | "c-compare" | "c-flow";
+    | "c-number" | "c-trio" | "c-compare" | "c-flow"
+    // explainer motion scenes E1–E14 (src/explainer)
+    | "motion";
   layout?: PhoneLayout;
   peek?: { expr: PeekExpr; side: PeekSide };
   title?: string;
@@ -103,6 +105,8 @@ export type LSSlide = {
   /** C2 trio / C4 flow: items appear at `times`; `image` = a public/ image instead of an icon */
   nodes?: { text: string; icon?: string; image?: string }[];
   nodeTimes?: number[];
+  /** E1–E14 motion scene: its code and content (defaults fill gaps) */
+  motion?: { code: string; m?: Record<string, unknown> };
   /** C3 compare: left = the wrong way, right = the right way */
   compare?: { left: { title: string; result: string }; right: { title: string; result: string }; times: [number, number] };
   anno?: { kind: AnnoKind; target?: { x: number; y: number; w: number; h: number; r?: number }; label?: string; /** seconds into the slide (default 0.6; success 0.9) */ at?: number };

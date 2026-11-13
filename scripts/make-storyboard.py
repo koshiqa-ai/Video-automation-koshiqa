@@ -1,8 +1,9 @@
 """Step 2 of recording → storyboard: write the review storyboard HTML (same format as the approved reference,
 and readable by scripts/storyboard-import.py).
 usage: python3 scripts/make-storyboard.py <storyboard.json> <out.html>
-storyboard.json = {"title", "subtitle"?, "beats": [{"n": "card"|"#01", "section"?, "card", "vo", "hold"?, "image"?,
+storyboard.json = {"title", "type"?: "walkthrough"|"faq"|"explainer", "subtitle"?, "beats": [{"n": "card"|"#01", "section"?, "card", "vo", "hold"?, "image"?,
                    "role"?: "question"|"answer" (FAQ cards), "sub"? (answer card's supporting line),
+                   "layout"? (explainer: planned layout code, e.g. "E5", "C3", "S2"),
                    "was"?, "why"?, "flags"?: ["<b>Label</b> — text"], "cut"?: bool}]}
 image paths are relative to the JSON file or to public/."""
 import base64, html, json, os, sys
@@ -41,6 +42,7 @@ for b in beats:
     meta = f'<span class="n">{e(n)}</span><span>{fmt(t)}</span>' + ('<span class="cutlabel">cut</span>' if cut else f'<span>hold {hold}s</span>')
     if b.get("image"): meta += f'<span>{e(os.path.basename(b["image"]))}</span>'
     if b.get("role"): meta += f'<span class="role">{e(b["role"])} card</span>'
+    if b.get("layout"): meta += f'<span class="role">layout {e(b["layout"])}</span>'
     body = f'<div class="meta">{meta}</div><div class="card-preview">{e(b.get("card"))}</div>'
     if b.get("sub"): body += f'<div class="card-sub">{e(b["sub"])}</div>'
     if b.get("vo") and not cut: body += f'<div class="vo">{e(b["vo"])}</div>'
@@ -56,11 +58,13 @@ live = [b for b in beats if not b.get("cut")]
 nwords = sum(words(b.get("vo")) for b in live)
 raw = "\n\n".join(e(b["vo"]) for b in live if b.get("vo"))
 sub = e(sb.get("subtitle") or "Draft storyboard")
+sub = f'{e(sb.get("type", "walkthrough")).upper()} video &nbsp;·&nbsp; ' + sub
 page = f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="video-type" content="{e(sb.get('type', 'walkthrough'))}">
 <title>{e(sb['title'])}</title>
 <style>
 {open(os.path.join(ASSETS, 'style.css')).read()}</style>

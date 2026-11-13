@@ -6,7 +6,7 @@
 # change them here first, then in code.
 # Rule: one value per token, no ranges.
 # ─────────────────────────────────────────────────────────────
-version: 1.2
+version: 1.3
 status: approved            # layout system approved from the v4 review grid (2026-10-28)
 reference: LayoutSystem     # Remotion composition that renders every layout below
 visuals: design/            # layout stills (design/layouts), Torty art (design/torty), review grid
@@ -293,15 +293,29 @@ Each line here is a mistake from an earlier draft.
 - [ ] Real app screen recordings to replace the mockups.
 
 ## 11. Video types
-**FAQ videos: approved (2026-11-13).** Explainer videos: lengths confirmed; their layouts stay in draft until the extra animations the team is sending are added.
+**All three types approved (2026-11-13).** Walkthrough (sections 2–3), FAQ and explainer (below), plus the explainer motion kit E1–E14.
 
-There are three video types, all using the same colours, type, Torty rules and annotations. Review grid: `design/video-types-grid.png`. Demos: `HV-StepsFAQ`, `HV-HowStepsSync`.
+There are three video types, all using the same colours, type, Torty rules and annotations. Review grids: `design/video-types-grid.png`, `design/explainer-motion-kit-grid.png`. Demos: `HV-StartSteps`, `HV-StepsFAQ`, `HV-HowStepsSync`.
 
 | Type | What it is | Length | Structure |
 |---|---|---|---|
 | **Walkthrough** | How to do one task, step by step, from a screen recording | 30–40 s (setup flows longer) | F1 → (T1) → S/T2 per step → F2 (section 2) |
 | **FAQ** | 5–6 quick doubts about one topic, in one video | 45–90 s | F1 → [Q → A *or* S2] × 5–6 → F2 |
-| **Explainer** | What a feature is and why it matters, then how | 40–75 s | F1 (hook) → 2–4 concept scenes (C1–C4) → 1–2 S slides (the how) → F2 |
+| **Explainer** | What a feature is and why it matters, then how | 40–75 s | F1 (hook) → 2–4 concept/motion scenes (C1–C4, E1–E14) → 1–2 S/E9/E13 slides (the how) → F2 or E7 |
+
+### Choosing the type from a script or brief
+Decide before writing anything. One input can produce more than one video: split it, never mix types in one video.
+
+| The material mostly… | Signals | Type |
+|---|---|---|
+| tells the viewer **what to tap, in order**, to finish one task | "open…, tap…, then…", a screen recording, numbered steps, one goal ("connect Google Fit") | **Walkthrough** |
+| is a **set of separate questions** with short answers | 3+ questions (often ending in "?"), "can I…", "why doesn't…", support tickets, answers of 1–2 sentences that don't depend on each other | **FAQ** |
+| explains **what a feature is, why it exists, or how it works behind the scenes** | benefits, rules, numbers, cause and effect, "how X works", a feature launch, a brief more than a set of steps | **Explainer** |
+
+- **Mixed material:** split it. Steps become a walkthrough, loose questions an FAQ, the "why" an explainer. Propose the split in the storyboard and let the team decide.
+- **Too small for its type:** fewer than 3 questions isn't an FAQ (fold them into the walkthrough or explainer as P1/P2 tips). A task of 1–2 taps isn't a walkthrough (it's an FAQ answer).
+- **Too big:** a walkthrough over ~8 sections or an explainer over 75 s gets split into a series.
+- Record the type in the storyboard (`"type"`). It's shown at the top of the HTML so reviewers can disagree before anything is built.
 
 **FAQ layouts (approved)**
 - **Q, question card:** progress dots (one per question) at 440, a mint "Q2" badge (260 px) at 520, and the question (104 px, up to 7 words, 2 lines) at 860. Torty peeks with `thinking`, `confused`, `worried` or `surprised`.
@@ -313,21 +327,42 @@ There are three video types, all using the same colours, type, Torty rules and a
 - **Torty:** on Q he peeks with `thinking`, `confused`, `worried` or `surprised`, alternating sides. On A he is full-body and matches the answer: `happy` or `excited` for good news, `determined` for a rule, `wink` for a tip, `worried` for a warning.
 - **Don't:** use T1/T2 or a question list at the start (the progress dots already show how many questions there are), put two answer slides after one Q, or show a Q without its answer.
 
-**Explainer layouts (draft; concept scenes, no phone; heading 104 px at 300, Torty peeks)**
+**Explainer layouts (approved; concept scenes, no phone; heading 104 px at 300, Torty peeks)**
 - **C1, big number:** an eyebrow at 500, the number (320 px, counts up) with a unit (120 px, mint) at 600, and a label (64 px) at 1000. Use it for one striking fact.
 - **C2, trio:** three cream circles (240 px) with line icons at x 200 / 540 / 880, y 780, labelled underneath (48 px, up to 3 words). Use it for three things to know, or three benefits.
 - **C3, compare:** two cards (450 × 700) from 600: the wrong way on the left (dark card with a red ✗), the right way on the right (cream card with a green ✓, appears second).
 - **C4, flow:** three nodes (200 px) stacked down the middle at 460 / 820 / 1180, joined by a track that fills as each step is spoken. Use it for how something moves from A to B to C.
 - Each concept item is timed to the word that names it (`atWord`).
 
-**Explainer motion kit (draft, pending review):** 14 animations (E1–E14) read from the team's reference video and rebuilt in Koshiqa style. Reel: `ExplainerMotionKit` composition; grid: `design/explainer-motion-kit-grid.png`; code: `src/explainer/`.
-- Shared motion language: words appear one by one (fade up from 25%, rise 18 px, un-blur); the key phrase gets a mint box that wipes in behind it; frosted glass cards grow out of a thin pill (width, then height, then content); lines, axes and arrows draw on with an ease-out.
-- Scenes: E1 progress ring · E2 dots regroup into a cycle · E3 section navigator · E4 staircase · E5 line chart with goal line · E6 bracket list · E7 highlight-box statement · E8 clock + filling bar · E9 glass caption pill over a screen · E10 number cards with a rolling counter · E11 icon tiles · E12 bullet list with connector · E13 floating glass cards around the phone · E14 underline that turns into a day streak.
-- Not taken from the reference: stock footage, talking head, 3D/space shots, purple/pink colours, landscape framing.
+**Explainer motion kit (approved):** 14 animations (E1–E14) read from the team's reference video and rebuilt in Koshiqa style. Reel: `ExplainerMotionKit`; grid: `design/explainer-motion-kit-grid.png`; code: `src/explainer/`. In a spec: `{ code: "E5", motion: { … } }`; fields left out use the reel's example (`MOTION_DEFAULTS` in `src/explainer/motion-data.ts`).
+- **Shared motion language:** words appear one by one (fade up from 25%, rise 18 px, un-blur); the key phrase gets a mint box that wipes in behind it; frosted glass cards grow out of a thin pill (width, then height, then content); lines, axes and arrows draw on with an ease-out.
+
+| Code | Scene | Use it for | Content (`motion`) | Limits |
+|---|---|---|---|---|
+| E1 | Progress ring | a percentage or "how close" | `title`, `value` (0–100), `label` | one number |
+| E2 | Dots regroup into a cycle | a loop of 3 that repeats | `title`, `labels` ×3 | exactly 3, 1 word each |
+| E3 | Section navigator | opening a part of a longer explainer | `part` (1–3), `title` | max 3 parts |
+| E4 | Staircase | progress in stages, "start small" | `first`, `next` | 2 short lines |
+| E5 | Line chart + goal line | a trend against a target | `pill`, `values` ×7, `goal`, `goalLabel`, `axis`, `bestLabel`, `days`? | 7 points |
+| E6 | Bracket list | options or ways under one heading | `title`, `items` ×3 | 3 items, ≤3 words |
+| E7 | Highlight-box statement | the key message; a strong closing line | `line1`, `line2`, `box`? | 2 lines, ≤5 words each |
+| E8 | Clock + filling bar | something that happens over a day | `title`, `barLabel`, `fromHour`?, `hours`? | — |
+| E9 | Glass caption over a screen | naming what a real screen shows | `caption` + slide `screen` | ≤4 words |
+| E10 | Number cards + rolling counter | from X to Y (streaks, totals) | `title`, `from`, `to`, `fromLabel`, `toLabel`, `footer` | `to` < 100 |
+| E11 | Icon tiles | 2–4 parts of a feature | `title`, `tiles` [{icon, text}] | 2–4, 1 word each |
+| E12 | Bullet list with connector | a short checklist | `title`, `items` | 2–4, ≤4 words |
+| E13 | Floating glass cards around a phone | what a screen gives you | `cards` ×3 [{icon, text}] + slide `screen` | 3 cards, ≤3 words |
+| E14 | Underline into a day streak | daily habits, a week | `title`, `line`, `filled` (0–7) | 7 days |
+
+- **Scene vs layout:** C1–C4 and E1–E14 are all explainer scenes. Pick by what the line says: one number → C1 or E1; three things → C2, E6, E11 or E12; wrong vs right → C3; A → B → C → C4; a loop → E2; a trend → E5; from X to Y → E10.
+- **Rhythm:** don't use the same scene twice in a row. Don't use more than 5 different scene types in one explainer, so it still feels like one video.
+- **Timing:** each E scene plays its own animation from the start of the slide (about 3–4.5 s; the slide is never shorter than that). C scenes sync to `atWord`.
+- **Not taken from the reference:** stock footage, the talking presenter, 3D/space shots, purple/pink colours, landscape framing.
 
 ## Changelog
 | Version | Date | Change | Why |
 |---|---|---|---|
+| 1.3 | 2026-11-13 | Explainer approved: C1–C4 + motion kit E1–E14 with content fields; rules for choosing the video type from a script (§11) | Motion kit approved by the team; skill now classifies scripts |
 | 1.2 | 2026-11-13 | FAQ video type approved: layouts Q and A, structure, writing and Torty rules (§11). Explainer still in draft | FAQ demo HV-StepsFAQ reviewed |
 | 1.1 | 2026-10-29 | Real screenshots from storyboards (status bar replaced); when to use T1/T2 vs S2; longer walkthroughs allowed | First storyboard-driven video (How to Start Steps: 8 sections, 2 min) |
 | 1.0 | 2026-10-28 | Rewritten around the approved layout system: S1–S4, F1–F2, P1–P2, T1–T2 and K1–K8; flat-style Torty with corner peeks overlapping the phone | Review of the v3 layouts: cut down to a small reusable set, maximise the phone, one peek style |

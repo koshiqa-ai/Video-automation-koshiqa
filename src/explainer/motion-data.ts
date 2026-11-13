@@ -28,3 +28,47 @@ export const motionCues = () =>
     ...(s.from > 0 ? [{ src: "sfx/packs/soft/transition.wav", frame: s.from - 3, volume: 0.2 }] : []),
     ...s.cues.map(([at, r]) => ({ src: `sfx/packs/soft/${r}.wav`, frame: s.from + at, volume: VOL[r] })),
   ]);
+
+// ───────── content each scene takes in a video spec (`code: "E5", motion: {...}`) ─────────
+// Missing fields fall back to MOTION_DEFAULTS (the review-reel content).
+import type { PeekExpr, PeekSide } from "../data/layout-system";
+export type MotionContent = {
+  E1: { title: string; accent?: string; value: number; label: string }; // value = 0–100 (%)
+  E2: { title: string; labels: [string, string, string] }; // a loop of 3
+  E3: { part: 1 | 2 | 3; title: string }; // "PART n OF 3"
+  E4: { first: string; next: string };
+  E5: { pill: string; values: number[]; goal: number; goalLabel: string; axis: string; bestLabel: string; days?: string[] }; // 7 values
+  E6: { title: string; items: string[] }; // 3 items
+  E7: { line1: string; line2: string; box?: [number, number] }; // box = word range of line2 (default: all of it)
+  E8: { title: string; accent?: string; barLabel: string; fromHour?: number; hours?: number };
+  E9: { caption: string }; // over the slide's `screen`
+  E10: { title: string; accent?: string; from: number; to: number; fromLabel: string; toLabel: string; footer: string }; // to < 100
+  E11: { title: string; accent?: string; tiles: { icon: string; text: string }[] }; // 2–4 tiles
+  E12: { title: string; accent?: string; items: string[] }; // 2–4 items
+  E13: { cards: { icon: string; text: string }[] }; // 3 cards around the slide's `screen`
+  E14: { title: string; accent?: string; line: string; filled?: number }; // filled = days lit (0–7)
+};
+export type MotionCode = keyof MotionContent;
+export const MOTION_DEFAULTS: { [K in MotionCode]: MotionContent[K] } = {
+  E1: { title: "Almost there!", accent: "there!", value: 95, label: "of today's 10K goal" },
+  E2: { title: "Walk. Earn. Redeem.", labels: ["Walk", "Earn", "Redeem"] },
+  E3: { part: 1, title: "Earn koins" },
+  E4: { first: "Take the first step", next: "Then the next one" },
+  E5: { pill: "Your week", values: [6.2, 8.4, 11.2, 9.1, 12.6, 7.4, 10.8], goal: 10, goalLabel: "10K goal", axis: "STEPS", bestLabel: "Best day!" },
+  E6: { title: "3 ways to earn koins", items: ["Walk daily", "Join contests", "Hit your goal"] },
+  E7: { line1: "Every step you walk", line2: "counts for your team" },
+  E8: { title: "Syncs all day", accent: "all day", barLabel: "Steps synced" },
+  E9: { caption: "Your connected account" },
+  E10: { title: "Build your streak", accent: "streak", from: 1, to: 30, fromLabel: "Day", toLabel: "Days", footer: "Keep the chain going" },
+  E11: { title: "How it works", accent: "works", tiles: [{ icon: "steps", text: "Walk" }, { icon: "refresh", text: "Sync" }, { icon: "coin", text: "Earn" }, { icon: "gift", text: "Redeem" }] },
+  E12: { title: "Quick check", accent: "check", items: ["Did my steps sync?", "Is tracking on?", "Same Google account?"] },
+  E13: { cards: [{ icon: "coin", text: "+500 koins" }, { icon: "check-circle", text: "Steps synced" }, { icon: "trophy", text: "New contest" }] },
+  E14: { title: "7 days in a row", accent: "7 days", line: "One walk at a time", filled: 7 },
+};
+/** default corner peek per scene (null = no peek: E9/E13 show a phone, E2 uses the whole frame) */
+export const MOTION_PEEK: Record<MotionCode, { expr: PeekExpr; side: PeekSide } | null> = {
+  E1: { expr: "happy", side: "right" }, E2: null, E3: { expr: "smile", side: "left" }, E4: { expr: "determined", side: "right" },
+  E5: { expr: "excited", side: "left" }, E6: { expr: "happy", side: "right" }, E7: { expr: "smile", side: "left" }, E8: { expr: "wink", side: "right" },
+  E9: null, E10: { expr: "excited", side: "left" }, E11: { expr: "smile", side: "right" }, E12: { expr: "thinking", side: "right" }, E13: null, E14: { expr: "happy", side: "left" },
+};
+export const motionScene = (code: string) => MOTION_SCENES.find((s) => s.code === code);

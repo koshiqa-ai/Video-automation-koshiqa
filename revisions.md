@@ -14,6 +14,18 @@ Entry format:
 
 ---
 
+## 2026-11-13 · system + HV-HowStepsSync · Explainer approved; motion scenes usable in videos; video-type rules
+- **Asked:** the motion kit is fine. Add explainers to the skill, and make the skill decide which video type a script needs.
+- **Changed:**
+  - Each E1–E14 scene takes content (`MotionContent`, defaults = reel examples) and can be used in a spec (`code: "E5", motion: {…}`), with its own timing and sounds.
+  - `design.md` 1.3: explainer + motion kit approved, a scene table (use for / content / limits), and rules for choosing the video type from a script.
+  - Storyboards record `type` and a per-beat `layout`.
+  - `HV-HowStepsSync` now uses E12, E9 and E7.
+  - E7 text sizes itself to fit.
+  - `CLAUDE.md` and `storyboards/README.md` updated; skill updated (proposed to the user).
+- **Why / decisions:** E scenes play from the slide start rather than per word, because their animations are choreographed. The slide is never shorter than the scene.
+- **Output:** `HV-HowStepsSync` 42.6 s (placeholder VO), QA sheet; motion-kit reel re-rendered (unchanged look).
+
 ## 2026-11-13 · system · Explainer motion kit (E1–E14) from the reference video
 - **Asked:** read all the animations in the reference video (9 Micro Habits, 17 min) and build them for explainer videos with Remotion.
 - **Changed:** `src/explainer/motion.tsx` (Words, mint box, GlassGrow, DrawPath, helpers), `src/explainer/MotionKit.tsx` (14 scenes + reel), `src/explainer/motion-data.ts` (timeline + cues); composition `ExplainerMotionKit`; `design.md` §11 draft entry; grid at `design/explainer-motion-kit-grid.png`.

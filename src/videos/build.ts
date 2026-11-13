@@ -1,6 +1,7 @@
 // Turns a HelpVideoSpec into timed layout-system slides + audio cues. Pure (no React).
 import { cuesFor, isShot, shotFit, type Cue, type LSSlide } from "../data/layout-system";
 import type { HelpVideoSpec, VideoSlide } from "./types";
+import { motionScene } from "../explainer/motion-data";
 import VO from "./vo-durations.json";
 
 export const FPS = 30;
@@ -40,6 +41,9 @@ const toLS = (spec: HelpVideoSpec, v0: VideoSlide, i: number, voSec: number): LS
   const at = (w: string | undefined, fallback: number) => (w ? wordTime(v.vo, voSec, w) : fallback);
   const itemTimes = (v.items ?? []).map((it, k) => at(it.atWord, v.code === "C4" ? 0.6 + 1.0 * k : 0.6 + 0.6 * k));
   switch (v.code) {
+    case "E1": case "E2": case "E3": case "E4": case "E5": case "E6": case "E7":
+    case "E8": case "E9": case "E10": case "E11": case "E12": case "E13": case "E14":
+      return { ...base, kind: "motion", screen: v.screen, motion: { code: v.code, m: v.motion as Record<string, unknown> | undefined } };
     case "Q": {
       const qs = spec.slides.filter((x) => x.code === "Q");
       return { ...base, kind: "question", q: { n: qs.indexOf(v0) + 1, total: qs.length } };
@@ -75,14 +79,16 @@ export const buildHelpVideo = (spec: HelpVideoSpec) => {
   let t = 0;
   const slides: TimedVideoSlide[] = spec.slides.map((v, i) => {
     const voSec = vo?.durations[i] ?? 0;
-    const sec = Math.max(v.minSec ?? DEFAULT_SEC, voSec ? VO_LEAD + voSec + VO_TAIL : 0);
+    const sec = Math.max(v.minSec ?? motionScene(v.code)?.sec ?? DEFAULT_SEC, voSec ? VO_LEAD + voSec + VO_TAIL : 0);
     const from = t;
     const duration = fr(sec);
     t += duration;
     const file = vo?.files[i];
     return { ...toLS(spec, v, i, voSec), sec, from, duration, vo: file ? { src: file, frame: from + fr(VO_LEAD) } : undefined };
   });
-  const cues: Cue[] = cuesFor(slides);
+  const VOL = { pop: 0.26, focus: 0.3, success: 0.3, tap: 0.4, zoom: 0.18 } as const;
+  const motionCueList: Cue[] = slides.flatMap((s) => (s.kind === "motion" ? (motionScene(s.code)?.cues ?? []).map(([at, r]) => ({ src: `sfx/packs/soft/${r}.wav`, frame: s.from + at, volume: VOL[r] })) : []));
+  const cues: Cue[] = [...cuesFor(slides), ...motionCueList];
   const voCues: Cue[] = slides.filter((s) => s.vo).map((s) => ({ src: s.vo!.src, frame: s.vo!.frame, volume: 1 }));
   return { slides, cues, voCues, durationInFrames: t };
 };

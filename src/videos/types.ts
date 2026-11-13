@@ -1,13 +1,15 @@
 // A help video = an ordered list of slides, each one a layout code from design.md.
 // Pure data (no React) so Node scripts can read it too.
 import type { AnnoKind, FlatPose, PeekExpr, PeekSide, Screen } from "../data/layout-system";
+import type { MotionCode, MotionContent } from "../explainer/motion-data";
 
 /** a coded mockup (`{ comp }`, see SCREENS.md) or a real screenshot (`{ image, w, h }`, taps in image px) */
 export type { Screen };
 export type LayoutCode =
   | "S1" | "S2" | "S3" | "S4" | "F1" | "F2" | "P1" | "P2" | "T1" | "T2" // all video types
   | "Q" | "A" // FAQ: question card, answer card (an answer with a screen uses S2)
-  | "C1" | "C2" | "C3" | "C4"; // explainer: big number, trio, compare, flow
+  | "C1" | "C2" | "C3" | "C4" // explainer: big number, trio, compare, flow
+  | MotionCode; // explainer motion scenes E1–E14 (design.md §11, src/explainer/motion-data.ts)
 
 export type VideoSlide = {
   /** layout from design.md §3 */
@@ -37,6 +39,8 @@ export type VideoSlide = {
   /** C1: the number; `title` becomes the small eyebrow above it */
   number?: { value: number; decimals?: number; prefix?: string; unit?: string; label: string };
   /** C2 (3 things) / C4 (3 stages): `items` with `icon` or `image`; `atWord` syncs each one to the voiceover */
+  /** E1–E14: the scene's content (see MotionContent); anything left out uses the reel's example. E9/E13 also use `screen`. */
+  motion?: { [K in MotionCode]: Partial<MotionContent[K]> }[MotionCode];
   /** C3: wrong way (left) vs right way (right); each card appears at its atWord */
   compare?: { left: { title: string; result: string; atWord?: string }; right: { title: string; result: string; atWord?: string } };
 };

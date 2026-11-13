@@ -1,6 +1,6 @@
 # Working in this repo
 
-- **Read `design.md` before planning or building any video.** Every slide must be one of its layouts (S1–S4, F1–F2, P1–P2, T1–T2) with its annotations (K1–K8). Don't invent layouts; use the closest one and flag the gap.
+- **Read `design.md` before planning or building any video.** Every slide must be one of its layouts (S1–S4, F1–F2, P1–P2, T1–T2; FAQ Q, A; explainer C1–C4, E1–E14) with its annotations (K1–K8). Don't invent layouts; use the closest one and flag the gap.
 - `design.md` (YAML block) is the source of truth for numbers. `src/data/layout-system.ts` must match it, so change `design.md` first, then the code.
 - After any layout or Torty change: re-render the `LayoutSystem` stills, rebuild `design/layout-system-grid.png` (`scripts/make-layout-grid.py`) and refresh the matching image in `design/layouts/`.
 - Torty art: never edit the PNGs in `public/torty/` by hand. Re-run `npm run torty` from the source sheet.
@@ -8,7 +8,7 @@
 - **After every edit, add an entry at the top of `revisions.md`** (format at the top of that file). This applies to videos and to the system alike.
 
 ## Making a help video
-Three video types (`type` in the spec; design.md §11): **walkthrough** (how to do a task, from a recording), **faq** (5–6 quick Q&As in one video: layouts Q, A, S2; example `src/videos/steps-faq.ts`), **explainer** (a feature's what and why: concept scenes C1–C4 still in draft; example `src/videos/how-steps-sync.ts`).
+Three video types (`type` in the spec; design.md §11, which also says how to pick the type from a script): **walkthrough** (how to do a task, from a recording; example `src/videos/start-steps.ts`), **faq** (5–6 quick Q&As in one video: layouts Q, A, S2; example `src/videos/steps-faq.ts`), **explainer** (a feature's what and why: concept scenes C1–C4 and motion scenes E1–E14 from `src/explainer/`; example `src/videos/how-steps-sync.ts`).
 
 Flow: screen recording → storyboard HTML (reviewed) → video spec → render (see `storyboards/README.md`). Voiceover comes from the team as files in `public/vo/<id>/` (one per slide, or one full file split with `scripts/vo-split.py`); Piper is only a placeholder for drafts.
 
