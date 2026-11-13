@@ -32,6 +32,7 @@ python3 -c "b=bytearray(open('$M/hi_IN-priyamvada-medium.onnx','rb').read()); b[
 ```
 Then generate the Hindi VO for a video:
 ```bash
-M=/home/claude/tts/hi/vits-piper-hi_IN-priyamvada-medium LD_LIBRARY_PATH=/home/claude/tts/piper PIPER_BIN=/home/claude/tts/piper/piper \
-  PIPER_MODEL_HI=$M/hi8.onnx PIPER_ESPEAK_DATA_HI=$M/espeak-ng-data tsx scripts/help-video-vo.ts <id>
+M=/home/claude/tts/hi/vits-piper-hi_IN-priyamvada-medium
+LD_LIBRARY_PATH=/home/claude/tts/piper PIPER_BIN=/home/claude/tts/piper/piper \
+  PIPER_MODEL_HI=$M/hi8.onnx PIPER_ESPEAK_DATA_HI=$M/espeak-ng-data PATH=/home/claude/.npm-global/bin:$PATH tsx scripts/help-video-vo.ts <id>
 ```
