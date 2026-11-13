@@ -46,7 +46,7 @@ export type MotionContent = {
   E11: { title: string; accent?: string; tiles: { icon: string; text: string }[] }; // 2–4 tiles
   E12: { title: string; accent?: string; items: string[] }; // 2–4 items
   E13: { cards: { icon: string; text: string }[] }; // 3 cards around the slide's `screen`
-  E14: { title: string; accent?: string; line: string; filled?: number }; // filled = days lit (0–7)
+  E14: { title: string; accent?: string; line: string; filled?: number; days?: string[] }; // filled = days lit (0–7); days = 7 labels (default M T W T F S S)
 };
 export type MotionCode = keyof MotionContent;
 export const MOTION_DEFAULTS: { [K in MotionCode]: MotionContent[K] } = {

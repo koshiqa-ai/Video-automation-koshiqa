@@ -421,7 +421,7 @@ const Humps: React.FC<SP<"E14">> = ({ m, peek }) => {
           );
         })}
       </svg>
-      {["M", "T", "W", "T", "F", "S", "S"].map((d, i) => (
+      {(m.days ?? ["M", "T", "W", "T", "F", "S", "S"]).map((d, i) => (
         <div key={i} style={{ position: "absolute", left: X0 + i * w, width: w, top: Y + 24, textAlign: "center", fontFamily: "Poppins", fontWeight: 700, fontSize: 38, color: fill(i) > 0.5 ? GREEN.mint : "rgba(255,255,255,0.6)" }}>{d}</div>
       ))}
       <Peek peek={peek} />

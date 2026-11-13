@@ -4,7 +4,8 @@ import { START_STEPS } from "./start-steps";
 import { STEPS_FAQ } from "./steps-faq";
 import { HOW_STEPS_SYNC } from "./how-steps-sync";
 import { REST_CARD } from "./rest-card";
+import { REST_CARD_HI } from "./rest-card-hi";
 import type { HelpVideoSpec } from "./types";
 
-export const VIDEOS: HelpVideoSpec[] = [JOIN_CONTEST, START_STEPS, STEPS_FAQ, HOW_STEPS_SYNC, REST_CARD];
+export const VIDEOS: HelpVideoSpec[] = [JOIN_CONTEST, START_STEPS, STEPS_FAQ, HOW_STEPS_SYNC, REST_CARD, REST_CARD_HI];
 export const findVideo = (id: string) => VIDEOS.find((v) => v.id === id);

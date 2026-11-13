@@ -144,5 +144,39 @@
    7.73,
    3.56
   ]
+ },
+ "HV-RestCard-HI": {
+  "files": [
+   null,
+   "vo/HV-RestCard-HI/02.wav",
+   "vo/HV-RestCard-HI/03.wav",
+   "vo/HV-RestCard-HI/04.wav",
+   "vo/HV-RestCard-HI/05.wav",
+   "vo/HV-RestCard-HI/06.wav",
+   "vo/HV-RestCard-HI/07.wav",
+   "vo/HV-RestCard-HI/08.wav",
+   "vo/HV-RestCard-HI/09.wav",
+   "vo/HV-RestCard-HI/10.wav",
+   "vo/HV-RestCard-HI/11.wav",
+   "vo/HV-RestCard-HI/12.wav",
+   "vo/HV-RestCard-HI/13.wav",
+   "vo/HV-RestCard-HI/14.wav"
+  ],
+  "durations": [
+   null,
+   5.24,
+   6.13,
+   4.98,
+   31.93,
+   3.09,
+   8.92,
+   12.18,
+   7.49,
+   10.62,
+   6.8,
+   5.36,
+   10.81,
+   4.72
+  ]
  }
 }

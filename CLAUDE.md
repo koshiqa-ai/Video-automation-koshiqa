@@ -21,3 +21,17 @@ PLAYWRIGHT_PATH=/home/claude/.npm-global/lib/node_modules/playwright/index.mjs n
 PATH=/home/claude/.npm-global/bin:$PATH tsx render-local/mix-audio.ts <CompositionId>
 ```
 Render one composition at a time. Output goes to `out/`, which is git-ignored.
+
+Placeholder Hindi voice (PyPI and Hugging Face are blocked here; GitHub works). Set it up once per sandbox:
+```bash
+mkdir -p /home/claude/tts/hi && cd /home/claude/tts/hi
+curl -sSL https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-hi_IN-priyamvada-medium.tar.bz2 | tar xj
+M=vits-piper-hi_IN-priyamvada-medium
+# the bundled Piper runtime reads ONNX IR ≤ 8; the model header says 9 (byte 2), so patch a copy
+python3 -c "b=bytearray(open('$M/hi_IN-priyamvada-medium.onnx','rb').read()); b[1]=8; open('$M/hi8.onnx','wb').write(b)"; cp $M/hi_IN-priyamvada-medium.onnx.json $M/hi8.onnx.json
+```
+Then generate the Hindi VO for a video:
+```bash
+M=/home/claude/tts/hi/vits-piper-hi_IN-priyamvada-medium LD_LIBRARY_PATH=/home/claude/tts/piper PIPER_BIN=/home/claude/tts/piper/piper \
+  PIPER_MODEL_HI=$M/hi8.onnx PIPER_ESPEAK_DATA_HI=$M/espeak-ng-data tsx scripts/help-video-vo.ts <id>
+```

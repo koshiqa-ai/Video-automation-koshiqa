@@ -1,0 +1,165 @@
+{
+  "title": "Video 1 (Hindi) · Rest Card क्या है? हमने इसे क्यों बनाया?",
+  "type": "explainer",
+  "subtitle": "Hindi version of HV-RestCard · Hindi script with the English line under each · 14 slides · 131.7 s with the placeholder Hindi voice",
+  "beats": [
+    {
+      "n": "card",
+      "section": "Hook",
+      "layout": "F1",
+      "card": "Rest Card क्या है?",
+      "vo": "",
+      "hold": 3,
+      "why": "English on screen: “What is a Rest Card?”",
+      "flags": [
+        "<b>Hinglish</b> — app and product words (Rest Card, steps, contest, streak, deficit, club) stay in English, as members say them and as the app shows them. Everything else is Hindi."
+      ]
+    },
+    {
+      "n": "#02",
+      "section": "Hook",
+      "layout": "S2",
+      "card": "हर दिन की मेहनत",
+      "vo": "आप हर दिन लगे रहते हैं, एक अच्छी आदत बना रहे हैं, और आगे बढ़ रहे हैं।",
+      "hold": 6,
+      "image": "screens/HV-RestCard/01.png",
+      "was": "You're showing up every day, building a habit and making progress.",
+      "why": "English original · on screen: “Showing up daily”"
+    },
+    {
+      "n": "#03",
+      "section": "Hook",
+      "layout": "S2",
+      "card": "हर दिन 10K नहीं",
+      "vo": "लेकिन सच कहें तो, हर दिन 10,000 steps वाला दिन नहीं होता। और ये बिल्कुल ठीक है!",
+      "hold": 6.9,
+      "image": "screens/HV-RestCard/02.png",
+      "was": "But let's be honest. Not every day is going to be a 10,000-step day. And that's okay!",
+      "why": "English original · on screen: “Not every day's 10K”"
+    },
+    {
+      "n": "card",
+      "section": "The story",
+      "layout": "E7",
+      "card": "आपके feedback से बना · आप जैसे members के साथ",
+      "vo": "Koshiqa में, हम आप जैसे members के feedback से अपना product बनाते हैं।",
+      "hold": 5.8,
+      "was": "At Koshiqa, we build our product with feedback from members like you.",
+      "why": "English original · on screen: “Built with feedback · from members like you”"
+    },
+    {
+      "n": "#05",
+      "section": "The story",
+      "layout": "S1",
+      "card": "Chat: member's message",
+      "vo": "एक दिन, हमारी community की एक महिला ने हमें एक message भेजा, जो हमारे दिल को छू गया। उन्होंने कहा कि वो Koshiqa को अपना lifelong, sustainable partner मानती हैं। लेकिन periods के दिनों में, कभी-कभी उनका 10,000 steps तक खुद को push करने का मन नहीं करता। वो अपने शरीर को थोड़ा आराम देना चाहती हैं। और फिर उन्होंने हमसे एक सीधा-सा सवाल पूछा: \"क्या contest में कुछ rest days मिल सकते हैं?\" इस बात ने हमें सोचने पर मजबूर कर दिया।",
+      "hold": 32.7,
+      "image": "chat-mockup.png",
+      "was": "One day, a woman from our community sent us a message that really stayed with us. She said she sees Koshiqa as her lifelong sustainable partner. But during her period days, she sometimes doesn't want to push herself to 10,000 steps. She wants to give her body some rest. And then she asked us something simple: \"Can we have some rest days in the contest?\" That got us thinking.",
+      "why": "English original · on screen: “chat”",
+      "flags": [
+        "<b>Chat stays in English</b> — the app screens and the member's own message are in English, so the chat is not translated. Say if you'd like it in Hindi.",
+        "<b>“जो हमारे दिल को छू गया”</b> — “stayed with us” rendered as “touched our heart”, which sounds natural in Hindi."
+      ]
+    },
+    {
+      "n": "#06",
+      "section": "Meet the Rest Card",
+      "layout": "S2",
+      "card": "मिलिए Rest Card से",
+      "vo": "यही Rest Card बनाने की एक वजह बनी।",
+      "hold": 3.9,
+      "image": "screens/HV-RestCard/03.png",
+      "was": "That's one of the reasons we built the Rest Card.",
+      "why": "English original · on screen: “Meet the Rest Card”"
+    },
+    {
+      "n": "#07",
+      "section": "How it works",
+      "layout": "S2",
+      "card": "10K तक बढ़ाया",
+      "vo": "ये contest में आपके सबसे कम steps वाले eligible दिन को ढूंढता है, और उसे अपने-आप 10,000 steps तक बढ़ा देता है।",
+      "hold": 9.7,
+      "image": "screens/HV-RestCard/02.png",
+      "was": "It finds your lowest eligible step day in the contest and automatically lifts it to 10,000 steps.",
+      "why": "English original · on screen: “Lifted to 10K”"
+    },
+    {
+      "n": "card",
+      "section": "How it works",
+      "layout": "C1",
+      "card": "Bonus steps",
+      "vo": "मान लीजिए, आपके सबसे कम steps वाले दिन में 4,200 steps थे। आपका Rest Card 5,800 steps जोड़ सकता है, और वो दिन 10,000 तक पहुँच जाता है।",
+      "hold": 13,
+      "was": "Let's say your lowest day had 4,200 steps. Your Rest Card can add 5,800 steps, bringing that day up to 10,000.",
+      "why": "English original · on screen: “Bonus steps”"
+    },
+    {
+      "n": "#09",
+      "section": "How it works",
+      "layout": "S2",
+      "card": "कम deficit",
+      "vo": "इसका मतलब है, आपके contest total में ज़्यादा steps, कम deficit, और हो सकता है एक बेहतर club placement भी!",
+      "hold": 8.3,
+      "image": "screens/HV-RestCard/05.png",
+      "was": "That means more steps in your contest total, a lower deficit and potentially a better club placement!",
+      "why": "English original · on screen: “Less deficit”"
+    },
+    {
+      "n": "card",
+      "section": "Limits",
+      "layout": "E7",
+      "card": "Contest में गिना जाएगा · Streak में नहीं",
+      "vo": "एक ज़रूरी बात याद रखें: Rest Card आपके दिन को contest progress के लिए 10,000 steps वाला दिन गिनता है। लेकिन ये आपकी daily streak नहीं बचाता।",
+      "hold": 11.4,
+      "was": "One important thing to remember: The Rest Card makes your day count as a 10,000-step day for your contest progress. But it doesn't save your daily streak.",
+      "why": "English original · on screen: “Counts for your contest · not for your streak”"
+    },
+    {
+      "n": "card",
+      "section": "Limits",
+      "layout": "C1",
+      "card": "Streak की शर्त",
+      "vo": "अपनी streak बनाए रखने के लिए, आपको एक दिन में कम से कम 4,000 असली steps चलने होंगे।",
+      "hold": 7.6,
+      "was": "You still need at least 4,000 actual steps in a day to maintain your streak.",
+      "why": "English original · on screen: “Streak minimum”"
+    },
+    {
+      "n": "card",
+      "section": "Limits",
+      "layout": "C3",
+      "card": "Streak चेक",
+      "vo": "अगर आपकी streak पहले ही टूट चुकी है, तो Rest Card उसे वापस नहीं ला सकता।",
+      "hold": 6.2,
+      "was": "If your streak has already broken, the Rest Card won't restore it.",
+      "why": "English original · on screen: “Streak check”"
+    },
+    {
+      "n": "card",
+      "section": "Close",
+      "layout": "E14",
+      "card": "Sustainable, stressful नहीं",
+      "vo": "क्योंकि हम मानते हैं कि fitness sustainable होनी चाहिए, stressful नहीं। कुछ दिन आप खुद को push करते हैं। और कुछ दिन, अपने शरीर को थोड़ा आराम देते हैं।",
+      "hold": 11.6,
+      "was": "Because we believe fitness should be sustainable, not stressful. Some days you push yourself. Some days you give your body a little rest.",
+      "why": "English original · on screen: “Sustainable, not stressful”",
+      "flags": [
+        "<b>Day letters</b> — Mon → Sun in Hindi: सो मं बु गु शु श र."
+      ]
+    },
+    {
+      "n": "card",
+      "section": "Close",
+      "layout": "F2",
+      "card": "हर कदम, आपके साथ",
+      "vo": "और हम Koshiqa को आपके साथ मिलकर बनाते रहेंगे, हर कदम पर।",
+      "hold": 5.5,
+      "was": "And we'll keep building Koshiqa with you, every step of the way.",
+      "why": "English original · on screen: “Every step of the way”",
+      "flags": [
+        "<b>“हर कदम पर”</b> — keeps the “every step” wordplay (कदम = step)."
+      ]
+    }
+  ]
+}

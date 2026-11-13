@@ -360,16 +360,25 @@ Decide before writing anything. One input can produce more than one video: split
 | E11 | Icon tiles | 2–4 parts of a feature | `title`, `tiles` [{icon, text}] | 2–4, 1 word each |
 | E12 | Bullet list with connector | a short checklist | `title`, `items` | 2–4, ≤4 words |
 | E13 | Floating glass cards around a phone | what a screen gives you | `cards` ×3 [{icon, text}] + slide `screen` | 3 cards, ≤3 words |
-| E14 | Underline into a day streak | daily habits, a week | `title`, `line`, `filled` (0–7) | 7 days |
+| E14 | Underline into a day streak | daily habits, a week | `title`, `line`, `filled` (0–7), `days` (7 labels) | 7 days |
 
 - **Scene vs layout:** C1–C4 and E1–E14 are all explainer scenes. Pick by what the line says: one number → C1 or E1; three things → C2, E6, E11 or E12; wrong vs right → C3; A → B → C → C4; a loop → E2; a trend → E5; from X to Y → E10.
 - **Rhythm:** don't use the same scene twice in a row. Don't use more than 5 different scene types in one explainer, so it still feels like one video.
 - **Timing:** each E scene plays its own animation from the start of the slide (about 3–4.5 s; the slide is never shorter than that). C scenes sync to `atWord`.
 - **Not taken from the reference:** stock footage, the talking presenter, 3D/space shots, purple/pink colours, landscape framing.
 
+### Hindi versions
+- A Hindi version is its own spec (`<name>-hi.ts`, id `…-HI`, `lang: "hi"`) built from the English slides. Only the words change: same layouts, screens, targets and peeks. Example: `src/videos/rest-card-hi.ts`.
+- **Write conversational Hindi (Hinglish), in Devanagari.** App and product words stay in English, as members say them and as the app shows them: steps, Rest Card, contest, streak, deficit, club, Koshiqa. Numbers stay as digits (10,000, 10K).
+- **On-screen text is Hindi too,** within the same word limits. Poppins covers Devanagari. Keep a name like "Rest Card" on one line with a non-breaking space (`\u00a0`).
+- **App screenshots and quoted messages stay in English;** they are what members see and wrote.
+- `atWord` takes a Hindi word from the Hindi line. The day letters on E14 are `days: ["सो","मं","बु","गु","शु","श","र"]`.
+- The final voice comes from the team. The placeholder Hindi voice (Piper hi_IN) respells English words in Devanagari via `src/data/pronunciation-hi.json`.
+
 ## Changelog
 | Version | Date | Change | Why |
 |---|---|---|---|
+| 1.4.1 | 2026-11-14 | Hindi versions: Hinglish rules, on-screen Hindi, E14 `days` (§11) | First Hindi explainer (Rest Card) |
 | 1.4 | 2026-11-13 | Background music: a soft synthesised bed under every video, ducked under the voice (§8, `audio.music`). Chat mockup seen from Koshiqa's side (member left, Koshiqa right; emoji-only replies drawn large) | Rest Card review |
 | 1.3.1 | 2026-11-13 | Screens may crossfade to an "after" image (`then`) and a chat-thread mockup may stand in for a real message (SCREENS.md) | First explainer from a script (Rest Card) needed a before/after and the member's message |
 | 1.3 | 2026-11-13 | Explainer approved: C1–C4 + motion kit E1–E14 with content fields; rules for choosing the video type from a script (§11) | Motion kit approved by the team; skill now classifies scripts |

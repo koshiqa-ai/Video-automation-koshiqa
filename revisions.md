@@ -14,6 +14,32 @@ Entry format:
 
 ---
 
+## 2026-11-14 · HV-RestCard-HI · Hindi version of the Rest Card explainer
+- **Asked:** "Translate the script into hindi and make one hindi version".
+- **Changed:**
+  - New `src/videos/rest-card-hi.ts` (`HV-RestCard-HI`, `lang: "hi"`), registered in `index.ts`.
+    - It is built from the English slides, so layouts, screens, targets, peeks, the chat and the music are the same.
+    - Every VO line, headline, card, number label, E7/E14 line and `atWord` is translated.
+  - `MotionKit` E14 takes `days`.
+  - `help-video-vo.ts`:
+    - per-language Piper model (`PIPER_MODEL_HI`, `PIPER_ESPEAK_DATA_HI`)
+    - the pronunciation list `src/data/pronunciation-hi.json`
+    - speed `PIPER_LENGTH_SCALE_HI` (default 0.85)
+  - `design.md` 1.4.1: §11 "Hindi versions".
+  - `CLAUDE.md`: Hindi placeholder voice setup (sherpa-onnx GitHub release, with an IR-version patch).
+  - Review page: `work/HV-RestCard-HI/storyboard.json` → `storyboards/HV-RestCard-HI.html`, with the Hindi script and the English line under each.
+- **Why / decisions:**
+  - The translation is conversational Hinglish in Devanagari, matching the earlier Hindi FAQ test. App and product words stay in English.
+  - "stayed with us" became "जो हमारे दिल को छू गया".
+  - "every step of the way" became "हर कदम पर" (keeps the step pun).
+  - "Push. Rest. Repeat." became "मेहनत। आराम। फिर से।"
+  - The chat message and the app screenshots stay in English.
+  - E14 day letters are सो मं बु गु शु श र.
+- **Output:**
+  - `out/HV-RestCard-HI.mp4`: 131.7 s with the placeholder Hindi voice (Piper hi_IN-priyamvada). The voice is slow; a real Hindi VO should land nearer 100–110 s.
+  - QA sheet: every slide passes; Devanagari renders cleanly.
+  - The team's Hindi VO goes in `public/vo/HV-RestCard-HI/02–14` (+ `01` if the opener is voiced).
+
 ## 2026-11-14 · HV-RestCard + system · Chat earlier and flipped, 💚 reply, background music
 - **Asked:** chat messages a bit earlier; consumer messages on the left, ours on the right; send a heart emoji at the end; subtle non-copyright music always running at low volume.
 - **Changed:**
