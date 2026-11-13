@@ -14,6 +14,22 @@ Entry format:
 
 ---
 
+## 2026-11-14 · HV-RestCard (+ HI) · Clean screenshot edges
+- **Asked:** "why is this place looking different and blurry", with the calendar at 0:15 circled under the status bar.
+- **Changed** (`scripts/prep-rest-card-screens.py`; `public/screens/HV-RestCard/01–05, 02b` regenerated):
+  - The screen recorder's side tab ("❯", x 0–35, y 85–226) is now removed by its exact rounded shape:
+    - 01, 04, 05 are inpainted (OpenCV Telea).
+    - 02 and 03 are filled from clean background rows.
+  - 02/02b (calendar frame grabbed mid-scroll): the strip above the first full row is replaced with the page background. That strip held the recorder's dark bar and the bottoms of cards 5–8.
+  - 03: the back arrow's tip, hidden under the tab, is redrawn.
+  - English and Hindi videos re-rendered.
+  - `design.md` 1.4.2: a new Don't.
+- **Why:**
+  - The old paint-out faded from the row above the tab (the dark status bar) to the row below. That left a grey smear down the left edge, an orange streak on 01 and a dark streak on 04.
+  - The scroll sliver showed through under our clean 9:41 bar.
+  - Fill seams are now within 2–5 brightness levels.
+- **Output:** `out/HV-RestCard.mp4` (98.9 s) and `out/HV-RestCard-HI.mp4` (138.5 s).
+
 ## 2026-11-14 · HV-RestCard-HI · Team's ElevenLabs Hindi voice
 - **Asked:** "use this voice for hindi version" (one full ElevenLabs recording, 129.9 s).
 - **Changed:**

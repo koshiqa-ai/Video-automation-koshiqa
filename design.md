@@ -291,6 +291,7 @@ Each line here is a mistake from an earlier draft.
 - ❌ Big empty areas of green. If a slide feels empty, it's the wrong layout.
 - ❌ Video colours inside the phone UI, or fake third-party logos in mockups.
 - ❌ Videos over 45 s.
+- Don't leave recorder overlays or smears on a screenshot. Remove a floating tab or button by inpainting its exact shape, or by filling it from clean background rows; never fade one row into another across it, which drags the status bar down the edge. A frame grabbed mid-scroll must start on a clean page: no sliver of the row above under the 9:41 bar. Zoom into the top and left edge of every screen before rendering.
 
 ## 10. Open items
 - [ ] Separate high-res Torty PNGs, about 1500 px tall. The sheet cuts are upscaled 4× and look a little soft (`torty-requests.md`).
@@ -378,6 +379,7 @@ Decide before writing anything. One input can produce more than one video: split
 ## Changelog
 | Version | Date | Change | Why |
 |---|---|---|---|
+| 1.4.2 | 2026-11-14 | Don't: recorder overlays and mid-scroll slivers on screenshots | Reviewer spotted a grey smear and a cut strip on the Rest Card calendar |
 | 1.4.1 | 2026-11-14 | Hindi versions: Hinglish rules, on-screen Hindi, E14 `days` (§11) | First Hindi explainer (Rest Card) |
 | 1.4 | 2026-11-13 | Background music: a soft synthesised bed under every video, ducked under the voice (§8, `audio.music`). Chat mockup seen from Koshiqa's side (member left, Koshiqa right; emoji-only replies drawn large) | Rest Card review |
 | 1.3.1 | 2026-11-13 | Screens may crossfade to an "after" image (`then`) and a chat-thread mockup may stand in for a real message (SCREENS.md) | First explainer from a script (Rest Card) needed a before/after and the member's message |
