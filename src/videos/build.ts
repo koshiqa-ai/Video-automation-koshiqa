@@ -1,5 +1,5 @@
 // Turns a HelpVideoSpec into timed layout-system slides + audio cues. Pure (no React).
-import { cuesFor, isShot, shotFit, type Cue, type LSSlide } from "../data/layout-system";
+import { cuesFor, isChat, isShot, shotFit, type Cue, type LSSlide } from "../data/layout-system";
 import type { HelpVideoSpec, VideoSlide } from "./types";
 import { motionScene } from "../explainer/motion-data";
 import VO from "./vo-durations.json";
@@ -25,13 +25,19 @@ const wordTime = (vo: string | undefined, voSec: number, word: string) => {
 /** screenshot slides give taps / annotation targets in image pixels → convert to phone-screen coords; resolve atWord */
 const toScreenSpace = (v: VideoSlide, voSec: number): VideoSlide => {
   const anno = v.anno && v.anno.atWord ? { ...v.anno, at: wordTime(v.vo, voSec, v.anno.atWord) } : v.anno;
+  const wt = (x: { at?: number; atWord?: string }, d: number) => x.at ?? (x.atWord ? wordTime(v.vo, voSec, x.atWord) : d);
+  if (isChat(v.screen)) {
+    const c = v.screen.chat;
+    return { ...v, anno, screen: { chat: { ...c, messages: c.messages.map((m, k) => ({ ...m, at: wt(m, 0.6 + 1.2 * k) })), typing: c.typing && { at: wt(c.typing, 99) } } } };
+  }
   if (!isShot(v.screen)) return { ...v, anno };
   const { k, offY } = shotFit(v.screen.w, v.screen.h);
   const p = (x: number, y: number) => ({ x: x * k, y: y * k + offY });
   const taps = v.screen.taps?.map((t) => ({ ...t, ...p(t.x, t.y), at: t.at ?? (t.atWord ? wordTime(v.vo, voSec, t.atWord) : VO_LEAD + 0.6) }));
   const tg = anno?.target;
   const target = tg ? { ...p(tg.x, tg.y), w: tg.w * k, h: tg.h * k, r: tg.r !== undefined ? tg.r * k : undefined } : undefined;
-  return { ...v, screen: { ...v.screen, taps }, anno: anno ? { ...anno, target } : undefined };
+  const then = v.screen.then && { ...v.screen.then, at: wt(v.screen.then, 1.5) };
+  return { ...v, screen: { ...v.screen, taps, then }, anno: anno ? { ...anno, target } : undefined };
 };
 
 const toLS = (spec: HelpVideoSpec, v0: VideoSlide, i: number, voSec: number): LSSlide => {

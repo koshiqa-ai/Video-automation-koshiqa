@@ -1,0 +1,138 @@
+{
+  "title": "Rest Card",
+  "type": "explainer",
+  "subtitle": "Draft · from the Rest Card script + recording IMG_7237 · 13 slides · ~95 s (placeholder voice)",
+  "beats": [
+    {
+      "n": "#01",
+      "section": "Hook",
+      "layout": "S2",
+      "card": "Showing up daily",
+      "vo": "You're showing up every day, building a habit and making progress.",
+      "image": "screens/HV-RestCard/01.png",
+      "flags": [
+        "<b>Opening</b> — the script opens on the calendar, so there is no F1 title card. Add one if you want the usual opener (+3 s)."
+      ],
+      "hold": 4.7
+    },
+    {
+      "n": "#02",
+      "section": "Hook",
+      "layout": "S2",
+      "card": "Not every day's 10K",
+      "vo": "But let's be honest. Not every day is going to be a 10,000-step day. And that's okay!",
+      "image": "screens/HV-RestCard/02.png",
+      "flags": [
+        "<b>Day 22</b> — 4,200 steps is a demo value on the recording; the lifted version (02b) is built from your day-22 screenshot."
+      ],
+      "hold": 6.4
+    },
+    {
+      "n": "card",
+      "section": "The story",
+      "layout": "E7",
+      "card": "Built with feedback",
+      "vo": "At Koshiqa, we build our product with feedback from members like you.",
+      "hold": 5.2
+    },
+    {
+      "n": "#04",
+      "section": "The story",
+      "layout": "S1",
+      "card": "A member's message (chat mockup)",
+      "vo": "One day, a woman from our community sent us a message that really stayed with us. She said she sees Koshiqa as her lifelong sustainable partner. But during her period days, she sometimes doesn't want to push herself to 10,000 steps. She wants to give her body some rest. And then she asked us something simple: \"Can we have some rest days in the contest?\" That got us thinking.",
+      "image": "chat-mockup.png",
+      "flags": [
+        "<b>Member's words</b> — the chat text is drafted from the voiceover, not her real message. Please send her actual words and confirm she's happy for them to be shown. Her name and photo are not shown."
+      ],
+      "hold": 21.4
+    },
+    {
+      "n": "#05",
+      "section": "Meet the Rest Card",
+      "layout": "S2",
+      "card": "Meet the Rest Card",
+      "vo": "That's one of the reasons we built the Rest Card.",
+      "image": "screens/HV-RestCard/03.png",
+      "hold": 3.4
+    },
+    {
+      "n": "#06",
+      "section": "How it works",
+      "layout": "S2",
+      "card": "Lifted to 10K",
+      "vo": "It finds your lowest eligible step day in the contest and automatically lifts it to 10,000 steps.",
+      "image": "screens/HV-RestCard/02.png",
+      "flags": [
+        "<b>“Lowest eligible day”</b> — what makes a day eligible? The card screen says “Best used when your lowest day is under 7,500 steps”. The VO doesn't define it; fine as is unless you want a rule on screen."
+      ],
+      "hold": 6.8
+    },
+    {
+      "n": "card",
+      "section": "How it works",
+      "layout": "C1",
+      "card": "Bonus steps",
+      "vo": "Let's say your lowest day had 4,200 steps. Your Rest Card can add 5,800 steps, bringing that day up to 10,000.",
+      "hold": 8.8
+    },
+    {
+      "n": "#08",
+      "section": "How it works",
+      "layout": "S2",
+      "card": "Less deficit",
+      "vo": "That means more steps in your contest total, a lower deficit and potentially a better club placement!",
+      "image": "screens/HV-RestCard/05.png",
+      "flags": [
+        "<b>Club line</b> — the screen says “You'll remain in the Urban Blackbuck club”, so “potentially a better club placement” doesn't show on this example."
+      ],
+      "hold": 6.3
+    },
+    {
+      "n": "card",
+      "section": "Limits",
+      "layout": "E7",
+      "card": "Counts for your contest",
+      "vo": "One important thing to remember: The Rest Card makes your day count as a 10,000-step day for your contest progress. But it doesn't save your daily streak.",
+      "hold": 9.1
+    },
+    {
+      "n": "card",
+      "section": "Limits",
+      "layout": "C1",
+      "card": "Streak minimum",
+      "vo": "You still need at least 4,000 actual steps in a day to maintain your streak.",
+      "hold": 5.1
+    },
+    {
+      "n": "card",
+      "section": "Limits",
+      "layout": "C3",
+      "card": "Streak check",
+      "vo": "If your streak has already broken, the Rest Card won't restore it.",
+      "flags": [
+        "<b>3,500-step day</b> — the streak breaks, but does the Rest Card still lift that day to 10,000 for the contest? The card currently says only that the streak can't be restored. Please confirm."
+      ],
+      "hold": 4.9
+    },
+    {
+      "n": "card",
+      "section": "Close",
+      "layout": "E14",
+      "card": "Sustainable, not stressful",
+      "vo": "Because we believe fitness should be sustainable, not stressful. Some days you push yourself. Some days you give your body a little rest.",
+      "hold": 8.5
+    },
+    {
+      "n": "card",
+      "section": "Close",
+      "layout": "F2",
+      "card": "Every step of the way",
+      "vo": "And we'll keep building Koshiqa with you, every step of the way.",
+      "flags": [
+        "<b>Logo end card</b> — the script asks for the Koshiqa logo at the end; design.md has no logo layout yet, so this ends on F2. I can add an end-logo card as a design-system change."
+      ],
+      "hold": 4.4
+    }
+  ]
+}

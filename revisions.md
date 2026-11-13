@@ -14,6 +14,32 @@ Entry format:
 
 ---
 
+## 2026-11-13 · HV-RestCard · First Rest Card explainer (draft, placeholder voice)
+- **Asked:** "make the first video": the Rest Card script (6 scenes, ~90 s; benefit, story behind the launch, limitations), plus recording IMG_7237 and a screenshot of day 22 lifted to 10,000.
+- **Changed:**
+  - New spec `src/videos/rest-card.ts` (13 slides, registered in `index.ts`). Scenes: S2 ×5, S1 chat, E7 ×2, C1 ×2, C3, E14, F2.
+  - Screens `public/screens/HV-RestCard/01–05, 02b` made by `scripts/prep-rest-card-screens.py`. The HDR recording is tone-mapped, the side tab painted out (narrower on 03 so "Power card" stays whole), the member name on 01 blurred, and 02b composited from the user's day-22 screenshot.
+  - New screen features: `then` crossfade on screenshots (before → after) and a chat-thread mockup (`src/screens/chat.tsx`). Both are documented in SCREENS.md, design.md 1.3.1.
+  - C1 formats numbers (5,800), and C1/E7 text sizes itself to fit.
+  - `recording-frames.py` handles HDR.
+  - Storyboard for review: `work/HV-RestCard/storyboard.json` → `storyboards/HV-RestCard.html`.
+- **Why / decisions:**
+  - Type: explainer (what/why of a feature, story and rules; very little tapping).
+  - VO is the script verbatim, split per slide.
+  - It opens on the calendar as scripted, with no F1. It ends on F2, because there is no logo layout.
+  - E14 line shortened to "Push. Rest. Repeat." so it fits on one line.
+- **Flags:**
+  - The chat text is drafted from the VO and needs the member's real words and consent.
+  - Is the 3,500-step day still lifted for the contest?
+  - "Lowest eligible day" is not defined.
+  - The example club line says "remain in Urban Blackbuck".
+  - The logo end card is missing.
+  - The runtime is 95 s, over the 75 s explainer guideline but matching the script's 90 s.
+- **Output:**
+  - `out/HV-RestCard.mp4` (94.9 s, Piper placeholder VO)
+  - `out/HV-RestCard-qa.png` (all 13 slides pass)
+  - The team's VO goes in `public/vo/HV-RestCard/01–13`.
+
 ## 2026-11-13 · system + HV-HowStepsSync · Explainer approved; motion scenes usable in videos; video-type rules
 - **Asked:** the motion kit is fine. Add explainers to the skill, and make the skill decide which video type a script needs.
 - **Changed:**

@@ -12,9 +12,23 @@ type MockScreen = NonNullable<TimedLayoutScene["screen"]>;
 type Tap = NonNullable<MockScreen["taps"]>[number];
 /** a real screenshot (from a screen recording) shown inside the phone.
  *  `taps` and annotation targets are given in IMAGE pixels; the builder converts them. */
-export type ShotScreen = { image: string; w: number; h: number; taps?: (Omit<Tap, "at"> & { at?: number; /** tap when this word is spoken */ atWord?: string })[] };
-export type Screen = MockScreen | ShotScreen;
+export type ShotScreen = {
+  image: string; w: number; h: number;
+  taps?: (Omit<Tap, "at"> & { at?: number; /** tap when this word is spoken */ atWord?: string })[];
+  /** cross-fade to a second screenshot of the same size (e.g. the same screen after an action) */
+  then?: { image: string; at?: number; atWord?: string };
+};
+/** a chat-thread mockup (no real screen exists for it): messages pop in as they're spoken */
+export type ChatScreen = {
+  chat: {
+    name: string; subtitle?: string; avatar?: string;
+    messages: { from: "member" | "koshiqa"; text: string; at?: number; atWord?: string }[];
+    typing?: { at?: number; atWord?: string };
+  };
+};
+export type Screen = MockScreen | ShotScreen | ChatScreen;
 export const isShot = (s?: Screen): s is ShotScreen => !!s && "image" in s;
+export const isChat = (s?: Screen): s is ChatScreen => !!s && "chat" in s;
 /** screenshot → phone screen (390 × 844): fit to width, cut off the recording's own status bar (top 5.5%: clock +
  *  the screen recorder's red timer) and start the app content under a clean 44 px status bar; extra height is lost
  *  at the bottom (home-indicator area). */

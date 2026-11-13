@@ -362,6 +362,7 @@ Decide before writing anything. One input can produce more than one video: split
 ## Changelog
 | Version | Date | Change | Why |
 |---|---|---|---|
+| 1.3.1 | 2026-11-13 | Screens may crossfade to an "after" image (`then`) and a chat-thread mockup may stand in for a real message (SCREENS.md) | First explainer from a script (Rest Card) needed a before/after and the member's message |
 | 1.3 | 2026-11-13 | Explainer approved: C1–C4 + motion kit E1–E14 with content fields; rules for choosing the video type from a script (§11) | Motion kit approved by the team; skill now classifies scripts |
 | 1.2 | 2026-11-13 | FAQ video type approved: layouts Q and A, structure, writing and Torty rules (§11). Explainer still in draft | FAQ demo HV-StepsFAQ reviewed |
 | 1.1 | 2026-10-29 | Real screenshots from storyboards (status bar replaced); when to use T1/T2 vs S2; longer walkthroughs allowed | First storyboard-driven video (How to Start Steps: 8 sections, 2 min) |

@@ -2,6 +2,12 @@
 
 **Real screenshots (default for production videos):** `screen: { image: "screens/<id>/NN.png", w, h, taps }`, made by `scripts/storyboard-import.py` from an approved storyboard. Taps and annotation targets are in **image pixels** (look at the screenshot to find the button centre). Give `atWord` instead of `at` and the tap lands when that word is spoken. The renderer fits the shot to the phone width, removes the recording's status bar (red timer included) and draws a clean one.
 
+**Before → after on one screen:** add `then: { image: "screens/<id>/NNb.png", atWord: "…" }` to a screenshot and the second image crossfades in (0.3 s) when that word is spoken, e.g. a calendar day going from 4,200 to 10,000 (`src/videos/rest-card.ts`, slide 6). The two images must be the same size and framing.
+
+**Chat thread (story moments with no app screen):** `screen: { chat: { name, subtitle?, avatar?, messages: [{ from: "member"|"koshiqa", text, atWord }], typing?: { atWord } } }` draws a messaging thread (`src/screens/chat.tsx`); bubbles pop in as their word is spoken and the thread scrolls when full. Use it only for real messages, with the member's consent, and never show their name or photo.
+
+**HDR recordings:** iPhone recordings are often HDR (PQ/HLG). `scripts/recording-frames.py` detects this and tone-maps to SDR, so frames aren't washed-out grey.
+
 **Coded mockups (demos only):**
 
 The phone shows coded mockups of the Koshiqa app (`src/screens/`). Each screen is **scripted**: its first tap triggers a fixed response (e.g. `home-tabbar` always opens the contest list). The `x, y` you give only places the cursor, so use the tap targets below. Coordinates are in phone-screen space, **390 × 844**.

@@ -12,9 +12,14 @@ video, out = args[0], args[1]
 opt = lambda k, d: float(args[args.index(k) + 1]) if k in args else d
 CHANGE, SETTLE, FPS, SW, SH = opt("--change", 3.0), opt("--settle", 0.4), 8, 72, 160
 fdir = os.path.join(out, "frames"); os.makedirs(fdir, exist_ok=True)
+# iPhone recordings are often HDR (PQ / HLG, BT.2020): convert to SDR or every frame comes out washed-out grey
+trc = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=color_transfer", "-of", "csv=p=0", video], capture_output=True, text=True).stdout.strip().strip(",")
+HDR = trc in ("smpte2084", "arib-std-b67")
+SDR = "zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=clip,zscale=t=bt709:m=bt709:r=pc,format=rgb24," if HDR else ""
+if HDR: print(f"HDR recording ({trc}): converting frames to SDR")
 for f in os.listdir(fdir): os.remove(os.path.join(fdir, f))
 
-raw = subprocess.run(["ffmpeg", "-v", "error", "-i", video, "-vf", f"fps={FPS},scale={SW}:{SH},format=gray", "-f", "rawvideo", "-"], capture_output=True).stdout
+raw = subprocess.run(["ffmpeg", "-v", "error", "-i", video, "-vf", f"{SDR}fps={FPS},scale={SW}:{SH},format=gray", "-f", "rawvideo", "-"], capture_output=True).stdout
 fr = np.frombuffer(raw, np.uint8).reshape(-1, SH, SW).astype(float)
 if not len(fr): sys.exit("could not read video")
 still = int(round(SETTLE * FPS))
@@ -32,7 +37,7 @@ while i < len(fr):
 frames = []
 for n, t in enumerate(picks, 1):
     name = f"f_{n:03d}.png"
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{t:.3f}", "-i", video, "-frames:v", "1", "-vf", "scale=576:-2", os.path.join(fdir, name)], check=True)
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{t:.3f}", "-i", video, "-frames:v", "1", "-vf", f"{SDR}scale=576:-2", os.path.join(fdir, name)], check=True)
     frames.append({"file": f"frames/{name}", "t": round(t, 2)})
 json.dump(frames, open(os.path.join(out, "frames.json"), "w"), indent=1)
 

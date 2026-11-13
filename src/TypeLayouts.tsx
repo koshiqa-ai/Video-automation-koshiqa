@@ -91,7 +91,12 @@ const NumberSlide: React.FC<{ s: S }> = ({ s }) => {
   const N = LS.cNumber;
   const n = s.number!;
   const t = interpolate(f, [fr(0.3), fr(1.3)], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) });
-  const v = (n.value * t).toFixed(n.decimals ?? 0);
+  const dec = n.decimals ?? 0;
+  const v = (n.value * t).toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec });
+  // fit the number + unit to the frame width (720 px for the value at 320 px tall ≈ 4 digits)
+  const full = `${n.prefix ?? ""}${n.value.toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec })}`;
+  const unitW = n.unit ? n.unit.length * 0.62 * N.unitSize + 18 : 0;
+  const vSize = Math.min(N.valueSize, Math.floor((940 - unitW) / (0.6 * full.length)));
   const land = usePop(1.3, { damping: 9, stiffness: 200 });
   return (
     <AbsoluteFill>
@@ -99,7 +104,7 @@ const NumberSlide: React.FC<{ s: S }> = ({ s }) => {
       <Glow cy={N.valueTop + 170} />
       {s.title && <Line text={s.title.toUpperCase()} top={N.eyebrowTop} size={38} color={GREEN.mint} weight={700} at={0.05} />}
       <div style={{ position: "absolute", left: 0, right: 0, top: N.valueTop, display: "flex", justifyContent: "center", alignItems: "baseline", gap: 18, fontFamily: "Poppins", fontWeight: 800, color: "#fff", scale: String(1 + 0.06 * land * (1 - land)) }}>
-        <span style={{ fontSize: N.valueSize, lineHeight: 1, letterSpacing: "-0.03em" }}>{n.prefix}{v}</span>
+        <span style={{ fontSize: vSize, lineHeight: 1, letterSpacing: "-0.03em" }}>{n.prefix}{v}</span>
         {n.unit && <span style={{ fontSize: N.unitSize, color: GREEN.mint }}>{n.unit}</span>}
       </div>
       <Line text={n.label} top={N.labelTop} size={N.labelSize} at={1.0} />
