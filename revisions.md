@@ -14,6 +14,23 @@ Entry format:
 
 ---
 
+## 2026-11-14 · HV-RestCard-HI · Team's ElevenLabs Hindi voice
+- **Asked:** "use this voice for hindi version" (one full ElevenLabs recording, 129.9 s).
+- **Changed:**
+  - Stored the recording as `work/HV-RestCard-HI/vo-full-elevenlabs.mp3`.
+  - Split it into `public/vo/HV-RestCard-HI/02–14.wav`. There is no opener line, so slide 1 stays silent.
+  - Each clip is trimmed to its speech and raised by the same +4.4 dB (limited at 0.95), because the recording measured −20.4 LUFS. The final mix is −15.8 LUFS.
+  - VO durations are re-measured. The video was re-rendered and QA'd.
+  - `CLAUDE.md`: how to transcribe a recording to place the cuts.
+- **Why / decisions:**
+  - `vo-split.py`'s estimate put cuts in the wrong places (lines 06 and 13 flagged), because this voice paces some lines very differently.
+  - The recording was transcribed with Whisper-small (sherpa-onnx), and each line's start was placed by the words heard: "लेकिन सच कहें तो" 5.9 s, "एक दिन हमारी community" 19.0 s, "मान लीजिए" 66.8 s, "इसका मतलब है" 79.7 s, "अगर आपकी streak" 105.7 s, "क्योंकि हम मानते हैं" 111.1 s, "और हम Koshiqa" 124.1 s.
+  - Line lengths match the script's proportions.
+- **Output:**
+  - `out/HV-RestCard-HI.mp4`: 138.5 s, ElevenLabs Hindi voice, with music.
+  - QA sheet: every slide passes.
+  - Runtime is long for an explainer (guideline 40–75 s) because the voice is unhurried. Options: a faster ElevenLabs speed setting, or a shorter story line (05, 32.7 s).
+
 ## 2026-11-14 · HV-RestCard-HI · Hindi version of the Rest Card explainer
 - **Asked:** "Translate the script into hindi and make one hindi version".
 - **Changed:**

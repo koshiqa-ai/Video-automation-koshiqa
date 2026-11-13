@@ -36,3 +36,15 @@ M=/home/claude/tts/hi/vits-piper-hi_IN-priyamvada-medium
 LD_LIBRARY_PATH=/home/claude/tts/piper PIPER_BIN=/home/claude/tts/piper/piper \
   PIPER_MODEL_HI=$M/hi8.onnx PIPER_ESPEAK_DATA_HI=$M/espeak-ng-data PATH=/home/claude/.npm-global/bin:$PATH tsx scripts/help-video-vo.ts <id>
 ```
+
+If `scripts/vo-split.py` flags cuts (⚠), transcribe the recording to place them instead of guessing (Whisper via sherpa-onnx, both from GitHub releases):
+```bash
+mkdir -p /home/claude/tts/asr && cd /home/claude/tts/asr
+curl -sSL https://github.com/k2-fsa/sherpa-onnx/releases/download/v1.12.20/sherpa-onnx-v1.12.20-linux-x64-shared.tar.bz2 | tar xj
+curl -sSL https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-whisper-small.tar.bz2 | tar xj
+# split the file at its pauses into ≤30 s 16 kHz mono wavs, then:
+B=sherpa-onnx-v1.12.20-linux-x64-shared; M=sherpa-onnx-whisper-small
+LD_LIBRARY_PATH=$B/lib $B/bin/sherpa-onnx-offline --whisper-encoder=$M/small-encoder.onnx --whisper-decoder=$M/small-decoder.onnx --tokens=$M/small-tokens.txt --whisper-language=hi seg/*.wav
+```
+(Hindi output drops some characters, but the surviving words are enough to find where each line starts.)
+
