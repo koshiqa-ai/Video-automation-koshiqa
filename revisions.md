@@ -14,6 +14,22 @@ Entry format:
 
 ---
 
+## 2026-11-13 · HV-RestCard · Opens on the video's question
+- **Asked:** "this was the question - VIDEO 1: WHAT IS A REST CARD? WHY DID WE BUILD IT?"
+- **Changed:**
+  - `src/videos/rest-card.ts`: `question` is now "What is a Rest Card? Why did we build it?", and a new first slide F1 (pose thinking) shows "What is a Rest Card?" for 3 s.
+  - The VO files moved up one number (02–14).
+  - `src/components/Text.tsx`: an accent now also matches a word with punctuation after it ("Card?" matches "Card"), fixing every headline that ends on its accent word.
+  - Storyboard retitled "Video 1 · …" and regenerated.
+- **Why / decisions:**
+  - F1 text has a 5-word limit, so the card shows only the first half of the question; the story answers "why".
+  - "Rest Card" is kept together on one line.
+  - The script has no line for the opener, so it is silent; flagged.
+- **Output:**
+  - `out/HV-RestCard.mp4`: 97.9 s, 14 slides, placeholder voice.
+  - QA sheet: every slide passes.
+  - Team VO files are now `public/vo/HV-RestCard/02–14`, plus `01` if the opener is voiced.
+
 ## 2026-11-13 · HV-RestCard · First Rest Card explainer (draft, placeholder voice)
 - **Asked:** "make the first video": the Rest Card script (6 scenes, ~90 s; benefit, story behind the launch, limitations), plus recording IMG_7237 and a screenshot of day 22 lifted to 10,000.
 - **Changed:**

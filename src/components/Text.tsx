@@ -39,7 +39,7 @@ export const Headline: React.FC<{
     >
       {words.map((w, i) => {
         const p = spring({ frame: f, fps, delay: delay + i * 3, config: { damping: 16, stiffness: 140 } });
-        const isAccent = accentWords.includes(w);
+        const isAccent = accentWords.includes(w) || accentWords.includes(w.replace(/[?!.,:;…]+$/, "")); // "Card?" still matches accent "Card"
         const hl = theme.accentBg !== "none" && isAccent;
         return (
           <span key={i} style={{ display: "inline-block", whiteSpace: "pre" }}>

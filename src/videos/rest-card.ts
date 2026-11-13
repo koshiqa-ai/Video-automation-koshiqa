@@ -1,4 +1,4 @@
-// Explainer: the Rest Card — its benefit, the story behind it, and its limits.
+// Video 1 · Explainer: "What is a Rest Card? Why did we build it?" — its benefit, the story behind it, and its limits.
 // Script: from the team (2026-11-13), voiceover kept word for word, split per slide.
 // Screens: real frames from the team's screen recording (IMG_7237) + their calendar screenshot (day 22 after the card).
 // Screenshot coordinates are image px (576 × 1248).
@@ -10,9 +10,12 @@ const DAY22 = { x: 219, y: 604, w: 112, h: 118, r: 10 };
 export const REST_CARD: HelpVideoSpec = {
   id: "HV-RestCard",
   type: "explainer",
-  question: "What is the Rest Card, and what can't it do?",
+  question: "What is a Rest Card? Why did we build it?",
   lang: "en",
   slides: [
+    // 0 · The question (title card; no voiceover in the script, so it holds silently for 3 s)
+    { code: "F1", pose: "thinking", title: "What is a Rest\u00a0Card?", accent: "Rest\u00a0Card", minSec: 3 },
+
     // 1 · The problem
     { code: "S2", title: "Showing up daily", accent: "daily", peek: { expr: "happy", side: "right" }, screen: shot("01"),
       vo: "You're showing up every day, building a habit and making progress." },

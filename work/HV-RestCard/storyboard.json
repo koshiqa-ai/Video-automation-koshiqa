@@ -1,22 +1,30 @@
 {
-  "title": "Rest Card",
+  "title": "Video 1 · What is a Rest Card? Why did we build it?",
   "type": "explainer",
-  "subtitle": "Draft · from the Rest Card script + recording IMG_7237 · 13 slides · ~95 s (placeholder voice)",
+  "subtitle": "Draft · from the Rest Card script + recording IMG_7237 · 14 slides · ~98 s (placeholder voice)",
   "beats": [
     {
-      "n": "#01",
+      "n": "card",
+      "section": "Hook",
+      "layout": "F1",
+      "card": "What is a Rest Card?",
+      "vo": "",
+      "flags": [
+        "<b>Silent opener</b> — the script has no line here, so the title holds for 3 s with no voice. If you'd like it spoken, record one line (e.g. “What is a Rest Card, and why did we build it?”) as file 01."
+      ],
+      "hold": 3
+    },
+    {
+      "n": "#02",
       "section": "Hook",
       "layout": "S2",
       "card": "Showing up daily",
       "vo": "You're showing up every day, building a habit and making progress.",
       "image": "screens/HV-RestCard/01.png",
-      "flags": [
-        "<b>Opening</b> — the script opens on the calendar, so there is no F1 title card. Add one if you want the usual opener (+3 s)."
-      ],
       "hold": 4.7
     },
     {
-      "n": "#02",
+      "n": "#03",
       "section": "Hook",
       "layout": "S2",
       "card": "Not every day's 10K",
@@ -36,7 +44,7 @@
       "hold": 5.2
     },
     {
-      "n": "#04",
+      "n": "#05",
       "section": "The story",
       "layout": "S1",
       "card": "A member's message (chat mockup)",
@@ -48,7 +56,7 @@
       "hold": 21.4
     },
     {
-      "n": "#05",
+      "n": "#06",
       "section": "Meet the Rest Card",
       "layout": "S2",
       "card": "Meet the Rest Card",
@@ -57,7 +65,7 @@
       "hold": 3.4
     },
     {
-      "n": "#06",
+      "n": "#07",
       "section": "How it works",
       "layout": "S2",
       "card": "Lifted to 10K",
@@ -77,7 +85,7 @@
       "hold": 8.8
     },
     {
-      "n": "#08",
+      "n": "#09",
       "section": "How it works",
       "layout": "S2",
       "card": "Less deficit",
