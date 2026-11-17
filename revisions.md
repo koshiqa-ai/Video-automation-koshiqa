@@ -14,6 +14,18 @@ Entry format:
 
 ---
 
+## 2026-11-17 · System · One ElevenLabs take per script
+- **Asked:** "why you generated two voiceovers on elevenlabs?"
+- **What happened:** two speech runs of the Video 2 script, about 4,000 credits in all:
+  - the first in Esha, a voice I picked before the team said Monika Sogam
+  - the second in Monika Sogam
+  - each made 2 takes (the connector's default)
+- **Changed:** CLAUDE.md now says to:
+  - use the `voices.json` voice only
+  - make one take (`generations_count: 1`) unless the team asks for options
+  - ask before generating if no voice is set
+- **Output:** no video change.
+
 ## 2026-11-17 · HV-RestCardWhen · Video 2: when to use / save your Rest Card (draft)
 - **Asked:** Video 2 from the team's script and recordings IMG_7239 and IMG_7240. Objective: "Explain when to use the card, when to save it and clarify the current limitations around planning rest days." Voice: Monika Sogam on ElevenLabs.
 - **Type:** explainer (rules and judgment, not a tap-by-tap task).
