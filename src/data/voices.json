@@ -1,5 +1,26 @@
 {
-  "_note": "ElevenLabs voice per language, used by scripts/elevenlabs-vo.ts. Fill voiceId from ElevenLabs (Voices → the voice → ID). stability / similarity / style are 0–1 (the export name 's50_sim75' = 0.5 / 0.75); speed 0.7–1.2. A video can override any field with `voice: { … }` in its spec. Leave languageCode empty unless the model supports it.",
-  "en": { "voiceId": "", "model": "eleven_multilingual_v2", "stability": 0.5, "similarity": 0.75, "style": 0, "speed": 1.0, "speakerBoost": true, "stitch": true },
-  "hi": { "voiceId": "", "model": "eleven_multilingual_v2", "stability": 0.5, "similarity": 0.75, "style": 0, "speed": 1.0, "speakerBoost": true, "stitch": true }
+ "_note": "ElevenLabs voice per language, used by scripts/elevenlabs-vo.ts. Fill voiceId from ElevenLabs (Voices → the voice → ID). stability / similarity / style are 0–1 (the export name 's50_sim75' = 0.5 / 0.75); speed 0.7–1.2. A video can override any field with `voice: { … }` in its spec. Leave languageCode empty unless the model supports it.",
+ "en": {
+  "voiceId": "EaBs7G1VibMrNAuz2Na7",
+  "model": "eleven_v4",
+  "stability": 0.5,
+  "similarity": 0.75,
+  "style": 0,
+  "speed": 1.0,
+  "speakerBoost": true,
+  "stitch": true
+ },
+ "hi": {
+  "voiceId": "EaBs7G1VibMrNAuz2Na7",
+  "model": "eleven_v4",
+  "stability": 0.5,
+  "similarity": 0.75,
+  "style": 0,
+  "speed": 1.0,
+  "speakerBoost": true,
+  "stitch": true
+ },
+ "_voices": {
+  "EaBs7G1VibMrNAuz2Na7": "Monika Sogam – Natural Conversations (English + Hindi), chosen by the team 2026-11-17"
+ }
 }

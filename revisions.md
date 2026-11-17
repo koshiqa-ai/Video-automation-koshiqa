@@ -14,6 +14,34 @@ Entry format:
 
 ---
 
+## 2026-11-17 · HV-RestCardWhen · Video 2: when to use / save your Rest Card (draft)
+- **Asked:** Video 2 from the team's script and recordings IMG_7239 and IMG_7240. Objective: "Explain when to use the card, when to save it and clarify the current limitations around planning rest days." Voice: Monika Sogam on ElevenLabs.
+- **Type:** explainer (rules and judgment, not a tap-by-tap task).
+- **Changed:**
+  - New `src/videos/rest-card-when.ts` (9 slides: F1, P2, S2 ×4, C3, S2, F2), registered in `index.ts`.
+  - Screens `public/screens/HV-RestCardWhen/05, 06, 08`, made by `scripts/prep-rest-card-when-screens.py`. The recorder tab moves between frames, so it is found per frame and removed by its shape:
+    - plain page: blended from clean rows above and below
+    - over a card: the card's own right edge mirrored, brightness-matched
+    - the "L" of "Lifts" is kept
+  - Video 1's 02/02b/05 are reused for the 4,200 example.
+  - `build.ts`: P1/P2/T1 rows honour `atWord`.
+  - `voices.json`: en + hi voice = Monika Sogam – Natural Conversations (`EaBs7G1VibMrNAuz2Na7`), model `eleven_v4`.
+  - CLAUDE.md: the ElevenLabs connector workflow.
+  - Storyboard: `storyboards/HV-RestCardWhen.html`.
+- **Voice:**
+  - Generated in ElevenLabs through the connector: the full script, one prompt, two takes each of Esha (first try) and Monika Sogam (chosen by the team).
+  - The sandbox can't download ElevenLabs audio (proxy 403), so the draft uses the Piper placeholder. Waiting for the team to attach the chosen Monika take.
+- **Why / decisions:**
+  - The script is word for word.
+  - Headlines and list items are shortened ("A low-step day", "A deficit to clear", "Plan ahead? Soon") to fit on one line.
+  - 05 uses frame f_007; 06 uses f_018 rather than f_009, because there the tab doesn't cover "Your deficit"; 08 uses f_015.
+- **Flags:**
+  - The 4,200 example uses Video 1's recording.
+  - "Plan ahead? Soon" headline wording.
+- **Output:**
+  - `out/HV-RestCardWhen.mp4`: 63.4 s, placeholder voice.
+  - QA sheet: all 9 slides pass.
+
 ## 2026-11-17 · System · ElevenLabs voice from the script
 - **Asked:** "we have eleven labs where we need to generate voice from script. so connect eleven labs", and update the skill.
 - **Changed:**

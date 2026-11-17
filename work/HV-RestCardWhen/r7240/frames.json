@@ -1,0 +1,82 @@
+[
+ {
+  "file": "frames/f_001.png",
+  "t": 1.25
+ },
+ {
+  "file": "frames/f_002.png",
+  "t": 3.38
+ },
+ {
+  "file": "frames/f_003.png",
+  "t": 4.25
+ },
+ {
+  "file": "frames/f_004.png",
+  "t": 5.38
+ },
+ {
+  "file": "frames/f_005.png",
+  "t": 6.75
+ },
+ {
+  "file": "frames/f_006.png",
+  "t": 9.0
+ },
+ {
+  "file": "frames/f_007.png",
+  "t": 12.88
+ },
+ {
+  "file": "frames/f_008.png",
+  "t": 16.88
+ },
+ {
+  "file": "frames/f_009.png",
+  "t": 18.75
+ },
+ {
+  "file": "frames/f_010.png",
+  "t": 20.0
+ },
+ {
+  "file": "frames/f_011.png",
+  "t": 21.88
+ },
+ {
+  "file": "frames/f_012.png",
+  "t": 24.0
+ },
+ {
+  "file": "frames/f_013.png",
+  "t": 26.62
+ },
+ {
+  "file": "frames/f_014.png",
+  "t": 28.0
+ },
+ {
+  "file": "frames/f_015.png",
+  "t": 32.88
+ },
+ {
+  "file": "frames/f_016.png",
+  "t": 37.5
+ },
+ {
+  "file": "frames/f_017.png",
+  "t": 38.62
+ },
+ {
+  "file": "frames/f_018.png",
+  "t": 41.0
+ },
+ {
+  "file": "frames/f_019.png",
+  "t": 42.62
+ },
+ {
+  "file": "frames/f_020.png",
+  "t": 45.62
+ }
+]

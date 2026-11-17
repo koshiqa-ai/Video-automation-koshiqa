@@ -1,0 +1,102 @@
+{
+  "title": "Video 2 · When should you use your Rest Card?",
+  "type": "explainer",
+  "subtitle": "Objective: when to use the card, when to save it, and the current limit on planning rest days · script from the team · recordings IMG_7239, IMG_7240 · 9 slides · 63.4 s (placeholder voice; final voice: Monika Sogam on ElevenLabs)",
+  "beats": [
+    {
+      "n": "card",
+      "section": "Hook",
+      "layout": "F1",
+      "card": "Use it or save it?",
+      "vo": "Have a Rest Card in your account? Before you use it, here's when you should apply it and when you should save it for later.",
+      "hold": 6.9,
+      "flags": [
+        "<b>Type: explainer</b> — the objective is when to use the card, when to save it, and today's limit on planning rest days: rules and judgment, not a tap-by-tap task."
+      ]
+    },
+    {
+      "n": "card",
+      "section": "When to use it",
+      "layout": "P2",
+      "card": "Use it when",
+      "vo": "Use your Rest Card when you've had a low-step day and still have a contest deficit to clear.",
+      "hold": 6.1,
+      "flags": [
+        "<b>Checklist wording</b> — “A low-step day” · “A deficit to clear” are shortened from the script's line; the voiceover is unchanged."
+      ]
+    },
+    {
+      "n": "#03",
+      "section": "When to use it",
+      "layout": "S2",
+      "card": "4,200 becomes 10,000",
+      "vo": "For example, if your lowest eligible day has 4,200 steps, your Rest Card can add 5,800 steps, bringing it to 10,000.",
+      "hold": 9.1,
+      "image": "03.png",
+      "flags": [
+        "<b>Reused screens</b> — the 4,200 example uses Video 1's calendar (IMG_7237: day 22 at 4,200, lifted to 10,000) and its impact screen (+5,800, deficit 10,800 → 5,000). The new recordings show 11,000 and 8,500 days, not 4,200."
+      ]
+    },
+    {
+      "n": "#04",
+      "section": "When to use it",
+      "layout": "S2",
+      "card": "Smaller deficit",
+      "vo": "This can help you reduce your overall contest deficit.",
+      "hold": 4,
+      "image": "04.png"
+    },
+    {
+      "n": "#05",
+      "section": "When to save it",
+      "layout": "S2",
+      "card": "Save it for later",
+      "vo": "If there's no eligible low-step day that can benefit from the card, or you've already cleared your contest deficit, there's no reason to use it. Save it for later!",
+      "hold": 9.6,
+      "image": "05.png",
+      "flags": [
+        "<b>From IMG_7239</b> — lowest day already 11,000: “No benefit here”, deficit 0 → 0. The cursor taps Save for later as the voice says it."
+      ]
+    },
+    {
+      "n": "#06",
+      "section": "When to save it",
+      "layout": "S2",
+      "card": "Small gain? Decide",
+      "vo": "And if the benefit is very small, take a moment to decide whether you want to apply it or save it for another time.",
+      "hold": 6.9,
+      "image": "06.png",
+      "flags": [
+        "<b>From IMG_7240</b> — lowest day 8,500: the app's own warning “will add only 1500 steps… Do you still want to apply?”, with Save for later / Apply anyway."
+      ]
+    },
+    {
+      "n": "card",
+      "section": "The limitation",
+      "layout": "C3",
+      "card": "Plan ahead? Soon",
+      "vo": "One more thing! For now, you cannot schedule or plan your rest days in advance. We're working on bringing that soon. But you can apply your Rest Card anytime to any of your previous eligible low-step days.",
+      "hold": 12.4,
+      "flags": [
+        "<b>“Plan ahead? Soon”</b> — the script says “We're working on bringing that soon”. Check the headline doesn't promise more than you want to; “Past days only” is an alternative."
+      ]
+    },
+    {
+      "n": "#08",
+      "section": "Takeaway",
+      "layout": "S2",
+      "card": "Check the impact",
+      "vo": "My suggestion? Always check your potential impact before applying.",
+      "hold": 4.9,
+      "image": "08.png"
+    },
+    {
+      "n": "card",
+      "section": "Takeaway",
+      "layout": "F2",
+      "card": "Make it count",
+      "vo": "Use your card when it can make a real difference!",
+      "hold": 3.5
+    }
+  ]
+}

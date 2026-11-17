@@ -178,5 +178,29 @@
    12.6,
    5.48
   ]
+ },
+ "HV-RestCardWhen": {
+  "files": [
+   "vo/HV-RestCardWhen/01.wav",
+   "vo/HV-RestCardWhen/02.wav",
+   "vo/HV-RestCardWhen/03.wav",
+   "vo/HV-RestCardWhen/04.wav",
+   "vo/HV-RestCardWhen/05.wav",
+   "vo/HV-RestCardWhen/06.wav",
+   "vo/HV-RestCardWhen/07.wav",
+   "vo/HV-RestCardWhen/08.wav",
+   "vo/HV-RestCardWhen/09.wav"
+  ],
+  "durations": [
+   6.09,
+   5.3,
+   8.29,
+   3.24,
+   8.76,
+   6.1,
+   11.56,
+   4.09,
+   2.71
+  ]
  }
 }

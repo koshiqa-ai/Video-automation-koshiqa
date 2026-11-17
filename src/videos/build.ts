@@ -50,7 +50,7 @@ const toScreenSpace = (v: VideoSlide, voSec: number, marks: Marks): VideoSlide =
 const toLS = (spec: HelpVideoSpec, v0: VideoSlide, i: number, voSec: number, marks: Marks): LSSlide => {
   const v = toScreenSpace(v0, voSec, marks);
   const base = { code: v.code, row: 0, name: `${i + 1} ${v.code}`, title: v.title, accent: v.accent, peek: v.peek, sec: 0 };
-  const times = v.times ?? (v.items ?? []).map((_, k) => 0.6 + 0.6 * k);
+  const times = v.times ?? (v.items ?? []).map((it, k) => (it.atWord ? wordTime(v.vo, voSec, marks, it.atWord) : 0.6 + 0.6 * k)); // P1/P2/T1 rows land on their words too
   const at = (w: string | undefined, fallback: number) => (w ? wordTime(v.vo, voSec, marks, w) : fallback);
   const itemTimes = (v.items ?? []).map((it, k) => at(it.atWord, v.code === "C4" ? 0.6 + 1.0 * k : 0.6 + 0.6 * k));
   switch (v.code) {
