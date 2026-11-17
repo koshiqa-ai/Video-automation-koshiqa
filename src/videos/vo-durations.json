@@ -202,5 +202,35 @@
    4.09,
    2.71
   ]
+ },
+ "HV-VoiceSample-1": {
+  "files": [
+   "vo/HV-VoiceSample-1/01.wav",
+   "vo/HV-VoiceSample-1/02.wav"
+  ],
+  "durations": [
+   4.35,
+   5.23
+  ]
+ },
+ "HV-VoiceSample-2": {
+  "files": [
+   "vo/HV-VoiceSample-2/01.wav",
+   "vo/HV-VoiceSample-2/02.wav"
+  ],
+  "durations": [
+   4.18,
+   4.96
+  ]
+ },
+ "HV-VoiceSample-3": {
+  "files": [
+   "vo/HV-VoiceSample-3/01.wav",
+   "vo/HV-VoiceSample-3/02.wav"
+  ],
+  "durations": [
+   4.07,
+   4.87
+  ]
  }
 }

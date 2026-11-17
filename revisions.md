@@ -14,6 +14,20 @@ Entry format:
 
 ---
 
+## 2026-11-17 · Voice comparison: Mona, Riya Rao, Tara
+- **Asked:** the team doesn't like Monika Sogam. Make a sample video with three ElevenLabs voiceovers they generated, each after a 2 s black card "Option 1/2/3": Mona first, Riya Rao second, Tara third.
+- **Changed:**
+  - The samples (about 10 s each) all read Video 1's "At Koshiqa, we build our product with feedback from members like you. One day, a woman from our community sent us a message that really stayed with us." Confirmed by transcript.
+  - Each is split at its pause into `public/vo/HV-VoiceSample-1..3/01–02.wav` and levelled to −16 LUFS with one fixed gain + limiter. The originals were −27.6, −22.3 and −27.9 LUFS.
+  - Originals are kept in `work/voice-sample/`.
+  - `src/videos/voice-sample.ts`: three specs that reuse Video 1's E7 and chat slides. The chat shows the first message at "sent us a message".
+  - `scripts/voice-sample-reel.sh` joins them with the Option cards.
+- **Why:** with equal loudness, the comparison is about the voice, not the volume. No ElevenLabs credits were used.
+- **Output:** `out/voice-sample.mp4` (38.5 s).
+- **Open:**
+  - The chosen voice's ID goes into `voices.json` (currently Monika).
+  - Video 2's voiceover is then generated once in that voice.
+
 ## 2026-11-17 · System · One ElevenLabs take per script
 - **Asked:** "why you generated two voiceovers on elevenlabs?"
 - **What happened:** two speech runs of the Video 2 script, about 4,000 credits in all:
