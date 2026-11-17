@@ -11,21 +11,28 @@ export const VO_LEAD = 0.35;
 export const VO_TAIL = 0.45;
 const DEFAULT_SEC = 2.6;
 
-type VoEntry = { files: (string | null)[]; durations: (number | null)[] };
+/** marks: per slide, word starts as [charIndex in the vo line, seconds into the clip] (from ElevenLabs) */
+type VoEntry = { files: (string | null)[]; durations: (number | null)[]; marks?: ([number, number][] | null)[] };
+type Marks = [number, number][] | null | undefined;
 const voFor = (id: string): VoEntry | undefined => (VO as Record<string, VoEntry>)[id];
 
-/** seconds into the slide when `word` is spoken (estimated from its position in the line) */
-const wordTime = (vo: string | undefined, voSec: number, word: string) => {
+/** seconds into the slide when `word` is spoken: exact from ElevenLabs word timings when present,
+ *  otherwise estimated from the word's position in the line */
+const wordTime = (vo: string | undefined, voSec: number, marks: Marks, word: string) => {
   if (!vo || !voSec) return VO_LEAD + 0.6;
   const i = vo.toLowerCase().indexOf(word.toLowerCase());
+  if (marks && marks.length && i >= 0) {
+    const m = [...marks].reverse().find(([c]) => c <= i) ?? marks[0];
+    return +(VO_LEAD + m[1] + 0.05).toFixed(2);
+  }
   const frac = i < 0 ? 0.6 : i / vo.length;
   return +(VO_LEAD + frac * voSec + 0.15).toFixed(2);
 };
 
 /** screenshot slides give taps / annotation targets in image pixels → convert to phone-screen coords; resolve atWord */
-const toScreenSpace = (v: VideoSlide, voSec: number): VideoSlide => {
-  const anno = v.anno && v.anno.atWord ? { ...v.anno, at: wordTime(v.vo, voSec, v.anno.atWord) } : v.anno;
-  const wt = (x: { at?: number; atWord?: string }, d: number) => x.at ?? (x.atWord ? wordTime(v.vo, voSec, x.atWord) : d);
+const toScreenSpace = (v: VideoSlide, voSec: number, marks: Marks): VideoSlide => {
+  const anno = v.anno && v.anno.atWord ? { ...v.anno, at: wordTime(v.vo, voSec, marks, v.anno.atWord) } : v.anno;
+  const wt = (x: { at?: number; atWord?: string }, d: number) => x.at ?? (x.atWord ? wordTime(v.vo, voSec, marks, x.atWord) : d);
   if (isChat(v.screen)) {
     const c = v.screen.chat;
     return { ...v, anno, screen: { chat: { ...c, messages: c.messages.map((m, k) => ({ ...m, at: wt(m, 0.6 + 1.2 * k) })), typing: c.typing && { ...c.typing, at: wt(c.typing, 99) } } } };
@@ -33,18 +40,18 @@ const toScreenSpace = (v: VideoSlide, voSec: number): VideoSlide => {
   if (!isShot(v.screen)) return { ...v, anno };
   const { k, offY } = shotFit(v.screen.w, v.screen.h);
   const p = (x: number, y: number) => ({ x: x * k, y: y * k + offY });
-  const taps = v.screen.taps?.map((t) => ({ ...t, ...p(t.x, t.y), at: t.at ?? (t.atWord ? wordTime(v.vo, voSec, t.atWord) : VO_LEAD + 0.6) }));
+  const taps = v.screen.taps?.map((t) => ({ ...t, ...p(t.x, t.y), at: t.at ?? (t.atWord ? wordTime(v.vo, voSec, marks, t.atWord) : VO_LEAD + 0.6) }));
   const tg = anno?.target;
   const target = tg ? { ...p(tg.x, tg.y), w: tg.w * k, h: tg.h * k, r: tg.r !== undefined ? tg.r * k : undefined } : undefined;
   const then = v.screen.then && { ...v.screen.then, at: wt(v.screen.then, 1.5) };
   return { ...v, screen: { ...v.screen, taps, then }, anno: anno ? { ...anno, target } : undefined };
 };
 
-const toLS = (spec: HelpVideoSpec, v0: VideoSlide, i: number, voSec: number): LSSlide => {
-  const v = toScreenSpace(v0, voSec);
+const toLS = (spec: HelpVideoSpec, v0: VideoSlide, i: number, voSec: number, marks: Marks): LSSlide => {
+  const v = toScreenSpace(v0, voSec, marks);
   const base = { code: v.code, row: 0, name: `${i + 1} ${v.code}`, title: v.title, accent: v.accent, peek: v.peek, sec: 0 };
   const times = v.times ?? (v.items ?? []).map((_, k) => 0.6 + 0.6 * k);
-  const at = (w: string | undefined, fallback: number) => (w ? wordTime(v.vo, voSec, w) : fallback);
+  const at = (w: string | undefined, fallback: number) => (w ? wordTime(v.vo, voSec, marks, w) : fallback);
   const itemTimes = (v.items ?? []).map((it, k) => at(it.atWord, v.code === "C4" ? 0.6 + 1.0 * k : 0.6 + 0.6 * k));
   switch (v.code) {
     case "E1": case "E2": case "E3": case "E4": case "E5": case "E6": case "E7":
@@ -106,7 +113,7 @@ export const buildHelpVideo = (spec: HelpVideoSpec) => {
     const duration = fr(sec);
     t += duration;
     const file = vo?.files[i];
-    return { ...toLS(spec, v, i, voSec), sec, from, duration, vo: file ? { src: file, frame: from + fr(VO_LEAD) } : undefined };
+    return { ...toLS(spec, v, i, voSec, vo?.marks?.[i]), sec, from, duration, vo: file ? { src: file, frame: from + fr(VO_LEAD) } : undefined };
   });
   const VOL = { pop: 0.26, focus: 0.3, success: 0.3, tap: 0.4, zoom: 0.18 } as const;
   const motionCueList: Cue[] = slides.flatMap((s) => (s.kind === "motion" ? (motionScene(s.code)?.cues ?? []).map(([at, r]) => ({ src: `sfx/packs/soft/${r}.wav`, frame: s.from + at, volume: VOL[r] })) : []));

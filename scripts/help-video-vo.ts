@@ -1,7 +1,8 @@
 // Voiceover for a help video.
 //   npx tsx scripts/help-video-vo.ts <videoId>
 // For each slide with a `vo` line:
-//   • if public/vo/<videoId>/NN.(mp3|wav|m4a) already exists (e.g. exported from ElevenLabs), it is used as is;
+//   • if public/vo/<videoId>/NN.(mp3|wav|m4a) already exists (from scripts/elevenlabs-vo.ts, or exported by hand), it is used as is,
+//     with its word timings (NN.align.json) when ElevenLabs made it;
 //   • otherwise, if a Piper model is set for the video's language, a placeholder voice is generated with Piper
 //     (PIPER_BIN, default "piper"). English: PIPER_MODEL. Hindi: PIPER_MODEL_HI (+ PIPER_ESPEAK_DATA_HI), e.g. the
 //     hi_IN-priyamvada-medium voice from the sherpa-onnx "tts-models" GitHub release (see storyboards/README.md).
@@ -28,9 +29,10 @@ const dur = (f: string) => Number(execFileSync("ffprobe", ["-v", "error", "-show
 
 const files: (string | null)[] = [];
 const durations: (number | null)[] = [];
+const marks: ([number, number][] | null)[] = [];
 spec.slides.forEach((s, i) => {
   const nn = String(i + 1).padStart(2, "0");
-  if (!s.vo) { files.push(null); durations.push(null); return; }
+  if (!s.vo) { files.push(null); durations.push(null); marks.push(null); return; }
   const existing = ["mp3", "wav", "m4a"].map((e) => join(dir, `${nn}.${e}`)).find(existsSync);
   let file = existing;
   if (!file) {
@@ -40,12 +42,16 @@ spec.slides.forEach((s, i) => {
     execFileSync(piper, ["--model", model, ...(espeakData ? ["--espeak_data", espeakData] : []), "--output_file", file, "--length_scale", process.env[`PIPER_LENGTH_SCALE_${LANG}`] ?? (spec.lang === "hi" ? "0.85" : "0.96"), "--sentence_silence", "0.15"], { input: respell(s.vo) });
   }
   files.push(`vo/${spec.id}/${file.split("/").pop()}`);
+  // word timings from ElevenLabs, only if they belong to this exact line
+  const al = join(dir, `${nn}.align.json`);
+  const a = existsSync(al) && file.endsWith(".mp3") ? JSON.parse(readFileSync(al, "utf8")) : null;
+  marks.push(a && a.text === s.vo ? a.marks : null);
   durations.push(Math.round(dur(file) * 100) / 100);
   console.log(`${nn}  ${durations[i]!.toFixed(2)}s  ${s.vo}`);
 });
 
 const p = join(root, "src/videos/vo-durations.json");
 const all = existsSync(p) ? JSON.parse(readFileSync(p, "utf8")) : {};
-all[spec.id] = { files, durations };
+all[spec.id] = marks.some(Boolean) ? { files, durations, marks } : { files, durations };
 writeFileSync(p, JSON.stringify(all, null, 1) + "\n");
 console.log(`wrote ${p}`);

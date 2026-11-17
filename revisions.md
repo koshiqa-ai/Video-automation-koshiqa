@@ -14,6 +14,31 @@ Entry format:
 
 ---
 
+## 2026-11-17 · System · ElevenLabs voice from the script
+- **Asked:** "we have eleven labs where we need to generate voice from script. so connect eleven labs", and update the skill.
+- **Changed:**
+  - `scripts/elevenlabs-vo.ts` (`npm run voice -- <id>`) sends each slide's `vo` line to ElevenLabs `text-to-speech/{voice}/with-timestamps`, using the lines before and after as context. It writes:
+    - `public/vo/<id>/NN.mp3`
+    - `NN.align.json` (word start times)
+    - `elevenlabs.json` (a hash per line)
+  - It then runs `help-video-vo.ts`.
+  - Only changed lines are generated, and hand-made recordings are kept. Flags: `--only`, `--force`, `--dry-run`.
+  - `src/data/voices.json` holds the voice and settings per language. `voiceId` is still empty and needs the team's voice IDs.
+  - Specs can override the voice with `voice: {…}` (`types.ts`).
+  - `help-video-vo.ts` stores word timings in `vo-durations.json`, and `build.ts` `wordTime` uses them, so `atWord` is exact; otherwise it estimates as before.
+  - `.gitignore` adds `.env`.
+  - Docs: `CLAUDE.md` and `design.md` 1.5 (§8 Voice).
+  - ElevenLabs connector suggested in chat. It is for ElevenAgents voice agents, so text-to-speech through it is unconfirmed.
+- **Why / decisions:**
+  - Per-slide generation removes the split step, and with it the mis-cuts seen on the Hindi take.
+  - Word timings replace the position-based estimate.
+  - The cloud sandbox can't reach api.elevenlabs.io (proxy 403), so the script runs on a Mac, or here once an admin allows the domain and the key is set as an environment variable.
+- **Tested:**
+  - Against a local fake ElevenLabs server on HV-RestCard-HI: 13 lines sent with the right settings and context, mp3 and timings written, durations measured.
+  - A re-run skips everything, and the hand-made recording is kept.
+  - The slide-3 ring lands at the exact word time (1.63 s).
+  - The real Hindi files were restored afterwards; no video output changed.
+
 ## 2026-11-14 · HV-RestCard (+ HI) · Clean screenshot edges
 - **Asked:** "why is this place looking different and blurry", with the calendar at 0:15 circled under the status bar.
 - **Changed** (`scripts/prep-rest-card-screens.py`; `public/screens/HV-RestCard/01–05, 02b` regenerated):

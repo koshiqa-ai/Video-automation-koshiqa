@@ -10,7 +10,11 @@
 ## Making a help video
 Three video types (`type` in the spec; design.md §11, which also says how to pick the type from a script): **walkthrough** (how to do a task, from a recording; example `src/videos/start-steps.ts`), **faq** (5–6 quick Q&As in one video: layouts Q, A, S2; example `src/videos/steps-faq.ts`), **explainer** (a feature's what and why: concept scenes C1–C4 and motion scenes E1–E14 from `src/explainer/`; example `src/videos/how-steps-sync.ts`).
 
-Flow: screen recording → storyboard HTML (reviewed) → video spec → render (see `storyboards/README.md`). Voiceover comes from the team as files in `public/vo/<id>/` (one per slide, or one full file split with `scripts/vo-split.py`); Piper is only a placeholder for drafts.
+Flow: screen recording → storyboard HTML (reviewed) → video spec → render (see `storyboards/README.md`).
+
+Voiceover: generate it from the spec's `vo` lines with ElevenLabs. `npm run voice -- <id>` (`scripts/elevenlabs-vo.ts`) writes `public/vo/<id>/NN.mp3`, one per slide, plus word timings, so `atWord` lands on the exact word. It then measures durations. Voices and settings per language live in `src/data/voices.json`, and a spec can override them with `voice: {…}`. The key comes from `ELEVENLABS_API_KEY` or a git-ignored `.env`; never commit it or paste it into chat. Only changed lines are regenerated; `--only 05,07` re-takes single lines, `--force` re-takes all, `--dry-run` previews. Recordings the team made by hand (one per slide, or one full file split with `scripts/vo-split.py`) are kept. Piper is only a placeholder for drafts.
+
+**ElevenLabs from the cloud sandbox:** its network blocks api.elevenlabs.io (proxy 403). Run `npm run voice` on a Mac, or have an org admin allow `api.elevenlabs.io` and set `ELEVENLABS_API_KEY` as an environment variable of this cloud environment. Until then, the team exports from ElevenLabs by hand.
 
 Videos are specs in `src/videos/<name>.ts` (a list of layout codes, see `src/videos/types.ts`), registered in `src/videos/index.ts`; `src/HelpVideo.tsx` renders them. Screens and tap targets are in `src/videos/SCREENS.md`. Example: `src/videos/join-contest.ts`. The `koshiqa-help-video` skill walks through the full process.
 

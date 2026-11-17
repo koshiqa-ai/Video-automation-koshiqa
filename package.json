@@ -10,6 +10,7 @@
     "sfx": "python3 scripts/make-sfx.py",
     "render:layouts": "remotion render LayoutSystem out/LayoutSystem.mp4",
     "torty": "python3 scripts/extract-torty-flat.py && python3 scripts/make-torty-peek-flat.py",
+    "voice": "tsx scripts/elevenlabs-vo.ts",
     "vo": "tsx scripts/help-video-vo.ts",
     "qa": "tsx scripts/help-video-qa.ts"
   },

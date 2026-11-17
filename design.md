@@ -275,6 +275,7 @@ These are the only annotations, with at most one per moment.
 
 ## 8. Audio
 - **SFX:** the Soft UI pack (`public/sfx/packs/soft`), at the levels in the YAML block. The voiceover is always the loudest track, and no SFX lands on a stressed word.
+- **Voice:** ElevenLabs, generated per slide from the spec's `vo` lines (`npm run voice`). Voices and settings per language are in `src/data/voices.json`; keep one voice per language across all videos. Hinglish lines are sent as written (no respelling).
 - **Music:** one soft bed under every help video, always running at low volume (levels in the YAML block). It dips further while the voiceover plays and comes back up in pauses, and fades in and out with the video. The track is synthesised by `scripts/make-music.py` (no samples, so no copyright); re-run it with another `--seed`, `--bpm` or chords for a variation. A spec can choose another track with `music: "music/<file>.wav"` (royalty-free with a licence that allows commercial use, kept in `public/music/` with its licence) or turn it off with `music: null`.
 
 ## 9. Don'ts
@@ -379,6 +380,7 @@ Decide before writing anything. One input can produce more than one video: split
 ## Changelog
 | Version | Date | Change | Why |
 |---|---|---|---|
+| 1.5 | 2026-11-17 | Voice: ElevenLabs generated per slide from the script, with word timings driving `atWord` (§8, `src/data/voices.json`) | Team uses ElevenLabs for all voiceover |
 | 1.4.2 | 2026-11-14 | Don't: recorder overlays and mid-scroll slivers on screenshots | Reviewer spotted a grey smear and a cut strip on the Rest Card calendar |
 | 1.4.1 | 2026-11-14 | Hindi versions: Hinglish rules, on-screen Hindi, E14 `days` (§11) | First Hindi explainer (Rest Card) |
 | 1.4 | 2026-11-13 | Background music: a soft synthesised bed under every video, ducked under the voice (§8, `audio.music`). Chat mockup seen from Koshiqa's side (member left, Koshiqa right; emoji-only replies drawn large) | Rest Card review |

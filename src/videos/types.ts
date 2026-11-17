@@ -58,6 +58,8 @@ export type HelpVideoSpec = {
   /** step labels shared by T1 and every T2 (2–3 words each) */
   steps?: string[];
   slides: VideoSlide[];
+  /** ElevenLabs voice overrides for this video (fields of src/data/voices.json), e.g. { voiceId: "…", speed: 1.05 } */
+  voice?: { voiceId?: string; model?: string; languageCode?: string; stability?: number; similarity?: number; style?: number; speed?: number; speakerBoost?: boolean; stitch?: boolean };
   /** background music under the whole video (design.md §8); default the house bed, null = none */
   music?: string | null;
 };
