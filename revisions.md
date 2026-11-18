@@ -14,6 +14,11 @@ Entry format:
 
 ---
 
+## 2026-11-18 · System · Project context file
+- **Asked:** a file that sums up everything, to upload as context when setting up a project with one thread per video.
+- **Changed:** new `PROJECT-CONTEXT.md` (what the project is, repo + skill, video types, process, standing rules, voice rules, status and open questions per video, suggested threads).
+- **Output:** no video change. Keep `PROJECT-CONTEXT.md` up to date when a video's status or the chosen voice changes.
+
 ## 2026-11-17 · Voice comparison: Mona, Riya Rao, Tara
 - **Asked:** the team doesn't like Monika Sogam. Make a sample video with three ElevenLabs voiceovers they generated, each after a 2 s black card "Option 1/2/3": Mona first, Riya Rao second, Tara third.
 - **Changed:**
