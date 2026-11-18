@@ -14,6 +14,18 @@ Entry format:
 
 ---
 
+## 2026-11-18 · HV-RestCard · Swati's "few fixes here" (0:09)
+- **Asked:** the team's review of Video 1, 15 comments from Swati and 14 from Mrinal (listed in chat). First, the annotated frame at 0:09: arrows at the top strip and the left edge of the calendar.
+- **Found:**
+  - The review was of an export from before the 2026-11-14 screen clean-up. That clean-up already fixed the top strip and the dark smear.
+  - A grey shade down the left edge was still there: the recorder tab's soft drop shadow, which dims the page and card 9 (225 → 255 by x ≈ 120, fading by y ≈ 400).
+- **Changed:**
+  - `scripts/prep-rest-card-screens.py`: new `de_shadow` measures the shadow on plain page pixels against each row's page white, smooths it and divides it out. It is applied to 02 (and so 02b).
+  - `design.md` 1.5.1: a Don't line.
+- **Output:**
+  - Still checked at 0:09: the page is clean white to the edge.
+  - Full re-render waits for the rest of the review changes.
+
 ## 2026-11-18 · System · Project context file
 - **Asked:** a file that sums up everything, to upload as context when setting up a project with one thread per video.
 - **Changed:** new `PROJECT-CONTEXT.md` (what the project is, repo + skill, video types, process, standing rules, voice rules, status and open questions per video, suggested threads).

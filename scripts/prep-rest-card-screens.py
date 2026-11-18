@@ -33,10 +33,24 @@ def clean_scroll_top(im, y0=60, y1=100, src=110):
     sliver and the next cards), so the screen starts on a clean white page under our 9:41 bar."""
     a=np.array(im.convert('RGB')); a[y0:y1+1]=a[src]
     return Image.fromarray(a)
+def de_shadow(im, x1=240, y0=40, y1=600, sigma=18):
+    """the recorder's floating tab casts a soft drop shadow (~120 px right, fading by y≈400) that stays after the
+    tab is removed: a grey shade down the left edge that also dims card 9. Measure it on the plain page (neutral,
+    bright pixels) against each row's own page white, smooth it, and divide it back out (cards under it included)."""
+    a=np.array(im.convert('RGB')).astype(float); L=a.mean(2)
+    ref=np.percentile(L[:, 300:], 98, axis=1)[:, None]                    # the row's page white, far from the tab
+    neutral=(a.max(2)-a.min(2) < 12) & (L > 200)
+    region=np.zeros(L.shape,bool); region[y0:y1, :x1]=True
+    m=(neutral & region).astype(float); k=np.where(m>0, np.clip(L/ref,0.5,1.0), 0)
+    num=cv2.GaussianBlur(k*m,(0,0),sigma); den=cv2.GaussianBlur(m,(0,0),sigma)
+    ks=np.where(den>1e-3, num/np.maximum(den,1e-3), 1.0)
+    w=cv2.GaussianBlur(region.astype(float),(0,0),sigma)                   # fade the correction out at the edges
+    ks=1-(1-np.clip(ks,0.5,1.0))*w
+    return Image.fromarray(np.clip(a/ks[...,None],0,255).astype(np.uint8))
 frames={'01':'f_001','02':'f_005','03':'f_006','04':'f_007','05':'f_012'}
 for nn,f in frames.items():
     im=Image.open(f'{S}/out/frames/{f}.png')
-    if nn=='02': im=clean_scroll_top(no_handle_plain(im, 240, 240))   # page background is the same all the way down
+    if nn=='02': im=de_shadow(clean_scroll_top(no_handle_plain(im, 240, 240)))   # page background is plain white
     elif nn=='03':                                                    # soft beige gradient; the 'P' starts at x 37
         im=no_handle_plain(im, 80, 232)
         # the back arrow's tip sat under the tab: finish its line and both 45° strokes to the tip (x 32.5, y 116.5)
