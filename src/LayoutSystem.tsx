@@ -117,26 +117,50 @@ const PhoneSlide: React.FC<{ s: LSSlide & { duration: number } }> = ({ s }) => {
   const torty = !!s.peek;
   const layout = s.layout!;
   const g = phoneGeo(layout, torty);
-  const rise = spring({ frame: f, fps, config: { damping: 18, stiffness: 120 } });
+  // title-first staging: the headline alone (large, centred) for ~1.1 s, then it moves up and the phone rises
+  const stage = s.titleFirst ? 33 : 0;
+  const rise = spring({ frame: f - stage, fps, config: { damping: 18, stiffness: 120 } });
   const hTop = s.kind === "timeline" ? null : headlineTop(layout, torty);
   const a = s.anno;
   const t = a?.target;
+  const sc = isShot(s.screen) ? s.screen : undefined;
+  // keep it alive after the entrance: a slow float of the phone (design.md §8, ambient motion)
+  const float = Math.sin((f - stage) / 38) * 5;
+  // camera push-in: towards the zoom point horizontally, the phone's top edge fixed so the headline stays clear
+  const z = s.zoom ? 1 + (s.zoom.scale - 1) * spring({ frame: f - fr(s.zoom.at), fps, config: { damping: 20, stiffness: 70 } }) : 1;
+  const zc = s.zoom ? toVideo(g, s.zoom.x, s.zoom.y) : { x: 540, y: 0 };
+  const thenAt = sc?.then?.at ?? 0;
+  const confettiAt = sc?.then?.confetti ? thenAt + 0.15 : null;
+  const burst = t ? toVideo(g, t.x, t.y) : { x: 540, y: g.y + 600 };
+  const move = s.titleFirst ? interpolate(f, [24, 40], [0, 1], { ...clamp, easing: Easing.inOut(Easing.cubic) }) : 1;
+  const midTop = 840;
+  // how much bigger the headline is while alone in the middle: up to 1.3×, but never wider than the frame
+  const big = Math.min(1.3, 1000 / ((s.title?.length ?? 10) * 0.54 * LS.headline.size)) - 1;
   return (
     <AbsoluteFill>
       <Backdrop />
-      <Phone scale={g.s} frame={theme.phoneFrame} x={g.x} y={g.y + (1 - rise) * 60} shadow="0 40px 90px rgba(0,50,35,0.38)">
-        {isChat(s.screen) ? <ChatView chat={s.screen.chat} /> : isShot(s.screen)
-          ? <ShotView sc={s.screen} cursorSize={a?.kind === "hand" ? 0 : 36} rippleScale={g.s > 2 ? 0.8 : 0.9} />
-          : <AppScreen scene={{ screen: s.screen, duration: s.duration } as unknown as TimedLayoutScene} cursorSize={a?.kind === "hand" ? 0 : 36} rippleScale={g.s > 2 ? 0.8 : 0.9} />}
-        {a?.kind === "spotlight" && t && <Spotlight t={t} at={a.at ?? 0.6} />}
-      </Phone>
-      {a?.kind === "ring" && t && <FocusRing fc={{ ...t, at: a.at ?? 0.6 }} centre={toVideo(g, t.x, t.y)} scale={g.s} />}
-      {a?.kind === "tooltip" && t && <DarkTooltip x={toVideo(g, t.x, t.y).x} y={toVideo(g, t.x, t.y - t.h / 2).y - 14} label={a.label!} at={a.at ?? 0.6} />}
-      {a?.kind === "hand" && t && <TortyHand tip={toVideo(g, t.x, t.y)} tapAt={s.screen!.taps![0].at} />}
+      <AbsoluteFill style={{ transform: `scale(${z})`, transformOrigin: `${zc.x}px ${g.y}px`, opacity: s.titleFirst ? interpolate(f, [stage - 4, stage + 6], [0, 1], clamp) : 1 }}>
+        <Phone scale={g.s} frame={theme.phoneFrame} x={g.x} y={g.y + (1 - rise) * 60 + float * rise} shadow="0 40px 90px rgba(0,50,35,0.38)">
+          {isChat(s.screen) ? <ChatView chat={s.screen.chat} /> : isShot(s.screen)
+            ? <ShotView sc={s.screen} cursorSize={a?.kind === "hand" ? 0 : 36} rippleScale={g.s > 2 ? 0.8 : 0.9} />
+            : <AppScreen scene={{ screen: s.screen, duration: s.duration } as unknown as TimedLayoutScene} cursorSize={a?.kind === "hand" ? 0 : 36} rippleScale={g.s > 2 ? 0.8 : 0.9} />}
+          {a?.kind === "spotlight" && t && <Spotlight t={t} at={a.at ?? 0.6} />}
+        </Phone>
+        <div style={{ position: "absolute", inset: 0, translate: `0px ${float * rise}px` }}>
+          {a?.kind === "ring" && t && <FocusRing fc={{ ...t, at: a.at ?? 0.6 }} centre={toVideo(g, t.x, t.y)} scale={g.s} />}
+          {a?.kind === "tooltip" && t && <DarkTooltip x={toVideo(g, t.x, t.y).x} y={toVideo(g, t.x, t.y - t.h / 2).y - 14} label={a.label!} at={a.at ?? 0.6} />}
+          {a?.kind === "hand" && t && <TortyHand tip={toVideo(g, t.x, t.y)} tapAt={s.screen!.taps![0].at} />}
+          {confettiAt !== null && <Confetti at={confettiAt} origin={burst} />}
+        </div>
+      </AbsoluteFill>
       {a?.kind === "success" && <Confetti at={a.at ?? 0.9} origin={{ x: 540, y: g.y + 300 }} />}
       {s.timeline && <StepTimeline labels={s.timeline.labels} current={s.timeline.current} />}
-      {hTop !== null && s.title && <CentredHeadline title={s.title} accent={s.accent} top={hTop} />}
-      {s.peek && <TortyPeek expr={s.peek.expr} side={s.peek.side} />}
+      {hTop !== null && s.title && (
+        <div style={{ position: "absolute", inset: 0, translate: `0px ${(1 - move) * (midTop - hTop)}px`, scale: String(1 + Math.max(0, big) * (1 - move)), transformOrigin: `540px ${hTop + 60}px` }}>
+          <CentredHeadline title={s.title} accent={s.accent} top={hTop} />
+        </div>
+      )}
+      {s.peek && <TortyPeek expr={s.peek.expr} side={s.peek.side} delay={6 + stage} />}
       <CodeTag s={s} />
     </AbsoluteFill>
   );

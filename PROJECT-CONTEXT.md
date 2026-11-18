@@ -30,12 +30,18 @@ Script + screen recording → classify type → storyboard HTML (team reviews) �
 - **Placeholder:** Piper is only for drafts; always say when a render uses it.
 
 ## Videos so far
-1. **Video 1 · "What is a Rest Card? Why did we build it?"** (explainer)
-   - English: `HV-RestCard`, `src/videos/rest-card.ts`, ~99 s, placeholder voice.
-   - Hindi: `HV-RestCard-HI`, `rest-card-hi.ts`, ~138 s, team's ElevenLabs Hindi recording.
-   - Includes the member-message chat screen (her messages on the left, Koshiqa's 💚 reply on the right) and the day-22 calendar going from 4,200 to 10,000.
-   - **The team has changes to make to this video.**
-   - **Open questions:** the member's real words and consent for the chat; does a 3,500-step day still get lifted for the contest; what makes a day "eligible"; the club line shown on screen; a Koshiqa logo end card (no layout for it yet); length is over the 75 s guideline.
+1. **Video 1 · "What is a Rest Card? Why did we build it?"** (explainer, v2 after the 2026-11-18 review)
+   - English: `HV-RestCard`, `src/videos/rest-card.ts`, 78 s, 10 slides, placeholder voice.
+   - Hindi: `HV-RestCard-HI`, `rest-card-hi.ts`, 111 s, ElevenLabs Hindi clips plus 2 placeholder lines.
+   - Now only: why you need it → why we built it (the member-message chat) → what it does (lift to 10K, C5 bar 4,200 + 5,800 = 10,000).
+   - The do's & don'ts part (deficit, club, contest vs streak, streak minimum, streak broken) moved out (`MOVED_TO_DOS_AND_DONTS`) for a future video.
+   - **Open questions:**
+     - Voice choice.
+     - Heart-hands Torty art.
+     - A real green 10K+ calendar screenshot (the current one is illustrative).
+     - Approval of the opener line.
+     - Whether the "sustainable, not stressful" ending stays.
+     - The member's real words and consent.
 2. **Video 2 · "When should you use your Rest Card?"** (explainer)
    - `HV-RestCardWhen`, `rest-card-when.ts`, 63 s draft, placeholder voice.
    - Objective: when to use the card, when to save it, and the current limit on planning rest days.

@@ -8,7 +8,7 @@ export type { Screen };
 export type LayoutCode =
   | "S1" | "S2" | "S3" | "S4" | "F1" | "F2" | "P1" | "P2" | "T1" | "T2" // all video types
   | "Q" | "A" // FAQ: question card, answer card (an answer with a screen uses S2)
-  | "C1" | "C2" | "C3" | "C4" // explainer: big number, trio, compare, flow
+  | "C1" | "C2" | "C3" | "C4" | "C5" // explainer: big number, trio, compare, flow, bar build-up
   | MotionCode; // explainer motion scenes E1–E14 (design.md §11, src/explainer/motion-data.ts)
 
 export type VideoSlide = {
@@ -41,6 +41,12 @@ export type VideoSlide = {
   /** C2 (3 things) / C4 (3 stages): `items` with `icon` or `image`; `atWord` syncs each one to the voiceover */
   /** E1–E14: the scene's content (see MotionContent); anything left out uses the reel's example. E9/E13 also use `screen`. */
   motion?: { [K in MotionCode]: Partial<MotionContent[K]> }[MotionCode];
+  /** C5: one day's bar: `base` (actual steps) then `add` (bonus) stacked to the target; atWords = [base, bonus, sum] */
+  bar?: { label: string; base: number; add: number; baseLabel: string; addLabel: string; atWords?: [string, string, string] };
+  /** phone slides: camera push-in towards a point of the screenshot (image px), when `atWord` is spoken */
+  zoom?: { x: number; y: number; scale: number; at?: number; atWord?: string };
+  /** phone slides: headline alone first, then the phone (design.md §3, one focal point at a time) */
+  titleFirst?: boolean;
   /** C3: wrong way (left) vs right way (right); each card appears at its atWord */
   compare?: { left: { title: string; result: string; atWord?: string }; right: { title: string; result: string; atWord?: string } };
 };

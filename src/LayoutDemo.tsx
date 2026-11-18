@@ -53,9 +53,21 @@ const S = 1080 / 390;
 const fr = (s: number) => Math.round(s * 30);
 
 // ───────── Shared pieces ─────────
-export const Backdrop: React.FC = () => (
-  <AbsoluteFill style={{ background: `radial-gradient(120% 70% at 50% 35%, ${GREEN.bgGlow} 0%, ${GREEN.bg} 60%)` }} />
-);
+/** the green background, with slow ambient motion so no slide is ever fully still (design.md §8):
+ *  the glow drifts, and a few soft mint motes float up. Deterministic (frame-based), very low contrast. */
+const MOTES = Array.from({ length: 14 }, (_, i) => ({ x: (i * 397 + 113) % 1080, y0: (i * 701 + 260) % 1920, r: 6 + (i * 7) % 12, v: 0.55 + ((i * 13) % 7) / 10, ph: i * 1.7 }));
+export const Backdrop: React.FC = () => {
+  const f = useCurrentFrame();
+  const gx = 50 + Math.sin(f / 90) * 6, gy = 35 + Math.cos(f / 110) * 4;
+  return (
+    <AbsoluteFill style={{ background: `radial-gradient(120% 70% at ${gx}% ${gy}%, ${GREEN.bgGlow} 0%, ${GREEN.bg} 60%)`, overflow: "hidden" }}>
+      {MOTES.map((m, i) => {
+        const y = ((m.y0 - f * m.v) % 2100 + 2100) % 2100 - 90;
+        return <div key={i} style={{ position: "absolute", left: m.x + Math.sin(f / 40 + m.ph) * 18, top: y, width: m.r * 2, height: m.r * 2, borderRadius: m.r, background: "rgba(194,238,225,0.16)" }} />;
+      })}
+    </AbsoluteFill>
+  );
+};
 
 const Pill: React.FC<{ children: React.ReactNode; delay?: number; center?: boolean }> = ({ children, delay = 0, center }) => {
   const f = useCurrentFrame();

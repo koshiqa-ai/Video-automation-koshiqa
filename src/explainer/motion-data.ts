@@ -39,14 +39,14 @@ export type MotionContent = {
   E4: { first: string; next: string };
   E5: { pill: string; values: number[]; goal: number; goalLabel: string; axis: string; bestLabel: string; days?: string[] }; // 7 values
   E6: { title: string; items: string[] }; // 3 items
-  E7: { line1: string; line2: string; box?: [number, number] }; // box = word range of line2 (default: all of it)
+  E7: { line1: string; line2: string; box?: [number, number]; icon?: string }; // box = word range of line2 (default: all of it); icon = a line icon in a cream circle above the text (fills the space, design.md §11)
   E8: { title: string; accent?: string; barLabel: string; fromHour?: number; hours?: number };
   E9: { caption: string }; // over the slide's `screen`
   E10: { title: string; accent?: string; from: number; to: number; fromLabel: string; toLabel: string; footer: string }; // to < 100
   E11: { title: string; accent?: string; tiles: { icon: string; text: string }[] }; // 2–4 tiles
   E12: { title: string; accent?: string; items: string[] }; // 2–4 items
   E13: { cards: { icon: string; text: string }[] }; // 3 cards around the slide's `screen`
-  E14: { title: string; accent?: string; line: string; filled?: number; days?: string[] }; // filled = days lit (0–7); days = 7 labels (default M T W T F S S)
+  E14: { title: string; accent?: string; line: string; filled?: number; days?: string[]; heights?: number[]; lines?: string[]; linesAt?: number[]; linesAtWords?: string[] }; // filled = days lit (0–7); days = 7 labels (default M T W T F S S); heights = 7 relative hump heights (0.3–1.4, default all 1); lines = the headline split into lines, each shown at linesAt (seconds) or linesAtWords (spoken words); line "" = none
 };
 export type MotionCode = keyof MotionContent;
 export const MOTION_DEFAULTS: { [K in MotionCode]: MotionContent[K] } = {

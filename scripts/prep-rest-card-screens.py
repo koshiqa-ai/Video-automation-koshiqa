@@ -1,3 +1,4 @@
+import os
 # One-off prep for HV-RestCard screenshots (kept for reproducibility): paints out the recorder's side tab,
 # blurs the member name in Torty's greeting, and builds 02b (day 22 after the Rest Card) from the team's screenshot.
 # Inputs: frames from scripts/recording-frames.py on IMG_7237.MP4 + the team's calendar screenshot (paths below).
@@ -59,6 +60,9 @@ for nn,f in frames.items():
         for (x0,y0),(x1,y1) in [((32.5,116.5),(40,116.5)),((32.5,116.5),(41,108)),((32.5,116.5),(41.5,125.5))]:
             cv2.line(a,P(x0,y0),P(x1,y1),col,2,cv2.LINE_AA,sh)
         im=Image.fromarray(cv2.cvtColor(a,cv2.COLOR_BGR2RGB))
+        # review (Swati, 0:42): the third Rest Card is cut off by the screen edge, so hide it: fill x >= 510,
+        # y 328–540 row by row with the page between the 2nd and 3rd cards (x 482–504)
+        a=np.array(im).astype(float); a[328:541,510:]=np.median(a[328:541,482:505],axis=1)[:,None,:]; im=Image.fromarray(a.astype(np.uint8))
     else: im=no_handle(im)
     if nn=='01':  # blur the member's first name in Torty's greeting
         r=(262,389,326,417); reg=im.crop(r).filter(ImageFilter.GaussianBlur(7)); im.paste(reg,r[:2])
@@ -80,3 +84,6 @@ reg=base[oy:oy+ca.shape[0], ox:ox+ca.shape[1]]
 base[oy:oy+ca.shape[0], ox:ox+ca.shape[1]]=reg*(1-mask)+ca*mask
 Image.fromarray(base.astype(np.uint8)).save(f'{OUT}/02b.png')
 print('ok')
+# Video 1 review (Mrinal): realistic 10K+ days (green) instead of every day at 15,000
+import subprocess, sys
+subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), "green-calendar.py")], check=True)

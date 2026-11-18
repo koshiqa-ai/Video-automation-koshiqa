@@ -16,7 +16,7 @@ export type ShotScreen = {
   image: string; w: number; h: number;
   taps?: (Omit<Tap, "at"> & { at?: number; /** tap when this word is spoken */ atWord?: string })[];
   /** cross-fade to a second screenshot of the same size (e.g. the same screen after an action) */
-  then?: { image: string; at?: number; atWord?: string };
+  then?: { image: string; at?: number; atWord?: string; /** small confetti burst as the second image lands */ confetti?: boolean };
 };
 /** a chat-thread mockup (no real screen exists for it): messages pop in as they're spoken */
 export type ChatScreen = {
@@ -70,6 +70,8 @@ export const LS = {
   // explainer concept scenes (heading 104 px at headingTop; content centred in 0–1560, above the peek)
   concept: { headingTop: 300, headingSize: 104 },
   cNumber: { eyebrowTop: 500, valueTop: 600, valueSize: 320, unitSize: 120, labelTop: 1000, labelSize: 64 },
+  // C5 bar build-up: one bar (base + bonus) against a target line, labels to its right, the sum underneath
+  cBar: { barX: 250, barW: 220, baseY: 1190, topY: 640, labelX: 540, labelSize: 52, valueSize: 78, dayTop: 1215, sumTop: 1320, sumSize: 66 },
   cTrio: { top: 780, circle: 240, xs: [200, 540, 880], labelSize: 48 },
   cCompare: { top: 600, w: 450, h: 700, gap: 40 },
   cFlow: { ys: [460, 820, 1180], node: 200, labelSize: 48 },
@@ -102,7 +104,7 @@ export type LSSlide = {
     // FAQ videos
     | "question" | "answer"
     // explainer videos (concept scenes, no phone)
-    | "c-number" | "c-trio" | "c-compare" | "c-flow"
+    | "c-number" | "c-trio" | "c-compare" | "c-flow" | "c-bar"
     // explainer motion scenes E1–E14 (src/explainer)
     | "motion";
   layout?: PhoneLayout;
@@ -127,6 +129,12 @@ export type LSSlide = {
   /** C3 compare: left = the wrong way, right = the right way */
   compare?: { left: { title: string; result: string }; right: { title: string; result: string }; times: [number, number] };
   anno?: { kind: AnnoKind; target?: { x: number; y: number; w: number; h: number; r?: number }; label?: string; /** seconds into the slide (default 0.6; success 0.9) */ at?: number };
+  /** C5 bar build-up: a day's actual steps, then the bonus stacked on top to the target; times = [base, bonus, sum] */
+  bar?: { label: string; base: number; add: number; baseLabel: string; addLabel: string; times: [number, number, number] };
+  /** phone slides: camera push-in towards a point (screen coords) at `at` seconds; the phone's top edge stays put */
+  zoom?: { x: number; y: number; scale: number; at: number };
+  /** phone slides: the headline first, large and alone in the middle, then it moves up and the phone rises (one focal point at a time) */
+  titleFirst?: boolean;
   sec: number;
 };
 
@@ -224,6 +232,13 @@ export const cuesFor = (list: TimedSlide[]): Cue[] => {
       c.push({ src: `${pack}/success.wav`, frame: s.from + fr(s.compare.times[1]), volume: 0.22 });
     }
     if (s.kind === "c-number") c.push({ src: `${pack}/success.wav`, frame: s.from + fr(1.3), volume: 0.24 });
+    if (s.bar) {
+      c.push({ src: `${pack}/pop.wav`, frame: s.from + fr(s.bar.times[0]), volume: 0.24 });
+      c.push({ src: `${pack}/pop.wav`, frame: s.from + fr(s.bar.times[1]), volume: 0.26 });
+      c.push({ src: `${pack}/success.wav`, frame: s.from + fr(s.bar.times[2]), volume: 0.24 });
+    }
+    const then = s.screen && "then" in s.screen ? (s.screen as ShotScreen).then : undefined;
+    if (then?.confetti) c.push({ src: `${pack}/success.wav`, frame: s.from + fr((then.at ?? 1.5) + 0.15), volume: 0.26 });
     return c;
   });
 };

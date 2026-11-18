@@ -1,145 +1,118 @@
 {
-  "title": "Video 1 · What is a Rest Card? Why did we build it?",
+  "title": "Video 1 · What is a Rest Card? Why did we build it? (v2)",
   "type": "explainer",
-  "subtitle": "Draft · from the Rest Card script + recording IMG_7237 · 14 slides · ~99 s · soft music bed (placeholder voice)",
+  "subtitle": "v2 after the 2026-11-18 review · why you need it → why we built it → what it does · 10 slides · 78 s (placeholder voice)",
   "beats": [
     {
       "n": "card",
-      "section": "Hook",
+      "section": "Opening",
       "layout": "F1",
       "card": "What is a Rest Card?",
-      "vo": "",
+      "vo": "What is a Rest Card, and why did we build it? Here's how it can turn your lowest day into a 10,000-step day.",
+      "hold": 7,
       "flags": [
-        "<b>Silent opener</b> — the script has no line here, so the title holds for 3 s with no voice. If you'd like it spoken, record one line (e.g. “What is a Rest Card, and why did we build it?”) as file 01."
-      ],
-      "hold": 3
+        "<b>New opening line</b> (review: voice the title, say what they'll learn): “What is a Rest Card, and why did we build it? Here's how it can turn your lowest day into a 10,000-step day.” Drafted by Claude: please approve or rewrite."
+      ]
     },
     {
       "n": "#02",
-      "section": "Hook",
+      "section": "Why you need it",
       "layout": "S2",
-      "card": "Showing up daily",
+      "card": "Showing up every day",
       "vo": "You're showing up every day, building a habit and making progress.",
-      "image": "screens/HV-RestCard/01.png",
-      "hold": 4.7
+      "hold": 4.2,
+      "image": "01.png",
+      "flags": [
+        "<b>Calendar</b>: every day is now a realistic green 10K+ day (varied numbers) and the average reads 12,347. Built from the app's own cells: <b>illustrative</b>, replace with a real screenshot from a test account if you have one."
+      ]
     },
     {
       "n": "#03",
-      "section": "Hook",
+      "section": "Why you need it",
       "layout": "S2",
       "card": "Not every day's 10K",
       "vo": "But let's be honest. Not every day is going to be a 10,000-step day. And that's okay!",
-      "image": "screens/HV-RestCard/02.png",
+      "hold": 6.3,
+      "image": "02.png",
       "flags": [
-        "<b>Day 22</b> — 4,200 steps is a demo value on the recording; the lifted version (02b) is built from your day-22 screenshot."
-      ],
-      "hold": 6.4
+        "<b>Zoom</b> into day 22 as the voice says “honest”, then the ring at “Not every”."
+      ]
     },
     {
       "n": "card",
-      "section": "The story",
+      "section": "Why we built it",
       "layout": "E7",
-      "card": "Built with feedback",
-      "vo": "At Koshiqa, we build our product with feedback from members like you.",
-      "hold": 5.2
+      "card": "Built with feedback from members like you",
+      "vo": "Koshiqa is built with feedback from members like you.",
+      "hold": 3.9,
+      "flags": [
+        "<b>New line</b> (Mrinal): “Koshiqa is built with feedback from members like you.” Heart icon fills the space. Torty smiles (no heart-hands art yet)."
+      ]
     },
     {
       "n": "#05",
-      "section": "The story",
+      "section": "Why we built it",
       "layout": "S1",
-      "card": "A member's message (chat mockup: member left, Koshiqa right, 💚 reply)",
+      "card": "Chat: member's message",
       "vo": "One day, a woman from our community sent us a message that really stayed with us. She said she sees Koshiqa as her lifelong sustainable partner. But during her period days, she sometimes doesn't want to push herself to 10,000 steps. She wants to give her body some rest. And then she asked us something simple: \"Can we have some rest days in the contest?\" That got us thinking.",
+      "hold": 22.4,
       "image": "chat-mockup.png",
       "flags": [
-        "<b>Member's words</b> — the chat text is drafted from the voiceover, not her real message. Please send her actual words and confirm she's happy for them to be shown. Her name and photo are not shown."
-      ],
-      "hold": 22.4
+        "<b>Member's words</b>: still drafted from the voiceover. Needs her real message and consent."
+      ]
     },
     {
       "n": "#06",
-      "section": "Meet the Rest Card",
+      "section": "What it does",
       "layout": "S2",
-      "card": "Meet the Rest Card",
+      "card": "We built the Rest Card",
       "vo": "That's one of the reasons we built the Rest Card.",
-      "image": "screens/HV-RestCard/03.png",
-      "hold": 3.4
+      "hold": 5,
+      "image": "03.png",
+      "flags": [
+        "<b>One focal point</b>: “We built the Rest Card” appears alone first, then the phone rises. The cut-off third card is removed."
+      ]
     },
     {
       "n": "#07",
-      "section": "How it works",
+      "section": "What it does",
       "layout": "S2",
-      "card": "Lifted to 10K",
+      "card": "Lifts it to 10,000",
       "vo": "It finds your lowest eligible step day in the contest and automatically lifts it to 10,000 steps.",
-      "image": "screens/HV-RestCard/02.png",
+      "hold": 6.6,
+      "image": "02b.png",
       "flags": [
-        "<b>“Lowest eligible day”</b> — what makes a day eligible? The card screen says “Best used when your lowest day is under 7,500 steps”. The VO doesn't define it; fine as is unless you want a rule on screen."
-      ],
-      "hold": 6.8
+        "<b>Confetti</b> as day 22 lifts to 10,000. The day-22 cell now sits square in the grid with the real palm badge."
+      ]
     },
     {
       "n": "card",
-      "section": "How it works",
-      "layout": "C1",
-      "card": "Bonus steps",
+      "section": "What it does",
+      "layout": "C5",
+      "card": "Adds 5,800 steps",
       "vo": "Let's say your lowest day had 4,200 steps. Your Rest Card can add 5,800 steps, bringing that day up to 10,000.",
-      "hold": 8.8
-    },
-    {
-      "n": "#09",
-      "section": "How it works",
-      "layout": "S2",
-      "card": "Less deficit",
-      "vo": "That means more steps in your contest total, a lower deficit and potentially a better club placement!",
-      "image": "screens/HV-RestCard/05.png",
+      "hold": 10,
       "flags": [
-        "<b>Club line</b> — the screen says “You'll remain in the Urban Blackbuck club”, so “potentially a better club placement” doesn't show on this example."
-      ],
-      "hold": 6.3
+        "<b>New C5 layout</b>: 4,200 actual steps bar, the 5,800 Rest Card bonus stacked on top to 10,000, then “4,200 + 5,800 = 10,000”, held ~10 s."
+      ]
     },
     {
       "n": "card",
-      "section": "Limits",
-      "layout": "E7",
-      "card": "Counts for your contest",
-      "vo": "One important thing to remember: The Rest Card makes your day count as a 10,000-step day for your contest progress. But it doesn't save your daily streak.",
-      "hold": 9.1
-    },
-    {
-      "n": "card",
-      "section": "Limits",
-      "layout": "C1",
-      "card": "Streak minimum",
-      "vo": "You still need at least 4,000 actual steps in a day to maintain your streak.",
-      "hold": 5.1
-    },
-    {
-      "n": "card",
-      "section": "Limits",
-      "layout": "C3",
-      "card": "Streak check",
-      "vo": "If your streak has already broken, the Rest Card won't restore it.",
-      "flags": [
-        "<b>3,500-step day</b> — the streak breaks, but does the Rest Card still lift that day to 10,000 for the contest? The card currently says only that the streak can't be restored. Please confirm."
-      ],
-      "hold": 4.9
-    },
-    {
-      "n": "card",
-      "section": "Close",
+      "section": "Closing",
       "layout": "E14",
       "card": "Sustainable, not stressful",
       "vo": "Because we believe fitness should be sustainable, not stressful. Some days you push yourself. Some days you give your body a little rest.",
-      "hold": 8.5
+      "hold": 8.3,
+      "flags": [
+        "<b>Words with the voice</b>: “Sustainable,” then “not stressful” on a new line. Bars now vary (high and low days). Mrinal felt this point didn't fit the script: keep, rewrite or cut?"
+      ]
     },
     {
       "n": "card",
-      "section": "Close",
+      "section": "Closing",
       "layout": "F2",
       "card": "Every step of the way",
       "vo": "And we'll keep building Koshiqa with you, every step of the way.",
-      "flags": [
-        "<b>Logo end card</b> — the script asks for the Koshiqa logo at the end; design.md has no logo layout yet, so this ends on F2. I can add an end-logo card as a design-system change."
-      ],
       "hold": 4.4
     }
   ]

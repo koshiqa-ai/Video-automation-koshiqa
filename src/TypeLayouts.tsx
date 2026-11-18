@@ -219,6 +219,52 @@ const FlowSlide: React.FC<{ s: S }> = ({ s }) => {
 // spring without hooks-in-loop issues (springs are pure functions of the frame)
 const usePopSafe = (f: number, at: number) => (f < fr(at) ? 0 : spring({ frame: f - fr(at), fps: 30, config: { damping: 11, stiffness: 170 } }));
 
+// ───────── Explainer: C5 bar build-up (a day's actual steps + a bonus stacked to the target) ─────────
+const BarSlide: React.FC<{ s: S }> = ({ s }) => {
+  const f = useCurrentFrame();
+  const B = LS.cBar;
+  const b = s.bar!;
+  const total = b.base + b.add;
+  const k = (B.baseY - B.topY) / total;
+  const ease = { ...clamp, easing: Easing.out(Easing.cubic) };
+  const gBase = interpolate(f, [fr(b.times[0]), fr(b.times[0]) + 24], [0, 1], ease);
+  const gAdd = interpolate(f, [fr(b.times[1]), fr(b.times[1]) + 24], [0, 1], ease);
+  const hBase = b.base * k * gBase, hAdd = b.add * k * gAdd;
+  const yBaseTop = B.baseY - hBase, yAddTop = yBaseTop - hAdd;
+  const pSum = usePop(b.times[2]);
+  const pGoal = usePop(Math.max(0.3, b.times[0] - 0.2));
+  const fmt = (v: number) => Math.round(v).toLocaleString("en-US");
+  const label = (top: number, value: string, text: string, color: string, o: number) => (
+    <div style={{ position: "absolute", left: B.labelX, top: top - 70, opacity: o, translate: `${(1 - o) * 30}px 0px` }}>
+      <div style={{ fontFamily: "Poppins", fontWeight: 800, fontSize: B.valueSize, lineHeight: 1, color }}>{value}</div>
+      <div style={{ fontFamily: "Poppins", fontWeight: 600, fontSize: B.labelSize, lineHeight: 1.3, color: "rgba(255,255,255,0.86)" }}>{text}</div>
+    </div>
+  );
+  const shimmer = 0.5 + 0.5 * Math.sin(f / 9);                         // the bonus keeps breathing once it lands
+  return (
+    <AbsoluteFill>
+      <Backdrop />
+      {s.title && <CentredHeadline title={s.title} accent={s.accent} top={LS.concept.headingTop} size={LS.concept.headingSize} />}
+      {/* target line */}
+      <div style={{ position: "absolute", left: B.barX - 60, width: 1080 - B.barX - 30, top: B.topY - 3, height: 0, borderTop: "6px dashed rgba(255,255,255,0.55)", opacity: pGoal }} />
+      <div style={{ position: "absolute", left: B.barX - 60, top: B.topY - 66, fontFamily: "Poppins", fontWeight: 700, fontSize: 40, color: "rgba(255,255,255,0.8)", opacity: pGoal }}>{fmt(total)} steps</div>
+      {/* bar */}
+      <div style={{ position: "absolute", left: B.barX, width: B.barW, top: yBaseTop, height: hBase, background: "#fff", borderRadius: hAdd > 1 ? "0 0 22px 22px" : 22, boxShadow: "0 16px 40px rgba(0,50,35,0.3)" }} />
+      {hAdd > 1 && <div style={{ position: "absolute", left: B.barX, width: B.barW, top: yAddTop, height: hAdd, background: GREEN.mint, borderRadius: "22px 22px 0 0", boxShadow: `0 0 ${24 + 18 * shimmer}px rgba(194,238,225,${0.35 + 0.25 * shimmer})` }} />}
+      {/* labels */}
+      {label(B.baseY - (b.base * k) / 2 + 30, fmt(b.base * gBase), b.baseLabel, "#fff", gBase)}
+      {label(B.baseY - b.base * k - (b.add * k) / 2 + 30, `+${fmt(b.add * gAdd)}`, b.addLabel, GREEN.mint, gAdd)}
+      <div style={{ position: "absolute", left: B.barX - 40, width: B.barW + 80, top: B.dayTop, textAlign: "center", fontFamily: "Poppins", fontWeight: 700, fontSize: 52, color: "#fff", opacity: gBase }}>{b.label}</div>
+      {/* the sum, held on screen */}
+      <div style={{ position: "absolute", left: 0, right: 0, top: B.sumTop, display: "flex", justifyContent: "center", alignItems: "baseline", gap: 22, fontFamily: "Poppins", fontWeight: 800, fontSize: B.sumSize, color: "#fff", opacity: pSum, scale: String(0.85 + 0.15 * pSum) }}>
+        <span>{fmt(b.base)}</span><span style={{ color: GREEN.mint }}>+</span><span style={{ color: GREEN.mint }}>{fmt(b.add)}</span><span>=</span>
+        <span style={{ padding: "4px 22px", borderRadius: 18, background: GREEN.mint, color: GREEN.deep }}>{fmt(total)}</span>
+      </div>
+      {s.peek && <TortyPeek expr={s.peek.expr} side={s.peek.side} />}
+    </AbsoluteFill>
+  );
+};
+
 /** renders any slide: the walkthrough layouts plus the FAQ and explainer ones */
 export const AnySlideView: React.FC<{ s: S }> = ({ s }) => {
   switch (s.kind) {
@@ -228,6 +274,7 @@ export const AnySlideView: React.FC<{ s: S }> = ({ s }) => {
     case "c-trio": return <TrioSlide s={s} />;
     case "c-compare": return <CompareSlide s={s} />;
     case "c-flow": return <FlowSlide s={s} />;
+    case "c-bar": return <BarSlide s={s} />;
     case "motion": return <MotionScene code={s.motion!.code} m={s.motion!.m} peek={s.peek} screen={s.screen} />;
     default: return <LSSlideView s={s} />;
   }

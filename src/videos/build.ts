@@ -44,19 +44,29 @@ const toScreenSpace = (v: VideoSlide, voSec: number, marks: Marks): VideoSlide =
   const tg = anno?.target;
   const target = tg ? { ...p(tg.x, tg.y), w: tg.w * k, h: tg.h * k, r: tg.r !== undefined ? tg.r * k : undefined } : undefined;
   const then = v.screen.then && { ...v.screen.then, at: wt(v.screen.then, 1.5) };
-  return { ...v, screen: { ...v.screen, taps, then }, anno: anno ? { ...anno, target } : undefined };
+  const zoom = v.zoom && { ...v.zoom, ...p(v.zoom.x, v.zoom.y), at: wt(v.zoom, 0.8) };
+  return { ...v, zoom, screen: { ...v.screen, taps, then }, anno: anno ? { ...anno, target } : undefined };
 };
 
 const toLS = (spec: HelpVideoSpec, v0: VideoSlide, i: number, voSec: number, marks: Marks): LSSlide => {
   const v = toScreenSpace(v0, voSec, marks);
-  const base = { code: v.code, row: 0, name: `${i + 1} ${v.code}`, title: v.title, accent: v.accent, peek: v.peek, sec: 0 };
+  const base = { code: v.code, row: 0, name: `${i + 1} ${v.code}`, title: v.title, accent: v.accent, peek: v.peek, sec: 0,
+    ...(v.zoom ? { zoom: v.zoom as { x: number; y: number; scale: number; at: number } } : {}), ...(v.titleFirst ? { titleFirst: true } : {}) };
   const times = v.times ?? (v.items ?? []).map((it, k) => (it.atWord ? wordTime(v.vo, voSec, marks, it.atWord) : 0.6 + 0.6 * k)); // P1/P2/T1 rows land on their words too
   const at = (w: string | undefined, fallback: number) => (w ? wordTime(v.vo, voSec, marks, w) : fallback);
   const itemTimes = (v.items ?? []).map((it, k) => at(it.atWord, v.code === "C4" ? 0.6 + 1.0 * k : 0.6 + 0.6 * k));
   switch (v.code) {
     case "E1": case "E2": case "E3": case "E4": case "E5": case "E6": case "E7":
-    case "E8": case "E9": case "E10": case "E11": case "E12": case "E13": case "E14":
-      return { ...base, kind: "motion", screen: v.screen, motion: { code: v.code, m: v.motion as Record<string, unknown> | undefined } };
+    case "E8": case "E9": case "E10": case "E11": case "E12": case "E13": case "E14": {
+      // any `…AtWords` field in the content becomes `…At` (seconds), e.g. E14 linesAtWords → linesAt
+      const m = { ...(v.motion as Record<string, unknown> | undefined) };
+      for (const k of Object.keys(m)) if (k.endsWith("AtWords") && Array.isArray(m[k])) m[k.replace(/Words$/, "")] = (m[k] as string[]).map((w, j) => at(w, 0.6 + 0.8 * j));
+      return { ...base, kind: "motion", screen: v.screen, motion: { code: v.code, m } };
+    }
+    case "C5": {
+      const b = v.bar!; const w = b.atWords ?? ["", "", ""];
+      return { ...base, kind: "c-bar", bar: { label: b.label, base: b.base, add: b.add, baseLabel: b.baseLabel, addLabel: b.addLabel, times: [at(w[0] || undefined, 0.6), at(w[1] || undefined, 2.2), at(w[2] || undefined, 3.6)] } };
+    }
     case "Q": {
       const qs = spec.slides.filter((x) => x.code === "Q");
       return { ...base, kind: "question", q: { n: qs.indexOf(v0) + 1, total: qs.length } };

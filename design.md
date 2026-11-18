@@ -268,9 +268,12 @@ These are the only annotations, with at most one per moment.
 
 ## 7. Motion
 - **Slide change:** the new slide slides in 100 px from the right over 11 f. There are no other transition types.
-- **Phone:** rises 60 px on a spring when a slide starts. Torty's peek rises from below 6 f later and bobs gently (4 px).
+- **Phone:** rises 60 px on a spring when a slide starts, then keeps a slow float (±5 px, ~8 s cycle). Torty's peek rises from below 6 f later and bobs gently (4 px).
+- **Never fully still (ambient motion):** the background glow drifts and a few faint mint motes float up on every slide (`Backdrop`). Scenes keep a small idle motion after their entrance (E7 icon float, E14 bars breathing, C5 bonus glow). Keep it subtle: it supports the voice, never competes with it.
+- **One focal point at a time:** when a slide introduces a name and a screen, use `titleFirst` (the headline alone, centred and larger, then it moves up as the phone rises).
 - **Lists:** items pop in with the voiceover, 0.6 s apart by default.
-- **Close-ups:** use S3/S4 instead of a camera zoom.
+- **Close-ups:** use S3/S4 for a whole slide. To focus on one detail inside an S2 screen (e.g. one calendar day), use `zoom` (a camera push-in up to 1.6× towards that point, the phone's top edge fixed so the headline stays clear), timed to the word.
+- **Moments of success:** a small confetti burst when the "after" image lands (`then.confetti`), e.g. a day lifted to 10,000.
 - Exact springs and timings are in `motion` in the YAML block.
 
 ## 8. Audio
@@ -293,6 +296,12 @@ Each line here is a mistake from an earlier draft.
 - ❌ Video colours inside the phone UI, or fake third-party logos in mockups.
 - ❌ Videos over 45 s.
 - Don't leave recorder overlays or smears on a screenshot. Remove a floating tab or button by inpainting its exact shape, or by filling it from clean background rows; never fade one row into another across it, which drags the status bar down the edge. A frame grabbed mid-scroll must start on a clean page: no sliver of the row above under the 9:41 bar. Zoom into the top and left edge of every screen before rendering. The tab also casts a soft drop shadow (~120 px wide) that stays after the tab is removed: divide it out too (`de_shadow` in `scripts/prep-rest-card-screens.py`).
+- Don't write a headline that says something different from the voiceover. Use the voiceover's own words (shortened to fit), so viewers read and hear the same thing.
+- Don't make everything appear at once. Give each moment one focal point: the name, then the screen, then the detail.
+- Don't leave a slide static after its entrance; keep subtle ambient motion going.
+- Don't show unrealistic data. A calendar where every day is 15,000 isn't believable; show real-looking varied days (10K+ green), and keep summary figures (avg) consistent with them.
+- Don't leave a half-visible card or illustration cut off by the screen edge (e.g. the next card in a carousel): paint it out of the screenshot.
+- Don't use the same height for every bar or hump when the message is about real life; vary them.
 
 ## 10. Open items
 - [ ] Separate high-res Torty PNGs, about 1500 px tall. The sheet cuts are upscaled 4× and look a little soft (`torty-requests.md`).
@@ -342,6 +351,7 @@ Decide before writing anything. One input can produce more than one video: split
 - **C2, trio:** three cream circles (240 px) with line icons at x 200 / 540 / 880, y 780, labelled underneath (48 px, up to 3 words). Use it for three things to know, or three benefits.
 - **C3, compare:** two cards (450 × 700) from 600: the wrong way on the left (dark card with a red ✗), the right way on the right (cream card with a green ✓, appears second).
 - **C4, flow:** three nodes (200 px) stacked down the middle at 460 / 820 / 1180, joined by a track that fills as each step is spoken. Use it for how something moves from A to B to C.
+- **C5, bar build-up:** one bar for one day: the actual steps rise first (white), then the bonus stacks on top in mint up to a dashed target line, each with its value and label to the right; the day under the bar; then the sum written out underneath ("4,200 + 5,800 = 10,000", the total in a mint pill) and held. Use it whenever a number is made of a part plus a bonus. Spec: `bar: { label, base, add, baseLabel, addLabel, atWords: [base, bonus, sum] }`, `minSec` long enough to read the sum (≈ 10 s). Reference: `design/layouts/C5.png`.
 - Each concept item is timed to the word that names it (`atWord`).
 
 **Explainer motion kit (approved):** 14 animations (E1–E14) read from the team's reference video and rebuilt in Koshiqa style. Reel: `ExplainerMotionKit`; grid: `design/explainer-motion-kit-grid.png`; code: `src/explainer/`. In a spec: `{ code: "E5", motion: { … } }`; fields left out use the reel's example (`MOTION_DEFAULTS` in `src/explainer/motion-data.ts`).
@@ -364,7 +374,8 @@ Decide before writing anything. One input can produce more than one video: split
 | E13 | Floating glass cards around a phone | what a screen gives you | `cards` ×3 [{icon, text}] + slide `screen` | 3 cards, ≤3 words |
 | E14 | Underline into a day streak | daily habits, a week | `title`, `line`, `filled` (0–7), `days` (7 labels) | 7 days |
 
-- **Scene vs layout:** C1–C4 and E1–E14 are all explainer scenes. Pick by what the line says: one number → C1 or E1; three things → C2, E6, E11 or E12; wrong vs right → C3; A → B → C → C4; a loop → E2; a trend → E5; from X to Y → E10.
+- **Scene vs layout:** C1–C5 and E1–E14 are all explainer scenes. Pick by what the line says: one number → C1 or E1; a part plus a bonus (4,200 + 5,800) → C5; three things → C2, E6, E11 or E12; wrong vs right → C3; A → B → C → C4; a loop → E2; a trend → E5; from X to Y → E10.
+- **E7** can carry an `icon` (line icon in a cream circle above the text) to fill the space; each line is sized to fit on one line (≤ 104 px) and the boxed words are the key phrase. **E14** takes `heights` (some days high, some low: consistency isn't perfection) and `lines` + `linesAtWords` so the headline appears with the voice, one line at a time.
 - **Rhythm:** don't use the same scene twice in a row. Don't use more than 5 different scene types in one explainer, so it still feels like one video.
 - **Timing:** each E scene plays its own animation from the start of the slide (about 3–4.5 s; the slide is never shorter than that). C scenes sync to `atWord`.
 - **Not taken from the reference:** stock footage, the talking presenter, 3D/space shots, purple/pink colours, landscape framing.
@@ -380,6 +391,7 @@ Decide before writing anything. One input can produce more than one video: split
 ## Changelog
 | Version | Date | Change | Why |
 |---|---|---|---|
+| 1.6 | 2026-11-18 | C5 bar build-up; phone `zoom`, `titleFirst`, `then.confetti`; ambient motion on every slide; E7 icon + per-line sizing; E14 heights + timed lines; 6 Don'ts from the review | Video 1 review (Swati, Mrinal) |
 | 1.5.1 | 2026-11-18 | Don't: remove the recorder tab's drop shadow as well as the tab | Swati's review of Video 1, 0:09 |
 | 1.5 | 2026-11-17 | Voice: ElevenLabs generated per slide from the script, with word timings driving `atWord` (§8, `src/data/voices.json`) | Team uses ElevenLabs for all voiceover |
 | 1.4.2 | 2026-11-14 | Don't: recorder overlays and mid-scroll slivers on screenshots | Reviewer spotted a grey smear and a cut strip on the Rest Card calendar |

@@ -225,14 +225,24 @@ const Bracket: React.FC<SP<"E6">> = ({ m, peek }) => {
 
 // ───────── E7 · statement with highlight box ─────────
 const Statement: React.FC<SP<"E7">> = ({ m, peek }) => {
-  // one line each, sized to fit the longer line (the boxed line gets a little extra room)
-  const size = Math.min(88, Math.floor(900 / (0.6 * Math.max(m.line1.length, m.line2.length + 2))));
+  const f = useCurrentFrame();
+  // each line on one line, as large as it fits (≤ 104 px); line 2 gets a little extra room for its box
+  const w2 = m.line2.split(" ");
+  const b0 = m.box?.[0] ?? 0, b1 = m.box?.[1] ?? w2.length - 1;
+  const size1 = Math.min(104, Math.floor(1000 / (0.56 * m.line1.length)));
+  const size2 = Math.min(104, Math.floor(1000 / (0.56 * (m.line2.length + 2))));
+  const ip = prog(f, 2, 14, EASE);
   return (
   <AbsoluteFill>
-    <div style={{ position: "absolute", left: 80, right: 80, top: 760 }}>
-      <Words text={m.line1} at={4} size={size} weight={800} />
+    {m.icon && (
+      <div style={{ position: "absolute", left: 540 - 120, top: 470 + Math.sin(f / 16) * 8, width: 240, height: 240, borderRadius: 120, background: GREEN.cream, display: "flex", alignItems: "center", justifyContent: "center", scale: String(ip), boxShadow: "0 22px 50px rgba(0,50,35,0.3)" }}>
+        <Icon name={m.icon} size={120} color={GREEN.bg} stroke={2.2} />
+      </div>
+    )}
+    <div style={{ position: "absolute", left: 40, right: 40, top: m.icon ? 800 : 760 }}>
+      <Words text={m.line1} at={4} size={size1} weight={800} />
       <div style={{ height: 24 }} />
-      <Words text={m.line2} at={22} size={size} weight={800} box={{ from: m.box?.[0] ?? 0, to: m.box?.[1] ?? m.line2.split(" ").length - 1, at: 52 }} />
+      <Words text={m.line2} at={22} size={size2} weight={800} box={{ from: b0, to: b1, at: 52 }} />
     </div>
     <Peek peek={peek} />
   </AbsoluteFill>
@@ -404,14 +414,22 @@ const Humps: React.FC<SP<"E14">> = ({ m, peek }) => {
   const X0 = 150, X1 = 930, Y = 1080, n = 7, w = (X1 - X0) / n;
   const grow = (i: number) => prog(f, 34 + i * 3, 46 + i * 3);
   const fill = (i: number) => (i < (m.filled ?? 7) ? prog(f, 66 + i * 7, 74 + i * 7) : 0);
+  const H = m.heights ?? [];
+  const lines = m.lines && m.lines.length ? m.lines : null;
+  const at = m.linesAt ?? [];
   return (
     <AbsoluteFill>
-      <CentredHeadline title={m.title} accent={m.accent} top={300} size={104} />
-      <div style={{ position: "absolute", left: 80, right: 80, top: 840 }}><Words text={m.line} at={4} size={72} /></div>
+      {lines ? lines.map((t, i) => (
+        <Sequence key={i} from={Math.round((at[i] ?? 0.1 + 0.6 * i) * 30)}>
+          <CentredHeadline title={t} accent={m.accent && t.includes(m.accent) ? m.accent : undefined} top={260 + i * 130} size={104} />
+        </Sequence>
+      )) : <CentredHeadline title={m.title} accent={m.accent} top={300} size={104} />}
+      {m.line ? <div style={{ position: "absolute", left: 80, right: 80, top: 840 }}><Words text={m.line} at={4} size={72} /></div> : null}
       <svg width={1080} height={1920} style={{ position: "absolute", inset: 0 }}>
         <DrawPath d={`M${X0},${Y} L${X1},${Y}`} p={prog(f, 10, 28)} stroke="rgba(255,255,255,0.7)" width={5} />
         {Array.from({ length: n }, (_, i) => {
-          const g = grow(i), r = w / 2, cx = X0 + r + i * w, hh = r * g;
+          const breathe = 1 + 0.03 * Math.sin((f - i * 9) / 14) * prog(f, 80, 100);   // keeps moving after it lands
+          const g = grow(i), r = w / 2, cx = X0 + r + i * w, hh = r * 1.7 * g * (H[i] ?? 1) * breathe;
           const d = `M${cx - r},${Y} A${r},${hh || 0.01} 0 0 1 ${cx + r},${Y}`;
           return (
             <g key={i}>

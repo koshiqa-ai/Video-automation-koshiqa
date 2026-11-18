@@ -14,6 +14,44 @@ Entry format:
 
 ---
 
+## 2026-11-18 · HV-RestCard (+ HI) · v2 after the team review (Swati, Mrinal)
+- **Asked:** "do all these changes, and mention all", covering the 29 review comments on Video 1.
+- **Structure:**
+  - Video 1 is now only: why you need it (a missed day) → why we built it (the story) → what it does (lifts a day to 10K). It has 10 slides, 78 s (was 14 slides, 98.9 s).
+  - Slides 9–12 (deficit/club, contest vs streak, streak minimum, streak broken) moved out for the how-to-apply / do's & don'ts video. They are kept in `rest-card.ts` as `MOVED_TO_DOS_AND_DONTS`, with their review notes.
+- **Slide changes:**
+  - **Opening:** a new voiced line naming the title and the payoff.
+  - **Calendars:** realistic green 10K+ days and avg 12,347 (`scripts/green-calendar.py`, illustrative); day-22 cell redrawn square with the real palm badge; the tab's drop shadow removed.
+  - **Day 22:** zoom in.
+  - **"Built with feedback":** new line "Koshiqa is built with feedback from members like you"; heart icon; bigger text; Torty smile.
+  - **"We built the Rest Card":** title first, then the phone (one focal point); the cut-off third card removed.
+  - **Lift to 10,000:** confetti.
+  - **Bonus steps:** the C1 number replaced by a new C5 bar build-up (4,200 actual + 5,800 bonus = 10,000, held 10 s).
+  - **E14:** headline lines appear with the voice ("Sustainable," / "not stressful"); varied bar heights; the "Push. Rest. Repeat." line removed.
+  - **Headlines:** aligned to the voiceover ("Showing up every day", "We built the Rest Card", "Lifts it to 10,000", "Adds 5,800 steps").
+  - **Closing card:** breaks cleanly ("Every step / of the way").
+- **System:**
+  - Ambient motion on every slide (`Backdrop` glow drift + floating motes; phone float; E7 icon float; E14 breathing; C5 glow).
+  - New C5 (`TypeLayouts` BarSlide, `LS.cBar`).
+  - Phone `zoom`, `titleFirst`, `then.confetti`; E7 `icon` + per-line sizing; E14 `heights`, `lines`, `linesAtWords` (any `…AtWords` motion field resolves to seconds).
+  - `design.md` 1.6, with 6 new Don'ts; `design/layouts/C5.png`; CLAUDE.md C1–C5.
+- **Hindi:**
+  - The spec mirrors v2.
+  - ElevenLabs clips are renumbered (moved-out clips archived in `work/HV-RestCard-HI/vo-v1-moved-out/`).
+  - The 2 new lines (opener, slide 4) use the Piper Hindi placeholder. 111.3 s.
+- **Open (from the team):**
+  - The voice choice (Mona / Riya Rao / Tara); then one ElevenLabs take each for English and Hindi.
+  - Heart-hands Torty art.
+  - A real green-calendar screenshot.
+  - Approval of the opener line.
+  - Whether the E14 "sustainable" point stays.
+  - The member's real words and consent.
+  - Hindi review of the two new lines.
+- **Output:**
+  - `out/HV-RestCard.mp4` (78.0 s) and `out/HV-RestCard-HI.mp4` (111.3 s).
+  - QA sheets: every slide passes.
+  - Storyboard `storyboards/HV-RestCard.html` (v2, with flags).
+
 ## 2026-11-18 · HV-RestCard · Swati's "few fixes here" (0:09)
 - **Asked:** the team's review of Video 1, 15 comments from Swati and 14 from Mrinal (listed in chat). First, the annotated frame at 0:09: arrows at the top strip and the left edge of the calendar.
 - **Found:**
