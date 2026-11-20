@@ -9,7 +9,9 @@ import type { HelpVideoSpec } from "./types";
 
 const v1 = (n: string, extra: object = {}) => ({ image: `screens/HV-RestCard/${n}.png`, w: 576, h: 1248, ...extra });
 const shot = (n: string, extra: object = {}) => ({ image: `screens/HV-RestCardWhen/${n}.png`, w: 576, h: 1248, ...extra });
-const DAY22 = { x: 219, y: 604, w: 112, h: 118, r: 10 };
+// the calendar is the coded mockup from Video 1 (src/screens/rest-card-screens.tsx, 390 × 844 screen space):
+// the recording's dark top looked like a black patch (team, 2026-11-20)
+const DAY22M = { x: 146, y: 416, w: 84, h: 92, r: 12 };
 
 export const REST_CARD_WHEN: HelpVideoSpec = {
   id: "HV-RestCardWhen",
@@ -29,8 +31,8 @@ export const REST_CARD_WHEN: HelpVideoSpec = {
       ],
       vo: "Use your Rest Card when you've had a low-step day and still have a contest deficit to clear." },
     { code: "S2", title: "4,200 becomes 10,000", accent: "10,000", peek: { expr: "smile", side: "right" },
-      screen: v1("02", { then: { image: "screens/HV-RestCard/02b.png", atWord: "bringing it" } }),
-      anno: { kind: "ring", target: DAY22, atWord: "lowest eligible" },
+      screen: { comp: "rest-calendar", props: { liftAtWord: "bringing it", confetti: true } },
+      anno: { kind: "ring", target: DAY22M, atWord: "lowest eligible" },
       vo: "For example, if your lowest eligible day has 4,200 steps, your Rest Card can add 5,800 steps, bringing it to 10,000." },
     { code: "S2", title: "Smaller deficit", accent: "deficit", peek: { expr: "excited", side: "left" }, screen: v1("05"),
       anno: { kind: "spotlight", target: { x: 288, y: 850, w: 530, h: 74, r: 14 }, atWord: "reduce" },

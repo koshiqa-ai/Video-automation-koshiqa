@@ -14,6 +14,15 @@ Entry format:
 
 ---
 
+## 2026-11-20 · HV-RestCardWhen + system · Calendar mockup in Video 2; "black patch → mockup" rule in the skill
+- **Asked:** "the screen recording we sent has a black patch at the top which is looking bad in the video, just copy the screen and generate the same in mock layout we made here - also update this in the skill"
+- **Changed:**
+  - `src/videos/rest-card-when.ts`: the "4,200 becomes 10,000" slide now uses Video 1's coded calendar (`rest-calendar`, lifts at "bringing it", with confetti) instead of the recording frames 02/02b, which had the dark top. The ring targets day 22 in mock coordinates. Video 1 already used the mockups.
+  - The other Video 2 screens (05, 06, 08 and Video 1's 05) were checked and have light tops, so they stay.
+  - `design.md` §6: the "screens are real screenshots" line now names the exception (dark-top recordings become shared mockups).
+  - koshiqa-help-video skill (proposed to the team): a "Black patch at the top → rebuild the screen as a mockup" procedure (spot, copy faithfully, build, use, reuse, check) and a QA line.
+- **Output:** `out/HV-RestCardWhen.mp4` (draft, placeholder voice; still waiting for Tara's take).
+
 ## 2026-11-20 · HV-RestCard · Three light music options (the current bed sounds tense)
 - **Asked:** "music sounds a bit tensed, in this video 1, can give me some options and i will choose one. some light music"
 - **Changed:**

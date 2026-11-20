@@ -139,7 +139,7 @@ These are the only layouts. The review grid is the `LayoutSystem` composition; t
 
 - **The phone is always horizontally centred** and the same size whether or not Torty is there. Torty overlaps it; it never shrinks or moves for him.
 - The UI inside the phone always uses `colors.app`, never the video colours.
-- **Screens are real screenshots** from the approved storyboard (see `storyboards/README.md`). They are fitted to the phone width, the recording's status bar (clock and the recorder's red timer) is replaced with a clean one, and anything personal is redacted before it reaches the storyboard. Coded mockups are for demos only.
+- **Screens are real screenshots** from the approved storyboard (see `storyboards/README.md`). They are fitted to the phone width, the recording's status bar (clock and the recorder's red timer) is replaced with a clean one, and anything personal is redacted before it reaches the storyboard. Exception: when a recording's top is dark (a black patch), the screen is copied as a coded mockup (`screen: { comp }`, `src/screens/`), and every video that shows that screen uses the same mockup.
 
 **What they look like**
 
