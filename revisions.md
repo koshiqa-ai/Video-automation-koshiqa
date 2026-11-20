@@ -14,6 +14,19 @@ Entry format:
 
 ---
 
+## 2026-11-20 · HV-RestCard (EN) · Tara voice in the video
+- **Asked:** "now replace it in video" (the team attached the Tara take: `ElevenLabs_2026-11-20T08_19_22__s0_v4.mp3`, 74.4 s, −28.5 LUFS).
+- **Changed:**
+  - Stored as `work/HV-RestCard/vo-full-tara-s0.mp3`.
+  - Split into the 10 spoken lines (`public/vo/HV-RestCard/01, 03, 04, 06, 07, 08, 10, 11, 12, 13.wav`; the section cards 02/05/09 stay silent), cut at the pauses between lines.
+  - Each line's start was placed by Whisper transcript, which matches the script word for word.
+  - One fixed +12.5 dB gain + limiter; the mix is −16.8 LUFS.
+  - The Piper placeholder clips were removed.
+- **Output:**
+  - `out/HV-RestCard.mp4`: 88.8 s, 13 slides, Tara voice + music.
+  - QA sheet: all slides pass.
+  - Over the 75 s explainer guideline; the story slide is 23 s.
+
 ## 2026-11-20 · HV-RestCard (EN) · Voice: Tara, stability 0
 - **Asked:** replace the voice with "Tara – Polished Audio Description", stability 0%, through ElevenLabs.
 - **Changed:**
