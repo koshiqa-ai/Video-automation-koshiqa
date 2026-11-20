@@ -5,3 +5,6 @@ render-local/dist
 .DS_Store
 .env
 .env.*
+
+# music options under review (re-make with scripts/make-music.py --style …); commit only the chosen one
+public/music/light-*.wav

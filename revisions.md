@@ -14,6 +14,15 @@ Entry format:
 
 ---
 
+## 2026-11-20 · HV-RestCard · Three light music options (the current bed sounds tense)
+- **Asked:** "music sounds a bit tensed, in this video 1, can give me some options and i will choose one. some light music"
+- **Changed:**
+  - `scripts/make-music.py`: new `--style` flag (bright, piano, uke; `soft` is the original and stays the default). The new styles use plain major triads, fewer notes and no shaker. Odd peaks are soft-limited instead of clipped, and the styles are matched in loudness (about −12.4 LUFS).
+  - New tracks (180 s each, synthesised, no copyright): `public/music/light-bright.wav` (marimba-like pluck, C–G–Am–F, 96 bpm), `light-piano.wav` (slow broken chords, C–F–Am–G, 72 bpm), `light-uke.wav` (plucked-string strum + light bell, F–C–G–Am, 100 bpm). They are git-ignored until one is chosen, since they can be re-made with the script.
+  - `src/videos/rest-card.ts` is unchanged: each option was mixed with the spec's `music` set temporarily.
+- **Why / decisions:** the old bed's tension comes from its jazzy major-7th chords, busy 8th-note arpeggio and off-beat shaker. Same mix levels and ducking as before (design.md §8), so only the track changes.
+- **Output:** `out/music-options.mp4` (91 s): "Option 1/2/3" cards, each followed by Video 1's first 27.8 s (opener → E7) with Tara's voice. Waiting for the team's choice; the chosen track will then be set for Video 1 (and as the default bed if wanted) and committed.
+
 ## 2026-11-20 · HV-RestCard · Summary of all revisions to Video 1 ("What is a Rest Card? Why did we build it?")
 - **Asked:** "note the revisions made on this video in revision.md file". This entry sums up the full history; each step has its own entry below.
 - **Revisions, oldest first:**
