@@ -1,0 +1,87 @@
+{
+ "id": "HV-RestCardWhen",
+ "seconds": 65.2,
+ "slides": [
+  {
+   "n": 1,
+   "code": "F1",
+   "frame": 216,
+   "sec": 7.5,
+   "peek": null,
+   "title": "Use it or save it?",
+   "vo": "Have a Rest Card in your account? Before you use it, here's when you should apply it and when you should save it for later."
+  },
+  {
+   "n": 2,
+   "code": "P2",
+   "frame": 386,
+   "sec": 5.7,
+   "peek": "right happy",
+   "title": "Use it when",
+   "vo": "Use your Rest Card when you've had a low-step day and still have a contest deficit to clear."
+  },
+  {
+   "n": 3,
+   "code": "C5",
+   "frame": 690,
+   "sec": 10.1,
+   "peek": "right smile",
+   "title": "Adds 5,800 steps",
+   "vo": "For example, if your lowest eligible day has 4,200 steps, your Rest Card can add 5,800 steps, bringing it to 10,000."
+  },
+  {
+   "n": 4,
+   "code": "S2",
+   "frame": 801,
+   "sec": 3.7,
+   "peek": "left excited",
+   "title": "Smaller deficit",
+   "vo": "This can help you reduce your overall contest deficit."
+  },
+  {
+   "n": 5,
+   "code": "S2",
+   "frame": 1098,
+   "sec": 9.9,
+   "peek": "right wink",
+   "title": "Save it for later",
+   "vo": "If there's no eligible low-step day that can benefit from the card, or you've already cleared your contest deficit, there's no reason to use it. Save it for later!"
+  },
+  {
+   "n": 6,
+   "code": "S2",
+   "frame": 1308,
+   "sec": 7,
+   "peek": "left thinking",
+   "title": "Small gain? Decide",
+   "vo": "And if the benefit is very small, take a moment to decide whether you want to apply it or save it for another time."
+  },
+  {
+   "n": 7,
+   "code": "C3",
+   "frame": 1696,
+   "sec": 12.9,
+   "peek": null,
+   "title": "Plan ahead? Soon",
+   "vo": "One more thing! For now, you cannot schedule or plan your rest days in advance. We're working on bringing that soon. But you can apply your Rest Card anytime to any of your previous eligible low-step days."
+  },
+  {
+   "n": 8,
+   "code": "S2",
+   "frame": 1838,
+   "sec": 4.7,
+   "peek": "right smile",
+   "title": "Check the impact",
+   "vo": "My suggestion? Always check your potential impact before applying."
+  },
+  {
+   "n": 9,
+   "code": "F2",
+   "frame": 1947,
+   "sec": 3.6,
+   "peek": null,
+   "title": "Make it count",
+   "vo": "Use your card when it can make a real difference!"
+  }
+ ]
+}

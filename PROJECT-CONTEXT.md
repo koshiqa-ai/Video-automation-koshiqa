@@ -43,11 +43,11 @@ Script + screen recording → classify type → storyboard HTML (team reviews) �
      - Whether the "sustainable, not stressful" ending stays.
      - The member's real words and consent.
 2. **Video 2 · "When should you use your Rest Card?"** (explainer)
-   - `HV-RestCardWhen`, `rest-card-when.ts`, 63 s draft, placeholder voice.
+   - `HV-RestCardWhen`, `rest-card-when.ts`, 65.2 s, 9 slides, Tara voice (one take, 2026-11-20).
    - Objective: when to use the card, when to save it, and the current limit on planning rest days.
    - Recordings: IMG_7239 (no benefit) and IMG_7240 (small benefit).
-   - **Waiting for:** the chosen voice's full take.
-   - **Open questions:** the 4,200 example reuses Video 1's screens; is the "Plan ahead? Soon" headline OK, or use "Past days only".
+   - The 4,200 + 5,800 = 10,000 example is Video 1's C5 bar build-up (held 10 s).
+   - **Open questions:** the "Smaller deficit" slide reuses Video 1's impact screen; is the "Plan ahead? Soon" headline OK, or use "Past days only"; Hindi version not started.
 
 ## Suggested threads
 One thread per video (English + Hindi together), plus one "system" thread for changes to templates, Torty, design rules, music or the skill.

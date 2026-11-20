@@ -14,6 +14,20 @@ Entry format:
 
 ---
 
+## 2026-11-20 · HV-RestCardWhen · Tara voice + C5 bar for the 4,200 example
+- **Asked:** "generate video 2 with the script given below using /koshiqa-help-video" (same objective and script as the 11-17 draft).
+- **Type:** explainer (unchanged). The spec's `vo` lines already matched the script word for word, so no wording changed.
+- **Changed:**
+  - `src/videos/rest-card-when.ts`: slide 3 ("For example, if your lowest eligible day has 4,200 steps…") is now Video 1's approved **C5 bar build-up** (4,200 actual + 5,800 Rest Card bonus = 10,000, `atWords` 4,200 / add 5,800 / bringing, `minSec: 10`) instead of the calendar mockup. design.md §11 maps a part plus a bonus to C5, and the team asked for this pattern to be reused. The unused `DAY22M` target was removed.
+  - **Voice:** Tara – Polished Audio Description, eleven_v4, stability 0, generated **once** (one take, 999 credits) in ElevenLabs flow `Dz6Bnyq2uzZtpw0aO4hE`, node "Video 2 · When to use your Rest Card (EN)". The prompt is the 9 `vo` lines with a blank line between slides, no audio tags. The team downloaded it (`ElevenLabs_2026-11-20T09_59_53__s0_v4.mp3`, 61.5 s, −27.3 LUFS), stored as `work/HV-RestCardWhen/vo-full-tara-s0.mp3`.
+  - Split with `vo-split.py` into `public/vo/HV-RestCardWhen/01–09.wav` (no cuts flagged; every cut sits in the 0.5–0.66 s pause after its line). One fixed +11.5 dB gain + limiter; speech −16.8 LUFS. The Piper placeholder clips are replaced. `vo-durations.json` re-measured.
+  - `PROJECT-CONTEXT.md`: Video 2 status.
+- **Why / decisions:** `atWord` timings are estimated (no word-alignment file for a hand-exported take).
+- **Output:**
+  - `out/HV-RestCardWhen.mp4`: 65.2 s, 9 slides, Tara voice + music, mix −16.4 LUFS.
+  - QA sheet `out/HV-RestCardWhen-qa.png`: all 9 slides pass.
+- **Open:** "Plan ahead? Soon" vs "Past days only"; "Smaller deficit" reuses Video 1's impact screen (574,200 → 580,000); Hindi version not started.
+
 ## 2026-11-20 · HV-RestCardWhen + system · Calendar mockup in Video 2; "black patch → mockup" rule in the skill
 - **Asked:** "the screen recording we sent has a black patch at the top which is looking bad in the video, just copy the screen and generate the same in mock layout we made here - also update this in the skill"
 - **Changed:**

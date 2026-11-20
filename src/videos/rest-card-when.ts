@@ -3,15 +3,12 @@
 // limitations around planning rest days.
 // Script: from the team, voiceover kept word for word, split per slide.
 // Screens: IMG_7239 (no benefit: lowest day already 11,000), IMG_7240 (small benefit: 8,500 → +1,500), and
-// Video 1's calendar / impact screens for the 4,200 example (IMG_7237). Prep: scripts/prep-rest-card-when-screens.py.
+// Video 1's impact screen (05) after the 4,200 example, which is a C5 bar. Prep: scripts/prep-rest-card-when-screens.py.
 // Screenshot coordinates are image px (576 × 1248).
 import type { HelpVideoSpec } from "./types";
 
 const v1 = (n: string, extra: object = {}) => ({ image: `screens/HV-RestCard/${n}.png`, w: 576, h: 1248, ...extra });
 const shot = (n: string, extra: object = {}) => ({ image: `screens/HV-RestCardWhen/${n}.png`, w: 576, h: 1248, ...extra });
-// the calendar is the coded mockup from Video 1 (src/screens/rest-card-screens.tsx, 390 × 844 screen space):
-// the recording's dark top looked like a black patch (team, 2026-11-20)
-const DAY22M = { x: 146, y: 416, w: 84, h: 92, r: 12 };
 
 export const REST_CARD_WHEN: HelpVideoSpec = {
   id: "HV-RestCardWhen",
@@ -30,10 +27,10 @@ export const REST_CARD_WHEN: HelpVideoSpec = {
         { text: "A deficit to clear", icon: "trophy", atWord: "contest deficit" },
       ],
       vo: "Use your Rest Card when you've had a low-step day and still have a contest deficit to clear." },
-    { code: "S2", title: "4,200 becomes 10,000", accent: "10,000", peek: { expr: "smile", side: "right" },
-      screen: { comp: "rest-calendar", props: { liftAtWord: "bringing it", confetti: true } },
-      anno: { kind: "ring", target: DAY22M, atWord: "lowest eligible" },
-      vo: "For example, if your lowest eligible day has 4,200 steps, your Rest Card can add 5,800 steps, bringing it to 10,000." },
+    // a sum (actual + bonus = 10,000): Video 1's approved C5 bar build-up, held ~10 s (team, 2026-11-20)
+    { code: "C5", title: "Adds 5,800 steps", accent: "5,800", peek: { expr: "smile", side: "right" }, minSec: 10,
+      bar: { label: "Lowest day", base: 4200, add: 5800, baseLabel: "actual steps", addLabel: "Rest Card bonus", atWords: ["4,200", "add 5,800", "bringing"] },
+      vo:"For example, if your lowest eligible day has 4,200 steps, your Rest Card can add 5,800 steps, bringing it to 10,000." },
     { code: "S2", title: "Smaller deficit", accent: "deficit", peek: { expr: "excited", side: "left" }, screen: v1("05"),
       anno: { kind: "spotlight", target: { x: 288, y: 850, w: 530, h: 74, r: 14 }, atWord: "reduce" },
       vo: "This can help you reduce your overall contest deficit." },
