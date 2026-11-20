@@ -272,7 +272,8 @@ These are the only annotations, with at most one per moment.
 - **Never fully still (ambient motion):** the background glow drifts and a few faint mint motes float up on every slide (`Backdrop`). Scenes keep a small idle motion after their entrance (E7 icon float, E14 bars breathing, C5 bonus glow). Keep it subtle: it supports the voice, never competes with it.
 - **One focal point at a time:** when a slide introduces a name and a screen, use `titleFirst` (the headline alone, centred and larger, then it moves up as the phone rises).
 - **Lists:** items pop in with the voiceover, 0.6 s apart by default.
-- **Close-ups:** use S3/S4 for a whole slide. To focus on one detail inside an S2 screen (e.g. one calendar day), use `zoom` (a camera push-in up to 1.6× towards that point, the phone's top edge fixed so the headline stays clear), timed to the word.
+- **Close-ups:** use S3/S4 for a whole slide. To focus on one detail inside an S2 screen (e.g. one calendar day), use `zoom`: the screen's content pushes in (up to 1.6×) towards that point inside the phone, timed to the word; the phone and its bezel stay the same size.
+- **Section cards:** a longer explainer can be divided into its parts with F1-style cards (full Torty + the part's name, e.g. "Why you need it", "Why we built it", "What it does"), silent, ~2.4 s, a different pose each.
 - **Moments of success:** a small confetti burst when the "after" image lands (`then.confetti`), e.g. a day lifted to 10,000.
 - Exact springs and timings are in `motion` in the YAML block.
 
@@ -302,6 +303,7 @@ Each line here is a mistake from an earlier draft.
 - Don't show unrealistic data. A calendar where every day is 15,000 isn't believable; show real-looking varied days (10K+ green), and keep summary figures (avg) consistent with them.
 - Don't leave a half-visible card or illustration cut off by the screen edge (e.g. the next card in a carousel): paint it out of the screenshot.
 - Don't use the same height for every bar or hump when the message is about real life; vary them.
+- Don't use a recording whose top (status bar or header) is dark or grey in a light video: it reads as a black patch. Rebuild that screen as a coded mockup.
 
 ## 10. Open items
 - [ ] Separate high-res Torty PNGs, about 1500 px tall. The sheet cuts are upscaled 4× and look a little soft (`torty-requests.md`).
@@ -391,6 +393,7 @@ Decide before writing anything. One input can produce more than one video: split
 ## Changelog
 | Version | Date | Change | Why |
 |---|---|---|---|
+| 1.6.1 | 2026-11-20 | Section cards (F1 style, silent, ~2.4 s) may divide an explainer into its parts; `zoom` now pushes the screen's content in, inside the phone (the bezel never grows); coded mockups for screens whose recording has dark bands | Video 1: "add a slide like the first one", "black patch at the top" |
 | 1.6 | 2026-11-18 | C5 bar build-up; phone `zoom`, `titleFirst`, `then.confetti`; ambient motion on every slide; E7 icon + per-line sizing; E14 heights + timed lines; 6 Don'ts from the review | Video 1 review (Swati, Mrinal) |
 | 1.5.1 | 2026-11-18 | Don't: remove the recorder tab's drop shadow as well as the tab | Swati's review of Video 1, 0:09 |
 | 1.5 | 2026-11-17 | Voice: ElevenLabs generated per slide from the script, with word timings driving `atWord` (§8, `src/data/voices.json`) | Team uses ElevenLabs for all voiceover |

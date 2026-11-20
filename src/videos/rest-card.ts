@@ -9,6 +9,10 @@
 import type { HelpVideoSpec } from "./types";
 
 const shot = (n: string, extra: object = {}) => ({ image: `screens/HV-RestCard/${n}.png`, w: 576, h: 1248, ...extra });
+// coded mockups (src/screens/rest-card-screens.tsx, 390 × 844 screen space) replace the recordings' calendar and
+// Power card screens: their dark tops looked like a black patch (team, 2026-11-20)
+const DAY22M = { x: 146, y: 416, w: 84, h: 92, r: 12 };
+const POWER_CARDS = { x: 195, y: 273, w: 372, h: 166, r: 22 };
 const DAY22 = { x: 219, y: 604, w: 112, h: 118, r: 10 };
 
 export const REST_CARD: HelpVideoSpec = {
@@ -21,13 +25,18 @@ export const REST_CARD: HelpVideoSpec = {
     { code: "F1", pose: "thinking", title: "What is a Rest\u00a0Card?", accent: "Rest\u00a0Card",
       vo: "What is a Rest Card, and why did we build it? Here's how it can turn your lowest day into a 10,000-step day." },
 
+    // section cards (team, 2026-11-20): an F1-style card naming each part, silent, ~2.4 s
+    { code: "F1", pose: "worried", title: "Why you need it", accent: "need it", minSec: 2.4 },
+
     // 1 · Why you need it: not every day is a 10K day (calendar: realistic green 10K+ days, scripts/green-calendar.py)
-    { code: "S2", title: "Showing up every day", accent: "every day", peek: { expr: "happy", side: "right" }, screen: shot("01"),
+    { code: "S2", title: "Showing up every day", accent: "every day", peek: { expr: "happy", side: "right" }, screen: { comp: "rest-calendar-top" },
       vo: "You're showing up every day, building a habit and making progress." },
-    { code: "S2", title: "Not every day's 10K", accent: "10K", peek: { expr: "smile", side: "right" }, screen: shot("02"),
-      zoom: { x: 219, y: 604, scale: 1.6, atWord: "honest" },
-      anno: { kind: "ring", target: DAY22, atWord: "Not every" },
+    { code: "S2", title: "Not every day's 10K", accent: "10K", peek: { expr: "smile", side: "right" }, screen: { comp: "rest-calendar" },
+      zoom: { x: 146, y: 416, scale: 1.6, atWord: "honest" },
+      anno: { kind: "ring", target: DAY22M, atWord: "Not every" },
       vo: "But let's be honest. Not every day is going to be a 10,000-step day. And that's okay!" },
+
+    { code: "F1", pose: "happy", title: "Why we built it", accent: "built it", minSec: 2.4 },
 
     // 2 · Why we built it: the story
     { code: "E7", peek: { expr: "smile", side: "right" }, motion: { line1: "Built with feedback", line2: "from members like you", box: [1, 3], icon: "heart" },
@@ -46,14 +55,14 @@ export const REST_CARD: HelpVideoSpec = {
       } },
       vo: "One day, a woman from our community sent us a message that really stayed with us. She said she sees Koshiqa as her lifelong sustainable partner. But during her period days, she sometimes doesn't want to push herself to 10,000 steps. She wants to give her body some rest. And then she asked us something simple: \"Can we have some rest days in the contest?\" That got us thinking." },
 
-    // 3 · What it does
-    // the name first, alone; then the phone (review: "keep one dominant focal point")
-    { code: "S2", title: "We built the Rest Card", accent: "Rest Card", titleFirst: true, minSec: 5, peek: { expr: "thinking", side: "left" }, screen: shot("03"),
-      anno: { kind: "spotlight", target: { x: 250, y: 433, w: 470, h: 206, r: 28 }, atWord: "Rest Card" },
+    // the name first, alone; then the phone (closes the story: "That's one of the reasons we built the Rest Card") (review: "keep one dominant focal point")
+    { code: "S2", title: "We built the Rest Card", accent: "Rest Card", titleFirst: true, minSec: 5, peek: { expr: "thinking", side: "left" }, screen: { comp: "power-card" },
+      anno: { kind: "spotlight", target: POWER_CARDS, atWord: "Rest Card" },
       vo: "That's one of the reasons we built the Rest Card." },
+    { code: "F1", pose: "excited", title: "What it does", accent: "does", minSec: 2.4 },
     { code: "S2", title: "Lifts it to 10,000", accent: "10,000", peek: { expr: "excited", side: "right" },
-      screen: shot("02", { then: { image: "screens/HV-RestCard/02b.png", atWord: "automatically", confetti: true } }),
-      anno: { kind: "ring", target: DAY22, atWord: "lowest" },
+      screen: { comp: "rest-calendar", props: { liftAtWord: "automatically", confetti: true } },
+      anno: { kind: "ring", target: DAY22M, atWord: "lowest" },
       vo: "It finds your lowest eligible step day in the contest and automatically lifts it to 10,000 steps." },
     // 4,200 actual + 5,800 bonus = 10,000, built up as one bar and held on screen (review: Mrinal + Swati)
     { code: "C5", title: "Adds 5,800 steps", accent: "5,800", peek: { expr: "happy", side: "right" }, minSec: 10,

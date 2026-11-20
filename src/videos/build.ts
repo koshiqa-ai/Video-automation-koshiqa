@@ -37,7 +37,13 @@ const toScreenSpace = (v: VideoSlide, voSec: number, marks: Marks): VideoSlide =
     const c = v.screen.chat;
     return { ...v, anno, screen: { chat: { ...c, messages: c.messages.map((m, k) => ({ ...m, at: wt(m, 0.6 + 1.2 * k) })), typing: c.typing && { ...c.typing, at: wt(c.typing, 99) } } } };
   }
-  if (!isShot(v.screen)) return { ...v, anno };
+  if (!isShot(v.screen)) {
+    // coded mockups are already in screen space: resolve word timings only (zoom, and comp props like liftAtWord)
+    const zoomM = v.zoom && { ...v.zoom, at: wt(v.zoom, 0.8) };
+    const sc0 = v.screen as { props?: Record<string, unknown> } | undefined;
+    const props = sc0?.props && { ...sc0.props, ...(typeof sc0.props.liftAtWord === "string" ? { liftAt: wordTime(v.vo, voSec, marks, sc0.props.liftAtWord as string) } : {}) };
+    return { ...v, anno, zoom: zoomM, screen: props ? ({ ...v.screen, props } as VideoSlide["screen"]) : v.screen };
+  }
   const { k, offY } = shotFit(v.screen.w, v.screen.h);
   const p = (x: number, y: number) => ({ x: x * k, y: y * k + offY });
   const taps = v.screen.taps?.map((t) => ({ ...t, ...p(t.x, t.y), at: t.at ?? (t.atWord ? wordTime(v.vo, voSec, marks, t.atWord) : VO_LEAD + 0.6) }));

@@ -2,6 +2,7 @@
 // Each screen receives the scene-local frame `f` and the frames of its gestures `taps`.
 // Element positions line up with the gesture coordinates in data/faqs.ts.
 import React from "react";
+import { PowerCard, RestCalendar, RestCalendarTop } from "./rest-card-screens";
 import { Img, interpolate, staticFile } from "remotion";
 import { APP } from "../theme/themes";
 import {
@@ -628,7 +629,10 @@ const Track: React.FC<ScreenProps> = ({ f, taps }) => {
   );
 };
 
-export const SCREENS: Record<string, React.FC<ScreenProps>> = {
+export const SCREENS: Record<string, React.FC<ScreenProps & Record<string, any>>> = {
+  "rest-calendar-top": RestCalendarTop,
+  "rest-calendar": RestCalendar,
+  "power-card": PowerCard,
   "health-permissions": HealthPermissions,
   battery: Battery,
   "home-sync": HomeSync,

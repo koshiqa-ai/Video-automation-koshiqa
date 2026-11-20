@@ -126,12 +126,14 @@ const PhoneSlide: React.FC<{ s: LSSlide & { duration: number } }> = ({ s }) => {
   const sc = isShot(s.screen) ? s.screen : undefined;
   // keep it alive after the entrance: a slow float of the phone (design.md §8, ambient motion)
   const float = Math.sin((f - stage) / 38) * 5;
-  // camera push-in: towards the zoom point horizontally, the phone's top edge fixed so the headline stays clear
+  // zoom: the screen's content pushes in towards the zoom point inside the phone (the phone, its bezel and the
+  // headline stay put; the status bar slides off the top). Annotations drawn outside the phone follow the zoom.
   const z = s.zoom ? 1 + (s.zoom.scale - 1) * spring({ frame: f - fr(s.zoom.at), fps, config: { damping: 20, stiffness: 70 } }) : 1;
-  const zc = s.zoom ? toVideo(g, s.zoom.x, s.zoom.y) : { x: 540, y: 0 };
-  const thenAt = sc?.then?.at ?? 0;
-  const confettiAt = sc?.then?.confetti ? thenAt + 0.15 : null;
-  const burst = t ? toVideo(g, t.x, t.y) : { x: 540, y: g.y + 600 };
+  const zx = s.zoom?.x ?? 195, zy = s.zoom?.y ?? 422;
+  const zt = t && { ...t, x: zx + (t.x - zx) * z, y: zy + (t.y - zy) * z, w: t.w * z, h: t.h * z, r: t.r !== undefined ? t.r * z : undefined };
+  const mockProps = (s.screen as { props?: { liftAt?: number; confetti?: boolean } } | undefined)?.props;
+  const confettiAt = sc?.then?.confetti ? (sc.then.at ?? 0) + 0.15 : mockProps?.confetti && mockProps.liftAt !== undefined ? mockProps.liftAt + 0.15 : null;
+  const burst = zt ? toVideo(g, zt.x, zt.y) : { x: 540, y: g.y + 600 };
   const move = s.titleFirst ? interpolate(f, [24, 40], [0, 1], { ...clamp, easing: Easing.inOut(Easing.cubic) }) : 1;
   const midTop = 840;
   // how much bigger the headline is while alone in the middle: up to 1.3×, but never wider than the frame
@@ -139,17 +141,21 @@ const PhoneSlide: React.FC<{ s: LSSlide & { duration: number } }> = ({ s }) => {
   return (
     <AbsoluteFill>
       <Backdrop />
-      <AbsoluteFill style={{ transform: `scale(${z})`, transformOrigin: `${zc.x}px ${g.y}px`, opacity: s.titleFirst ? interpolate(f, [stage - 4, stage + 6], [0, 1], clamp) : 1 }}>
+      <AbsoluteFill style={{ opacity: s.titleFirst ? interpolate(f, [stage - 4, stage + 6], [0, 1], clamp) : 1 }}>
         <Phone scale={g.s} frame={theme.phoneFrame} x={g.x} y={g.y + (1 - rise) * 60 + float * rise} shadow="0 40px 90px rgba(0,50,35,0.38)">
-          {isChat(s.screen) ? <ChatView chat={s.screen.chat} /> : isShot(s.screen)
-            ? <ShotView sc={s.screen} cursorSize={a?.kind === "hand" ? 0 : 36} rippleScale={g.s > 2 ? 0.8 : 0.9} />
-            : <AppScreen scene={{ screen: s.screen, duration: s.duration } as unknown as TimedLayoutScene} cursorSize={a?.kind === "hand" ? 0 : 36} rippleScale={g.s > 2 ? 0.8 : 0.9} />}
-          {a?.kind === "spotlight" && t && <Spotlight t={t} at={a.at ?? 0.6} />}
+          <div style={{ position: "absolute", left: 0, top: 0, width: 390, height: 844, overflow: "hidden" }}>
+            <div style={{ position: "absolute", inset: 0, transform: `scale(${z})`, transformOrigin: `${zx}px ${zy}px` }}>
+              {isChat(s.screen) ? <ChatView chat={s.screen.chat} /> : isShot(s.screen)
+                ? <ShotView sc={s.screen} cursorSize={a?.kind === "hand" ? 0 : 36} rippleScale={g.s > 2 ? 0.8 : 0.9} />
+                : <AppScreen scene={{ screen: s.screen, duration: s.duration } as unknown as TimedLayoutScene} cursorSize={a?.kind === "hand" ? 0 : 36} rippleScale={g.s > 2 ? 0.8 : 0.9} />}
+              {a?.kind === "spotlight" && t && <Spotlight t={t} at={a.at ?? 0.6} />}
+            </div>
+          </div>
         </Phone>
         <div style={{ position: "absolute", inset: 0, translate: `0px ${float * rise}px` }}>
-          {a?.kind === "ring" && t && <FocusRing fc={{ ...t, at: a.at ?? 0.6 }} centre={toVideo(g, t.x, t.y)} scale={g.s} />}
-          {a?.kind === "tooltip" && t && <DarkTooltip x={toVideo(g, t.x, t.y).x} y={toVideo(g, t.x, t.y - t.h / 2).y - 14} label={a.label!} at={a.at ?? 0.6} />}
-          {a?.kind === "hand" && t && <TortyHand tip={toVideo(g, t.x, t.y)} tapAt={s.screen!.taps![0].at} />}
+          {a?.kind === "ring" && zt && <FocusRing fc={{ ...zt, at: a.at ?? 0.6 }} centre={toVideo(g, zt.x, zt.y)} scale={g.s} />}
+          {a?.kind === "tooltip" && zt && <DarkTooltip x={toVideo(g, zt.x, zt.y).x} y={toVideo(g, zt.x, zt.y - zt.h / 2).y - 14} label={a.label!} at={a.at ?? 0.6} />}
+          {a?.kind === "hand" && zt && <TortyHand tip={toVideo(g, zt.x, zt.y)} tapAt={s.screen!.taps![0].at} />}
           {confettiAt !== null && <Confetti at={confettiAt} origin={burst} />}
         </div>
       </AbsoluteFill>

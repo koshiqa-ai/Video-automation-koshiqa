@@ -23,6 +23,11 @@ The phone shows coded mockups of the Koshiqa app (`src/screens/`). Each screen i
 | `koins-2` | Rewards catalogue | first reward (104, 330) | opens the reward |
 | `koins-3` | Reward detail | Redeem (195, 772) | redeems |
 | `koins-redeemed` | Redeemed confirmation | — | — |
+| `rest-calendar-top` | Consistency calendar, top: "60 Days" title, 12,347 avg, days 1–20 (green 10K+) | — | — |
+| `rest-calendar` | Calendar scrolled to days 9–36; day 22 grey 4,200 at (146, 416), cell 84 × 92. `props: { liftAtWord, confetti }` turns day 22 into a green 10,000 note with the palm badge as that word is spoken | — | — |
+| `power-card` | Power card: two Rest Cards (real card art) at (195, 273) 372 × 166, "Earn more cards" panel | — | — |
+
+The three Rest Card mockups (`src/screens/rest-card-screens.tsx`, 2026-11-20) replace the recordings' calendar and Power card screens: the recordings' dark tops looked like a black patch. A spec passes extra props with `screen: { comp, props }`; a `…AtWord` prop resolves to seconds. `zoom` works on mockups too (coordinates in screen space).
 
 **Annotation targets** use the same coordinates plus a size, e.g. the koin chip is `{ x: 318, y: 82, w: 112, h: 46, r: 23 }`, a full-width card `{ x: 195, y: 520, w: 366, h: 86, r: 22 }`.
 

@@ -98,7 +98,7 @@ export const AppScreen: React.FC<{ scene: TimedLayoutScene; cursorSize?: number;
   } else {
     const Comp = SCREENS[sc.comp];
     const taps = sc.taps ?? [];
-    content = <Comp f={f} taps={taps.length ? taps.map((t) => fr(t.at)) : [0]} />;
+    content = <Comp f={f} taps={taps.length ? taps.map((t) => fr(t.at)) : [0]} {...(sc.props ?? {})} />;
     gestures = taps.map((t) => ({ ...t, frame: fr(t.at) }));
   }
   return (

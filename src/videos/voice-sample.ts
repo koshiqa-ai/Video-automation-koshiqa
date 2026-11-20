@@ -5,8 +5,9 @@
 import type { HelpVideoSpec, VideoSlide } from "./types";
 import { REST_CARD } from "./rest-card";
 
-const feedback = REST_CARD.slides[3];
-const chat = REST_CARD.slides[4];
+// found by kind, not position (Video 1 gained section cards on 2026-11-20)
+const feedback = REST_CARD.slides.find((s) => s.code === "E7")!;
+const chat = REST_CARD.slides.find((s) => !!s.screen && "chat" in s.screen)!;
 const chatScreen = chat.screen as { chat: { messages: { from: "member" | "koshiqa"; text: string }[] } & Record<string, unknown> };
 
 const slides = (built: string): VideoSlide[] => [

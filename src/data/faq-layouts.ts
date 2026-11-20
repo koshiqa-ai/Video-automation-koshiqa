@@ -37,7 +37,10 @@ export type LayoutScene = {
   textPos?: "top" | "bottom";
   screenHalf?: "top" | "bottom";
   screen?: {
-    comp: "home" | "home-tabbar" | "contest-list" | "contest-detail" | "koins-1" | "koins-2" | "koins-3" | "koins-redeemed" | "home-sync";
+    comp: "home" | "home-tabbar" | "contest-list" | "contest-detail" | "koins-1" | "koins-2" | "koins-3" | "koins-redeemed" | "home-sync"
+      | "rest-calendar-top" | "rest-calendar" | "power-card";
+    /** extra props for the comp, e.g. rest-calendar { liftAt / liftAtWord, confetti } (seconds into the slide) */
+    props?: Record<string, unknown>;
     taps?: Tap[];
     /** unused by phone layouts; kept for full-bleed experiments */
     camY?: number;

@@ -14,6 +14,26 @@ Entry format:
 
 ---
 
+## 2026-11-20 · HV-RestCard (English only) · Section cards + coded mockups
+- **Asked:**
+  - Split the video with cards like the first one ("Why we built it"…). English version only.
+  - The recordings' black patch at the top looks bad: rebuild those screens in our mock layout.
+- **Changed:**
+  - Three silent F1 section cards (2.4 s each): "Why you need it" (worried), "Why we built it" (happy), "What it does" (excited, after "We built the Rest Card").
+  - New coded mockups `src/screens/rest-card-screens.tsx`: `rest-calendar-top`, `rest-calendar` (day-22 lift via `props.liftAtWord`, confetti) and `power-card`. Clean and light, reusing the real Rest Card art and palm badge (`public/screens/HV-RestCard/art-*.png`).
+  - They replace the screenshots on slides 3, 4, 8 and 10.
+  - `zoom` reworked: the screen content zooms inside the phone, so the bezel no longer grows into a black band; annotations follow.
+  - Mock screens accept `props`; `…AtWord` props resolve.
+  - `voice-sample.ts` finds its slides by kind.
+  - The Hindi spec skips the section cards and is unchanged (not re-rendered).
+  - SCREENS.md, `design.md` 1.6.1 (section cards, zoom, a Don't).
+- **Why:**
+  - The team's structure.
+  - The dark recording tops and the enlarged bezel read as a black patch.
+- **Output:**
+  - `out/HV-RestCard.mp4`: 85.6 s, 13 slides, placeholder voice.
+  - QA sheet: all slides pass.
+
 ## 2026-11-18 · HV-RestCard (+ HI) · v2 after the team review (Swati, Mrinal)
 - **Asked:** "do all these changes, and mention all", covering the 29 review comments on Video 1.
 - **Structure:**

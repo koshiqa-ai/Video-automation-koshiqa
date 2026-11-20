@@ -5,7 +5,8 @@
 import type { HelpVideoSpec, VideoSlide } from "./types";
 import { REST_CARD } from "./rest-card";
 
-const EN = REST_CARD.slides;
+// the English section cards (silent F1 "Why you need it" etc., added 2026-11-20) aren't in the Hindi version yet
+const EN = REST_CARD.slides.filter((s, i) => !(i > 0 && s.code === "F1" && !s.vo));
 /** take English slide i and replace its words; screens, peeks, targets and timing rules are kept */
 const hi = (i: number, o: Partial<VideoSlide>): VideoSlide => ({ ...EN[i], ...o });
 const S = (i: number) => EN[i].screen as Record<string, any>;
