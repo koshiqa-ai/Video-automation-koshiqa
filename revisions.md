@@ -30,7 +30,7 @@ Entry format:
   - **Hindi** (`rest-card-hi.ts`): left as it was; the English-only additions are filtered out. The renderer changes (whole-phone zoom, sharper Torty) apply to it too.
   - **Docs:** design.md 1.7 (F1 intro, E3 sections, whole-phone zoom, lead, titleAtWord, growAtWords, 8 Don'ts, open item for designer art); SCREENS.md (`lead`); skill update proposed.
 - **Why / decisions:** the opener's voice is kept, so it costs no credits; only the text and visuals follow it. Section 2 is left silent because no line was given for it. The illustration is a stand-in for designer art.
-- **Output:** `out/HV-RestCard.mp4`. Open items:
+- **Output:** `out/HV-RestCard.mp4` (94.9 s, −16.8 LUFS) + `out/HV-RestCard-qa.png`; LayoutSystem stills, `design/layout-system-grid.png` and `design/layouts/*` re-rendered with the sharper Torty. 95 s is over the 75 s explainer guideline (the new section lead-ins and the chat hold add ~6 s). Open items:
   - Tara's take of the 5 lines (after the pronunciation voice note); the Piper placeholders on the two section cards are replaced then.
   - A line for section 2 if wanted.
   - Designer art for the woman and higher-res Torty art.
