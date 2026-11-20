@@ -6,7 +6,7 @@
 # change them here first, then in code.
 # Rule: one value per token, no ranges.
 # ─────────────────────────────────────────────────────────────
-version: 1.3
+version: 1.7
 status: approved            # layout system approved from the v4 review grid (2026-10-28)
 reference: LayoutSystem     # Remotion composition that renders every layout below
 visuals: design/            # layout stills (design/layouts), Torty art (design/torty), review grid
@@ -153,6 +153,7 @@ These are the only layouts. The review grid is the `LayoutSystem` composition; t
 - **F1:** text on top (starting at 300), Torty below (starting at 610).
 - **F2:** Torty on top (starting at 300), text below (starting at 1370).
 - Torty's body is always 1000 px tall and centred, on a soft mint glow.
+- **F1 intro** (the video's first slide, `intro`): the headline follows the voice, one beat at a time (the question → the second question → the promise), and Torty's pose changes with it. An optional day card (`lift`) comes in on the promise: Torty steps aside (smaller, bottom right), the card shows the low day in grey, then turns green and counts up to the target with a confetti burst. The old line clears before the new one starts. Use it whenever the opener says more than one thing.
 
 | F1 | F2 |
 | --- | --- |
@@ -272,8 +273,10 @@ These are the only annotations, with at most one per moment.
 - **Never fully still (ambient motion):** the background glow drifts and a few faint mint motes float up on every slide (`Backdrop`). Scenes keep a small idle motion after their entrance (E7 icon float, E14 bars breathing, C5 bonus glow). Keep it subtle: it supports the voice, never competes with it.
 - **One focal point at a time:** when a slide introduces a name and a screen, use `titleFirst` (the headline alone, centred and larger, then it moves up as the phone rises).
 - **Lists:** items pop in with the voiceover, 0.6 s apart by default.
-- **Close-ups:** use S3/S4 for a whole slide. To focus on one detail inside an S2 screen (e.g. one calendar day), use `zoom`: the screen's content pushes in (up to 1.6×) towards that point inside the phone, timed to the word; the phone and its bezel stay the same size.
-- **Section cards:** a longer explainer can be divided into its parts with F1-style cards (full Torty + the part's name, e.g. "Why you need it", "Why we built it", "What it does"), silent, ~2.4 s, a different pose each.
+- **Close-ups:** use S3/S4 for a whole slide. To focus on one detail inside an S2 screen (e.g. one calendar day), use `zoom`: the whole phone (bezel included) pushes in (up to 1.6×) towards that point, timed to the word, then the detail is ringed. The headline stays; the phone fades out just under it so the headline stays on clean green.
+- **Section cards:** a longer explainer is divided into its parts with **E3** ("PART n OF 3", the part's name, a corner peek), so they never look like the F1 intro. Voice each one with a short lead-in ("First, let me explain…", "How does it work?"); min 3.6 s.
+- **Story lead-in:** a chat story (S1) can open on a full-frame illustration of the moment (`lead`, e.g. `woman-typing`: a member typing on her phone) while the voice sets the scene, then the phone with the chat rises in. Illustrations are drawn in code in the house palette (`src/screens/illustrations.tsx`), no names or likenesses.
+- **Words land with the visual:** a result's name comes after it's built (C5 `titleAtWord`), and E14's tall humps rise on the word for effort ("push") and the low ones on the word for rest (`growAtWords`).
 - **Moments of success:** a small confetti burst when the "after" image lands (`then.confetti`), e.g. a day lifted to 10,000.
 - Exact springs and timings are in `motion` in the YAML block.
 
@@ -304,9 +307,18 @@ Each line here is a mistake from an earlier draft.
 - Don't leave a half-visible card or illustration cut off by the screen edge (e.g. the next card in a carousel): paint it out of the screenshot.
 - Don't use the same height for every bar or hump when the message is about real life; vary them.
 - Don't use a recording whose top (status bar or header) is dark or grey in a light video: it reads as a black patch. Rebuild that screen as a coded mockup.
+- Don't keep one line of text on screen while the opener says several things. Change the text with each idea and show the promise (e.g. a low day lifting to 10K).
+- Don't style section cards like the intro. Sections are E3; full-Torty F1 is the intro only.
+- Don't leave a section card silent; give it a short voiced lead-in that matches its text.
+- Don't zoom inside the phone screen; zoom the whole phone.
+- Don't hold the same screen for 3–4 s while the voice sets up a story; show the story moment first (an illustration), then the screen.
+- Don't show a quoted message before the voice reads it; a quote lands when it's spoken.
+- Don't name a result before it's built (C5's headline comes at the end, with the total).
+- Don't draw a chart all at once when the voice describes its parts; the peaks land on "push", the low days on "rest", and the takeaway text comes last.
 
 ## 10. Open items
-- [ ] Separate high-res Torty PNGs, about 1500 px tall. The sheet cuts are upscaled 4× and look a little soft (`torty-requests.md`).
+- [ ] Separate high-res Torty PNGs, about 1500 px tall. The sheet cuts are upscaled 4× (since 1.7 with an edge-preserving upscale, sharper but still limited by the ~300 px source) (`torty-requests.md`).
+- [ ] Designer art for the `woman-typing` story illustration (the coded one is a stand-in).
 - [ ] A flat-style pointing hand for K8. It currently uses the older 3D hand.
 - [ ] A waving pose for F2 closings. `wink` stands in for now.
 - [ ] Speech bubble: yes or no, once the peek art is final.
@@ -393,6 +405,7 @@ Decide before writing anything. One input can produce more than one video: split
 ## Changelog
 | Version | Date | Change | Why |
 |---|---|---|---|
+| 1.7 | 2026-11-20 | F1 intro (text follows the voice, day-card lift); section cards are E3 with a voiced lead-in; `zoom` pushes in on the whole phone (headline kept clear); S1 `lead` illustration (woman typing); C5 `titleAtWord`; E14 `growAtWords`; sharper Torty upscale (`scripts/extract-torty-flat.py`); 8 Don'ts | Video 1 pre-final review (Mrinal, Manav) |
 | 1.6.1 | 2026-11-20 | Section cards (F1 style, silent, ~2.4 s) may divide an explainer into its parts; `zoom` now pushes the screen's content in, inside the phone (the bezel never grows); coded mockups for screens whose recording has dark bands | Video 1: "add a slide like the first one", "black patch at the top" |
 | 1.6 | 2026-11-18 | C5 bar build-up; phone `zoom`, `titleFirst`, `then.confetti`; ambient motion on every slide; E7 icon + per-line sizing; E14 heights + timed lines; 6 Don'ts from the review | Video 1 review (Swati, Mrinal) |
 | 1.5.1 | 2026-11-18 | Don't: remove the recorder tab's drop shadow as well as the tab | Swati's review of Video 1, 0:09 |

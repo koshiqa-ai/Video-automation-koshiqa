@@ -3,7 +3,7 @@
 //   Explainer  C1 big number · C2 trio · C3 compare (wrong way / right way) · C4 flow (how it moves)
 // Everything is centred, uses the same green, type and Torty rules as the walkthrough layouts.
 import React from "react";
-import { AbsoluteFill, Easing, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Easing, Img, interpolate, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { LS, type LSSlide } from "./data/layout-system";
 import { Backdrop, GREEN, theme } from "./LayoutDemo";
 import { Headline } from "./components/Text";
@@ -244,7 +244,11 @@ const BarSlide: React.FC<{ s: S }> = ({ s }) => {
   return (
     <AbsoluteFill>
       <Backdrop />
-      {s.title && <CentredHeadline title={s.title} accent={s.accent} top={LS.concept.headingTop} size={LS.concept.headingSize} />}
+      {s.title && (
+        <Sequence from={fr(s.titleAt ?? 0)} layout="none">
+          <CentredHeadline title={s.title} accent={s.accent} top={LS.concept.headingTop} size={LS.concept.headingSize} />
+        </Sequence>
+      )}
       {/* target line */}
       <div style={{ position: "absolute", left: B.barX - 60, width: 1080 - B.barX - 30, top: B.topY - 3, height: 0, borderTop: "6px dashed rgba(255,255,255,0.55)", opacity: pGoal }} />
       <div style={{ position: "absolute", left: B.barX - 60, top: B.topY - 66, fontFamily: "Poppins", fontWeight: 700, fontSize: 40, color: "rgba(255,255,255,0.8)", opacity: pGoal }}>{fmt(total)} steps</div>

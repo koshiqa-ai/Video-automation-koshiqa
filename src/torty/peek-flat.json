@@ -1,73 +1,73 @@
 {
  "idle": {
-  "w": 679,
-  "h": 1023,
-  "headL": 3,
-  "headR": 678
+  "w": 677,
+  "h": 1022,
+  "headL": 1,
+  "headR": 676
  },
  "smile": {
-  "w": 687,
-  "h": 1024,
-  "headL": 3,
-  "headR": 686
+  "w": 685,
+  "h": 1022,
+  "headL": 1,
+  "headR": 684
  },
  "happy": {
-  "w": 672,
-  "h": 1013,
-  "headL": 3,
-  "headR": 669
+  "w": 670,
+  "h": 1011,
+  "headL": 1,
+  "headR": 667
  },
  "excited": {
-  "w": 1013,
-  "h": 1071,
-  "headL": 4,
-  "headR": 1008
+  "w": 1007,
+  "h": 1068,
+  "headL": 1,
+  "headR": 1005
  },
  "thinking": {
   "w": 656,
-  "h": 1019,
+  "h": 1014,
   "headL": 0,
   "headR": 655
  },
  "surprised": {
-  "w": 782,
-  "h": 1042,
-  "headL": 61,
-  "headR": 729
+  "w": 781,
+  "h": 1038,
+  "headL": 60,
+  "headR": 728
  },
  "worried": {
   "w": 676,
-  "h": 1027,
-  "headL": 1,
+  "h": 1025,
+  "headL": 0,
   "headR": 675
  },
  "sad": {
   "w": 684,
-  "h": 946,
+  "h": 943,
   "headL": 4,
   "headR": 683
  },
  "confused": {
-  "w": 673,
-  "h": 1025,
+  "w": 670,
+  "h": 1023,
   "headL": 0,
   "headR": 655
  },
  "shy": {
-  "w": 782,
-  "h": 969,
-  "headL": 2,
-  "headR": 781
+  "w": 781,
+  "h": 967,
+  "headL": 1,
+  "headR": 780
  },
  "wink": {
-  "w": 742,
-  "h": 1007,
+  "w": 741,
+  "h": 1005,
   "headL": 0,
   "headR": 705
  },
  "determined": {
   "w": 724,
-  "h": 1033,
+  "h": 1031,
   "headL": 40,
   "headR": 723
  }

@@ -14,6 +14,27 @@ Entry format:
 
 ---
 
+## 2026-11-20 · HV-RestCard · Pre-final review (Frame.io, Mrinal + Manav): 12 comments
+- **Asked:** "changes in video 1" (Frame.io export "Pre final draft"), plus: Koshiqa pronounced KOH-shi-kaa (later: "still not being pronounced good", the team will send a voice note); the woman illustration drawn in code.
+- **Changed, by comment:**
+  - **000 / 001 / 003 · Intro** (Manav: redesign, set apart from section cards; Mrinal: the text stays the same for 8 s; a visual for "lowest day into 10K"): new F1 `intro`. The headline follows the voice: "What is a Rest Card?" → "Why did we build it?" (at "and why") → "Lowest day → 10K" (at "Here's how"), and Torty's pose changes with it. On the promise, a big Day 22 card comes in grey at 4,200 and lifts to a green 10,000 with confetti, while Torty steps aside. The opener's voice is unchanged.
+  - **000 / 002 / 009 · Section cards:** now E3 ("PART n OF 3"), not F1, so they no longer look like the intro. Part 1 is voiced: "First, let me explain when and why you need it." (Mrinal's line; "do you" changed to "you" for grammar). Part 3 is retitled and voiced "How does it work?" (was "What it does"). Part 2, "Why we built it", stays silent. Both new lines use a **Piper placeholder** until Tara's take is fixed.
+  - **004 · Zoom:** the whole phone now pushes in (bezel included), not just the screen inside it. The phone fades out just under the headline, so the headline stays readable.
+  - **005 · Torty resolution:** `scripts/extract-torty-flat.py` now upscales the sheet cuts with an edge-preserving method (premultiplied bicubic, bilateral flattening, light unsharp, crisp alpha) instead of plain Lanczos. All flat and peek PNGs were re-made with `npm run torty`. Real high-res art is still an open item (the sheet is ~300 px per pose).
+  - **006 · Koshiqa pronunciation:** one Tara take (263 credits) was made of the 5 changed lines, spelled "Koh-shi-kaa" in the ElevenLabs text. The team says it is still wrong, so nothing from that take is used. Next: a voice note of the right sound from the team, then one re-take.
+  - **007 · Chat opening:** new S1 `lead`: a coded flat illustration of a member typing on her phone (`src/screens/illustrations.tsx`, no name or likeness) while the voice says "One day, a woman from our community…". The phone with the chat rises in at "She said".
+  - **008 · "Can we have some rest days in the contest?"** now lands as it is spoken. The 💚 typing starts at "That got" and the heart lands at "thinking" (minSec 24.6 so it holds).
+  - **010 · C5:** "Adds 5,800 steps" appears at the end, with "bringing" (`titleAtWord`).
+  - **011 · E14:** the existing take was re-ordered by cutting at its pauses (no new audio): "Some days you push yourself. Some days you give your body a little rest. Because we believe fitness should be sustainable, not stressful." The tall humps rise on "push", the low ones on "rest" (`growAtWords`), and "Sustainable, not stressful" comes last. The original is kept in `work/HV-RestCard/vo-v2/12-original.wav`.
+  - **Code:** `src/LayoutSystem.tsx` (IntroSlide, whole-phone zoom, lead), `src/TypeLayouts.tsx` (C5 titleAt), `src/explainer/MotionKit.tsx` (E14 growAt, E3 title sizing), `src/videos/build.ts`, `types.ts`, `layout-system.ts`, `motion-data.ts`.
+  - **Hindi** (`rest-card-hi.ts`): left as it was; the English-only additions are filtered out. The renderer changes (whole-phone zoom, sharper Torty) apply to it too.
+  - **Docs:** design.md 1.7 (F1 intro, E3 sections, whole-phone zoom, lead, titleAtWord, growAtWords, 8 Don'ts, open item for designer art); SCREENS.md (`lead`); skill update proposed.
+- **Why / decisions:** the opener's voice is kept, so it costs no credits; only the text and visuals follow it. Section 2 is left silent because no line was given for it. The illustration is a stand-in for designer art.
+- **Output:** `out/HV-RestCard.mp4`. Open items:
+  - Tara's take of the 5 lines (after the pronunciation voice note); the Piper placeholders on the two section cards are replaced then.
+  - A line for section 2 if wanted.
+  - Designer art for the woman and higher-res Torty art.
+
 ## 2026-11-20 · HV-RestCardWhen · Tara voice + C5 bar for the 4,200 example
 - **Asked:** "generate video 2 with the script given below using /koshiqa-help-video" (same objective and script as the 11-17 draft).
 - **Type:** explainer (unchanged). The spec's `vo` lines already matched the script word for word, so no wording changed.

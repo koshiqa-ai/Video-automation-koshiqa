@@ -46,7 +46,7 @@ export type MotionContent = {
   E11: { title: string; accent?: string; tiles: { icon: string; text: string }[] }; // 2–4 tiles
   E12: { title: string; accent?: string; items: string[] }; // 2–4 items
   E13: { cards: { icon: string; text: string }[] }; // 3 cards around the slide's `screen`
-  E14: { title: string; accent?: string; line: string; filled?: number; days?: string[]; heights?: number[]; lines?: string[]; linesAt?: number[]; linesAtWords?: string[] }; // filled = days lit (0–7); days = 7 labels (default M T W T F S S); heights = 7 relative hump heights (0.3–1.4, default all 1); lines = the headline split into lines, each shown at linesAt (seconds) or linesAtWords (spoken words); line "" = none
+  E14: { title: string; accent?: string; line: string; filled?: number; days?: string[]; heights?: number[]; lines?: string[]; linesAt?: number[]; linesAtWords?: string[]; growAt?: number[]; growAtWords?: string[] }; // filled = days lit (0–7); days = 7 labels (default M T W T F S S); heights = 7 relative hump heights (0.3–1.4, default all 1); lines = the headline split into lines, each shown at linesAt (seconds) or linesAtWords (spoken words); line "" = none; growAtWords = [word for the tall humps, word for the low ones]
 };
 export type MotionCode = keyof MotionContent;
 export const MOTION_DEFAULTS: { [K in MotionCode]: MotionContent[K] } = {

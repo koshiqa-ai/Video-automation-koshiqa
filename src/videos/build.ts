@@ -57,7 +57,9 @@ const toScreenSpace = (v: VideoSlide, voSec: number, marks: Marks): VideoSlide =
 const toLS = (spec: HelpVideoSpec, v0: VideoSlide, i: number, voSec: number, marks: Marks): LSSlide => {
   const v = toScreenSpace(v0, voSec, marks);
   const base = { code: v.code, row: 0, name: `${i + 1} ${v.code}`, title: v.title, accent: v.accent, peek: v.peek, sec: 0,
-    ...(v.zoom ? { zoom: v.zoom as { x: number; y: number; scale: number; at: number } } : {}), ...(v.titleFirst ? { titleFirst: true } : {}) };
+    ...(v.zoom ? { zoom: v.zoom as { x: number; y: number; scale: number; at: number } } : {}), ...(v.titleFirst ? { titleFirst: true } : {}),
+    ...(v.titleAtWord ? { titleAt: wordTime(v.vo, voSec, marks, v.titleAtWord) } : {}),
+    ...(v.lead ? { lead: { art: v.lead.art, until: wordTime(v.vo, voSec, marks, v.lead.untilWord) - 0.2 } } : {}) };
   const times = v.times ?? (v.items ?? []).map((it, k) => (it.atWord ? wordTime(v.vo, voSec, marks, it.atWord) : 0.6 + 0.6 * k)); // P1/P2/T1 rows land on their words too
   const at = (w: string | undefined, fallback: number) => (w ? wordTime(v.vo, voSec, marks, w) : fallback);
   const itemTimes = (v.items ?? []).map((it, k) => at(it.atWord, v.code === "C4" ? 0.6 + 1.0 * k : 0.6 + 0.6 * k));
@@ -87,8 +89,13 @@ const toLS = (spec: HelpVideoSpec, v0: VideoSlide, i: number, voSec: number, mar
     case "C3":
       return { ...base, kind: "c-compare", compare: v.compare && { left: v.compare.left, right: v.compare.right, times: [at(v.compare.left.atWord, 0.6), at(v.compare.right.atWord, 1.6)] } };
     case "F1":
-    case "F2":
-      return { ...base, kind: "full-torty", peek: undefined, fullTorty: { pose: v.pose ?? (v.code === "F1" ? "excited" : "wink"), textOnTop: v.code === "F1" } };
+    case "F2": {
+      const intro = v.intro && {
+        steps: v.intro.steps.map((st, k) => ({ title: st.title, accent: st.accent, pose: st.pose, at: k === 0 ? 0 : at(st.atWord, 1 + 1.8 * k) - 0.1 })),
+        ...(v.intro.lift ? { lift: { day: v.intro.lift.day, base: v.intro.lift.base, target: v.intro.lift.target, at: at(v.intro.lift.atWord, 4) - 0.1, liftAt: at(v.intro.lift.liftAtWord, 5) } } : {}),
+      };
+      return { ...base, kind: "full-torty", peek: undefined, fullTorty: { pose: v.pose ?? (v.code === "F1" ? "excited" : "wink"), textOnTop: v.code === "F1" }, ...(intro ? { intro } : {}) };
+    }
     case "P1":
     case "P2":
       return { ...base, kind: "pointer", list: { style: v.code === "P1" ? "num" : "icon", items: v.items ?? [], times } };

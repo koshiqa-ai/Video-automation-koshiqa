@@ -5,8 +5,9 @@
 import type { HelpVideoSpec, VideoSlide } from "./types";
 import { REST_CARD } from "./rest-card";
 
-// the English section cards (silent F1 "Why you need it" etc., added 2026-11-20) aren't in the Hindi version yet
-const EN = REST_CARD.slides.filter((s, i) => !(i > 0 && s.code === "F1" && !s.vo));
+// not in the Hindi version yet (English-only changes of 2026-11-20): the section cards (E3), the intro's changing
+// text, the woman-typing lead-in and the late C5 title
+const EN = REST_CARD.slides.filter((s) => s.code !== "E3").map(({ intro: _i, lead: _l, titleAtWord: _t, ...s }) => s);
 /** take English slide i and replace its words; screens, peeks, targets and timing rules are kept */
 const hi = (i: number, o: Partial<VideoSlide>): VideoSlide => ({ ...EN[i], ...o });
 const S = (i: number) => EN[i].screen as Record<string, any>;
@@ -29,7 +30,7 @@ export const REST_CARD_HI: HelpVideoSpec = {
       vo: "Koshiqa आप जैसे members के feedback से बना है।" }),
     hi(4, {
       screen: { chat: { ...S(4).chat, messages: [
-        { ...S(4).chat.messages[0] },
+        { ...S(4).chat.messages[0], atWord: undefined, at: 0.5 },
         { ...S(4).chat.messages[1], atWord: "lifelong" },
         { ...S(4).chat.messages[2], atWord: "शरीर को" },
         { ...S(4).chat.messages[3], atWord: "इस बात ने" },

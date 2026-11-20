@@ -116,7 +116,7 @@ const Navigator: React.FC<SP<"E3">> = ({ m, peek }) => {
       <svg width={1080} height={1920} style={{ position: "absolute", inset: 0 }}>
         <DrawPath d="M540,962 L540,1060" p={prog(f, 28, 40)} stroke="rgba(255,255,255,0.8)" width={5} />
       </svg>
-      <div style={{ position: "absolute", left: 80, right: 80, top: 1090 }}><Words text={m.title} at={38} size={112} weight={800} /></div>
+      <div style={{ position: "absolute", left: 80, right: 80, top: 1090 }}><Words text={m.title} at={38} size={Math.min(112, Math.round(900 / (m.title.length * 0.58)))} weight={800} /></div>
       <Peek peek={peek} />
     </AbsoluteFill>
   );
@@ -412,9 +412,13 @@ const FloatingCards: React.FC<SP<"E13">> = ({ m, peek, screen }) => {
 const Humps: React.FC<SP<"E14">> = ({ m, peek }) => {
   const f = useCurrentFrame();
   const X0 = 150, X1 = 930, Y = 1080, n = 7, w = (X1 - X0) / n;
-  const grow = (i: number) => prog(f, 34 + i * 3, 46 + i * 3);
-  const fill = (i: number) => (i < (m.filled ?? 7) ? prog(f, 66 + i * 7, 74 + i * 7) : 0);
   const H = m.heights ?? [];
+  // growAt = [high, low] (s): the tall humps rise when the voice says "push", the low ones on "rest" (team review
+  // 2026-11-20); without it they all rise one after another from frame 34
+  const ga = m.growAt;
+  const g0 = (i: number) => (ga ? Math.round(((H[i] ?? 1) >= 1 ? ga[0] : ga[1] ?? ga[0]) * 30) + (i % 4) * 2 : 34 + i * 3);
+  const grow = (i: number) => prog(f, g0(i), g0(i) + 14);
+  const fill = (i: number) => (i < (m.filled ?? 7) ? prog(f, g0(i) + (ga ? 10 : 32 + i * 4), g0(i) + (ga ? 18 : 40 + i * 4)) : 0);
   const lines = m.lines && m.lines.length ? m.lines : null;
   const at = m.linesAt ?? [];
   return (
@@ -428,7 +432,7 @@ const Humps: React.FC<SP<"E14">> = ({ m, peek }) => {
       <svg width={1080} height={1920} style={{ position: "absolute", inset: 0 }}>
         <DrawPath d={`M${X0},${Y} L${X1},${Y}`} p={prog(f, 10, 28)} stroke="rgba(255,255,255,0.7)" width={5} />
         {Array.from({ length: n }, (_, i) => {
-          const breathe = 1 + 0.03 * Math.sin((f - i * 9) / 14) * prog(f, 80, 100);   // keeps moving after it lands
+          const breathe = 1 + 0.03 * Math.sin((f - i * 9) / 14) * prog(f, g0(i) + 20, g0(i) + 40);   // keeps moving after it lands
           const g = grow(i), r = w / 2, cx = X0 + r + i * w, hh = r * 1.7 * g * (H[i] ?? 1) * breathe;
           const d = `M${cx - r},${Y} A${r},${hh || 0.01} 0 0 1 ${cx + r},${Y}`;
           return (

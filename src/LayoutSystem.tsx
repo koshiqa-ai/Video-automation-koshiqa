@@ -6,6 +6,7 @@ import { Phone } from "./components/Phone";
 import { Headline } from "./components/Text";
 import type { TimedLayoutScene } from "./data/faq-layouts";
 import { ChatView } from "./screens/chat";
+import { WomanTyping } from "./screens/illustrations";
 import { headlineTop, isChat, isShot, LS, SHOT_TOP, lsCues, lsTimeline, phoneGeo, shotFit, type FlatPose, type ShotScreen, type LSSlide, type PeekExpr, type PeekSide } from "./data/layout-system";
 import { Confetti, FocusRing } from "./ExplainerDemo";
 import { AppScreen, Backdrop, GREEN, theme, toVideo } from "./LayoutDemo";
@@ -118,7 +119,8 @@ const PhoneSlide: React.FC<{ s: LSSlide & { duration: number } }> = ({ s }) => {
   const layout = s.layout!;
   const g = phoneGeo(layout, torty);
   // title-first staging: the headline alone (large, centred) for ~1.1 s, then it moves up and the phone rises
-  const stage = s.titleFirst ? 33 : 0;
+  // lead-in: a full-frame illustration first (S1 chat story), then the phone rises at lead.until
+  const stage = s.titleFirst ? 33 : s.lead ? fr(s.lead.until) : 0;
   const rise = spring({ frame: f - stage, fps, config: { damping: 18, stiffness: 120 } });
   const hTop = s.kind === "timeline" ? null : headlineTop(layout, torty);
   const a = s.anno;
@@ -126,11 +128,13 @@ const PhoneSlide: React.FC<{ s: LSSlide & { duration: number } }> = ({ s }) => {
   const sc = isShot(s.screen) ? s.screen : undefined;
   // keep it alive after the entrance: a slow float of the phone (design.md §8, ambient motion)
   const float = Math.sin((f - stage) / 38) * 5;
-  // zoom: the screen's content pushes in towards the zoom point inside the phone (the phone, its bezel and the
-  // headline stay put; the status bar slides off the top). Annotations drawn outside the phone follow the zoom.
+  // zoom: a camera push-in on the whole phone (bezel included) towards the zoom point; the headline and Torty stay
+  // put (team review 2026-11-20: zooming inside the screen looked odd). Annotations follow the zoom; the ring is drawn
+  // outside the scaled layer so its stroke stays crisp.
   const z = s.zoom ? 1 + (s.zoom.scale - 1) * spring({ frame: f - fr(s.zoom.at), fps, config: { damping: 20, stiffness: 70 } }) : 1;
   const zx = s.zoom?.x ?? 195, zy = s.zoom?.y ?? 422;
   const zt = t && { ...t, x: zx + (t.x - zx) * z, y: zy + (t.y - zy) * z, w: t.w * z, h: t.h * z, r: t.r !== undefined ? t.r * z : undefined };
+  const zo = toVideo(g, zx, zy);
   const mockProps = (s.screen as { props?: { liftAt?: number; confetti?: boolean } } | undefined)?.props;
   const confettiAt = sc?.then?.confetti ? (sc.then.at ?? 0) + 0.15 : mockProps?.confetti && mockProps.liftAt !== undefined ? mockProps.liftAt + 0.15 : null;
   const burst = zt ? toVideo(g, zt.x, zt.y) : { x: 540, y: g.y + 600 };
@@ -141,10 +145,18 @@ const PhoneSlide: React.FC<{ s: LSSlide & { duration: number } }> = ({ s }) => {
   return (
     <AbsoluteFill>
       <Backdrop />
-      <AbsoluteFill style={{ opacity: s.titleFirst ? interpolate(f, [stage - 4, stage + 6], [0, 1], clamp) : 1 }}>
+      {s.lead && f < stage + 10 && (
+        <AbsoluteFill style={{ opacity: interpolate(f, [stage - 6, stage + 6], [1, 0], clamp), scale: String(1 + 0.08 * interpolate(f, [stage - 6, stage + 8], [0, 1], clamp)) }}>
+          <WomanTyping />
+        </AbsoluteFill>
+      )}
+      <AbsoluteFill style={{ opacity: s.titleFirst || s.lead ? interpolate(f, [stage - 4, stage + 6], [0, 1], clamp) : 1 }}>
+        {/* when zoomed, the phone fades out just under the headline so the headline stays on clean background */}
+        <div style={{ position: "absolute", inset: 0, ...(s.zoom && hTop !== null ? { maskImage: `linear-gradient(to bottom, transparent ${hTop + 110}px, black ${hTop + 148}px)`, WebkitMaskImage: `linear-gradient(to bottom, transparent ${hTop + 110}px, black ${hTop + 148}px)` } : {}) }}>
+        <div style={{ position: "absolute", inset: 0, transform: `scale(${z})`, transformOrigin: `${zo.x}px ${zo.y + float * rise}px` }}>
         <Phone scale={g.s} frame={theme.phoneFrame} x={g.x} y={g.y + (1 - rise) * 60 + float * rise} shadow="0 40px 90px rgba(0,50,35,0.38)">
           <div style={{ position: "absolute", left: 0, top: 0, width: 390, height: 844, overflow: "hidden" }}>
-            <div style={{ position: "absolute", inset: 0, transform: `scale(${z})`, transformOrigin: `${zx}px ${zy}px` }}>
+            <div style={{ position: "absolute", inset: 0 }}>
               {isChat(s.screen) ? <ChatView chat={s.screen.chat} /> : isShot(s.screen)
                 ? <ShotView sc={s.screen} cursorSize={a?.kind === "hand" ? 0 : 36} rippleScale={g.s > 2 ? 0.8 : 0.9} />
                 : <AppScreen scene={{ screen: s.screen, duration: s.duration } as unknown as TimedLayoutScene} cursorSize={a?.kind === "hand" ? 0 : 36} rippleScale={g.s > 2 ? 0.8 : 0.9} />}
@@ -152,6 +164,8 @@ const PhoneSlide: React.FC<{ s: LSSlide & { duration: number } }> = ({ s }) => {
             </div>
           </div>
         </Phone>
+        </div>
+        </div>
         <div style={{ position: "absolute", inset: 0, translate: `0px ${float * rise}px` }}>
           {a?.kind === "ring" && zt && <FocusRing fc={{ ...zt, at: a.at ?? 0.6 }} centre={toVideo(g, zt.x, zt.y)} scale={g.s} />}
           {a?.kind === "tooltip" && zt && <DarkTooltip x={toVideo(g, zt.x, zt.y).x} y={toVideo(g, zt.x, zt.y - zt.h / 2).y - 14} label={a.label!} at={a.at ?? 0.6} />}
@@ -263,9 +277,76 @@ const ListSlide: React.FC<{ s: LSSlide & { duration: number } }> = ({ s }) => {
   );
 };
 
+// ───────── F1 intro: the headline follows the voice; a day card lifts to the target (team review 2026-11-20) ─────────
+const fmtN = (n: number) => Math.round(n).toLocaleString("en-US");
+/** a calendar day note, drawn large (the same look as the calendar mockup's notes) */
+const BigDayNote: React.FC<{ day: number; value: number; green: number; w: number }> = ({ day, value, green, w }) => {
+  const h = w * 1.1;
+  return (
+    <div style={{ position: "relative", width: w, height: h }}>
+      <div style={{ position: "absolute", inset: 0, borderRadius: `${w * 0.05}px ${w * 0.05}px ${w * 0.18}px ${w * 0.05}px`, background: "linear-gradient(160deg, #F2F2F2 0%, #DCDCDC 100%)", boxShadow: "0 24px 50px rgba(0,40,28,0.35)" }} />
+      <div style={{ position: "absolute", inset: 0, opacity: green, borderRadius: `${w * 0.05}px ${w * 0.05}px ${w * 0.18}px ${w * 0.05}px`, background: "linear-gradient(160deg, #DFFFBE 0%, #C3F58F 55%, #B0EC77 100%)" }} />
+      <div style={{ position: "absolute", left: w * 0.13, top: w * 0.17, fontFamily: "Poppins", fontWeight: 700, fontSize: w * 0.24, lineHeight: 1, color: green > 0.5 ? "#4D7324" : "#8A8A8A" }}>Day {day}</div>
+      <div style={{ position: "absolute", left: w * 0.13, top: w * 0.55, fontFamily: "Poppins", fontWeight: 800, fontSize: w * 0.22, lineHeight: 1, color: green > 0.5 ? "#26620F" : "#8F8F8F" }}>{fmtN(value)}</div>
+      <div style={{ position: "absolute", left: w * 0.13, top: w * 0.8, fontFamily: "Poppins", fontWeight: 600, fontSize: w * 0.09, lineHeight: 1, color: green > 0.5 ? "#4D7324" : "#9A9A9A" }}>steps</div>
+    </div>
+  );
+};
+
+const IntroSlide: React.FC<{ s: LSSlide & { duration: number } }> = ({ s }) => {
+  const f = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const F = LS.fullTorty;
+  const intro = s.intro!;
+  const cur = intro.steps.reduce((k, st, i) => (f >= fr(st.at) ? i : k), 0);
+  const pose = intro.steps.slice(0, cur + 1).reduce<FlatPose>((p, st) => st.pose ?? p, s.fullTorty!.pose);
+  const poseSince = f - fr(intro.steps.slice(0, cur + 1).reduce((t, st) => (st.pose ? st.at : t), 0)) - 4;
+  const L = intro.lift;
+  // Torty steps aside (smaller, bottom right) when the day card comes in
+  const k = L ? spring({ frame: f - fr(L.at), fps, config: { damping: 16, stiffness: 110 } }) : 0;
+  const tH = F.height - 460 * k, tTop = F.top + 240 + F.gap + (1280 - (F.top + 240 + F.gap)) * k, tX = 230 * k;
+  const pCard = L ? spring({ frame: f - fr(L.at) - 4, fps, config: { damping: 11, stiffness: 150 } }) : 0;
+  const lift = L ? interpolate(f, [fr(L.liftAt), fr(L.liftAt) + 22], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) }) : 0;
+  const bob = Math.sin(f / 12) * 6;
+  return (
+    <AbsoluteFill>
+      <Backdrop />
+      <div style={{ position: "absolute", left: 90 + tX, top: tTop + tH / 2 - 450, width: 900, height: 900, borderRadius: 450, background: "radial-gradient(circle, rgba(194,238,225,0.42), transparent 68%)", scale: String(1 - 0.4 * k) }} />
+      <div style={{ position: "absolute", left: tX, right: -tX, top: tTop, display: "flex", justifyContent: "center", translate: `0px ${Math.sin(f / 10) * 6}px` }}>
+        <TortyFlat pose={pose} height={tH} since={poseSince} />
+      </div>
+      {intro.steps.map((st, i) => {
+        const next = intro.steps[i + 1];
+        // the old line clears (6 frames) before the new one starts, so they never overlap
+        const start = fr(st.at) + (i > 0 ? 6 : 0);
+        if (f < start || (next && f >= fr(next.at) + 6)) return null;
+        const out = next ? interpolate(f, [fr(next.at), fr(next.at) + 6], [1, 0], clamp) : 1;
+        return (
+          <Sequence key={i} from={start} layout="none">
+            <div style={{ position: "absolute", inset: 0, opacity: out, translate: `0px ${(1 - out) * -40}px` }}>
+              <CentredHeadline title={st.title} accent={st.accent} top={F.top} size={F.textSize} />
+            </div>
+          </Sequence>
+        );
+      })}
+      {L && f >= fr(L.at) && (
+        <>
+          <div style={{ position: "absolute", left: 540 - 170 - 120, top: 640 + bob, scale: String(pCard), rotate: `${-4 + 4 * lift}deg` }}>
+            <BigDayNote day={L.day} value={L.base + (L.target - L.base) * lift} green={lift} w={340} />
+          </div>
+          {lift > 0 && <div style={{ position: "absolute", left: 540 - 170 - 120 - 20, top: 620 + bob, width: 380, height: 414, borderRadius: 40, boxShadow: `0 0 ${40 + 30 * Math.sin(f / 8)}px rgba(194,238,225,${0.55 * lift})`, pointerEvents: "none" }} />}
+          <Confetti at={L.liftAt + 0.2} origin={{ x: 420, y: 820 }} />
+        </>
+      )}
+      <CodeTag s={s} />
+    </AbsoluteFill>
+  );
+};
+
 // ───────── full Torty + text (F1/F2) ─────────
 const FullTortySlide: React.FC<{ s: LSSlide & { duration: number } }> = ({ s }) => {
   const f = useCurrentFrame();
+  if (s.intro) return <IntroSlide s={s} />;
   const F = LS.fullTorty;
   const ft = s.fullTorty!;
   const textTop = ft.textOnTop ? F.top : F.top + F.height + F.gap;

@@ -47,6 +47,13 @@ export type VideoSlide = {
   zoom?: { x: number; y: number; scale: number; at?: number; atWord?: string };
   /** phone slides: headline alone first, then the phone (design.md §3, one focal point at a time) */
   titleFirst?: boolean;
+  /** show the headline only when this word is spoken (C5: the name of the result comes at the end) */
+  titleAtWord?: string;
+  /** F1 intro (the first slide): the headline follows the voice. steps[0] shows from the start; each next step at its
+   *  atWord. `lift`: a day card appears at atWord and lifts from base to target at liftAtWord (design.md §3 F1) */
+  intro?: { steps: { title: string; accent?: string; pose?: FlatPose; atWord?: string }[]; lift?: { day: number; base: number; target: number; atWord: string; liftAtWord: string } };
+  /** S1 chat: a full-frame illustration while the story starts; the phone comes in when `untilWord` is spoken */
+  lead?: { art: "woman-typing"; untilWord: string };
   /** C3: wrong way (left) vs right way (right); each card appears at its atWord */
   compare?: { left: { title: string; result: string; atWord?: string }; right: { title: string; result: string; atWord?: string } };
 };

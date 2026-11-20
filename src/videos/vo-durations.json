@@ -114,14 +114,14 @@
  "HV-RestCard": {
   "files": [
    "vo/HV-RestCard/01.wav",
-   null,
+   "vo/HV-RestCard/02.wav",
    "vo/HV-RestCard/03.wav",
    "vo/HV-RestCard/04.wav",
    null,
    "vo/HV-RestCard/06.wav",
    "vo/HV-RestCard/07.wav",
    "vo/HV-RestCard/08.wav",
-   null,
+   "vo/HV-RestCard/09.wav",
    "vo/HV-RestCard/10.wav",
    "vo/HV-RestCard/11.wav",
    "vo/HV-RestCard/12.wav",
@@ -129,17 +129,17 @@
   ],
   "durations": [
    7.01,
-   null,
+   3.25,
    4.01,
    5.78,
    null,
    3.03,
    22.23,
    2.51,
-   null,
+   1.35,
    5.82,
    8.99,
-   8.51,
+   8.93,
    3.83
   ]
  },
