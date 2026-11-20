@@ -14,6 +14,15 @@ Entry format:
 
 ---
 
+## 2026-11-20 · HV-RestCard (EN) · Voice: Tara, stability 0
+- **Asked:** replace the voice with "Tara – Polished Audio Description", stability 0%, through ElevenLabs.
+- **Changed:**
+  - Generated once (1 take, 1,164 credits) in ElevenLabs flow `Dz6Bnyq2uzZtpw0aO4hE`: a tts node, eleven_v4, voice `nF5xXwlriNhsorW8Fykg`, `voice_settings.stability = 0`.
+  - The prompt is the 10 voiced lines of the current English spec, with a blank line between slides; the section cards are silent.
+  - `voices.json` en = Tara, stability 0, eleven_v4. CLAUDE.md and PROJECT-CONTEXT.md updated.
+- **Waiting for:** the team to download the take and attach it. The sandbox can't download from ElevenLabs.
+- **Next:** split it per slide (by transcript if needed), level it to −16 LUFS, re-time and re-render.
+
 ## 2026-11-20 · HV-RestCard (English only) · Section cards + coded mockups
 - **Asked:**
   - Split the video with cards like the first one ("Why we built it"…). English version only.

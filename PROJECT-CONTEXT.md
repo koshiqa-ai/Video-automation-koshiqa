@@ -24,7 +24,7 @@ Script + screen recording → classify type → storyboard HTML (team reviews) �
 
 ## Voiceover (ElevenLabs)
 - **Credits:** generate ONCE per script, ONE take. Never retry or try other voices without asking; it wastes credits.
-- **Voice choice is pending:** we didn't like Monika Sogam. We're comparing Mona (Option 1), Riya Rao (Option 2) and Tara (Option 3) in `out/voice-sample.mp4`. Once chosen, put its ID in `src/data/voices.json` (still set to Monika) and use only that voice.
+- **Voice (English):** Tara – Polished Audio Description (`nF5xXwlriNhsorW8Fykg`), eleven_v4, **stability 0**. Hindi voice not chosen yet.
 - **Model:** eleven_v4. Expressiveness = lower Stability (~30–40) + audio tags like `[warm]` or `[curious]` in the ElevenLabs text (tags are not added to the spec's lines).
 - **Getting the audio in:** the cloud workspace can't download from ElevenLabs. Generate the full script once (via the ElevenLabs connector or the ElevenLabs website), then the team downloads the take and attaches it to the chat. Claude splits it per slide (by transcript if needed) and levels it to −16 LUFS.
 - **Placeholder:** Piper is only for drafts; always say when a render uses it.
