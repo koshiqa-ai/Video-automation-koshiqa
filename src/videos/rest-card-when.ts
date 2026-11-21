@@ -16,36 +16,49 @@ export const REST_CARD_WHEN: HelpVideoSpec = {
   question: "When should you use your Rest Card?",
   lang: "en",
   slides: [
-    // 1 · Hook
-    { code: "F1", pose: "thinking", title: "Use it or save it?", accent: "save it?",
+    // 0 · Intro (team, 2026-11-21: "the first card is missing"): Video 1's F1 intro, the headline follows the voice
+    { code: "F1", pose: "thinking", title: "Have a Rest\u00a0Card?", accent: "Rest\u00a0Card?",
+      intro: {
+        steps: [
+          { title: "Have a Rest\u00a0Card?", accent: "Rest\u00a0Card?" },
+          { title: "When to use\u00a0it", accent: "use\u00a0it", pose: "smile", atWord: "here's when" },
+          { title: "When to save\u00a0it", accent: "save\u00a0it", pose: "wink", atWord: "should save" },
+        ],
+      },
       vo: "Have a Rest Card in your account? Before you use it, here's when you should apply it and when you should save it for later." },
 
-    // 2 · When to use it
-    { code: "P2", title: "Use it when", accent: "Use it", peek: { expr: "happy", side: "right" },
-      items: [
-        { text: "A low-step day", icon: "steps", atWord: "low-step day" },
-        { text: "A deficit to clear", icon: "trophy", atWord: "contest deficit" },
-      ],
+    // section cards: E3 "PART n OF 3", silent (no line in the script for them)
+    { code: "E3", peek: { expr: "happy", side: "right" }, motion: { part: 1, title: "When to use it" }, minSec: 3.6 },
+
+    // 1 · When to use it
+    { code: "E12", peek: { expr: "happy", side: "right" },
+      motion: { title: "Use it when", accent: "Use it", items: ["A low-step day", "A deficit to clear"] },
       vo: "Use your Rest Card when you've had a low-step day and still have a contest deficit to clear." },
-    // a sum (actual + bonus = 10,000): Video 1's approved C5 bar build-up, held ~10 s (team, 2026-11-20)
-    { code: "C5", title: "Adds 5,800 steps", accent: "5,800", peek: { expr: "smile", side: "right" }, minSec: 10,
+    // a sum (actual + bonus = 10,000): Video 1's C5 bar build-up, held ~10 s; title lands with "bringing" like Video 1
+    { code: "C5", title: "Adds 5,800 steps", accent: "5,800", peek: { expr: "smile", side: "right" }, minSec: 10, titleAtWord: "bringing",
       bar: { label: "Lowest day", base: 4200, add: 5800, baseLabel: "actual steps", addLabel: "Rest Card bonus", atWords: ["4,200", "add 5,800", "bringing"] },
-      vo:"For example, if your lowest eligible day has 4,200 steps, your Rest Card can add 5,800 steps, bringing it to 10,000." },
+      vo: "For example, if your lowest eligible day has 4,200 steps, your Rest Card can add 5,800 steps, bringing it to 10,000." },
+    // zoom, then circle (Video 1 pattern): the whole phone pushes in on the Deficit row
     { code: "S2", title: "Smaller deficit", accent: "deficit", peek: { expr: "excited", side: "left" }, screen: v1("05"),
-      anno: { kind: "spotlight", target: { x: 288, y: 850, w: 530, h: 74, r: 14 }, atWord: "reduce" },
+      zoom: { x: 288, y: 850, scale: 1.5, atWord: "help" },
+      anno: { kind: "ring", target: { x: 288, y: 850, w: 530, h: 74, r: 14 }, atWord: "reduce" },
       vo: "This can help you reduce your overall contest deficit." },
 
-    // 3 · When to save it
+    { code: "E3", peek: { expr: "thinking", side: "left" }, motion: { part: 2, title: "When to save it" }, minSec: 3.6 },
+
+    // 2 · When to save it
     { code: "S2", title: "Save it for later", accent: "later", peek: { expr: "wink", side: "right" },
       screen: shot("05", { taps: [{ x: 288, y: 1140, atWord: "Save it for later" }] }),
       anno: { kind: "spotlight", target: { x: 288, y: 518, w: 528, h: 86, r: 14 }, atWord: "no eligible" },
       vo: "If there's no eligible low-step day that can benefit from the card, or you've already cleared your contest deficit, there's no reason to use it. Save it for later!" },
-    { code: "S2", title: "Small gain? Decide", accent: "Decide", peek: { expr: "thinking", side: "left" },
-      screen: shot("06"),
-      anno: { kind: "spotlight", target: { x: 288, y: 544, w: 528, h: 138, r: 14 }, atWord: "very small" },
+    { code: "S2", title: "Small gain? Decide", accent: "Decide", peek: { expr: "thinking", side: "left" }, screen: shot("06"),
+      zoom: { x: 288, y: 544, scale: 1.5, atWord: "benefit" },
+      anno: { kind: "ring", target: { x: 288, y: 544, w: 528, h: 138, r: 14 }, atWord: "very small" },
       vo: "And if the benefit is very small, take a moment to decide whether you want to apply it or save it for another time." },
 
-    // 4 · The limitation: no planning ahead (yet)
+    { code: "E3", peek: { expr: "smile", side: "right" }, motion: { part: 3, title: "Planning ahead" }, minSec: 3.6 },
+
+    // 3 · The limitation: no planning ahead (yet)
     { code: "C3", title: "Plan ahead? Soon", accent: "Soon",
       compare: {
         left: { title: "Future days", result: "Can't plan rest days ahead. Coming soon", atWord: "cannot" },
@@ -53,9 +66,9 @@ export const REST_CARD_WHEN: HelpVideoSpec = {
       },
       vo: "One more thing! For now, you cannot schedule or plan your rest days in advance. We're working on bringing that soon. But you can apply your Rest Card anytime to any of your previous eligible low-step days." },
 
-    // 5 · Takeaway
-    { code: "S2", title: "Check the impact", accent: "impact", peek: { expr: "smile", side: "right" }, screen: shot("08"),
-      anno: { kind: "spotlight", target: { x: 288, y: 545, w: 548, h: 500, r: 18 }, atWord: "potential impact" },
+    // 4 · Takeaway: E13, the impact screen with what it tells you (its three rows) floating around it
+    { code: "E13", screen: shot("08"),
+      motion: { cards: [{ icon: "steps", text: "Step count" }, { icon: "check-circle", text: "Daily average" }, { icon: "trophy", text: "Deficit" }] },
       vo: "My suggestion? Always check your potential impact before applying." },
     { code: "F2", pose: "wink", title: "Make it count", accent: "count",
       vo: "Use your card when it can make a real difference!" },

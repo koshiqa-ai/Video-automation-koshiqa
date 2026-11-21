@@ -14,6 +14,22 @@ Entry format:
 
 ---
 
+## 2026-11-21 · HV-RestCardWhen · Intro card + more motion (12 slides)
+- **Asked:** "The First card (Intro slide) is missing." "The animations are very minimal and have fewer motion graphics. Did we use remotion-create for motion graphics?"
+- **Answer on remotion-create:** not used. That skill starts a new Remotion project. This repo already is the Remotion project, and its motion graphics are the approved E1–E14 kit and C1–C5 scenes (design.md §11). The fix was to use more of them, not a new project.
+- **Changed (`src/videos/rest-card-when.ts`, 9 → 12 slides):**
+  - **Intro:** slide 1 is now Video 1's F1 `intro`. The headline follows the voice: "Have a Rest Card?" → "When to use it" (at "here's when") → "When to save it" (at "should save"), and Torty's pose changes with each beat.
+  - **Section cards:** E3 "PART 1/2/3 OF 3": "When to use it", "When to save it", "Planning ahead" (3.6 s each).
+  - **"Use it when":** P2 list → E12 bullet list with connector.
+  - **C5:** headline lands with the total (`titleAtWord: "bringing"`), as in Video 1.
+  - **"Smaller deficit" and "Small gain? Decide":** whole-phone zoom (1.5×) then a ring on the Deficit row / the small-benefit message (was a static spotlight).
+  - **"Check the impact":** S2 → E13, the impact screen with three floating glass cards for its rows (Step count, Daily average, Deficit).
+  - Voice: the same Tara take, re-split into the new slide numbers (01, 03, 04, 05, 07, 08, 10, 11, 12) with the same cuts and the same +11.5 dB gain. No credits used.
+  - `design.md` 1.7.1: two Don'ts (explainers open on the F1 intro; explainers aren't mostly still screenshots).
+- **Why / decisions:** 5 scene types (E3, E12, C5, C3, E13), none back to back.
+- **Flag:** the three section cards are **silent**, which design.md's Don'ts don't allow (a section card needs a voiced lead-in). The script has no lines for them, so lines are proposed for the team (e.g. "First, when should you use it?" / "Next, when should you save it?" / "Finally, what about planning ahead?"). Once approved: one short Tara take, which the team downloads.
+- **Output:** `out/HV-RestCardWhen.mp4` (76.0 s, −17.0 LUFS) + `out/HV-RestCardWhen-qa.png`, all 12 slides pass. 1 s over the 75 s guideline; voiced section lead-ins would add ~3–4 s.
+
 ## 2026-11-21 · HV-RestCard · Tara voices the two section-card lines
 - **Asked:** "why the voice is different from 0:08 to 0:12" → "leave the koshiqa word and generate the left once and replace in video"
 - **Changed:** one Tara take (stability 0, eleven_v4, 66 credits) of only "First, let me explain when and why you need it." and "How does it work?". It was split at its pause, trimmed, and given one fixed gain (+11.5 dB) plus a limiter (−16.7 / −16.2 LUFS). These replace the Piper placeholders in `public/vo/HV-RestCard/02.wav` and `09.wav` (placeholders kept in `work/HV-RestCard/vo-v3/`). Durations re-measured.

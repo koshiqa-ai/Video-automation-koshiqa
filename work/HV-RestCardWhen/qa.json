@@ -1,6 +1,6 @@
 {
  "id": "HV-RestCardWhen",
- "seconds": 65.2,
+ "seconds": 76,
  "slides": [
   {
    "n": 1,
@@ -8,76 +8,103 @@
    "frame": 216,
    "sec": 7.5,
    "peek": null,
-   "title": "Use it or save it?",
+   "title": "Have a Rest Card?",
    "vo": "Have a Rest Card in your account? Before you use it, here's when you should apply it and when you should save it for later."
   },
   {
    "n": 2,
-   "code": "P2",
-   "frame": 386,
-   "sec": 5.7,
+   "code": "E3",
+   "frame": 324,
+   "sec": 3.6,
    "peek": "right happy",
-   "title": "Use it when",
-   "vo": "Use your Rest Card when you've had a low-step day and still have a contest deficit to clear."
+   "title": null,
+   "vo": null
   },
   {
    "n": 3,
+   "code": "E12",
+   "frame": 494,
+   "sec": 5.7,
+   "peek": "right happy",
+   "title": null,
+   "vo": "Use your Rest Card when you've had a low-step day and still have a contest deficit to clear."
+  },
+  {
+   "n": 4,
    "code": "C5",
-   "frame": 690,
+   "frame": 798,
    "sec": 10.1,
    "peek": "right smile",
    "title": "Adds 5,800 steps",
    "vo": "For example, if your lowest eligible day has 4,200 steps, your Rest Card can add 5,800 steps, bringing it to 10,000."
   },
   {
-   "n": 4,
+   "n": 5,
    "code": "S2",
-   "frame": 801,
+   "frame": 909,
    "sec": 3.7,
    "peek": "left excited",
    "title": "Smaller deficit",
    "vo": "This can help you reduce your overall contest deficit."
   },
   {
-   "n": 5,
+   "n": 6,
+   "code": "E3",
+   "frame": 1017,
+   "sec": 3.6,
+   "peek": "left thinking",
+   "title": null,
+   "vo": null
+  },
+  {
+   "n": 7,
    "code": "S2",
-   "frame": 1098,
+   "frame": 1314,
    "sec": 9.9,
    "peek": "right wink",
    "title": "Save it for later",
    "vo": "If there's no eligible low-step day that can benefit from the card, or you've already cleared your contest deficit, there's no reason to use it. Save it for later!"
   },
   {
-   "n": 6,
+   "n": 8,
    "code": "S2",
-   "frame": 1308,
+   "frame": 1524,
    "sec": 7,
    "peek": "left thinking",
    "title": "Small gain? Decide",
    "vo": "And if the benefit is very small, take a moment to decide whether you want to apply it or save it for another time."
   },
   {
-   "n": 7,
+   "n": 9,
+   "code": "E3",
+   "frame": 1632,
+   "sec": 3.6,
+   "peek": "right smile",
+   "title": null,
+   "vo": null
+  },
+  {
+   "n": 10,
    "code": "C3",
-   "frame": 1696,
+   "frame": 2020,
    "sec": 12.9,
    "peek": null,
    "title": "Plan ahead? Soon",
    "vo": "One more thing! For now, you cannot schedule or plan your rest days in advance. We're working on bringing that soon. But you can apply your Rest Card anytime to any of your previous eligible low-step days."
   },
   {
-   "n": 8,
-   "code": "S2",
-   "frame": 1838,
+   "n": 11,
+   "code": "E13",
+   "frame": 2162,
    "sec": 4.7,
-   "peek": "right smile",
-   "title": "Check the impact",
+   "peek": null,
+   "title": null,
    "vo": "My suggestion? Always check your potential impact before applying."
   },
   {
-   "n": 9,
+   "n": 12,
    "code": "F2",
-   "frame": 1947,
+   "frame": 2271,
    "sec": 3.6,
    "peek": null,
    "title": "Make it count",

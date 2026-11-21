@@ -43,7 +43,7 @@ Script + screen recording → classify type → storyboard HTML (team reviews) �
      - Whether the "sustainable, not stressful" ending stays.
      - The member's real words and consent.
 2. **Video 2 · "When should you use your Rest Card?"** (explainer)
-   - `HV-RestCardWhen`, `rest-card-when.ts`, 65.2 s, 9 slides, Tara voice (one take, 2026-11-20).
+   - `HV-RestCardWhen`, `rest-card-when.ts`, 76 s, 12 slides (F1 intro, E3 sections, E12, C5, zoom + circle, E13), Tara voice.
    - Objective: when to use the card, when to save it, and the current limit on planning rest days.
    - Recordings: IMG_7239 (no benefit) and IMG_7240 (small benefit).
    - The 4,200 + 5,800 = 10,000 example is Video 1's C5 bar build-up (held 10 s).

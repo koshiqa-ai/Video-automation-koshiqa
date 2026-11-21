@@ -6,7 +6,7 @@
 # change them here first, then in code.
 # Rule: one value per token, no ranges.
 # ─────────────────────────────────────────────────────────────
-version: 1.7
+version: 1.7.1
 status: approved            # layout system approved from the v4 review grid (2026-10-28)
 reference: LayoutSystem     # Remotion composition that renders every layout below
 visuals: design/            # layout stills (design/layouts), Torty art (design/torty), review grid
@@ -315,6 +315,8 @@ Each line here is a mistake from an earlier draft.
 - Don't show a quoted message before the voice reads it; a quote lands when it's spoken.
 - Don't name a result before it's built (C5's headline comes at the end, with the total).
 - Don't draw a chart all at once when the voice describes its parts; the peaks land on "push", the low days on "rest", and the takeaway text comes last.
+- Don't open an explainer without the F1 intro: the first card shows the video's question, and its headline follows the opening line.
+- Don't build an explainer mostly from still screenshots. Give each idea a motion scene (C/E), mark the parts with E3 section cards, and on a screen zoom in on the detail, then circle it.
 
 ## 10. Open items
 - [ ] Separate high-res Torty PNGs, about 1500 px tall. The sheet cuts are upscaled 4× (since 1.7 with an edge-preserving upscale, sharper but still limited by the ~300 px source) (`torty-requests.md`).
@@ -405,6 +407,7 @@ Decide before writing anything. One input can produce more than one video: split
 ## Changelog
 | Version | Date | Change | Why |
 |---|---|---|---|
+| 1.7.1 | 2026-11-21 | 2 Don'ts: every explainer opens on the F1 intro; explainers aren't mostly still screenshots (motion scenes, E3 sections, zoom then circle) | Video 2 review: "the first card is missing", "the animations are very minimal" |
 | 1.7 | 2026-11-20 | F1 intro (text follows the voice, day-card lift); section cards are E3 with a voiced lead-in; `zoom` pushes in on the whole phone (headline kept clear); S1 `lead` illustration (woman typing); C5 `titleAtWord`; E14 `growAtWords`; sharper Torty upscale (`scripts/extract-torty-flat.py`); 8 Don'ts | Video 1 pre-final review (Mrinal, Manav) |
 | 1.6.1 | 2026-11-20 | Section cards (F1 style, silent, ~2.4 s) may divide an explainer into its parts; `zoom` now pushes the screen's content in, inside the phone (the bezel never grows); coded mockups for screens whose recording has dark bands | Video 1: "add a slide like the first one", "black patch at the top" |
 | 1.6 | 2026-11-18 | C5 bar build-up; phone `zoom`, `titleFirst`, `then.confetti`; ambient motion on every slide; E7 icon + per-line sizing; E14 heights + timed lines; 6 Don'ts from the review | Video 1 review (Swati, Mrinal) |
