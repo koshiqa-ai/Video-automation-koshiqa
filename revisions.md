@@ -14,6 +14,60 @@ Entry format:
 
 ---
 
+## 2026-11-21 · HV-RestCard · Summary of all revisions to Video 1 ("What is a Rest Card? Why did we build it?")
+- **Asked:** "update the revisions in revision.md file". This entry sums up the full history up to today; each step has its own entry below. (Replaces the 2026-11-20 summary.)
+- **Revisions, oldest first:**
+  1. **11-13 · First draft.** Built from the team's script and recording IMG_7237, as an explainer.
+     - 13 slides: calendar → feedback → chat story → Rest Card → lift to 10K → bonus number → deficit → contest vs streak → streak minimum → streak check → "sustainable" → close.
+     - Placeholder voice, ~95 s.
+  2. **11-13 · Opens on the question.** Silent F1 "What is a Rest Card?"; accent words match through "?"/"!".
+  3. **11-14 · Chat and music.**
+     - Chat messages arrive earlier; member on the left, Koshiqa on the right.
+     - A 💚 reply.
+     - A soft synthesised music bed under every video, ducked under the voice.
+  4. **11-14 · Hindi version (`HV-RestCard-HI`).** Hinglish script and on-screen text; later voiced with the team's ElevenLabs Hindi take.
+  5. **11-14 · Clean screenshot edges.** The recorder's side tab is removed by its shape; the mid-scroll sliver above the calendar is cleaned; the back-arrow tip is redrawn.
+  6. **11-18 · Swati's 0:09 fix.** The recorder tab's drop shadow is removed from the calendar.
+  7. **11-18 · v2 after the team review (Swati + Mrinal, 29 comments):**
+     - **Split:** only why you need it → why we built it → what it does. The deficit/club, contest vs streak, streak minimum and streak-broken slides moved out for the do's & don'ts video.
+     - **Opening** voiced: "What is a Rest Card, and why did we build it? Here's how it can turn your lowest day into a 10,000-step day."
+     - **Calendar:** realistic green 10K+ days, avg 12,347; zoom into day 22.
+     - **Feedback slide:** "Koshiqa is built with feedback from members like you", with a heart icon and bigger text.
+     - **"We built the Rest Card":** title first, then the phone; the cut-off card is removed.
+     - **Lift to 10,000:** confetti.
+     - **Bonus:** new C5 bar build-up (4,200 actual + 5,800 bonus = 10,000).
+     - **"Sustainable, not stressful":** timed to the voice, with varied bars.
+     - **Throughout:** headlines match the voiceover, and ambient motion runs on every slide.
+  8. **11-20 · Section cards + coded mockups (English).**
+     - F1 cards: "Why you need it" · "Why we built it" · "What it does".
+     - The calendar and Power card screens are rebuilt as light coded mockups (no dark recording tops).
+     - Zoom now happens inside the phone.
+  9. **11-20 · Tara voice (English).**
+     - Tara – Polished Audio Description, stability 0, eleven_v4, generated once.
+     - Split per slide by transcript, levelled to −16.8 LUFS.
+  10. **11-20 · Light music options.** Three lighter synthesised beds for the team to choose from (`light-bright`, `light-piano`, `light-uke`, `scripts/make-music.py --style`); the video still uses the original bed until one is picked.
+  11. **11-20 · Pre-final review (Frame.io, Mrinal + Manav, 12 comments):**
+      - **Intro:** the text follows the voice ("What is a Rest Card?" → "Why did we build it?" → "Lowest day → 10K"), and a Day 22 card lifts from 4,200 to 10,000.
+      - **Section cards:** now E3 "PART n OF 3", so they look different from the intro. Part 1 is voiced ("First, let me explain when and why you need it.") and Part 3 is "How does it work?", voiced.
+      - **Zoom:** the whole phone zooms in, and the headline stays clear.
+      - **Torty:** sharper art throughout (better upscale; layout stills and grid re-rendered).
+      - **Chat:** it opens on an illustration of a woman typing on her phone. The question message lands as it's spoken.
+      - **C5:** "Adds 5,800 steps" appears at the end.
+      - **E14:** peaks on "push", low days on "rest", then "Sustainable, not stressful" last (sentences re-ordered from the same take).
+      - **Koshiqa pronunciation:** a 5-line re-take spelled "Koh-shi-kaa" still sounded wrong, so it wasn't used; waiting for the team's voice note.
+  12. **11-21 · Section-card lines in Tara's voice.** One short take (66 credits) replaces the stand-in voice on Part 1 and Part 3.
+- **Now:**
+  - English: 13 slides, 94.8 s, all Tara, −16.8 LUFS, `out/HV-RestCard.mp4`.
+    - Intro → Part 1 → calendar → zoom on day 22 → Part 2 → feedback → woman typing + chat → Rest Card → Part 3 → lift to 10K → C5 bar → push/rest chart → close.
+  - Hindi: still v2 (10 slides, 111 s), with none of the 11-20/11-21 English changes and a mixed voice.
+- **Open:**
+  - "Koshiqa" pronunciation: waiting for the team's voice note, then one Tara re-take of the 3 lines that say it (feedback slide, one chat sentence, closing).
+  - Music: pick one of the three light options.
+  - Length: 95 s, over the 75 s explainer guideline (the chat story is 24.6 s).
+  - Designer art for the woman-typing illustration, and higher-res Torty art.
+  - Section 2 ("Why we built it") is silent; a line if wanted.
+  - From earlier: the member's real words and consent for the chat; heart-hands Torty art; the Hindi voice choice, then a Hindi update to match the English.
+
 ## 2026-11-21 · HV-RestCardWhen · Intro card + more motion (12 slides)
 - **Asked:** "The First card (Intro slide) is missing." "The animations are very minimal and have fewer motion graphics. Did we use remotion-create for motion graphics?"
 - **Answer on remotion-create:** not used. That skill starts a new Remotion project. This repo already is the Remotion project, and its motion graphics are the approved E1–E14 kit and C1–C5 scenes (design.md §11). The fix was to use more of them, not a new project.
@@ -88,48 +142,6 @@ Entry format:
   - `src/videos/rest-card.ts` is unchanged: each option was mixed with the spec's `music` set temporarily.
 - **Why / decisions:** the old bed's tension comes from its jazzy major-7th chords, busy 8th-note arpeggio and off-beat shaker. Same mix levels and ducking as before (design.md §8), so only the track changes.
 - **Output:** `out/music-options.mp4` (91 s): "Option 1/2/3" cards, each followed by Video 1's first 27.8 s (opener → E7) with Tara's voice. Waiting for the team's choice; the chosen track will then be set for Video 1 (and as the default bed if wanted) and committed.
-
-## 2026-11-20 · HV-RestCard · Summary of all revisions to Video 1 ("What is a Rest Card? Why did we build it?")
-- **Asked:** "note the revisions made on this video in revision.md file". This entry sums up the full history; each step has its own entry below.
-- **Revisions, oldest first:**
-  1. **11-13 · First draft.** Built from the team's script and recording IMG_7237, as an explainer.
-     - 13 slides: calendar → feedback → chat story → Rest Card → lift to 10K → bonus number → deficit → contest vs streak → streak minimum → streak check → "sustainable" → close.
-     - Placeholder voice, ~95 s.
-  2. **11-13 · Opens on the question.** Silent F1 "What is a Rest Card?"; accent words match through "?"/"!".
-  3. **11-14 · Chat and music.**
-     - Chat messages arrive earlier; member on the left, Koshiqa on the right.
-     - A 💚 reply.
-     - A soft synthesised music bed under every video, ducked under the voice.
-  4. **11-14 · Hindi version (`HV-RestCard-HI`).** Hinglish script and on-screen text; later voiced with the team's ElevenLabs Hindi take.
-  5. **11-14 · Clean screenshot edges.** The recorder's side tab is removed by its shape; the mid-scroll sliver above the calendar is cleaned; the back-arrow tip is redrawn.
-  6. **11-18 · Swati's 0:09 fix.** The recorder tab's drop shadow is removed from the calendar.
-  7. **11-18 · v2 after the team review (Swati + Mrinal, 29 comments):**
-     - **Split:** only why you need it → why we built it → what it does. The deficit/club, contest vs streak, streak minimum and streak-broken slides moved out for the do's & don'ts video.
-     - **Opening** voiced: "What is a Rest Card, and why did we build it? Here's how it can turn your lowest day into a 10,000-step day."
-     - **Calendar:** realistic green 10K+ days, avg 12,347; zoom into day 22.
-     - **Feedback slide:** "Koshiqa is built with feedback from members like you", with a heart icon and bigger text.
-     - **"We built the Rest Card":** title first, then the phone; the cut-off card is removed.
-     - **Lift to 10,000:** confetti.
-     - **Bonus:** new C5 bar build-up (4,200 actual + 5,800 bonus = 10,000).
-     - **"Sustainable, not stressful":** timed to the voice, with varied bars.
-     - **Throughout:** headlines match the voiceover, and ambient motion runs on every slide.
-  8. **11-20 · Section cards + coded mockups (English).**
-     - F1 cards: "Why you need it" · "Why we built it" · "What it does".
-     - The calendar and Power card screens are rebuilt as light coded mockups (no dark recording tops).
-     - Zoom now happens inside the phone.
-  9. **11-20 · Tara voice (English).**
-     - Tara – Polished Audio Description, stability 0, eleven_v4, generated once.
-     - Split per slide by transcript, levelled to −16.8 LUFS.
-- **Now:**
-  - English: 13 slides, 88.8 s, Tara voice, `out/HV-RestCard.mp4`.
-  - Hindi: still v2 (10 slides, 111 s), with no section cards or mockups yet and a mixed voice.
-- **Open:**
-  - Length is over the 75 s explainer guideline (the story slide is 23 s).
-  - The opener line needs approval.
-  - The member's real words and consent for the chat.
-  - Heart-hands Torty art.
-  - Whether the "sustainable, not stressful" ending stays (Mrinal).
-  - The Hindi voice choice, then a Hindi update to match the English.
 
 ## 2026-11-20 · HV-RestCard (EN) · Tara voice in the video
 - **Asked:** "now replace it in video" (the team attached the Tara take: `ElevenLabs_2026-11-20T08_19_22__s0_v4.mp3`, 74.4 s, −28.5 LUFS).
