@@ -14,6 +14,12 @@ Entry format:
 
 ---
 
+## 2026-11-21 · HV-RestCard · Tara voices the two section-card lines
+- **Asked:** "why the voice is different from 0:08 to 0:12" → "leave the koshiqa word and generate the left once and replace in video"
+- **Changed:** one Tara take (stability 0, eleven_v4, 66 credits) of only "First, let me explain when and why you need it." and "How does it work?". It was split at its pause, trimmed, and given one fixed gain (+11.5 dB) plus a limiter (−16.7 / −16.2 LUFS). These replace the Piper placeholders in `public/vo/HV-RestCard/02.wav` and `09.wav` (placeholders kept in `work/HV-RestCard/vo-v3/`). Durations re-measured.
+- **Why / decisions:** the lines with "Koshiqa" (E7, the chat sentence, F2) still use the earlier take until the team's voice note on the pronunciation arrives.
+- **Output:** `out/HV-RestCard.mp4` (94.9 s). All voice is now Tara.
+
 ## 2026-11-20 · HV-RestCard · Pre-final review (Frame.io, Mrinal + Manav): 12 comments
 - **Asked:** "changes in video 1" (Frame.io export "Pre final draft"), plus: Koshiqa pronounced KOH-shi-kaa (later: "still not being pronounced good", the team will send a voice note); the woman illustration drawn in code.
 - **Changed, by comment:**
