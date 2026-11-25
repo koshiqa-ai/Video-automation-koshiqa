@@ -95,7 +95,7 @@ const toLS = (spec: HelpVideoSpec, v0: VideoSlide, i: number, voSec: number, mar
     case "F2": {
       const intro = v.intro && {
         steps: v.intro.steps.map((st, k) => ({ title: st.title, accent: st.accent, pose: st.pose, at: k === 0 ? 0 : at(st.atWord, 1 + 1.8 * k) - 0.1 })),
-        ...(v.intro.lift ? { lift: { day: v.intro.lift.day, base: v.intro.lift.base, target: v.intro.lift.target, at: at(v.intro.lift.atWord, 4) - 0.1, liftAt: at(v.intro.lift.liftAtWord, 5) } } : {}),
+        ...(v.intro.lift ? { lift: { day: v.intro.lift.day, base: v.intro.lift.base, target: v.intro.lift.target, at: at(v.intro.lift.atWord, 4) - 0.1, liftAt: at(v.intro.lift.liftAtWord, 5), tone: v.intro.lift.tone, badge: v.intro.lift.badge } } : {}),
       };
       return { ...base, kind: "full-torty", peek: undefined, fullTorty: { pose: v.pose ?? (v.code === "F1" ? "excited" : "wink"), textOnTop: v.code === "F1" }, ...(intro ? { intro } : {}) };
     }

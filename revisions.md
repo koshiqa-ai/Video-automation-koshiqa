@@ -14,6 +14,24 @@ Entry format:
 
 ---
 
+## 2026-11-25 · HV-BoosterCard (+ system) · Video 4 spec, gold intro card, one Tara take started
+- **Asked:** "continue" after the storyboard, so it's built as reviewed: script word for word, no section cards, no cuts.
+- **Changed:**
+  - `src/videos/booster-card.ts` (new, 12 slides), registered in `index.ts`.
+  - Screens and the rocket badge (cut from IMG_7404 at full resolution) in `public/screens/HV-BoosterCard/`; `storyboards/HV-BoosterCard.json`.
+  - **System:** the F1 intro's day card takes `lift.tone: "gold"` and `lift.badge` (`types.ts`, `layout-system.ts`, `build.ts`, `LayoutSystem.tsx` BigDayNote). design.md 1.7.2.
+- **Why / decisions:**
+  - In the app's calendar, a capped or boosted day is gold with a rocket badge, so the intro's Day 40 stays gold and doubles from 15,000 to 30,000 instead of going from grey to green.
+  - Fixes after the first stills:
+    - E14: the lines are "A habit," / "no pressure"; the longer line wrapped and overlapped.
+    - E5: the pill is "At a desk"; "Desk on weekdays" was clipped.
+    - E12: the headline is "Only your deficit"; "Only what you're behind" wrapped to 2 lines.
+    - The rocket badge moved off "Day 40".
+  - **Voice:** one Tara take (stability 0, eleven_v4) of the whole script, one paragraph per slide, as node "Video 4 · Booster Card (EN) · Tara, stability 0" in flow `Dz6Bnyq2uzZtpw0aO4hE`. 1,092 credits.
+- **Output:** checked on stills with estimated timings (~83 s). Waiting for the team to download the take; then it gets split, levelled, rendered and QA'd.
+
+---
+
 ## 2026-11-25 · HV-RestCardHowTo + system · Video 3 spec, Tara take, visual QA (waiting for the audio file)
 - **Asked:** "continue" (after the storyboard; read as approval of the proposals: "Step 4", the low-benefit slides kept, no toast slide). Earlier: "Use tara voice wit 0 Stability".
 - **Changed:**

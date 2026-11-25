@@ -280,12 +280,25 @@ const ListSlide: React.FC<{ s: LSSlide & { duration: number } }> = ({ s }) => {
 // ───────── F1 intro: the headline follows the voice; a day card lifts to the target (team review 2026-11-20) ─────────
 const fmtN = (n: number) => Math.round(n).toLocaleString("en-US");
 /** a calendar day note, drawn large (the same look as the calendar mockup's notes) */
-const BigDayNote: React.FC<{ day: number; value: number; green: number; w: number }> = ({ day, value, green, w }) => {
+const BigDayNote: React.FC<{ day: number; value: number; green: number; w: number; tone?: "gold" }> = ({ day, value, green, w, tone }) => {
   const h = w * 1.1;
+  const r = `${w * 0.05}px ${w * 0.05}px ${w * 0.18}px ${w * 0.05}px`;
+  // gold = a capped / boosted day in the app's calendar (Booster Card): gold before and after, only the number changes
+  if (tone === "gold") {
+    const ink = "#6B5526";
+    return (
+      <div style={{ position: "relative", width: w, height: h }}>
+        <div style={{ position: "absolute", inset: 0, borderRadius: r, background: "linear-gradient(160deg, #FBC845 0%, #FDE38C 50%, #F0C463 100%)", boxShadow: "0 24px 50px rgba(0,40,28,0.35)" }} />
+        <div style={{ position: "absolute", left: w * 0.13, top: w * 0.17, fontFamily: "Poppins", fontWeight: 700, fontSize: w * 0.24, lineHeight: 1, color: ink }}>Day {day}</div>
+        <div style={{ position: "absolute", left: w * 0.13, top: w * 0.55, fontFamily: "Poppins", fontWeight: 800, fontSize: w * 0.22, lineHeight: 1, color: ink }}>{fmtN(value)}</div>
+        <div style={{ position: "absolute", left: w * 0.13, top: w * 0.8, fontFamily: "Poppins", fontWeight: 600, fontSize: w * 0.09, lineHeight: 1, color: ink, opacity: 0.8 }}>steps</div>
+      </div>
+    );
+  }
   return (
     <div style={{ position: "relative", width: w, height: h }}>
-      <div style={{ position: "absolute", inset: 0, borderRadius: `${w * 0.05}px ${w * 0.05}px ${w * 0.18}px ${w * 0.05}px`, background: "linear-gradient(160deg, #F2F2F2 0%, #DCDCDC 100%)", boxShadow: "0 24px 50px rgba(0,40,28,0.35)" }} />
-      <div style={{ position: "absolute", inset: 0, opacity: green, borderRadius: `${w * 0.05}px ${w * 0.05}px ${w * 0.18}px ${w * 0.05}px`, background: "linear-gradient(160deg, #DFFFBE 0%, #C3F58F 55%, #B0EC77 100%)" }} />
+      <div style={{ position: "absolute", inset: 0, borderRadius: r, background: "linear-gradient(160deg, #F2F2F2 0%, #DCDCDC 100%)", boxShadow: "0 24px 50px rgba(0,40,28,0.35)" }} />
+      <div style={{ position: "absolute", inset: 0, opacity: green, borderRadius: r, background: "linear-gradient(160deg, #DFFFBE 0%, #C3F58F 55%, #B0EC77 100%)" }} />
       <div style={{ position: "absolute", left: w * 0.13, top: w * 0.17, fontFamily: "Poppins", fontWeight: 700, fontSize: w * 0.24, lineHeight: 1, color: green > 0.5 ? "#4D7324" : "#8A8A8A" }}>Day {day}</div>
       <div style={{ position: "absolute", left: w * 0.13, top: w * 0.55, fontFamily: "Poppins", fontWeight: 800, fontSize: w * 0.22, lineHeight: 1, color: green > 0.5 ? "#26620F" : "#8F8F8F" }}>{fmtN(value)}</div>
       <div style={{ position: "absolute", left: w * 0.13, top: w * 0.8, fontFamily: "Poppins", fontWeight: 600, fontSize: w * 0.09, lineHeight: 1, color: green > 0.5 ? "#4D7324" : "#9A9A9A" }}>steps</div>
@@ -332,7 +345,11 @@ const IntroSlide: React.FC<{ s: LSSlide & { duration: number } }> = ({ s }) => {
       {L && f >= fr(L.at) && (
         <>
           <div style={{ position: "absolute", left: 540 - 170 - 120, top: 640 + bob, scale: String(pCard), rotate: `${-4 + 4 * lift}deg` }}>
-            <BigDayNote day={L.day} value={L.base + (L.target - L.base) * lift} green={lift} w={340} />
+            <BigDayNote day={L.day} value={L.base + (L.target - L.base) * lift} green={lift} w={340} tone={L.tone} />
+            {L.badge && (() => {
+              const pb = spring({ frame: f - fr(L.liftAt) - 6, fps, config: { damping: 9, stiffness: 160 } });
+              return pb > 0.01 ? <Img src={staticFile(L.badge)} style={{ position: "absolute", left: 340 - 62, top: -66, width: 124, height: 124, scale: String(pb), rotate: `${(1 - pb) * -40}deg`, filter: "drop-shadow(0 8px 14px rgba(0,40,28,0.35))" }} /> : null;
+            })()}
           </div>
           {lift > 0 && <div style={{ position: "absolute", left: 540 - 170 - 120 - 20, top: 620 + bob, width: 380, height: 414, borderRadius: 40, boxShadow: `0 0 ${40 + 30 * Math.sin(f / 8)}px rgba(194,238,225,${0.55 * lift})`, pointerEvents: "none" }} />}
           <Confetti at={L.liftAt + 0.2} origin={{ x: 420, y: 820 }} />

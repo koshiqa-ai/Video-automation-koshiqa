@@ -137,7 +137,7 @@ export type LSSlide = {
   titleAt?: number;
   /** F1 intro: the headline changes with the voice (steps at `at` s), Torty's pose follows, and an optional day
    *  card lifts from `lift.base` to `lift.target` (appears at lift.at, turns green at lift.liftAt) */
-  intro?: { steps: { title: string; accent?: string; pose?: FlatPose; at: number }[]; lift?: { day: number; base: number; target: number; at: number; liftAt: number } };
+  intro?: { steps: { title: string; accent?: string; pose?: FlatPose; at: number }[]; lift?: { day: number; base: number; target: number; at: number; liftAt: number; tone?: "gold"; badge?: string } };
   /** S1 chat: a full-frame illustration first (e.g. the member typing), then the phone comes in at `until` seconds */
   lead?: { art: "woman-typing"; until: number };
   /** phone slides: the headline first, large and alone in the middle, then it moves up and the phone rises (one focal point at a time) */

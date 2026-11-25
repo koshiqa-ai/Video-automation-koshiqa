@@ -51,7 +51,7 @@ export type VideoSlide = {
   titleAtWord?: string;
   /** F1 intro (the first slide): the headline follows the voice. steps[0] shows from the start; each next step at its
    *  atWord. `lift`: a day card appears at atWord and lifts from base to target at liftAtWord (design.md §3 F1) */
-  intro?: { steps: { title: string; accent?: string; pose?: FlatPose; atWord?: string }[]; lift?: { day: number; base: number; target: number; atWord: string; liftAtWord: string } };
+  intro?: { steps: { title: string; accent?: string; pose?: FlatPose; atWord?: string }[]; lift?: { day: number; base: number; target: number; atWord: string; liftAtWord: string; /** "gold": a capped/boosted day (Booster Card); default grey → green */ tone?: "gold"; /** badge art that pops onto the card's corner at the lift, e.g. "screens/HV-BoosterCard/art-rocket-badge.png" */ badge?: string } };
   /** S1 chat: a full-frame illustration while the story starts; the phone comes in when `untilWord` is spoken */
   lead?: { art: "woman-typing"; untilWord: string };
   /** C3: wrong way (left) vs right way (right); each card appears at its atWord */

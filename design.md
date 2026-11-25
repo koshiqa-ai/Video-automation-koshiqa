@@ -6,7 +6,7 @@
 # change them here first, then in code.
 # Rule: one value per token, no ranges.
 # ─────────────────────────────────────────────────────────────
-version: 1.7.1
+version: 1.7.2
 status: approved            # layout system approved from the v4 review grid (2026-10-28)
 reference: LayoutSystem     # Remotion composition that renders every layout below
 visuals: design/            # layout stills (design/layouts), Torty art (design/torty), review grid
@@ -153,7 +153,7 @@ These are the only layouts. The review grid is the `LayoutSystem` composition; t
 - **F1:** text on top (starting at 300), Torty below (starting at 610).
 - **F2:** Torty on top (starting at 300), text below (starting at 1370).
 - Torty's body is always 1000 px tall and centred, on a soft mint glow.
-- **F1 intro** (the video's first slide, `intro`): the headline follows the voice, one beat at a time (the question → the second question → the promise), and Torty's pose changes with it. An optional day card (`lift`) comes in on the promise: Torty steps aside (smaller, bottom right), the card shows the low day in grey, then turns green and counts up to the target with a confetti burst. The old line clears before the new one starts. Use it whenever the opener says more than one thing.
+- **F1 intro** (the video's first slide, `intro`): the headline follows the voice, one beat at a time (the question → the second question → the promise), and Torty's pose changes with it. An optional day card (`lift`) comes in on the promise: Torty steps aside (smaller, bottom right), the card shows the low day in grey, then turns green and counts up to the target with a confetti burst. The old line clears before the new one starts. Use it whenever the opener says more than one thing. For a capped or boosted day (Booster Card), the card is gold before and after, as in the app's calendar (`lift.tone: "gold"`), and a badge cut from the app pops onto its corner at the lift (`lift.badge`, e.g. the rocket).
 
 | F1 | F2 |
 | --- | --- |
@@ -407,6 +407,7 @@ Decide before writing anything. One input can produce more than one video: split
 ## Changelog
 | Version | Date | Change | Why |
 |---|---|---|---|
+| 1.7.2 | 2026-11-25 | F1 intro day card: `tone: "gold"` and a corner `badge` (art cut from the recording) | Video 4 (Booster Card): a boosted day is gold with a rocket badge in the app, not green |
 | 1.7.1 | 2026-11-21 | 2 Don'ts: every explainer opens on the F1 intro; explainers aren't mostly still screenshots (motion scenes, E3 sections, zoom then circle) | Video 2 review: "the first card is missing", "the animations are very minimal" |
 | 1.7 | 2026-11-20 | F1 intro (text follows the voice, day-card lift); section cards are E3 with a voiced lead-in; `zoom` pushes in on the whole phone (headline kept clear); S1 `lead` illustration (woman typing); C5 `titleAtWord`; E14 `growAtWords`; sharper Torty upscale (`scripts/extract-torty-flat.py`); 8 Don'ts | Video 1 pre-final review (Mrinal, Manav) |
 | 1.6.1 | 2026-11-20 | Section cards (F1 style, silent, ~2.4 s) may divide an explainer into its parts; `zoom` now pushes the screen's content in, inside the phone (the bezel never grows); coded mockups for screens whose recording has dark bands | Video 1: "add a slide like the first one", "black patch at the top" |
