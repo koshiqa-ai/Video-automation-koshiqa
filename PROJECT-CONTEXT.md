@@ -59,6 +59,11 @@ Script + screen recording → classify type → storyboard HTML (team reviews) �
    - Recordings: IMG_7404 (Booster: Power card, Booster screen, apply on Nov 13, Day 40 = 30,000) and IMG_7406 (Capping Card).
    - Examples: C5 bar 15,000 counted + 15,000 boost = 30,000; deficit 10,000 → adds 10,000.
    - **Open questions:** "Pick your best one" vs the app's "finds your best day automatically"; length over 75 s; voiced E3 section cards or not.
+5. **Video 5 · "What is a Capping Card?"** (explainer)
+   - `HV-CappingCard`. Status: storyboard for review (`storyboards/HV-CappingCard.html`, 14 slides, ~85–95 s, 2026-11-25). Voice: Tara, stability 0, one take after approval.
+   - Recording: IMG_7406 (Power card, Capping Card screen 15,000 → 25,000, "Select your capping day" sheet with today Nov 25, applied). Screens prepped by `scripts/prep-capping-card-screens.py`.
+   - Plan: gold Day 48 intro (15,000 → 25,000), E5, E12, Power card + Capping screen, E7, C5 (5,000 → 20,000), E10 (7,000 → 22,000), C5 (full 10,000 → 25,000), S3 day picker, E10 (reschedule), E12, E7 tagline, F2.
+   - **Open questions:** "I am going to explain you" (suggested "Today, I'll explain: what is a Capping Card?"); length over 75 s; app copy says "one future day" but the picker includes today; no rescheduling screen; no capping badge for the intro card; "Urban Jungle" / "Cheetah" club names?; Hindi version not started.
 
 ## Suggested threads
 One thread per video (English + Hindi together), plus one "system" thread for changes to templates, Torty, design rules, music or the skill.

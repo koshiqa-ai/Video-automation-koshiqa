@@ -14,6 +14,23 @@ Entry format:
 
 ---
 
+## 2026-11-25 · HV-CappingCard · Video 5 storyboard for review ("What is a Capping Card?")
+- **Asked:** "generate the video using /koshiqa-help-video", with the script and recording IMG_7406.
+- **Changed:**
+  - `work/HV-CappingCard/`: frames from IMG_7406 (11 screens, HDR tone-mapped), `storyboard.json`, screens 05/06/10.
+  - New `scripts/prep-capping-card-screens.py`: 05 Power card (half-visible third card in each row painted out, row by row from the clean strip beside it); 06 Capping Card top (same frame as Video 4's slide 11); 10 "Select your capping day" sheet.
+  - `storyboards/HV-CappingCard.html`: 14 beats, ~1:26 estimated.
+- **Why / decisions:**
+  - **Type: explainer** (what, why and rules, not a tap-by-tap task).
+  - Plan: F1 intro (gold Day 48, 15,000 → 25,000) → E5 (15K cap, a big day above it) → E12 (members told us) → S2 Power card (titleFirst, ring) → S2 Capping screen (zoom, ring 25,000) → E7 (up to your deficit) → C5 (5,000 → 20,000) → E10 (7,000 → 22,000) → C5 (full 10,000 → 25,000) → S3 day picker (today and future days) → E10 (race date changed? move your card) → E12 (no deficit? save it) → E7 (tagline) → F2 (true Cheetah). Five scene types, none back to back.
+  - Script kept word for word; "Some days, you go big" joined to the E5 slide (too short alone).
+  - The S3 close-up keeps the sheet's dimmed page out of view, as in Video 3.
+  - No section cards (as Video 4). Day 48, the week's values and the reschedule dates are illustrative.
+- **Flags for the team:** "I am going to explain you" (suggested "Today, I'll explain: what is a Capping Card?"); length ~85–95 s, over 75 s; app copy says "one future day" but the picker includes today; no rescheduling screen in the recording; no capping badge for the intro card; are "Urban Jungle" / "Cheetah" club names.
+- **Output:** storyboard only. No voice generated; one Tara take (stability 0) after approval.
+
+---
+
 ## 2026-11-25 · HV-RestCardHowTo · Tara take in, split per slide, final render (69.2 s)
 - **Asked:** the team attached the take (`ElevenLabs_2026-11-25T10_55_12__s0_v4.mp3`, 63.1 s, −26.5 LUFS), stored as `work/HV-RestCardHowTo/vo-full-tara-s0.mp3`.
 - **Changed:**
