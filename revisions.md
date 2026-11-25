@@ -14,6 +14,21 @@ Entry format:
 
 ---
 
+## 2026-11-25 · HV-CappingCard · Tara take in, split per slide, final render (90.1 s)
+- **Asked:** the team attached the take (`ElevenLabs_2026-11-25T11_41_47__s0_v4.mp3`, 75.3 s, −27.6 LUFS), stored as `work/HV-CappingCard/vo-full-tara-s0.mp3`.
+- **Changed:**
+  - New `scripts/prep-capping-card-vo.py` (Video 4's method): cuts the take into 14 slide clips at the pauses after each line, one fixed +11.5 dB gain + limiter, and phrase-based word marks.
+  - `public/vo/HV-CappingCard/01–14.wav` (−17.0 LUFS speech, peak −0.8 dBFS); `src/videos/vo-durations.json` (durations + marks); `work/HV-CappingCard/qa.json`.
+  - `src/videos/capping-card.ts`: F1 `minSec: 8.6`, so the 15,000 → 25,000 lift on "Capping Card" holds about 1.5 s; the Power card slide `minSec: 3.8`, so the ring has time after the phone rises on a 2 s line.
+- **Why / decisions:**
+  - The phrase starts come from a Whisper base.en transcript of all 39 stretches between pauses; every line matched the script.
+  - Whisper heard "So we built the Capping Card" as "So we built the tapping gun", and added "(buzzer buzzes" after "from 15,000 to 25,000". These look like transcript errors; listen at 0:25 and 0:57 to confirm.
+- **QA:** all 14 slides pass, checked at the end of each slide and at the cue moments: the Day 48 lift with confetti on "Capping Card", the ring on the Capping card, the zoom on "15,000" and the ring on "25,000", both C5 sums, the day-strip ring on "today", the E7 box. Torty never covers the target; no black tops; mix −17.1 LUFS.
+- **Output:** `out/HV-CappingCard.mp4` (90.1 s, 14 slides, Tara + music), `out/HV-CappingCard-qa.png`.
+- **Open:** 90 s is over the 75 s explainer guideline; "I am going to explain you" (voiced as written); app copy "one future day" vs the picker including today; no rescheduling screen; no capping badge; "Urban Jungle" / "Cheetah" club names; Hindi version not started.
+
+---
+
 ## 2026-11-25 · system · "Koshiqa" pronunciation: team voice note + 3-way Tara test
 - **Asked:** the team's voice note on how to say Koshiqa (`assets-src/pronunciation/koshiqa-team-voice-note.opus`, 8.8 s): "It's KO-shi-kaa. Right now the video uses ko-SHEE-ka."
 - **What the note shows** (loudness, pitch and length per syllable, measured):

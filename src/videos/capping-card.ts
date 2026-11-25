@@ -18,7 +18,8 @@ export const CAPPING_CARD: HelpVideoSpec = {
   slides: [
     // 0 · Intro: the headline follows the voice; a capped Day 48 (gold, 15,000) lifts to 25,000 on "Capping Card".
     // Day 48 is today (Nov 25) in the recording's calendar; the card has no badge (none seen for capping).
-    { code: "F1", pose: "excited", title: "Marathon, trek or pilgrimage?", accent: "pilgrimage?",
+    // minSec: the lift lands on "Capping Card", near the end of the line; hold it ~1.5 s before the slide changes
+    { code: "F1", pose: "excited", title: "Marathon, trek or pilgrimage?", accent: "pilgrimage?", minSec: 8.6,
       intro: {
         steps: [
           { title: "Marathon, trek or pilgrimage?", accent: "pilgrimage?" },
@@ -37,7 +38,7 @@ export const CAPPING_CARD: HelpVideoSpec = {
       vo: "Members told us: on those days, I give everything. Can that whole effort count?" },
 
     // 2 · How it works: the Power card screen, name first, then the Capping card is ringed
-    { code: "S2", title: "The Capping Card", accent: "Capping Card", titleFirst: true, peek: { expr: "excited", side: "right" },
+    { code: "S2", title: "The Capping Card", accent: "Capping Card", titleFirst: true, minSec: 3.8, peek: { expr: "excited", side: "right" },
       screen: shot("05"),
       anno: { kind: "ring", target: { x: 127, y: 433, w: 214, h: 204, r: 26 }, atWord: "Capping Card" },
       vo: "So we built the Capping Card." },

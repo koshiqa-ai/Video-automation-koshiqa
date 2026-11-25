@@ -1,12 +1,12 @@
 {
  "id": "HV-CappingCard",
- "seconds": 61,
+ "seconds": 90.1,
  "slides": [
   {
    "n": 1,
    "code": "F1",
-   "frame": 70,
-   "sec": 2.6,
+   "frame": 250,
+   "sec": 8.6,
    "peek": null,
    "title": "Marathon, trek or pilgrimage?",
    "vo": "Going for a marathon, a trek or a pilgrimage? Today - I am going to explain you \"What is a Capping Card?\""
@@ -14,8 +14,8 @@
   {
    "n": 2,
    "code": "E5",
-   "frame": 214,
-   "sec": 4.8,
+   "frame": 518,
+   "sec": 8.9,
    "peek": "right thinking",
    "title": null,
    "vo": "Every day, the contest counts up to 15,000 steps. Anything above that doesn't count. Some days, you go big."
@@ -23,8 +23,8 @@
   {
    "n": 3,
    "code": "E12",
-   "frame": 328,
-   "sec": 3.8,
+   "frame": 706,
+   "sec": 6.3,
    "peek": "left confused",
    "title": null,
    "vo": "Members told us: on those days, I give everything. Can that whole effort count?"
@@ -32,8 +32,8 @@
   {
    "n": 4,
    "code": "S2",
-   "frame": 406,
-   "sec": 2.6,
+   "frame": 820,
+   "sec": 3.8,
    "peek": "right excited",
    "title": "The Capping Card",
    "vo": "So we built the Capping Card."
@@ -41,8 +41,8 @@
   {
    "n": 5,
    "code": "S2",
-   "frame": 484,
-   "sec": 2.6,
+   "frame": 1006,
+   "sec": 6.2,
    "peek": "left smile",
    "title": "Cap lifts to 25,000",
    "vo": "On the day you choose, your daily cap lifts from 15,000 to 25,000 steps."
@@ -50,8 +50,8 @@
   {
    "n": 6,
    "code": "E7",
-   "frame": 586,
-   "sec": 3.4,
+   "frame": 1148,
+   "sec": 4.7,
    "peek": "right determined",
    "title": null,
    "vo": "And those extra steps count up to your deficit. The steps you're behind."
@@ -59,7 +59,7 @@
   {
    "n": 7,
    "code": "C5",
-   "frame": 886,
+   "frame": 1448,
    "sec": 10,
    "peek": "left thinking",
    "title": "Up to 20,000",
@@ -68,7 +68,7 @@
   {
    "n": 8,
    "code": "E10",
-   "frame": 1018,
+   "frame": 1580,
    "sec": 4.4,
    "peek": "right smile",
    "title": null,
@@ -77,7 +77,7 @@
   {
    "n": 9,
    "code": "C5",
-   "frame": 1318,
+   "frame": 1880,
    "sec": 10,
    "peek": "left excited",
    "title": "The full 10,000",
@@ -86,8 +86,8 @@
   {
    "n": 10,
    "code": "S3",
-   "frame": 1396,
-   "sec": 2.6,
+   "frame": 1977,
+   "sec": 3.2,
    "peek": null,
    "title": "Today and future days",
    "vo": "Capping works on today and future days."
@@ -95,8 +95,8 @@
   {
    "n": 11,
    "code": "E10",
-   "frame": 1528,
-   "sec": 4.4,
+   "frame": 2162,
+   "sec": 6.2,
    "peek": "left wink",
    "title": null,
    "vo": "And it's the only card you can reschedule before the day. Race date changed? Just move your card."
@@ -104,8 +104,8 @@
   {
    "n": 12,
    "code": "E12",
-   "frame": 1642,
-   "sec": 3.8,
+   "frame": 2432,
+   "sec": 9,
    "peek": "right determined",
    "title": null,
    "vo": "No deficit? Save it. And remember, you only need to do enough to clear your deficit. Steps beyond that won't add anything."
@@ -113,8 +113,8 @@
   {
    "n": 13,
    "code": "E7",
-   "frame": 1744,
-   "sec": 3.4,
+   "frame": 2546,
+   "sec": 3.8,
    "peek": "left happy",
    "title": null,
    "vo": "\"Big day. Full effort. Make it count.\""
@@ -122,8 +122,8 @@
   {
    "n": 14,
    "code": "F2",
-   "frame": 1822,
-   "sec": 2.6,
+   "frame": 2696,
+   "sec": 5,
    "peek": null,
    "title": "Be a true Cheetah",
    "vo": "For the odd days when you are out of the Urban Jungle and become a true Cheetah ;)"
