@@ -14,6 +14,22 @@ Entry format:
 
 ---
 
+## 2026-11-25 · HV-CappingCard · Video 5 spec, stills checked, one Tara take started
+- **Asked:** "continue" after the storyboard, so it's built as reviewed: script word for word (including "I am going to explain you"), no cuts, no section cards.
+- **Changed:**
+  - `src/videos/capping-card.ts` (new, 14 slides), registered in `index.ts`.
+  - `public/screens/HV-CappingCard/05, 06, 10.png` and `storyboards/HV-CappingCard.json` (storyboard-import).
+- **Why / decisions:**
+  - Fixes after the first stills:
+    - C5: the day labels are "Deficit 5K" / "Deficit 20K"; "Deficit 5,000" wrapped onto the sum line.
+    - E5: the big day is mid-week and the week sits just under the 15K cap, so the curve stays clear of the "15K cap" label. Days under the cap show the scene's coral fill.
+    - S3 day picker: no Torty peek. With him the phone sits higher and "Today and future days" ran into his head.
+  - Icons: E7 "steps" (deficit line) and "flame" (tagline).
+  - **Voice:** one Tara take (stability 0, eleven_v4) of the whole script, one paragraph per slide, as node "Video 5 · Capping Card (EN) · Tara, stability 0" in flow `Dz6Bnyq2uzZtpw0aO4hE`. 1,047 credits.
+- **Output:** checked on stills with estimated timings (`out/HV-CappingCard-qa.png`). Waiting for the team to download the take; then it gets split, levelled, rendered and QA'd.
+
+---
+
 ## 2026-11-25 · HV-CappingCard · Video 5 storyboard for review ("What is a Capping Card?")
 - **Asked:** "generate the video using /koshiqa-help-video", with the script and recording IMG_7406.
 - **Changed:**

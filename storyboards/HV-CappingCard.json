@@ -1,0 +1,276 @@
+{
+ "id": "HV-CappingCard",
+ "type": "explainer",
+ "title": "Video 5 · What is a Capping Card?",
+ "source": "HV-CappingCard.html",
+ "sections": [
+  "Hook",
+  "Why we built it",
+  "How it works",
+  "How much counts",
+  "When to use it",
+  "Close"
+ ],
+ "beats": [
+  {
+   "n": "card",
+   "kind": "card",
+   "section": "Hook",
+   "cut": false,
+   "hold": 9.0,
+   "card": "Marathon, trek or pilgrimage?",
+   "vo": "Going for a marathon, a trek or a pilgrimage? Today - I am going to explain you \"What is a Capping Card?\"",
+   "role": null,
+   "layout": "F1",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "Type: explainer. The script explains what the Capping Card is, why it was built and its rules (the 15,000 cap, the 25,000 lift, the deficit limit, today and future days, rescheduling). That's more \"why\" than \"tap\", so it isn't a walkthrough.",
+    "F1 intro: the headline follows the voice, from \"Marathon, trek or pilgrimage?\" (Torty excited) to \"What is a Capping Card?\" (Torty thinking, on \"Today\"). A gold Day 48 card comes in at 15,000 (capped) and lifts to 25,000 with confetti on \"Capping Card\", the same pattern as Video 4's Day 40.",
+    "Day 48 is illustrative: in the recording's calendar, Day 48 is today (7,861 so far, Nov 25) and the card is scheduled for Nov 25. The 15,000 → 25,000 lift is the app's own example. There's no capping badge in this recording's calendar, so the card has no corner badge (Video 4's had the rocket). If the app shows one on a capped day, send a screenshot and I'll cut it.",
+    "⚠ Wording, your call: \"I am going to explain you\" isn't standard English and will sound off when voiced. Suggested: \"Today, I'll explain: what is a Capping Card?\" I've kept your line for now.",
+    "Length: about 85–95 s (estimate at Tara's pace, with the two C5 sums held about 10 s each to read). That's over the 75 s explainer guideline. The script is kept word for word, so cutting is your call. The easiest trims: the 7,000 example (~5 s) or holding each sum 7 s instead of 10 (~6 s).",
+    "Section cards (E3) left out, as in Video 4: the script has no lines for them and the video is already long.",
+    "Scene types (5): E5, E12, E7, C5 and E10, plus the F1/F2 cards and three phone slides. No scene runs twice in a row.",
+    "Voice: Tara, stability 0, eleven_v4. The whole script goes out as one take, generated once, after you approve the wording."
+   ]
+  },
+  {
+   "n": "card",
+   "kind": "card",
+   "section": "Why we built it",
+   "cut": false,
+   "hold": 7.5,
+   "card": "Up to 15,000 counts",
+   "vo": "Every day, the contest counts up to 15,000 steps. Anything above that doesn't count. Some days, you go big.",
+   "role": null,
+   "layout": "E5",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "E5 (a trend against a target): a week of steps drawn against a dashed \"15K cap\" line; one day shoots well above it (\"Big day\") on \"go big\". Pill: \"Up to 15,000 counts\". The week's values are illustrative.",
+    "\"Some days, you go big\" is joined to this slide: on its own it's under 2 s, shorter than any scene."
+   ]
+  },
+  {
+   "n": "card",
+   "kind": "card",
+   "section": "Why we built it",
+   "cut": false,
+   "hold": 5.5,
+   "card": "Members told us",
+   "vo": "Members told us: on those days, I give everything. Can that whole effort count?",
+   "role": null,
+   "layout": "E12",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "E12 (a short list): heading \"Members told us\", then \"I give everything\" and \"Can it all count?\" land as they're spoken. The on-screen question is shortened to fit 4 words; the voice keeps \"Can that whole effort count?\"."
+   ]
+  },
+  {
+   "n": "#05",
+   "kind": "screen",
+   "section": "How it works",
+   "cut": false,
+   "hold": 2.5,
+   "card": "The Capping Card",
+   "vo": "So we built the Capping Card.",
+   "role": null,
+   "layout": "S2",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "From IMG_7406 (0:03): the Power card screen. The name shows first (titleFirst), then the phone rises and a ring lands on the first Capping card on \"Capping Card\". Torty peeks from the right.",
+    "Cleaned: the half-visible third card in each row (cut by the screen edge) is painted out (scripts/prep-capping-card-screens.py)."
+   ],
+   "image": "screens/HV-CappingCard/05.png",
+   "w": 576,
+   "h": 1248
+  },
+  {
+   "n": "#06",
+   "kind": "screen",
+   "section": "How it works",
+   "cut": false,
+   "hold": 5.5,
+   "card": "Cap lifts to 25,000",
+   "vo": "On the day you choose, your daily cap lifts from 15,000 to 25,000 steps.",
+   "role": null,
+   "layout": "S2",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "From IMG_7406 (0:07): the Capping Card screen. The phone zooms in on the 15,000 → 25,000 boxes on \"15,000\", then the 25,000 box is ringed on \"25,000\". Same frame as Video 4's Capping slide, so the two videos match."
+   ],
+   "image": "screens/HV-CappingCard/06.png",
+   "w": 576,
+   "h": 1248
+  },
+  {
+   "n": "card",
+   "kind": "card",
+   "section": "How it works",
+   "cut": false,
+   "hold": 5.0,
+   "card": "Counts up to your deficit",
+   "vo": "And those extra steps count up to your deficit. The steps you're behind.",
+   "role": null,
+   "layout": "E7",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "E7 (the key message): \"Extra steps count\" / \"up to your deficit\", with \"your deficit\" boxed in mint, and a small icon above. This is the rule the three examples build on."
+   ]
+  },
+  {
+   "n": "card",
+   "kind": "card",
+   "section": "How much counts",
+   "cut": false,
+   "hold": 10.0,
+   "card": "Up to 20,000",
+   "vo": "Deficit of 5,000? Steps are counted up to 20,000, nothing more after that.",
+   "role": null,
+   "layout": "C5",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "C5 (a part + a bonus): one bar labelled \"Deficit 5,000\". The 15,000 cap rises first (white), then 5,000 extra stacks on top (mint), then \"15,000 + 5,000 = 20,000\" is written out and held about 10 s. The headline \"Up to 20,000\" lands with the total."
+   ]
+  },
+  {
+   "n": "card",
+   "kind": "card",
+   "section": "How much counts",
+   "cut": false,
+   "hold": 2.5,
+   "card": "Deficit 7,000?",
+   "vo": "Deficit of 7,000? Up to 22,000.",
+   "role": null,
+   "layout": "E10",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "E10 (from X to Y): heading \"Deficit 7,000?\", then two number cards and a counter rolling from 15K to 22K, footer \"Up to 22,000\". A different scene from the bars on either side, so the three examples don't look the same.",
+    "E10's counter only takes numbers under 100, so it rolls in thousands (15 → 22, labelled \"K\")."
+   ]
+  },
+  {
+   "n": "card",
+   "kind": "card",
+   "section": "How much counts",
+   "cut": false,
+   "hold": 10.0,
+   "card": "The full 10,000",
+   "vo": "Deficit of 20,000? The entire 10,000 extra, from 15,000 to 25,000, counts.",
+   "role": null,
+   "layout": "C5",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "C5 again (not back to back): bar labelled \"Deficit 20,000\", 15,000 + 10,000 = 25,000, the extra filling all the way to the new cap. Headline \"The full 10,000\" on \"counts\"."
+   ]
+  },
+  {
+   "n": "#10",
+   "kind": "screen",
+   "section": "When to use it",
+   "cut": false,
+   "hold": 3.0,
+   "card": "Today and future days",
+   "vo": "Capping works on today and future days.",
+   "role": null,
+   "layout": "S3",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "From IMG_7406 (0:25): the \"Select your capping day\" sheet, as an S3 close-up on the bottom of the screen (the dimmed page above the sheet stays out of view). The day strip (\"Upcoming 7 days\", today Nov 25 selected) is ringed on \"today\".",
+    "⚠ App copy vs script: the app's Capping screen says \"Raises your daily limit to 25,000 steps for one future day\" and \"Pick one future day\", but the picker does include today, as the script says. The video follows the script; you may want the app's copy updated to \"today or a future day\"."
+   ],
+   "image": "screens/HV-CappingCard/10.png",
+   "w": 576,
+   "h": 1248
+  },
+  {
+   "n": "card",
+   "kind": "card",
+   "section": "When to use it",
+   "cut": false,
+   "hold": 7.0,
+   "card": "Race date changed?",
+   "vo": "And it's the only card you can reschedule before the day. Race date changed? Just move your card.",
+   "role": null,
+   "layout": "E10",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "E10 (from X to Y): heading \"Race date changed?\", then the date rolls from Nov 26 to Nov 29, footer \"Just move your card\". The dates are illustrative.",
+    "No rescheduling screen: the recording doesn't show how to move a card, so this beat is a motion scene. If you'd like the real screen, send a short recording of rescheduling and I'll use it here instead."
+   ]
+  },
+  {
+   "n": "card",
+   "kind": "card",
+   "section": "When to use it",
+   "cut": false,
+   "hold": 9.0,
+   "card": "No deficit? Save it",
+   "vo": "No deficit? Save it. And remember, you only need to do enough to clear your deficit. Steps beyond that won't add anything.",
+   "role": null,
+   "layout": "E12",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "E12: heading \"No deficit? Save it\", then \"Clear your deficit\" and \"Beyond that? Nothing.\" as they're spoken, in the voice's own words."
+   ]
+  },
+  {
+   "n": "card",
+   "kind": "card",
+   "section": "Close",
+   "cut": false,
+   "hold": 3.0,
+   "card": "Big day. Full effort.",
+   "vo": "\"Big day. Full effort. Make it count.\"",
+   "role": null,
+   "layout": "E7",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "E7: \"Big day. Full effort.\" / \"Make it count.\", with \"Make it count.\" boxed. Read as a tagline, so it gets its own beat before the closing card."
+   ]
+  },
+  {
+   "n": "card",
+   "kind": "card",
+   "section": "Close",
+   "cut": false,
+   "hold": 7.0,
+   "card": "Be a true Cheetah",
+   "vo": "For the odd days when you are out of the Urban Jungle and become a true Cheetah ;)",
+   "role": null,
+   "layout": "F2",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "F2: full-body Torty winking, \"Be a true Cheetah\" (Cheetah in white).",
+    "Check: are \"Urban Jungle\" and \"Cheetah\" club or league names in the app (the recording shows an \"Urban Bunny club\")? If so they stay capitalised as written. The \";)\" isn't spoken; the wink is Torty's."
+   ]
+  }
+ ]
+}
