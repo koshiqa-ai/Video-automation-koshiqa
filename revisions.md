@@ -14,6 +14,22 @@ Entry format:
 
 ---
 
+## 2026-11-25 · HV-RestCardHowTo · Tara take in, split per slide, final render (69.2 s)
+- **Asked:** the team attached the take (`ElevenLabs_2026-11-25T10_55_12__s0_v4.mp3`, 63.1 s, −26.5 LUFS), stored as `work/HV-RestCardHowTo/vo-full-tara-s0.mp3`.
+- **Changed:**
+  - `public/vo/HV-RestCardHowTo/01–10.wav`:
+    - `vo-split.py` flagged 2 cuts, so the take was transcribed with Whisper base.en (sherpa-onnx, per segment).
+    - 9 cuts sit in pauses. "Head to Power Cards / and select your Rest Card" had no pause (the blank line in the prompt didn't make one), so it's cut at the 8.31 s dip; Whisper confirms each half.
+    - One fixed +11.5 dB gain + limiter, with 10/20 ms fades. Speech −16.7 LUFS, peak −0.8 dBFS.
+  - `src/videos/vo-durations.json`: measured durations, plus **word marks** built from the transcript's phrase timings (interpolated within each phrase). Taps, zooms, rings and lifts now land on the spoken word, not on an estimate.
+  - `src/videos/rest-card-how.ts`: F1 `minSec: 7.6`, so the 4,200 → 10,000 lift on "boost" holds about 1.5 s before the slide changes.
+- **QA:**
+  - All 10 slides pass. Checked at the cue moments: the taps land on the Power cards tab, the Rest Card, Apply and Save for later; the spotlight and rings come on their words; day 22 lifts with confetti on "boost".
+  - Nothing sits frozen, no screen has a black top, and Torty never covers the target.
+- **Output:**
+  - `out/HV-RestCardHowTo.mp4`: 69.2 s, 10 slides, Tara + music, mix −16.3 LUFS.
+  - `out/HV-RestCardHowTo-qa.png`.
+- **Open:** the length is over the 30–40 s walkthrough guideline (the low-benefit slides add about 15 s); "Step 4" wording, as voiced; no "Applied successfully" slide; the Hindi version is not started.
 ## 2026-11-25 · HV-BoosterCard · Tara voice in, rendered and QA'd (82 s)
 - **Asked:** the team attached the take (`ElevenLabs_2026-11-25T10_58_59__s0_v4.mp3`, 71.5 s, −27.3 LUFS).
 - **Changed:**

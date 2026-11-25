@@ -18,7 +18,8 @@ export const REST_CARD_HOW: HelpVideoSpec = {
   lang: "en",
   slides: [
     // Hook: F1 intro, the headline follows the voice; a Day 22 card lifts 4,200 → 10,000 on "boost"
-    { code: "F1", pose: "happy", title: "Have a Rest Card?", accent: "Rest Card?",
+    { code: "F1", pose: "happy", minSec: 7.6, // hold ~1.5 s after the lift on "boost"
+      title: "Have a Rest Card?", accent: "Rest Card?",
       intro: {
         steps: [
           { title: "Have a Rest Card?", accent: "Rest Card?" },
