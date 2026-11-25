@@ -1,0 +1,121 @@
+{
+  "title": "Video 3 · How to use your Rest Card",
+  "type": "walkthrough",
+  "subtitle": "Objective: a clear step-by-step walkthrough of using a Rest Card · script from the team · recording IMG_7241 · 10 slides · voice: Tara, stability 0 (one take, after approval)",
+  "beats": [
+    {
+      "n": "card",
+      "section": "Hook",
+      "layout": "F1",
+      "card": "Have a Rest Card?",
+      "vo": "Hey! Have a Rest Card? Let me show you how to use it and give your lowest-step day a boost!",
+      "flags": [
+        "<b>Type: walkthrough</b>: numbered steps, one task (apply a Rest Card), from a screen recording. The objective asks for a step-by-step walkthrough.",
+        "<b>F1 intro</b> (Video 1/2 pattern): the headline follows the voice. “Have a Rest Card?” → “How to use it” (at “show you”), then a Day 22 card lifts from 4,200 to 10,000 with confetti on “boost”."
+      ]
+    },
+    {
+      "n": "#01",
+      "section": "Step 1 · Find your card",
+      "layout": "S2",
+      "card": "Open Power cards",
+      "vo": "Step 1. Head to Power Cards",
+      "image": "01.png",
+      "flags": [
+        "<b>From IMG_7241 (0:08)</b>: the contest page. The cursor taps the <i>Power cards</i> tab as the voice says it. Torty peeks left, away from the tab.",
+        "<b>One sentence, two screens</b>: “Step 1. Head to Power Cards and select your Rest Card.” is split across this slide and the next so each tap gets its own screen. The words are unchanged."
+      ]
+    },
+    {
+      "n": "#02",
+      "section": "Step 1 · Find your card",
+      "layout": "S2",
+      "card": "Select your Rest Card",
+      "vo": "and select your Rest Card.",
+      "image": "02.png",
+      "flags": [
+        "<b>Coded mockup</b>: Video 1's Power card mockup (<code>power-card</code>), so the screen matches Videos 1 and 2. The cursor taps the first Rest Card on “select”. Picture shown here is Video 1's reference frame."
+      ]
+    },
+    {
+      "n": "#03",
+      "section": "Step 2 · Check the impact",
+      "layout": "S2",
+      "card": "Check your impact",
+      "vo": "Step 2. Check your potential impact. I'll show you how your step count, contest deficit and club placement could change after applying the card.",
+      "image": "03.png",
+      "flags": [
+        "<b>From IMG_7241 (0:48)</b>: the Rest Card screen scrolled to <i>Potential impact</i>. Zoom in on the rows at “potential impact”, then a spotlight on Step count · Daily average · Deficit · Club at “step count”."
+      ]
+    },
+    {
+      "n": "#04",
+      "section": "Step 3 · Apply it",
+      "layout": "S2",
+      "card": "Tap Apply Rest Card",
+      "vo": "Step 3. Happy with the impact? Tap Apply Rest Card.",
+      "image": "04.png",
+      "flags": [
+        "<b>From IMG_7241 (0:35)</b>: top of the Rest Card screen (4,200 → 10,000, deficit 10,800 → 5,000). The cursor taps <i>Apply Rest Card</i> on “Tap Apply”. No Torty peek: the button spans both bottom corners."
+      ]
+    },
+    {
+      "n": "#05",
+      "section": "If the benefit is low",
+      "layout": "S2",
+      "card": "Small gain? You choose",
+      "vo": "Before applying, I'll check whether this card will make a meaningful difference to your progress. If the benefit is low, I'll let you know, and you can choose whether to apply it or save it for later.",
+      "image": "05.png",
+      "flags": [
+        "<b>Reused from Video 2 (IMG_7240)</b>: this recording only shows a full-benefit day, so the low-benefit warning (8,500 day, +1,500, Save for later / Apply anyway) comes from Video 2. Zoom on the warning at “meaningful difference”, ring it at “let you know”.",
+        "<b>Overlap with Video 2</b>: this paragraph and the next repeat what Video 2 explains, and add about 18 s. Keep them, or cut both slides (≈ 53 s)?"
+      ]
+    },
+    {
+      "n": "#06",
+      "section": "If the benefit is low",
+      "layout": "S2",
+      "card": "No gain? Save it",
+      "vo": "If there's no benefit, you can save your card for another time.",
+      "image": "06.png",
+      "flags": [
+        "<b>Reused from Video 2 (IMG_7239)</b>: lowest day already 11,000, “No benefit here”. The cursor taps <i>Save for later</i> on “save your card”. No peek (full-width button)."
+      ]
+    },
+    {
+      "n": "#07",
+      "section": "Step 4 · I'll find the day",
+      "layout": "S3",
+      "card": "Found automatically",
+      "vo": "Step 4. If you proceed, I'll automatically scan your contest history, find your lowest eligible step day and apply the card to it. You don't have to search for or select the day yourself!",
+      "was": "Step 5. If you proceed, I'll automatically scan your contest history, find your lowest eligible step day and apply the card to it. You don't have to search for or select the day yourself!",
+      "why": "The script goes Step 1, 2, 3, then Step 5; there is no Step 4. Please confirm “Step 4”, or tell us if the paragraph before this one should be read as Step 4.",
+      "image": "07.png",
+      "flags": [
+        "<b>From IMG_7241 (1:01)</b>: the “Applying your card” sheet (Oct 26 · 4,200 steps · Resting your weakest day…). S3 close-up on the sheet, so the dimmed page above it stays mostly off-screen. Ring on the date and 4,200 at “lowest eligible step day”."
+      ]
+    },
+    {
+      "n": "#08",
+      "section": "Done",
+      "layout": "S2",
+      "card": "Lowest day boosted",
+      "vo": "And that's it! Your lowest day gets a boost, your total contest steps increase and your deficit comes down. Easy, right?",
+      "image": "08.png",
+      "flags": [
+        "<b>Coded mockup</b>: Video 1's calendar (<code>rest-calendar</code>). The recording's calendar has a dark top and every day at exactly 15,000, which looks unrealistic (design.md Don'ts). Zoom on day 22, then it lifts from 4,200 to a green 10,000 with confetti on “boost”. Picture: Video 1's before → after frames.",
+        "<b>Not shown</b>: the “Applied successfully” toast on the Power card screen (1:04) isn't in the script. Add a slide for it?"
+      ]
+    },
+    {
+      "n": "card",
+      "section": "Done",
+      "layout": "F2",
+      "card": "Keep building consistency",
+      "vo": "Now get back out there and keep building that consistency. I'll be right here cheering you on!",
+      "flags": [
+        "<b>Length</b>: about 70 s at Tara's pace (186 words; Video 2 had 182 words and ran 65 s). A walkthrough is normally 30–40 s, 45 s at most. Options: keep it as a deliberate longer walkthrough (logged), or cut the two low-benefit slides (≈ 53 s)."
+      ]
+    }
+  ]
+}

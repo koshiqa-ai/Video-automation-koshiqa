@@ -1,0 +1,98 @@
+[
+ {
+  "file": "frames/f_001.png",
+  "t": 0.62
+ },
+ {
+  "file": "frames/f_002.png",
+  "t": 8.0
+ },
+ {
+  "file": "frames/f_003.png",
+  "t": 12.88
+ },
+ {
+  "file": "frames/f_004.png",
+  "t": 14.25
+ },
+ {
+  "file": "frames/f_005.png",
+  "t": 15.75
+ },
+ {
+  "file": "frames/f_006.png",
+  "t": 16.62
+ },
+ {
+  "file": "frames/f_007.png",
+  "t": 22.88
+ },
+ {
+  "file": "frames/f_008.png",
+  "t": 30.88
+ },
+ {
+  "file": "frames/f_009.png",
+  "t": 35.25
+ },
+ {
+  "file": "frames/f_010.png",
+  "t": 37.88
+ },
+ {
+  "file": "frames/f_011.png",
+  "t": 39.25
+ },
+ {
+  "file": "frames/f_012.png",
+  "t": 40.75
+ },
+ {
+  "file": "frames/f_013.png",
+  "t": 43.38
+ },
+ {
+  "file": "frames/f_014.png",
+  "t": 45.5
+ },
+ {
+  "file": "frames/f_015.png",
+  "t": 47.5
+ },
+ {
+  "file": "frames/f_016.png",
+  "t": 48.12
+ },
+ {
+  "file": "frames/f_017.png",
+  "t": 51.25
+ },
+ {
+  "file": "frames/f_018.png",
+  "t": 57.88
+ },
+ {
+  "file": "frames/f_019.png",
+  "t": 60.88
+ },
+ {
+  "file": "frames/f_020.png",
+  "t": 64.0
+ },
+ {
+  "file": "frames/f_021.png",
+  "t": 69.62
+ },
+ {
+  "file": "frames/f_022.png",
+  "t": 75.25
+ },
+ {
+  "file": "frames/f_023.png",
+  "t": 77.0
+ },
+ {
+  "file": "frames/f_024.png",
+  "t": 78.38
+ }
+]

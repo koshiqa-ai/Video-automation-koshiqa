@@ -14,6 +14,24 @@ Entry format:
 
 ---
 
+## 2026-11-25 · HV-RestCardHowTo · Video 3 storyboard for review ("How to use your Rest Card")
+- **Asked:** "make the video using /koshiqa-help-video". Objective: a clear step-by-step app walkthrough. Script from the team, recording IMG_7241 (78 s, HDR). Later: "Use tara voice wit 0 Stability".
+- **Type:** walkthrough (numbered steps, one task, from a recording).
+- **Changed:**
+  - `work/HV-RestCardHowTo/`: frames from IMG_7241 (`recording-frames.py`, 24 screens), `storyboard.json` and the beat images.
+  - `storyboards/HV-RestCardHowTo.html`: 10 beats. F1 intro (lift 4,200 → 10,000) → Power cards tab (contest page, 0:08) → Power card mockup → Potential impact (0:48, zoom + spotlight) → Apply Rest Card (0:35) → low benefit and no benefit (Video 2's screens 06 / 05) → "Applying your card" sheet (1:01, S3) → calendar mockup lift with confetti → F2.
+- **Why / decisions:**
+  - The calendar and Power card use Video 1's coded mockups. The recording's calendar has a dark top and every day at 15,000.
+  - The low-benefit and no-benefit beats reuse Video 2's screens; this recording only shows a full-benefit day.
+  - "Step 1. Head to Power Cards and select your Rest Card." is split over two screens, with the words unchanged.
+  - The sheet uses S3 so the dimmed page above it stays mostly off-screen.
+  - All frames checked at the top and left edges: no recorder tab, no smears, no personal data.
+- **Flags for the team:**
+  - **"Step 5" → "Step 4"**: the script has no Step 4 (recorded as was/why).
+  - **Length:** about 70 s against the 30–40 s walkthrough guideline. Cutting the two low-benefit slides, which repeat Video 2, gives about 53 s.
+  - Whether to add a slide for the "Applied successfully" toast.
+- **Voice:** Tara – Polished Audio Description, eleven_v4, stability 0, one take, generated only after the wording is approved.
+- **Output:** `storyboards/HV-RestCardHowTo.html`. Waiting for review; nothing rendered yet.
 ## 2026-11-25 · HV-BoosterCard · Video 4 storyboard: "What if your best day counted twice?" (draft for review)
 - **Asked:** "make a video using /koshiqa-help-video" from the team's Booster Card script and recordings IMG_7404 (Booster) and IMG_7406 (Capping). "Use tara voice with 0 Stability."
 - **Changed:**

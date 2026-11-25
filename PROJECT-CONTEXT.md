@@ -48,6 +48,12 @@ Script + screen recording → classify type → storyboard HTML (team reviews) �
    - Recordings: IMG_7239 (no benefit) and IMG_7240 (small benefit).
    - The 4,200 + 5,800 = 10,000 example is Video 1's C5 bar build-up (held 10 s).
    - **Open questions:** the "Smaller deficit" slide reuses Video 1's impact screen; is the "Plan ahead? Soon" headline OK, or use "Past days only"; Hindi version not started.
+3. **Video 3 · "How to use your Rest Card"** (walkthrough)
+   - `HV-RestCardHowTo`. Status: storyboard for review (`storyboards/HV-RestCardHowTo.html`, 10 beats, 2026-11-25). Voice: Tara, stability 0, one take after approval.
+   - Objective: a clear step-by-step walkthrough of using a Rest Card. Recording: IMG_7241.
+   - Steps: Power cards → select the Rest Card → check the potential impact → Apply → (low benefit / no benefit) → Koshiqa finds the lowest day → day 22 lifts to 10,000.
+   - Uses Video 1's calendar and Power card mockups and Video 2's low-benefit and no-benefit screens.
+   - **Open questions:** the script jumps from Step 3 to Step 5 ("Step 4" proposed); about 70 s, over the walkthrough guideline (about 53 s without the low-benefit slides, which repeat Video 2); whether to show the "Applied successfully" toast.
 4. **Video 4 · "What if your best day counted twice?"** (explainer, Booster Card)
    - `HV-BoosterCard`, storyboard `storyboards/HV-BoosterCard.html` (12 slides, ~85–95 s), in review. Voice: Tara, stability 0, one take after approval.
    - Recordings: IMG_7404 (Booster: Power card, Booster screen, apply on Nov 13, Day 40 = 30,000) and IMG_7406 (Capping Card).
