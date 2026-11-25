@@ -1,0 +1,46 @@
+[
+ {
+  "file": "frames/f_001.png",
+  "t": 1.0
+ },
+ {
+  "file": "frames/f_002.png",
+  "t": 3.12
+ },
+ {
+  "file": "frames/f_003.png",
+  "t": 6.88
+ },
+ {
+  "file": "frames/f_004.png",
+  "t": 11.5
+ },
+ {
+  "file": "frames/f_005.png",
+  "t": 12.88
+ },
+ {
+  "file": "frames/f_006.png",
+  "t": 17.38
+ },
+ {
+  "file": "frames/f_007.png",
+  "t": 21.0
+ },
+ {
+  "file": "frames/f_008.png",
+  "t": 25.25
+ },
+ {
+  "file": "frames/f_009.png",
+  "t": 28.38
+ },
+ {
+  "file": "frames/f_010.png",
+  "t": 30.75
+ },
+ {
+  "file": "frames/f_011.png",
+  "t": 35.75
+ }
+]

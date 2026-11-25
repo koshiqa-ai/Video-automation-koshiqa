@@ -14,6 +14,25 @@ Entry format:
 
 ---
 
+## 2026-11-25 · HV-BoosterCard · Video 4 storyboard: "What if your best day counted twice?" (draft for review)
+- **Asked:** "make a video using /koshiqa-help-video" from the team's Booster Card script and recordings IMG_7404 (Booster) and IMG_7406 (Capping). "Use tara voice with 0 Stability."
+- **Changed:**
+  - `work/HV-BoosterCard/`: `storyboard.json`, frames from both recordings (`r7404/`, `r7406/`), and chosen screens `05.png` (Power card), `06.png` (Booster Card screen) and `11.png` (Capping Card screen). The MP4s stay out of the repo.
+  - `storyboards/HV-BoosterCard.html`: the storyboard for review.
+  - `PROJECT-CONTEXT.md`: Video 4 entry.
+- **Why / decisions:**
+  - **Type: explainer.** It covers what the card is, why it was built and its rules.
+  - **12 slides:** F1 intro (Day 40 lifts from 15,000 to 30,000) → E14 habit → E5 desk-worker week → E12 "Members asked" → S2 Power card (`titleFirst`, ring, tap) → S2 Booster screen (zoom on 15,000 → 30,000, ring) → C5 15,000 + 15,000 = 30,000 → E12 deficit → C3 save vs full boost → S2 Capping screen → E14 "out of the park" → F2.
+  - **5 scene types** (E14, E5, E12, C5, C3), none back to back.
+  - The script is kept word for word. All three screens have light tops, so no mockups are needed, and none of them shows personal data. The calendar, which has the member's name in its banner and a dark top, isn't used.
+- **Flags for the team:**
+  - ⚠ "Pick your best one" vs the app's "Finds your best step day automatically". The recording applies the card with no day picker.
+  - About 85–95 s, over the 75 s guideline; the easiest cut is the routines line.
+  - The E3 section cards are left out because the script has no lines for them; proposed lines are in the storyboard.
+  - Day 40's "before" value of 15,000 is taken from the app's message, not from a screen.
+  - The E5 week values are illustrative.
+- **Output:** `storyboards/HV-BoosterCard.html`. No voice generated yet: Tara, stability 0, one take after approval.
+
 ## 2026-11-21 · HV-RestCard · Summary of all revisions to Video 1 ("What is a Rest Card? Why did we build it?")
 - **Asked:** "update the revisions in revision.md file". This entry sums up the full history up to today; each step has its own entry below. (Replaces the 2026-11-20 summary.)
 - **Revisions, oldest first:**

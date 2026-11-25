@@ -1,0 +1,142 @@
+{
+  "title": "Video 4 · What if your best day counted twice?",
+  "type": "explainer",
+  "subtitle": "Booster Card: what it is, why we built it, how much it adds and when to save it · script from the team (word for word) · recordings IMG_7404 (Booster), IMG_7406 (Capping) · 12 slides · voice: Tara, stability 0, one take after approval",
+  "beats": [
+    {
+      "n": "card",
+      "section": "Hook",
+      "layout": "F1",
+      "card": "Best day, counted twice?",
+      "vo": "What if your best day counted twice? That's the Booster Card.",
+      "flags": [
+        "<b>Type: explainer</b>. The script explains what the Booster Card is, why it was built and its rules (15,000 cap, deficit limit, past days only). That's more \"why\" than \"tap\", so it isn't a walkthrough.",
+        "<b>F1 intro</b>: the headline follows the voice, from \"Best day, counted twice?\" to \"The Booster Card\" (at \"Booster\"). A Day 40 card comes in at 15,000 (gold, capped) and lifts to 30,000 with the rocket badge on \"twice\". This is the same pattern as Video 1's 4,200 → 10,000.",
+        "<b>Day 40 \"before\" value</b>: the recording only shows Day 40 after the boost (30,000). The 15,000 \"before\" comes from the app's own message (\"You've done 21545 steps, but your contest cap is 15,000\").",
+        "<b>Length: about 85–95 s</b> (estimate at Tara's pace). That's over the 75 s explainer guideline. The script is kept word for word, so cutting is your call. The easiest cut is the \"active all week / desk on weekdays\" line (~11 s).",
+        "<b>Section cards (E3) left out</b>: design.md wants long explainers marked with voiced E3 \"PART n OF 3\" cards, but the script has no lines for them and the video is already long. If you want them, approve or reword: \"First, why did we build it?\" / \"So how does it work?\" / \"And when should you save it?\" (+~10 s).",
+        "<b>Scene types (5)</b>: E14, E5, E12, C5 and C3, plus the F1/F2 cards and three phone slides. No scene runs twice in a row.",
+        "<b>Voice</b>: Tara, stability 0, eleven_v4. The whole script goes out as one take, generated once, after you approve the wording (including the \"Pick your best one\" question)."
+      ]
+    },
+    {
+      "n": "card",
+      "section": "Why we built it",
+      "layout": "E14",
+      "card": "A habit of movement",
+      "vo": "Koshiqa is about building a habit of movement. One you can sustain, with no pressure.",
+      "flags": [
+        "<b>E14</b> (a week, a habit): the line draws into a 7-day streak of gently varied humps. \"A habit of movement\" appears on \"habit\", then \"No pressure\" on \"pressure\"."
+      ]
+    },
+    {
+      "n": "card",
+      "section": "Why we built it",
+      "layout": "E5",
+      "card": "Desk on weekdays",
+      "vo": "But everyone's routine is different. Some members are active all week, moving around at work. Others are stuck at a desk on weekdays, and find their weekends for a morning run or a workout.",
+      "flags": [
+        "<b>E5</b> (a trend against a target): one week's chart with low weekdays under the 10K goal line and two big weekend peaks, labelled \"Weekend run\". The values are illustrative, not from an account.",
+        "<b>Choice</b>: the chart shows the desk-worker week only. The \"active all week\" member is in the voice only, which keeps one focal point. Say if you want both routines shown side by side instead."
+      ]
+    },
+    {
+      "n": "card",
+      "section": "Why we built it",
+      "layout": "E12",
+      "card": "Members asked",
+      "vo": "So members asked us: can we make the best use of our best days? Can my weekend cover for my weekdays?",
+      "flags": [
+        "<b>E12</b> list of the two questions: \"Use our best days?\" and \"Weekend covers weekdays?\", each landing as it's spoken.",
+        "<b>No chat screen here</b>: Video 1's chat mockup needs a real member message with consent. This line is a summary of what members asked, so it's shown as a list. If there's a real message you can share, it can become a chat like Video 1's."
+      ]
+    },
+    {
+      "n": "#05",
+      "section": "How it works",
+      "layout": "S2",
+      "card": "The Booster Card",
+      "vo": "So we built the Booster Card. You can apply it on any past day. Pick your best one.",
+      "image": "05.png",
+      "flags": [
+        "<b>From IMG_7404 (0:11)</b>: the Power card screen. The name shows first (<code>titleFirst</code>), then the phone rises, a ring lands on the Booster card on \"Booster Card\", and the cursor taps it on \"Pick\".",
+        "<b>⚠ Fact check: \"Pick your best one\"</b>. The app says the card <i>\"Finds your best step day automatically\"</i>, and the recording applies it straight to Nov 13 (\"Boosting your strongest day…\") with no step to choose a day. Should the line stay as written (it reads as advice), or change to match the app, e.g. \"It picks your best one for you\"? A change would mean one re-take of this line only."
+      ]
+    },
+    {
+      "n": "#06",
+      "section": "How it works",
+      "layout": "S2",
+      "card": "Doubles counted steps",
+      "vo": "The contest counts up to 15,000 steps a day. Booster doubles those counted steps.",
+      "image": "06.png",
+      "flags": [
+        "<b>From IMG_7404 (0:14)</b>: the Booster Card screen. The phone zooms in on the 15,000 → 30,000 boxes on \"15,000\", then the 30,000 box is ringed on \"doubles\".",
+        "<b>Recording vs script</b>: the green banner on this screen says \"You've done 21545 steps\". The script's example is 18,000, but it's on the next slide, so this slide only uses the boxes."
+      ]
+    },
+    {
+      "n": "card",
+      "section": "How it works",
+      "layout": "C5",
+      "card": "Adds 15,000 steps",
+      "vo": "Did 18,000 steps? 15,000 count, and Booster adds another 15,000.",
+      "flags": [
+        "<b>C5 bar</b> (part + bonus = total), as in Videos 1 and 2: \"Did 18,000\" day, 15,000 counted steps rise first, then the Booster bonus stacks 15,000 on top, then \"15,000 + 15,000 = 30,000\" is held about 10 s. The headline lands with the total.",
+        "<b>Number not in the script</b>: C5 always writes out the total. 30,000 follows from the script (15,000 + 15,000) and matches Day 40 in the recording."
+      ]
+    },
+    {
+      "n": "card",
+      "section": "How it works",
+      "layout": "E12",
+      "card": "Only what you're behind",
+      "vo": "But it only covers what you're behind. If your deficit is 10,000 steps, Booster adds 10,000 steps.",
+      "flags": [
+        "<b>E12</b> with two items: \"Deficit: 10,000\" on \"deficit\", then \"Booster adds 10,000\" on \"adds\". It's a second E12 (after \"Members asked\"), with three slides in between, to stay within 5 scene types."
+      ]
+    },
+    {
+      "n": "card",
+      "section": "When to save it",
+      "layout": "C3",
+      "card": "Save it till it counts",
+      "vo": "No deficit, or a very small one? Save your Booster for when it counts. Any day with 15,000 steps or more gives you the full boost.",
+      "flags": [
+        "<b>C3 compare</b>: left (✗) \"No or small deficit\" → \"Save it\", on \"No deficit\"; right (✓) \"15,000+ day\" → \"Full boost\", on \"Any day\".",
+        "<b>Headline</b>: \"Save it till it counts\" is shortened from \"Save your Booster for when it counts\" to fit 4 words. It could also be \"When it counts\"."
+      ]
+    },
+    {
+      "n": "#11",
+      "section": "When to save it",
+      "layout": "S2",
+      "card": "Days ahead? Capping",
+      "vo": "And it's for past days only. For days ahead, there's Capping.",
+      "image": "11.png",
+      "flags": [
+        "<b>From IMG_7406 (0:07)</b>: the Capping Card screen. The line \"Raises your daily limit to 25,000 steps for one future day\" is ringed on \"days ahead\". The rest of IMG_7406 (scheduling a capping day) isn't used, since the script only names Capping. Capping could get its own video."
+      ]
+    },
+    {
+      "n": "card",
+      "section": "Close",
+      "layout": "E14",
+      "card": "Out of the park",
+      "vo": "Some days you hit it out of the park, while others are normal.",
+      "flags": [
+        "<b>E14</b> with uneven humps: the tall ones rise on \"park\" and the low ones on \"normal\". It's the same scene as slide 2, at the other end of the video."
+      ]
+    },
+    {
+      "n": "card",
+      "section": "Close",
+      "layout": "F2",
+      "card": "Best use of best days",
+      "vo": "Make the best use of your best days with booster cards.",
+      "flags": [
+        "<b>F2 closing</b> with Torty winking. On screen it reads \"Booster Card\" (capitalised); the voice reads the script as written."
+      ]
+    }
+  ]
+}

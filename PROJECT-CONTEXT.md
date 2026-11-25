@@ -48,6 +48,11 @@ Script + screen recording → classify type → storyboard HTML (team reviews) �
    - Recordings: IMG_7239 (no benefit) and IMG_7240 (small benefit).
    - The 4,200 + 5,800 = 10,000 example is Video 1's C5 bar build-up (held 10 s).
    - **Open questions:** the "Smaller deficit" slide reuses Video 1's impact screen; is the "Plan ahead? Soon" headline OK, or use "Past days only"; Hindi version not started.
+4. **Video 4 · "What if your best day counted twice?"** (explainer, Booster Card)
+   - `HV-BoosterCard`, storyboard `storyboards/HV-BoosterCard.html` (12 slides, ~85–95 s), in review. Voice: Tara, stability 0, one take after approval.
+   - Recordings: IMG_7404 (Booster: Power card, Booster screen, apply on Nov 13, Day 40 = 30,000) and IMG_7406 (Capping Card).
+   - Examples: C5 bar 15,000 counted + 15,000 boost = 30,000; deficit 10,000 → adds 10,000.
+   - **Open questions:** "Pick your best one" vs the app's "finds your best day automatically"; length over 75 s; voiced E3 section cards or not.
 
 ## Suggested threads
 One thread per video (English + Hindi together), plus one "system" thread for changes to templates, Torty, design rules, music or the skill.
