@@ -14,6 +14,24 @@ Entry format:
 
 ---
 
+## 2026-11-25 · HV-RestCardHowTo + system · Video 3 spec, Tara take, visual QA (waiting for the audio file)
+- **Asked:** "continue" (after the storyboard; read as approval of the proposals: "Step 4", the low-benefit slides kept, no toast slide). Earlier: "Use tara voice wit 0 Stability".
+- **Changed:**
+  - `src/videos/rest-card-how.ts` (new, registered in `index.ts`): 10 slides.
+    - Opening: F1 intro, with the headline following the voice and the 4,200 → 10,000 lift on "boost".
+    - Steps: S2 Power cards tab tap → S2 Power card mockup with a tap on the Rest Card → S2 Potential impact (zoom 1.35, spotlight on the 4 rows) → S2 Apply (ring on 10,000, tap) → S2 low benefit (zoom + ring) → S2 no benefit (ring + tap Save for later) → S3 applying sheet (ring).
+    - Ending: S2 calendar mockup (zoom, ring, lift + confetti on "boost") → F2.
+  - `public/screens/HV-RestCardHowTo/01, 03–07.png` from the storyboard import; 02 and 08 were removed because those slides use mockups.
+  - **System, `src/videos/build.ts`:** taps on coded mockups now resolve `atWord`. Before this they came out as NaN, so the cursor never showed. Taps with `at` are unchanged.
+  - `src/videos/vo-durations.json`: **estimated** durations for HV-RestCardHowTo (Video 2's pace, no files), used only for the visual QA. The real take replaces them.
+- **QA fixes before delivery:**
+  - Slide 4: no peek, because after the zoom Torty covered the Deficit and Club rows.
+  - Slide 6: "Small gain? You choose" wrapped onto two lines; it's now "Low benefit? Choose".
+  - Slide 7: "No benefit? Save it". The spotlight is now a ring, because the spotlight dimmed the tapped button.
+  - Slide 8: "Found automatically" touched Torty's head; it's now "Found for you".
+- **Voice:** Tara – Polished Audio Description, eleven_v4, stability 0, one take (1,021 credits). It was made in flow `Dz6Bnyq2uzZtpw0aO4hE`, node "Video 3 · How to use your Rest Card (EN) · Tara, stability 0" (a copy of Video 2's node). The prompt is the 10 `vo` lines with a blank line between slides. The take is **63.0 s**. The sandbox can't download it (CDN proxy 403), so the team downloads it and attaches it.
+- **Output:** `out/HV-RestCardHowTo-qa.png` (stills with estimated timing; all 10 slides pass). Next: split the take per slide, level it to −16 LUFS, re-time, render the MP4 and run the final QA.
+
 ## 2026-11-25 · HV-RestCardHowTo · Video 3 storyboard for review ("How to use your Rest Card")
 - **Asked:** "make the video using /koshiqa-help-video". Objective: a clear step-by-step app walkthrough. Script from the team, recording IMG_7241 (78 s, HDR). Later: "Use tara voice wit 0 Stability".
 - **Type:** walkthrough (numbered steps, one task, from a recording).

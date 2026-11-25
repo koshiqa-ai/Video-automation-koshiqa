@@ -1,0 +1,96 @@
+{
+ "id": "HV-RestCardHowTo",
+ "seconds": 73.9,
+ "slides": [
+  {
+   "n": 1,
+   "code": "F1",
+   "frame": 228,
+   "sec": 7.9,
+   "peek": null,
+   "title": "Have a Rest Card?",
+   "vo": "Hey! Have a Rest Card? Let me show you how to use it and give your lowest-step day a boost!"
+  },
+  {
+   "n": 2,
+   "code": "S2",
+   "frame": 322,
+   "sec": 3.1,
+   "peek": "left smile",
+   "title": "Open Power cards",
+   "vo": "Step 1. Head to Power Cards"
+  },
+  {
+   "n": 3,
+   "code": "S2",
+   "frame": 406,
+   "sec": 2.8,
+   "peek": "right happy",
+   "title": "Select your Rest Card",
+   "vo": "and select your Rest Card."
+  },
+  {
+   "n": 4,
+   "code": "S2",
+   "frame": 682,
+   "sec": 9.2,
+   "peek": null,
+   "title": "Check your impact",
+   "vo": "Step 2. Check your potential impact. I'll show you how your step count, contest deficit and club placement could change after applying the card."
+  },
+  {
+   "n": 5,
+   "code": "S2",
+   "frame": 816,
+   "sec": 4.5,
+   "peek": null,
+   "title": "Tap Apply Rest Card",
+   "vo": "Step 3. Happy with the impact? Tap Apply Rest Card."
+  },
+  {
+   "n": 6,
+   "code": "S2",
+   "frame": 1224,
+   "sec": 13.6,
+   "peek": "left thinking",
+   "title": "Low benefit? Choose",
+   "vo": "Before applying, I'll check whether this card will make a meaningful difference to your progress. If the benefit is low, I'll let you know, and you can choose whether to apply it or save it for later."
+  },
+  {
+   "n": 7,
+   "code": "S2",
+   "frame": 1379,
+   "sec": 5.2,
+   "peek": null,
+   "title": "No benefit? Save it",
+   "vo": "If there's no benefit, you can save your card for another time."
+  },
+  {
+   "n": 8,
+   "code": "S3",
+   "frame": 1757,
+   "sec": 12.6,
+   "peek": "right smile",
+   "title": "Found for you",
+   "vo": "Step 4. If you proceed, I'll automatically scan your contest history, find your lowest eligible step day and apply the card to it. You don't have to search for or select the day yourself!"
+  },
+  {
+   "n": 9,
+   "code": "S2",
+   "frame": 2003,
+   "sec": 8.2,
+   "peek": "right excited",
+   "title": "Lowest day boosted",
+   "vo": "And that's it! Your lowest day gets a boost, your total contest steps increase and your deficit comes down. Easy, right?"
+  },
+  {
+   "n": 10,
+   "code": "F2",
+   "frame": 2209,
+   "sec": 6.9,
+   "peek": null,
+   "title": "Keep building consistency",
+   "vo": "Now get back out there and keep building that consistency. I'll be right here cheering you on!"
+  }
+ ]
+}

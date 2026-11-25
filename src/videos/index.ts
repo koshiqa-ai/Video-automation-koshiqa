@@ -6,8 +6,9 @@ import { HOW_STEPS_SYNC } from "./how-steps-sync";
 import { REST_CARD } from "./rest-card";
 import { REST_CARD_HI } from "./rest-card-hi";
 import { REST_CARD_WHEN } from "./rest-card-when";
+import { REST_CARD_HOW } from "./rest-card-how";
 import { VOICE_SAMPLES } from "./voice-sample";
 import type { HelpVideoSpec } from "./types";
 
-export const VIDEOS: HelpVideoSpec[] = [JOIN_CONTEST, START_STEPS, STEPS_FAQ, HOW_STEPS_SYNC, REST_CARD, REST_CARD_HI, REST_CARD_WHEN, ...VOICE_SAMPLES];
+export const VIDEOS: HelpVideoSpec[] = [JOIN_CONTEST, START_STEPS, STEPS_FAQ, HOW_STEPS_SYNC, REST_CARD, REST_CARD_HI, REST_CARD_WHEN, REST_CARD_HOW, ...VOICE_SAMPLES];
 export const findVideo = (id: string) => VIDEOS.find((v) => v.id === id);

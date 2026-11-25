@@ -42,7 +42,10 @@ const toScreenSpace = (v: VideoSlide, voSec: number, marks: Marks): VideoSlide =
     const zoomM = v.zoom && { ...v.zoom, at: wt(v.zoom, 0.8) };
     const sc0 = v.screen as { props?: Record<string, unknown> } | undefined;
     const props = sc0?.props && { ...sc0.props, ...(typeof sc0.props.liftAtWord === "string" ? { liftAt: wordTime(v.vo, voSec, marks, sc0.props.liftAtWord as string) } : {}) };
-    return { ...v, anno, zoom: zoomM, screen: props ? ({ ...v.screen, props } as VideoSlide["screen"]) : v.screen };
+    // taps on a mockup are in screen space already; resolve their atWord like a screenshot's
+    const mtaps = (sc0 as { taps?: { at?: number; atWord?: string }[] } | undefined)?.taps?.map((t) => ({ ...t, at: wt(t, VO_LEAD + 0.6) }));
+    const screen = v.screen && (props || mtaps) ? ({ ...v.screen, ...(props ? { props } : {}), ...(mtaps ? { taps: mtaps } : {}) } as VideoSlide["screen"]) : v.screen;
+    return { ...v, anno, zoom: zoomM, screen };
   }
   const { k, offY } = shotFit(v.screen.w, v.screen.h);
   const p = (x: number, y: number) => ({ x: x * k, y: y * k + offY });

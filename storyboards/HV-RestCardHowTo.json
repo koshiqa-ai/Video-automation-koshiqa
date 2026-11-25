@@ -1,0 +1,215 @@
+{
+ "id": "HV-RestCardHowTo",
+ "type": "walkthrough",
+ "title": "Video 3 · How to use your Rest Card",
+ "source": "HV-RestCardHowTo.html",
+ "sections": [
+  "Hook",
+  "Step 1 · Find your card",
+  "Step 2 · Check the impact",
+  "Step 3 · Apply it",
+  "If the benefit is low",
+  "Step 4 · I'll find the day",
+  "Done"
+ ],
+ "beats": [
+  {
+   "n": "card",
+   "kind": "card",
+   "section": "Hook",
+   "cut": false,
+   "hold": 8.0,
+   "card": "Have a Rest Card?",
+   "vo": "Hey! Have a Rest Card? Let me show you how to use it and give your lowest-step day a boost!",
+   "role": null,
+   "layout": "F1",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "Type: walkthrough: numbered steps, one task (apply a Rest Card), from a screen recording. The objective asks for a step-by-step walkthrough.",
+    "F1 intro (Video 1/2 pattern): the headline follows the voice. “Have a Rest Card?” → “How to use it” (at “show you”), then a Day 22 card lifts from 4,200 to 10,000 with confetti on “boost”."
+   ]
+  },
+  {
+   "n": "#01",
+   "kind": "screen",
+   "section": "Step 1 · Find your card",
+   "cut": false,
+   "hold": 2.5,
+   "card": "Open Power cards",
+   "vo": "Step 1. Head to Power Cards",
+   "role": null,
+   "layout": "S2",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "From IMG_7241 (0:08): the contest page. The cursor taps the Power cards tab as the voice says it. Torty peeks left, away from the tab.",
+    "One sentence, two screens: “Step 1. Head to Power Cards and select your Rest Card.” is split across this slide and the next so each tap gets its own screen. The words are unchanged."
+   ],
+   "image": "screens/HV-RestCardHowTo/01.png",
+   "w": 576,
+   "h": 1248
+  },
+  {
+   "n": "#02",
+   "kind": "screen",
+   "section": "Step 1 · Find your card",
+   "cut": false,
+   "hold": 2.0,
+   "card": "Select your Rest Card",
+   "vo": "and select your Rest Card.",
+   "role": null,
+   "layout": "S2",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "Coded mockup: Video 1's Power card mockup (power-card), so the screen matches Videos 1 and 2. The cursor taps the first Rest Card on “select”. Picture shown here is Video 1's reference frame."
+   ],
+   "image": "screens/HV-RestCardHowTo/02.png",
+   "w": 576,
+   "h": 1248
+  },
+  {
+   "n": "#03",
+   "kind": "screen",
+   "section": "Step 2 · Check the impact",
+   "cut": false,
+   "hold": 9.5,
+   "card": "Check your impact",
+   "vo": "Step 2. Check your potential impact. I'll show you how your step count, contest deficit and club placement could change after applying the card.",
+   "role": null,
+   "layout": "S2",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "From IMG_7241 (0:48): the Rest Card screen scrolled to Potential impact. Zoom in on the rows at “potential impact”, then a spotlight on Step count · Daily average · Deficit · Club at “step count”."
+   ],
+   "image": "screens/HV-RestCardHowTo/03.png",
+   "w": 576,
+   "h": 1248
+  },
+  {
+   "n": "#04",
+   "kind": "screen",
+   "section": "Step 3 · Apply it",
+   "cut": false,
+   "hold": 4.0,
+   "card": "Tap Apply Rest Card",
+   "vo": "Step 3. Happy with the impact? Tap Apply Rest Card.",
+   "role": null,
+   "layout": "S2",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "From IMG_7241 (0:35): top of the Rest Card screen (4,200 → 10,000, deficit 10,800 → 5,000). The cursor taps Apply Rest Card on “Tap Apply”. No Torty peek: the button spans both bottom corners."
+   ],
+   "image": "screens/HV-RestCardHowTo/04.png",
+   "w": 576,
+   "h": 1248
+  },
+  {
+   "n": "#05",
+   "kind": "screen",
+   "section": "If the benefit is low",
+   "cut": false,
+   "hold": 15.0,
+   "card": "Small gain? You choose",
+   "vo": "Before applying, I'll check whether this card will make a meaningful difference to your progress. If the benefit is low, I'll let you know, and you can choose whether to apply it or save it for later.",
+   "role": null,
+   "layout": "S2",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "Reused from Video 2 (IMG_7240): this recording only shows a full-benefit day, so the low-benefit warning (8,500 day, +1,500, Save for later / Apply anyway) comes from Video 2. Zoom on the warning at “meaningful difference”, ring it at “let you know”.",
+    "Overlap with Video 2: this paragraph and the next repeat what Video 2 explains, and add about 18 s. Keep them, or cut both slides (≈ 53 s)?"
+   ],
+   "image": "screens/HV-RestCardHowTo/05.png",
+   "w": 576,
+   "h": 1248
+  },
+  {
+   "n": "#06",
+   "kind": "screen",
+   "section": "If the benefit is low",
+   "cut": false,
+   "hold": 5.0,
+   "card": "No gain? Save it",
+   "vo": "If there's no benefit, you can save your card for another time.",
+   "role": null,
+   "layout": "S2",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "Reused from Video 2 (IMG_7239): lowest day already 11,000, “No benefit here”. The cursor taps Save for later on “save your card”. No peek (full-width button)."
+   ],
+   "image": "screens/HV-RestCardHowTo/06.png",
+   "w": 576,
+   "h": 1248
+  },
+  {
+   "n": "#07",
+   "kind": "screen",
+   "section": "Step 4 · I'll find the day",
+   "cut": false,
+   "hold": 13.5,
+   "card": "Found automatically",
+   "vo": "Step 4. If you proceed, I'll automatically scan your contest history, find your lowest eligible step day and apply the card to it. You don't have to search for or select the day yourself!",
+   "role": null,
+   "layout": "S3",
+   "sub": null,
+   "was": "Step 5. If you proceed, I'll automatically scan your contest history, find your lowest eligible step day and apply the card to it. You don't have to search for or select the day yourself!",
+   "why": "The script goes Step 1, 2, 3, then Step 5; there is no Step 4. Please confirm “Step 4”, or tell us if the paragraph before this one should be read as Step 4.",
+   "flags": [
+    "From IMG_7241 (1:01): the “Applying your card” sheet (Oct 26 · 4,200 steps · Resting your weakest day…). S3 close-up on the sheet, so the dimmed page above it stays mostly off-screen. Ring on the date and 4,200 at “lowest eligible step day”."
+   ],
+   "image": "screens/HV-RestCardHowTo/07.png",
+   "w": 576,
+   "h": 1248
+  },
+  {
+   "n": "#08",
+   "kind": "screen",
+   "section": "Done",
+   "cut": false,
+   "hold": 8.5,
+   "card": "Lowest day boosted",
+   "vo": "And that's it! Your lowest day gets a boost, your total contest steps increase and your deficit comes down. Easy, right?",
+   "role": null,
+   "layout": "S2",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "Coded mockup: Video 1's calendar (rest-calendar). The recording's calendar has a dark top and every day at exactly 15,000, which looks unrealistic (design.md Don'ts). Zoom on day 22, then it lifts from 4,200 to a green 10,000 with confetti on “boost”. Picture: Video 1's before → after frames.",
+    "Not shown: the “Applied successfully” toast on the Power card screen (1:04) isn't in the script. Add a slide for it?"
+   ],
+   "image": "screens/HV-RestCardHowTo/08.png",
+   "w": 1212,
+   "h": 1248
+  },
+  {
+   "n": "card",
+   "kind": "card",
+   "section": "Done",
+   "cut": false,
+   "hold": 7.0,
+   "card": "Keep building consistency",
+   "vo": "Now get back out there and keep building that consistency. I'll be right here cheering you on!",
+   "role": null,
+   "layout": "F2",
+   "sub": null,
+   "was": null,
+   "why": null,
+   "flags": [
+    "Length: about 70 s at Tara's pace (186 words; Video 2 had 182 words and ran 65 s). A walkthrough is normally 30–40 s, 45 s at most. Options: keep it as a deliberate longer walkthrough (logged), or cut the two low-benefit slides (≈ 53 s)."
+   ]
+  }
+ ]
+}
