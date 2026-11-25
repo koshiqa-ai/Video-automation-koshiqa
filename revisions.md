@@ -14,6 +14,16 @@ Entry format:
 
 ---
 
+## 2026-11-25 · system · "Koshiqa" pronunciation: team voice note + 3-way Tara test
+- **Asked:** the team's voice note on how to say Koshiqa (`assets-src/pronunciation/koshiqa-team-voice-note.opus`, 8.8 s): "It's KO-shi-kaa. Right now the video uses ko-SHEE-ka."
+- **What the note shows** (loudness, pitch and length per syllable, measured):
+  - **Right:** **KO** strong; a short, light "shi"; a long "kaa" (~0.22 s) with the pitch rising at the end. This is कोशिका.
+  - **Wrong** (as the videos say it): the stress and length sit on the middle, "SHEE", and the final "ka" is short (~0.08 s) and flat.
+- **Changed:** voice note saved as the reference. ElevenLabs flow `Dz6Bnyq2uzZtpw0aO4hE`, node "Koshiqa pronunciation test · A कोशिका / B KOH-shih-kah / C Kosh-ikaa · Tara, stability 0": one take, 169 credits, the sentence "… is built with feedback from members like you." with each spelling, in the order A, B, C. ("Koh-shi-kaa" was already rejected in Video 1's review.)
+- **Next:** the team listens and picks A, B or C. Then one Tara re-take of the 4 lines that say Koshiqa (HV-RestCard: feedback E7, the chat sentence, F2; HV-BoosterCard: slide 2), and the spelling goes into an ElevenLabs pronunciation dictionary / CLAUDE.md, so every future take uses it.
+
+---
+
 ## 2026-11-25 · HV-CappingCard · Video 5 spec, stills checked, one Tara take started
 - **Asked:** "continue" after the storyboard, so it's built as reviewed: script word for word (including "I am going to explain you"), no cuts, no section cards.
 - **Changed:**
