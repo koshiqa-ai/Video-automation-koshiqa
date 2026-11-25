@@ -14,6 +14,24 @@ Entry format:
 
 ---
 
+## 2026-11-25 · HV-BoosterCard · Tara voice in, rendered and QA'd (82 s)
+- **Asked:** the team attached the take (`ElevenLabs_2026-11-25T10_58_59__s0_v4.mp3`, 71.5 s, −27.3 LUFS).
+- **Changed:**
+  - The take is stored as `work/HV-BoosterCard/vo-full-tara-s0.mp3`.
+  - `public/vo/HV-BoosterCard/01–12.wav`; `src/videos/vo-durations.json` (durations + word timings); `work/HV-BoosterCard/qa.json`.
+  - New `scripts/prep-booster-card-vo.py`, which re-runs the split, the levelling and the timings.
+- **Why / decisions:**
+  - `vo-split.py` flagged 3 cuts (slides 6, 7 and 10), because spoken numbers skew its length estimate. So the take was transcribed with Whisper (sherpa-onnx) stretch by stretch: 32 phrases, all matching the script. Each cut sits in the pause after its line's last words.
+  - One fixed +11.5 dB gain + limiter, as in Video 2: speech −17.0 LUFS, mix −16.6 LUFS.
+  - The clips have no ElevenLabs word timings, so `atWord` uses phrase starts from the transcript. Words inside a phrase are spread over it by character position.
+  - Whisper heard "Koshiqa" as "Koshika" (close to KOH-shi-kaa) and "For days ahead, there's Capping" as "For these ahead, they're scapping". Listen at 1:02 to confirm it's only the transcript.
+- **Output:**
+  - `out/HV-BoosterCard.mp4`: 82.0 s, 12 slides, Tara + music.
+  - `out/HV-BoosterCard-qa.png`: all 12 slides pass (layouts, peeks clear of the action, text on one line, rings on their words, C5 held 10 s, no personal data).
+  - **Open:** 82 s is over the 75 s explainer guideline; "Pick your best one" vs the app's "finds your best step day automatically"; no section cards; Hindi version not started.
+
+---
+
 ## 2026-11-25 · HV-BoosterCard (+ system) · Video 4 spec, gold intro card, one Tara take started
 - **Asked:** "continue" after the storyboard, so it's built as reviewed: script word for word, no section cards, no cuts.
 - **Changed:**

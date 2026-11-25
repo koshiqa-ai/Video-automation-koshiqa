@@ -1,0 +1,114 @@
+{
+ "id": "HV-BoosterCard",
+ "seconds": 82,
+ "slides": [
+  {
+   "n": 1,
+   "code": "F1",
+   "frame": 142,
+   "sec": 5,
+   "peek": null,
+   "title": "Best day, counted twice?",
+   "vo": "What if your best day counted twice? That's the Booster Card."
+  },
+  {
+   "n": 2,
+   "code": "E14",
+   "frame": 324,
+   "sec": 6.1,
+   "peek": "left smile",
+   "title": null,
+   "vo": "Koshiqa is about building a habit of movement. One you can sustain, with no pressure."
+  },
+  {
+   "n": 3,
+   "code": "E5",
+   "frame": 665,
+   "sec": 11.4,
+   "peek": "right thinking",
+   "title": null,
+   "vo": "But everyone's routine is different. Some members are active all week, moving around at work. Others are stuck at a desk on weekdays, and find their weekends for a morning run or a workout."
+  },
+  {
+   "n": 4,
+   "code": "E12",
+   "frame": 890,
+   "sec": 7.5,
+   "peek": "left confused",
+   "title": null,
+   "vo": "So members asked us: can we make the best use of our best days? Can my weekend cover for my weekdays?"
+  },
+  {
+   "n": 5,
+   "code": "S2",
+   "frame": 1074,
+   "sec": 6.1,
+   "peek": "right excited",
+   "title": "The Booster Card",
+   "vo": "So we built the Booster Card. You can apply it on any past day. Pick your best one."
+  },
+  {
+   "n": 6,
+   "code": "S2",
+   "frame": 1261,
+   "sec": 6.2,
+   "peek": "left smile",
+   "title": "Doubles counted steps",
+   "vo": "The contest counts up to 15,000 steps a day. Booster doubles those counted steps."
+  },
+  {
+   "n": 7,
+   "code": "C5",
+   "frame": 1561,
+   "sec": 10,
+   "peek": "right excited",
+   "title": "Adds 15,000 steps",
+   "vo": "Did 18,000 steps? 15,000 count, and Booster adds another 15,000."
+  },
+  {
+   "n": 8,
+   "code": "E12",
+   "frame": 1784,
+   "sec": 7.4,
+   "peek": "left determined",
+   "title": null,
+   "vo": "But it only covers what you're behind. If your deficit is 10,000 steps, Booster adds 10,000 steps."
+  },
+  {
+   "n": 9,
+   "code": "C3",
+   "frame": 2060,
+   "sec": 9.2,
+   "peek": "left wink",
+   "title": "Save it till it counts",
+   "vo": "No deficit, or a very small one? Save your Booster for when it counts. Any day with 15,000 steps or more gives you the full boost."
+  },
+  {
+   "n": 10,
+   "code": "S2",
+   "frame": 2190,
+   "sec": 4.3,
+   "peek": "right thinking",
+   "title": "Days ahead? Capping",
+   "vo": "And it's for past days only. For days ahead, there's Capping."
+  },
+  {
+   "n": 11,
+   "code": "E14",
+   "frame": 2322,
+   "sec": 4.4,
+   "peek": "left happy",
+   "title": null,
+   "vo": "Some days you hit it out of the park, while others are normal."
+  },
+  {
+   "n": 12,
+   "code": "F2",
+   "frame": 2451,
+   "sec": 4.3,
+   "peek": null,
+   "title": "Best use of best days",
+   "vo": "Make the best use of your best days with booster cards."
+  }
+ ]
+}
